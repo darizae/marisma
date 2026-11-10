@@ -11,6 +11,7 @@
   "scripts": {
     "build": "pnpm --filter @darizae/marisma build",
     "typecheck": "pnpm -r --if-present typecheck",
+    "test:package-contract": "pnpm --filter @darizae/marisma test:package-contract",
     "dev:storybook": "pnpm --filter @marisma/storybook dev",
     "dev:landing": "pnpm --filter @marisma/landing dev",
     "dev:vite-consumer": "pnpm --filter @marisma/consumer-vite dev",
