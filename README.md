@@ -2,33 +2,32 @@
 
 A Tailwind-first React component library for professional web applications.
 
-Marisma is being developed around accessible interactions, considered component APIs,
-readable typography, and calm estuary-inspired themes. The initial library targets
-React 19 and Tailwind CSS 4, with Vite and Next.js as its first consumer targets.
+Marisma is a prerelease library for React 19 and Tailwind CSS 4. The current
+package implements Button, Input, and Dialog with typed public APIs, accessible
+native or Radix-based interactions, and Reedwater and Tidal Blue themes in light
+and dark modes.
 
-> **Project status:** This repository is a planning-approved development scaffold.
-> It does not yet contain a released component catalog, working installation
-> instructions for npm consumers, or a published package. Do not install it as a
-> production dependency.
+> **Project status:** `@darizae/marisma` is private and is not published to npm.
+> The broader non-chart catalog is still in development. Use this repository's
+> Storybook and tarball-installed consumer fixtures for evaluation; do not treat
+> the package as a stable release.
 
-## What is planned
+## Available components
 
-The first release will provide basic UI controls, accessible interactive components,
-composed fields, and reusable application layouts. A plotting/charting module is
-planned for a later release and will not be required by the core library.
+- `Button` — primary, secondary, and ghost variants; three sizes; disabled and
+  loading states.
+- `Input` — native controlled or uncontrolled input with a visible label,
+  supporting description, validation message, and forwarded native props.
+- `Dialog` — composable Radix dialog primitives with modal focus containment,
+  Escape dismissal, accessible title/description, and focus restoration.
 
-Marisma's initial theme direction includes **Reedwater** (coastal green/teal) and
-**Tidal Blue**, each with light and dark variants. The components use Tailwind CSS
-utilities and semantic theme variables; applications consuming Marisma will need to
-configure Tailwind CSS 4. No CSS Modules or CSS-in-JS alternative is planned.
+Storybook includes controls, keyboard notes, interaction coverage, and theme
+switching for these components. No charting, routing, data fetching,
+authentication, or persisted theme settings are included.
 
 ## Development checkout
 
-The monorepo requires Node.js 22.14.0 or newer and pnpm 11.9.0. Dependency
-resolution and a clean frozen-lockfile install are verified; package build and
-browser qualification remain pending.
-
-From the repository root:
+The monorepo requires Node.js 22.14.0 or newer and pnpm 11.9.0.
 
 ```bash
 pnpm install --frozen-lockfile
@@ -36,28 +35,100 @@ pnpm build
 pnpm dev:storybook
 ```
 
-The frozen-lockfile install is verified. The build and Storybook commands remain
-unverified until their implementation and integration checks are complete; consult
-the approved engineering contract and assigned numbered task for current scope.
+The package stays private. To exercise the exact packed artifact locally, use
+the repository's independent Vite and Next.js acceptance harness:
+
+```bash
+pnpm --filter @marisma/storybook test:consumers
+```
+
+## Tailwind CSS 4 setup
+
+Import Tailwind once, then the Marisma theme, then register the installed
+package's compiled JavaScript as a source. The `@source` path is relative to the
+CSS file, so adjust it if your stylesheet lives elsewhere.
+
+```css
+@import "tailwindcss";
+@import "@darizae/marisma/theme.css";
+@source "../node_modules/@darizae/marisma/dist";
+```
+
+Set both theme attributes on the scope that owns the components:
+
+```html
+<div data-marisma-accent="reedwater" data-marisma-mode="light"></div>
+```
+
+Supported values are `reedwater | tidal-blue` and `light | dark`. Marisma does
+not store or switch those values for the consumer.
+
+## Button, Input, and Dialog example
+
+This is the same compiled example rendered in Storybook.
+
+<!-- marisma-example:start -->
+
+```tsx
+"use client";
+
+import { useState } from "react";
+import {
+  Button,
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+  Input,
+} from "@darizae/marisma";
+
+export function MarismaExample() {
+  const [name, setName] = useState("Marisma");
+  const [status, setStatus] = useState("No changes saved");
+
+  return (
+    <section className="grid w-full max-w-lg gap-5 rounded-xl border border-mar-border bg-mar-card p-6">
+      <Input
+        description="This value is controlled by your application."
+        label="Project name"
+        onChange={(event) => setName(event.currentTarget.value)}
+        value={name}
+      />
+      <div className="flex flex-wrap gap-3">
+        <Button onClick={() => setStatus(`Saved ${name}`)} type="button">
+          Save changes
+        </Button>
+        <Dialog>
+          <DialogTrigger variant="secondary">Open details</DialogTrigger>
+          <DialogContent>
+            <DialogTitle>Project details</DialogTitle>
+            <DialogDescription>
+              Dialogs keep focus contained until they close.
+            </DialogDescription>
+            <DialogClose>Done</DialogClose>
+          </DialogContent>
+        </Dialog>
+      </div>
+      <p aria-live="polite" className="text-sm text-mar-muted">
+        {status}
+      </p>
+    </section>
+  );
+}
+```
+
+<!-- marisma-example:end -->
 
 ## Repository structure
 
-- `packages/ui/` — the versioned React component package and its Tailwind theme
-- `apps/storybook/` — interactive component documentation (initial scaffold)
-- `apps/landing/` — public introduction and navigation to documentation (initial scaffold)
-- `apps/consumers/vite-react/` — Vite consumption fixture (initial scaffold)
-- `apps/consumers/nextjs/` — Next.js App Router consumption fixture (initial scaffold)
-
-## Contribution and status
-
-The approved product and architecture constraints are in
-`docs/planning/ENGINEERING_CONTRACT.md`. First-sprint implementation tasks are
-sequenced individually under `docs/tasks/`, with a navigation table in
-`docs/agent/ROUTING.md`. Verification and release checks are in
-`docs/planning/VERIFICATION_AND_RELEASE.md`. No public release or compatibility
-guarantee has been established yet.
+- `packages/ui/` — the private React component package and Tailwind theme
+- `apps/storybook/` — component documentation, interactions, and visual checks
+- `apps/landing/` — truthful prerelease introduction and component preview
+- `apps/consumers/vite-react/` — independent packed Vite fixture
+- `apps/consumers/nextjs/` — independent packed Next.js App Router fixture
 
 ## License
 
-MIT. See [LICENSE](LICENSE). Third-party software and font licensing will be
-verified before the first package release; Marisma does not currently bundle fonts.
+MIT. See [LICENSE](LICENSE). Marisma does not bundle fonts.

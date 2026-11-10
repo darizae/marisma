@@ -5,20 +5,31 @@ import { Button } from "@darizae/marisma";
 const meta = {
   title: "Components/Button",
   component: Button,
+  tags: ["autodocs"],
   args: {
     children: "Save changes",
   },
-  decorators: [
-    (Story) => (
-      <div
-        className="min-w-80 rounded-xl bg-mar-surface p-8 font-mar-sans text-mar-text"
-        data-marisma-accent="reedwater"
-        data-marisma-mode="light"
-      >
-        <Story />
-      </div>
-    ),
-  ],
+  argTypes: {
+    variant: {
+      control: "select",
+      options: ["primary", "secondary", "ghost"],
+    },
+    size: {
+      control: "select",
+      options: ["small", "default", "large"],
+    },
+    fullWidth: { control: "boolean" },
+    loading: { control: "boolean" },
+    disabled: { control: "boolean" },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "A native button with primary, secondary, and ghost variants; three sizes; forwarded native props; and a loading state that prevents activation while keeping its accessible name.",
+      },
+    },
+  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -49,7 +60,39 @@ export const Behavior: Story = {
   },
 };
 
+export const VariantsAndSizes: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Every public variant and size. Use Tab to focus each native button and Enter or Space to activate it.",
+      },
+    },
+  },
+  render: () => (
+    <div className="grid gap-4 rounded-xl border border-mar-border bg-mar-card p-6">
+      {(["primary", "secondary", "ghost"] as const).map((variant) => (
+        <div className="flex flex-wrap items-center gap-3" key={variant}>
+          {(["small", "default", "large"] as const).map((size) => (
+            <Button key={size} size={size} variant={variant}>
+              {variant} {size}
+            </Button>
+          ))}
+        </div>
+      ))}
+    </div>
+  ),
+};
+
 export const ThemeVariants: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "The same primary action under all four supported accent and mode combinations.",
+      },
+    },
+  },
   render: () => (
     <div className="grid gap-3 sm:grid-cols-2">
       {(

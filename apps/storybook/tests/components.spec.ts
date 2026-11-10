@@ -55,3 +55,45 @@ test("Dialog contains focus, dismisses with Escape, and restores focus", async (
   await expect(dialog).toBeHidden();
   await expect(trigger).toBeFocused();
 });
+
+test("documented Button, Input, and Dialog example behaves as shown", async ({
+  page,
+}) => {
+  await page.goto(
+    "/iframe.html?id=documentation-getting-started--default&viewMode=story",
+  );
+
+  const input = page.getByRole("textbox", { name: "Project name" });
+  await input.fill("Tidal workspace");
+  await page.getByRole("button", { name: "Save changes" }).click();
+  await expect(page.getByText("Saved Tidal workspace")).toBeVisible();
+
+  const trigger = page.getByRole("button", { name: "Open details" });
+  await trigger.click();
+  const dialog = page.getByRole("dialog", { name: "Project details" });
+  await expect(dialog).toHaveAccessibleDescription(
+    "Dialogs keep focus contained until they close.",
+  );
+  await page.keyboard.press("Escape");
+  await expect(dialog).toBeHidden();
+  await expect(trigger).toBeFocused();
+});
+
+test("story globals theme portalled Dialog content", async ({ page }) => {
+  await page.goto(
+    "/iframe.html?id=components-dialog--tidal-blue-dark&viewMode=story",
+  );
+
+  await expect(page.locator("html")).toHaveAttribute(
+    "data-marisma-accent",
+    "tidal-blue",
+  );
+  await expect(page.locator("html")).toHaveAttribute(
+    "data-marisma-mode",
+    "dark",
+  );
+  await page.getByRole("button", { name: "Open profile" }).click();
+  await expect(
+    page.getByRole("dialog", { name: "Edit profile" }),
+  ).toBeVisible();
+});

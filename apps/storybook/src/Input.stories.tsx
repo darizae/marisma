@@ -6,20 +6,25 @@ import { Input } from "@darizae/marisma";
 const meta = {
   title: "Components/Input",
   component: Input,
+  tags: ["autodocs"],
   args: {
     label: "Project name",
   },
-  decorators: [
-    (Story) => (
-      <div
-        className="w-96 max-w-full rounded-xl bg-mar-surface p-8 font-mar-sans text-mar-text"
-        data-marisma-accent="reedwater"
-        data-marisma-mode="light"
-      >
-        <Story />
-      </div>
-    ),
-  ],
+  argTypes: {
+    label: { control: "text" },
+    description: { control: "text" },
+    error: { control: "text" },
+    disabled: { control: "boolean" },
+    placeholder: { control: "text" },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "A labeled native input supporting controlled or uncontrolled values, supporting text, validation text, native input props, and forwarded refs.",
+      },
+    },
+  },
 } satisfies Meta<typeof Input>;
 
 export default meta;
@@ -47,6 +52,14 @@ function OwnershipFixture() {
 }
 
 export const OwnershipAndErrors: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Tab into each field to edit it. Description and error text are both included in the invalid field's accessible description.",
+      },
+    },
+  },
   render: () => <OwnershipFixture />,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -75,11 +88,5 @@ export const TidalBlueDark: Story = {
     defaultValue: "Marisma",
     description: "Visible and announced supporting text.",
   },
-  decorators: [
-    (Story) => (
-      <div data-marisma-accent="tidal-blue" data-marisma-mode="dark">
-        <Story />
-      </div>
-    ),
-  ],
+  globals: { marismaAccent: "tidal-blue", marismaMode: "dark" },
 };

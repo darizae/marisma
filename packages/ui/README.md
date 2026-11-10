@@ -1,14 +1,107 @@
 # Marisma UI package
 
-This package is a **prerelease engineering scaffold**. The component exports have not
-been implemented or qualified. Do not publish it or describe it as installable yet.
+`@darizae/marisma` is a private prerelease package for React 19 and Tailwind CSS 4. It currently exports Button, Input, and Dialog components plus the
+`@darizae/marisma/theme.css` theme entry. It is not published to npm, and the
+broader non-chart catalog is not yet implemented.
 
-Its public styling contract is Tailwind CSS 4 utilities with native `@theme`-driven
-semantic tokens. Consumers configure Tailwind and register Marisma's package source
-with `@source`. The draft theme entry is `@darizae/marisma/theme.css`; package naming
-and npm scope control must be verified before a public release.
+## Local package evaluation
 
-The approved technical contract is in
-`../../docs/planning/ENGINEERING_CONTRACT.md`; each approved, sequenced work unit
-is a separate Markdown file under `../../docs/tasks/`. Acceptance cases and release
-gates are in `../../docs/planning/VERIFICATION_AND_RELEASE.md`.
+From a checkout of this repository, build and pack the exact artifact:
+
+```bash
+pnpm --filter @darizae/marisma build
+pnpm --dir packages/ui pack --pack-destination ../../priv/tarballs
+```
+
+Install the resulting `.tgz` into a local consumer. React, React DOM, and
+Tailwind CSS remain peer dependencies and are not bundled.
+
+## Tailwind CSS 4 setup
+
+In the consumer's global stylesheet, import Tailwind once, import the Marisma
+theme, and scan the installed package's compiled JavaScript. Resolve `@source`
+relative to that stylesheet.
+
+```css
+@import "tailwindcss";
+@import "@darizae/marisma/theme.css";
+@source "../node_modules/@darizae/marisma/dist";
+```
+
+Apply both attributes to a shared component scope:
+
+```html
+<div data-marisma-accent="reedwater" data-marisma-mode="light"></div>
+```
+
+The supported accent values are `reedwater` and `tidal-blue`; supported modes
+are `light` and `dark`. Consumers own switching and persistence.
+
+## Button, Input, and Dialog example
+
+<!-- marisma-example:start -->
+
+```tsx
+"use client";
+
+import { useState } from "react";
+import {
+  Button,
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+  Input,
+} from "@darizae/marisma";
+
+export function MarismaExample() {
+  const [name, setName] = useState("Marisma");
+  const [status, setStatus] = useState("No changes saved");
+
+  return (
+    <section className="grid w-full max-w-lg gap-5 rounded-xl border border-mar-border bg-mar-card p-6">
+      <Input
+        description="This value is controlled by your application."
+        label="Project name"
+        onChange={(event) => setName(event.currentTarget.value)}
+        value={name}
+      />
+      <div className="flex flex-wrap gap-3">
+        <Button onClick={() => setStatus(`Saved ${name}`)} type="button">
+          Save changes
+        </Button>
+        <Dialog>
+          <DialogTrigger variant="secondary">Open details</DialogTrigger>
+          <DialogContent>
+            <DialogTitle>Project details</DialogTitle>
+            <DialogDescription>
+              Dialogs keep focus contained until they close.
+            </DialogDescription>
+            <DialogClose>Done</DialogClose>
+          </DialogContent>
+        </Dialog>
+      </div>
+      <p aria-live="polite" className="text-sm text-mar-muted">
+        {status}
+      </p>
+    </section>
+  );
+}
+```
+
+<!-- marisma-example:end -->
+
+Button is a native button. Input supports controlled and uncontrolled values.
+Dialog follows the Radix modal interaction model: Escape dismisses it, focus is
+contained while open, and focus returns to the trigger after dismissal.
+
+## Release status
+
+The package remains `private: true` at version `0.0.0`. A successful local
+tarball check is evidence for owner review, not permission to publish or a
+stable compatibility guarantee.
+
+MIT licensed. The package archive includes its LICENSE file and does not bundle
+fonts.

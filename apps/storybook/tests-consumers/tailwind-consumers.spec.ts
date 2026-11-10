@@ -248,7 +248,7 @@ test.beforeAll(async () => {
   expect(themeCss).not.toMatch(/@import\s+['"]tailwindcss['"]/);
 
   run("pnpm", ["run", "build"], packageDirectory);
-  temporaryDirectory = mkdtempSync(join(tmpdir(), "marisma-t005-"));
+  temporaryDirectory = mkdtempSync(join(tmpdir(), "marisma-t006-"));
   const packDirectory = join(temporaryDirectory, "pack");
   const packOutput = JSON.parse(
     run(

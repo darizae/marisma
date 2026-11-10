@@ -7,7 +7,11 @@
     "dev": "storybook dev -p 6006 --no-open",
     "build": "storybook build",
     "test:browser": "playwright test --config playwright.config.ts",
-    "test:next": "playwright test --config playwright.next.config.ts"
+    "test:consumers": "playwright test --config playwright.consumers.config.ts",
+    "test:docs": "node --test tests-docs/documentation.test.mjs",
+    "test:next": "playwright test --config playwright.next.config.ts",
+    "test:visual": "playwright test --config playwright.config.ts tests/visuals.spec.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "@darizae/marisma": "workspace:*",

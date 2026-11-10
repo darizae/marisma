@@ -97,6 +97,31 @@ test("the packed package exposes loadable ESM, declarations, and theme CSS", () 
     assert.equal(packResult.name, manifest.name);
     assert.equal(packResult.version, manifest.version);
 
+    assert.deepEqual(packResult.files.map(({ path }) => path).sort(), [
+      "LICENSE",
+      "README.md",
+      "dist/components/button.d.ts",
+      "dist/components/button.js",
+      "dist/components/dialog.d.ts",
+      "dist/components/dialog.js",
+      "dist/components/input.d.ts",
+      "dist/components/input.js",
+      "dist/index.d.ts",
+      "dist/index.js",
+      "dist/lib/cn.js",
+      "package.json",
+      "src/styles/theme.css",
+    ]);
+    assert.match(
+      readFileSync(join(installedPackageDirectory, "LICENSE"), "utf8"),
+      /MIT License[\s\S]*Copyright \(c\) 2026 Marisma contributors/,
+    );
+    assert.equal(
+      manifest.repository?.url,
+      "git+https://github.com/darizae/marisma.git",
+    );
+    assert.equal(manifest.license, "MIT");
+
     for (const peer of ["react", "react-dom", "tailwindcss"]) {
       assert.ok(
         manifest.peerDependencies[peer],

@@ -9,13 +9,26 @@ import {
   DialogTitle,
   DialogTrigger,
   Input,
+  type DialogTriggerProps,
 } from "@darizae/marisma";
 
-function ProfileDialog() {
+type ProfileDialogProps = {
+  closeLabel: string;
+  showCloseButton: boolean;
+  triggerLabel: string;
+  triggerVariant: NonNullable<DialogTriggerProps["variant"]>;
+};
+
+function ProfileDialog({
+  closeLabel,
+  showCloseButton,
+  triggerLabel,
+  triggerVariant,
+}: ProfileDialogProps) {
   return (
     <Dialog>
-      <DialogTrigger>Open profile</DialogTrigger>
-      <DialogContent>
+      <DialogTrigger variant={triggerVariant}>{triggerLabel}</DialogTrigger>
+      <DialogContent closeLabel={closeLabel} showCloseButton={showCloseButton}>
         <DialogTitle>Edit profile</DialogTitle>
         <DialogDescription>
           Change the public name shown to your collaborators.
@@ -35,17 +48,30 @@ function ProfileDialog() {
 const meta = {
   title: "Components/Dialog",
   component: ProfileDialog,
-  decorators: [
-    (Story) => (
-      <div
-        className="min-w-80 rounded-xl bg-mar-surface p-8 font-mar-sans text-mar-text"
-        data-marisma-accent="reedwater"
-        data-marisma-mode="light"
-      >
-        <Story />
-      </div>
-    ),
-  ],
+  tags: ["autodocs"],
+  args: {
+    closeLabel: "Close dialog",
+    showCloseButton: true,
+    triggerLabel: "Open profile",
+    triggerVariant: "primary",
+  },
+  argTypes: {
+    triggerVariant: {
+      control: "select",
+      options: ["primary", "secondary", "ghost"],
+    },
+    showCloseButton: { control: "boolean" },
+    closeLabel: { control: "text" },
+    triggerLabel: { control: "text" },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "A modal Radix dialog with a styled trigger, overlay, content, title, description, and close controls. Escape closes it, Tab and Shift+Tab stay inside it, and focus returns to the trigger.",
+      },
+    },
+  },
 } satisfies Meta<typeof ProfileDialog>;
 
 export default meta;
@@ -54,6 +80,14 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
 
 export const KeyboardAndFocus: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Activate the trigger with Enter or Space. Escape dismisses the dialog; focus remains contained while open and returns to the trigger after dismissal.",
+      },
+    },
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const trigger = canvas.getByRole("button", { name: "Open profile" });
@@ -73,11 +107,5 @@ export const KeyboardAndFocus: Story = {
 };
 
 export const TidalBlueDark: Story = {
-  decorators: [
-    (Story) => (
-      <div data-marisma-accent="tidal-blue" data-marisma-mode="dark">
-        <Story />
-      </div>
-    ),
-  ],
+  globals: { marismaAccent: "tidal-blue", marismaMode: "dark" },
 };
