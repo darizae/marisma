@@ -1,0 +1,37 @@
+# Local-only, never commit
+priv/
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+
+# Dependencies and tooling
+node_modules/
+.pnpm-store/
+.npm/
+.turbo/
+.cache/
+*.tsbuildinfo
+
+# Build and coverage outputs
+dist/
+build/
+coverage/
+storybook-static/
+playwright-report/
+test-results/
+.next/
+.vite/
+.vercel/
+
+# Environment/editor/OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# Do NOT ignore pnpm-lock.yaml, test fixtures, source, or tracked config.

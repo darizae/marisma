@@ -1,0 +1,22 @@
+{
+  "name": "marisma-workspace",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.9.0",
+  "engines": {
+    "node": ">=22.14.0"
+  },
+  "scripts": {
+    "build": "pnpm --filter @darizae/marisma build",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "dev:storybook": "pnpm --filter @marisma/storybook dev",
+    "dev:landing": "pnpm --filter @marisma/landing dev",
+    "dev:vite-consumer": "pnpm --filter @marisma/consumer-vite dev",
+    "dev:next-consumer": "pnpm --filter @marisma/consumer-next dev"
+  },
+  "devDependencies": {
+    "typescript": "~6.0.3",
+    "prettier": "3.9.6"
+  }
+}

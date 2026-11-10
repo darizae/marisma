@@ -1,0 +1,4 @@
+@import 'tailwindcss';
+@import '@darizae/marisma/theme.css';
+/* Workspace-only development discovery; isolated consumers must target installed dist. */
+@source '../../../packages/ui/src';

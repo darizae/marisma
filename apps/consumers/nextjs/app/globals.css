@@ -1,0 +1,4 @@
+@import 'tailwindcss';
+@import '@darizae/marisma/theme.css';
+/* Workspace fixture only; tarball test must register installed package dist. */
+@source '../../../../packages/ui/src';

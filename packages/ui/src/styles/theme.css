@@ -1,0 +1,64 @@
+/* Marisma's sole styling architecture is Tailwind CSS 4.
+   Imported by the application's Tailwind entry, after @import 'tailwindcss'.
+   This file defines semantic theme tokens; it does not include a second reset. */
+
+@custom-variant dark (&:where([data-marisma-mode="dark"], [data-marisma-mode="dark"] *));
+
+@theme inline {
+  --color-mar-surface: var(--marisma-surface);
+  --color-mar-card: var(--marisma-card);
+  --color-mar-text: var(--marisma-text);
+  --color-mar-muted: var(--marisma-muted);
+  --color-mar-border: var(--marisma-border);
+  --color-mar-primary: var(--marisma-primary);
+  --color-mar-on-primary: var(--marisma-on-primary);
+  --color-mar-focus: var(--marisma-focus);
+  --font-mar-sans: var(--marisma-font-sans);
+}
+
+:root,
+[data-marisma-accent="reedwater"] {
+  --marisma-font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --marisma-surface: #f7f6f1;
+  --marisma-card: #ffffff;
+  --marisma-text: #233331;
+  --marisma-muted: #596963;
+  --marisma-border: #c9d2c9;
+  --marisma-primary: #326456;
+  --marisma-on-primary: #ffffff;
+  --marisma-focus: #326456;
+}
+
+[data-marisma-accent="tidal-blue"] {
+  --marisma-surface: #f5f7f7;
+  --marisma-card: #ffffff;
+  --marisma-text: #24343d;
+  --marisma-muted: #5f7079;
+  --marisma-border: #bacad1;
+  --marisma-primary: #3d667e;
+  --marisma-on-primary: #ffffff;
+  --marisma-focus: #3d667e;
+}
+
+[data-marisma-accent="reedwater"][data-marisma-mode="dark"],
+:root[data-marisma-mode="dark"]:not([data-marisma-accent="tidal-blue"]) {
+  --marisma-surface: #192624;
+  --marisma-card: #233330;
+  --marisma-text: #f1f5ef;
+  --marisma-muted: #cad5cf;
+  --marisma-border: #536962;
+  --marisma-primary: #a2d0bd;
+  --marisma-on-primary: #122720;
+  --marisma-focus: #a2d0bd;
+}
+
+[data-marisma-accent="tidal-blue"][data-marisma-mode="dark"] {
+  --marisma-surface: #182630;
+  --marisma-card: #23343f;
+  --marisma-text: #f2f6f7;
+  --marisma-muted: #c9d7df;
+  --marisma-border: #536a77;
+  --marisma-primary: #afd1e4;
+  --marisma-on-primary: #172b36;
+  --marisma-focus: #afd1e4;
+}
