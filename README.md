@@ -4,7 +4,7 @@ A Tailwind-first React component library for professional web applications.
 
 Marisma is being developed around accessible interactions, considered component APIs,
 readable typography, and calm estuary-inspired themes. The initial library targets
-React 19 and Tailwind CSS 4, with Vite and Next.js as its first verified consumers.
+React 19 and Tailwind CSS 4, with Vite and Next.js as its first consumer targets.
 
 > **Project status:** This repository is a planning-approved development scaffold.
 > It does not yet contain a released component catalog, working installation
@@ -24,22 +24,21 @@ configure Tailwind CSS 4. No CSS Modules or CSS-in-JS alternative is planned.
 
 ## Development checkout
 
-The monorepo is designed for Node.js 24 and pnpm. An initial dependency resolution,
-lockfile generation, build, and browser qualification are still pending. The files
-in this archive have only received structural checks.
+The monorepo requires Node.js 22.14.0 or newer and pnpm 11.9.0. Dependency
+resolution and a clean frozen-lockfile install are verified; package build and
+browser qualification remain pending.
 
-After the foundation task creates and verifies the lockfile, the intended commands are:
+From the repository root:
 
 ```bash
-corepack enable
 pnpm install --frozen-lockfile
 pnpm build
 pnpm dev:storybook
 ```
 
-These commands are **planned and not yet verified** for this scaffold. Until the
-first package build and integration checks have passed, consult the approved engineering contract and the assigned numbered task rather
-than interpreting this README as installation documentation.
+The frozen-lockfile install is verified. The build and Storybook commands remain
+unverified until their implementation and integration checks are complete; consult
+the approved engineering contract and assigned numbered task for current scope.
 
 ## Repository structure
 
