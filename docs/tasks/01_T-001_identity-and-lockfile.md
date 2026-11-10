@@ -51,5 +51,6 @@ Choose the smallest meaningful test or deterministic fixture before implementing
 - Use an authorized short-lived task branch, focused commits and PR checks. No autonomous merge, protected-branch rewrite, tag, publication, remote creation, paid action or secret access.
 - Default to at most two focused correction attempts and two relevant verification cycles per unchanged hypothesis; escalate persistent failures.
 - Report changed paths; exact commands and results; PASS / FAIL / NOT RUN / BLOCKED per case; unexpected dependencies; and whether the task is ready for owner review.
+- After all requested revisions are complete, commit the changes before handoff.
 - **Stop condition:** Accept only when dependencies resolve reproducibly, the license/source audit has no unresolved mandatory issue, and all three cases have evidence. Otherwise return BLOCKED with exact conflicts.
 - **Do not begin task T-002 without an explicit assignment after owner acceptance.**
