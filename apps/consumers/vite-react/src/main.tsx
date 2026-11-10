@@ -1,5 +1,15 @@
 import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
+import {
+  Button,
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+  Input,
+} from "@darizae/marisma";
 import "./styles.css";
 
 const themes = [
@@ -63,12 +73,26 @@ function ConsumerScaffold() {
             Body and muted text, card boundaries, primary actions, and keyboard
             focus all resolve from semantic Marisma tokens.
           </p>
-          <button
-            className="mt-6 min-h-11 rounded-lg bg-mar-primary px-5 py-2.5 font-semibold text-mar-on-primary hover:bg-mar-primary-hover"
-            type="button"
-          >
-            Focus this action
-          </button>
+          <div className="mt-6 grid max-w-md gap-4">
+            <Input
+              defaultValue="Marisma"
+              description="A native uncontrolled input from the public package."
+              label="Library name"
+            />
+            <div className="flex flex-wrap gap-3">
+              <Button type="button">Focus this action</Button>
+              <Dialog>
+                <DialogTrigger variant="secondary">Open details</DialogTrigger>
+                <DialogContent>
+                  <DialogTitle>Vite component fixture</DialogTitle>
+                  <DialogDescription>
+                    The dialog is rendered from the package public API.
+                  </DialogDescription>
+                  <DialogClose>Done</DialogClose>
+                </DialogContent>
+              </Dialog>
+            </div>
+          </div>
 
           <aside
             className="mt-8 rounded-xl border border-mar-border bg-mar-card p-5 text-mar-text"

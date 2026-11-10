@@ -126,29 +126,67 @@ test("the packed package exposes loadable ESM, declarations, and theme CSS", () 
     assert.ok(packedPaths.has(rootExport.types.slice(2)));
     assert.ok(packedPaths.has(manifest.exports["./theme.css"].slice(2)));
 
-    const runtimeFixture = join(fixtureDirectory, "consumer.mjs");
+    const consumerDirectory = join(temporaryDirectory, "consumer");
+    mkdirSync(consumerDirectory, { recursive: true });
+    writeFileSync(
+      join(consumerDirectory, "package.json"),
+      JSON.stringify({
+        name: "marisma-independent-consumer",
+        private: true,
+        type: "module",
+        dependencies: {
+          "@darizae/marisma": `file:${tarballPath}`,
+          react: "19.3.1",
+          "react-dom": "19.3.1",
+          tailwindcss: "4.3.5",
+        },
+        devDependencies: {
+          "@types/react": "^19.2.18",
+          "@types/react-dom": "^19.2.4",
+        },
+      }),
+    );
+    run("pnpm", ["install", "--ignore-scripts", "--offline"], {
+      cwd: consumerDirectory,
+    });
+
+    const consumerPackageDirectory = join(
+      consumerDirectory,
+      "node_modules",
+      "@darizae",
+      "marisma",
+    );
+    const runtimeFixture = join(consumerDirectory, "consumer.mjs");
     writeFileSync(
       runtimeFixture,
       [
         "import assert from 'node:assert/strict';",
         "import { fileURLToPath } from 'node:url';",
-        "import { join } from 'node:path';",
         "const api = await import('@darizae/marisma');",
         "assert.equal(typeof api, 'object');",
+        "for (const name of ['Button', 'Input', 'Dialog', 'DialogContent']) assert.equal(typeof api[name], 'function');",
         "const themePath = fileURLToPath(import.meta.resolve('@darizae/marisma/theme.css'));",
-        `assert.equal(themePath, ${JSON.stringify(realpathSync(join(installedPackageDirectory, "src/styles/theme.css")))});`,
+        `assert.equal(themePath, ${JSON.stringify(realpathSync(join(consumerPackageDirectory, "src/styles/theme.css")))});`,
       ].join("\n"),
     );
-    run(process.execPath, [runtimeFixture], { cwd: fixtureDirectory });
+    run(process.execPath, [runtimeFixture], { cwd: consumerDirectory });
 
-    const typeFixture = join(fixtureDirectory, "consumer.ts");
+    const typeFixture = join(consumerDirectory, "consumer.tsx");
     writeFileSync(
       typeFixture,
       [
-        "import * as Marisma from '@darizae/marisma';",
-        "type PublicModule = typeof import('@darizae/marisma');",
-        "const api: PublicModule = Marisma;",
-        "void api;",
+        "import { createRef } from 'react';",
+        "import { Button, Dialog, DialogContent, DialogTitle, DialogTrigger, Input } from '@darizae/marisma';",
+        "import type { ButtonProps, DialogContentProps, DialogProps, InputProps } from '@darizae/marisma';",
+        "const buttonRef = createRef<HTMLButtonElement>();",
+        "const inputRef = createRef<HTMLInputElement>();",
+        "const contentRef = createRef<HTMLDivElement>();",
+        "const buttonProps = { children: 'Save', loading: true, ref: buttonRef } satisfies ButtonProps;",
+        "const inputProps = { defaultValue: 'Ada', label: 'Name', ref: inputRef } satisfies InputProps;",
+        "const dialogProps = { defaultOpen: false, modal: true } satisfies DialogProps;",
+        "const contentProps = { closeLabel: 'Close', ref: contentRef } satisfies DialogContentProps;",
+        "const tree = <><Button {...buttonProps} /><Input {...inputProps} /><Dialog {...dialogProps}><DialogTrigger>Open</DialogTrigger><DialogContent {...contentProps}><DialogTitle>Title</DialogTitle></DialogContent></Dialog></>;",
+        "void tree;",
       ].join("\n"),
     );
     run(
@@ -164,8 +202,10 @@ test("the packed package exposes loadable ESM, declarations, and theme CSS", () 
         "NodeNext",
         "--target",
         "ES2022",
+        "--jsx",
+        "react-jsx",
       ],
-      { cwd: fixtureDirectory },
+      { cwd: consumerDirectory },
     );
   } finally {
     rmSync(temporaryDirectory, { recursive: true, force: true });

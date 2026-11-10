@@ -2,7 +2,11 @@
   "extends": "../../tsconfig.base.json",
   "include": [
     ".storybook",
+    "playwright.config.ts",
+    "playwright.next.config.ts",
     "src",
+    "tests",
+    "tests-next",
     "vite.config.ts"
   ]
 }

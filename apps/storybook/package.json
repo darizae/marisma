@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "storybook dev -p 6006 --no-open",
-    "build": "storybook build"
+    "build": "storybook build",
+    "test:browser": "playwright test --config playwright.config.ts",
+    "test:next": "playwright test --config playwright.next.config.ts"
   },
   "dependencies": {
     "@darizae/marisma": "workspace:*",
@@ -13,6 +15,7 @@
     "react-dom": "19.3.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.65.0",
     "@storybook/react-vite": "^10.5.6",
     "@storybook/addon-docs": "^10.5.6",
     "@storybook/addon-a11y": "^10.5.6",

@@ -1,5 +1,15 @@
-/**
- * Marisma's public component exports are intentionally not implemented yet.
- * The first approved sprint establishes and tests the public API.
- */
-export {};
+export { Button, buttonVariants, type ButtonProps } from "./components/button";
+export {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
+  type DialogContentProps,
+  type DialogProps,
+  type DialogTriggerProps,
+} from "./components/dialog";
+export { Input, type InputProps } from "./components/input";

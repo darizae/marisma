@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build"
+    "build": "next build",
+    "start": "next start -H 127.0.0.1 -p 3100"
   },
   "dependencies": {
     "@darizae/marisma": "workspace:*",
