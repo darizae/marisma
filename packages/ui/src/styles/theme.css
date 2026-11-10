@@ -1,6 +1,6 @@
 /* Marisma's sole styling architecture is Tailwind CSS 4.
-   Imported by the application's Tailwind entry, after @import 'tailwindcss'.
-   This file defines semantic theme tokens; it does not include a second reset. */
+   Import this file once after the consumer's Tailwind import. Theme state is
+   selected on a scope with data-marisma-accent and data-marisma-mode. */
 
 @custom-variant dark (&:where([data-marisma-mode="dark"], [data-marisma-mode="dark"] *));
 
@@ -11,54 +11,124 @@
   --color-mar-muted: var(--marisma-muted);
   --color-mar-border: var(--marisma-border);
   --color-mar-primary: var(--marisma-primary);
+  --color-mar-primary-hover: var(--marisma-primary-hover);
   --color-mar-on-primary: var(--marisma-on-primary);
   --color-mar-focus: var(--marisma-focus);
   --font-mar-sans: var(--marisma-font-sans);
+  --text-mar-body: var(--marisma-text-body);
+  --text-mar-body--line-height: var(--marisma-leading-body);
+  --text-mar-small: var(--marisma-text-small);
+  --text-mar-small--line-height: var(--marisma-leading-small);
 }
 
-:root,
-[data-marisma-accent="reedwater"] {
+/* Reedwater light is the deterministic fallback when no theme attributes exist. */
+:root {
+  color-scheme: light;
   --marisma-font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --marisma-text-body: 1rem;
+  --marisma-leading-body: 1.5;
+  --marisma-text-small: 0.875rem;
+  --marisma-leading-small: 1.5;
+  --marisma-focus-width: 2px;
+  --marisma-focus-offset: 3px;
+  --marisma-duration-fast: 160ms;
+  --marisma-duration-slow: 240ms;
   --marisma-surface: #f7f6f1;
   --marisma-card: #ffffff;
   --marisma-text: #233331;
   --marisma-muted: #596963;
-  --marisma-border: #c9d2c9;
+  --marisma-border: #74867f;
   --marisma-primary: #326456;
+  --marisma-primary-hover: #254e43;
   --marisma-on-primary: #ffffff;
   --marisma-focus: #326456;
 }
 
-[data-marisma-accent="tidal-blue"] {
-  --marisma-surface: #f5f7f7;
+[data-marisma-accent="reedwater"]:not([data-marisma-mode]),
+[data-marisma-mode="light"]:not([data-marisma-accent]),
+[data-marisma-accent="reedwater"][data-marisma-mode="light"] {
+  color-scheme: light;
+  --marisma-surface: #f7f6f1;
   --marisma-card: #ffffff;
-  --marisma-text: #24343d;
-  --marisma-muted: #5f7079;
-  --marisma-border: #bacad1;
-  --marisma-primary: #3d667e;
+  --marisma-text: #233331;
+  --marisma-muted: #596963;
+  --marisma-border: #74867f;
+  --marisma-primary: #326456;
+  --marisma-primary-hover: #254e43;
   --marisma-on-primary: #ffffff;
-  --marisma-focus: #3d667e;
+  --marisma-focus: #326456;
 }
 
-[data-marisma-accent="reedwater"][data-marisma-mode="dark"],
-:root[data-marisma-mode="dark"]:not([data-marisma-accent="tidal-blue"]) {
+:root[data-marisma-mode="dark"]:not([data-marisma-accent]),
+[data-marisma-mode="dark"]:not([data-marisma-accent]),
+[data-marisma-accent="reedwater"][data-marisma-mode="dark"] {
+  color-scheme: dark;
   --marisma-surface: #192624;
   --marisma-card: #233330;
   --marisma-text: #f1f5ef;
   --marisma-muted: #cad5cf;
-  --marisma-border: #536962;
+  --marisma-border: #718a82;
   --marisma-primary: #a2d0bd;
+  --marisma-primary-hover: #bce3d3;
   --marisma-on-primary: #122720;
   --marisma-focus: #a2d0bd;
 }
 
+[data-marisma-accent="tidal-blue"]:not([data-marisma-mode]),
+[data-marisma-accent="tidal-blue"][data-marisma-mode="light"] {
+  color-scheme: light;
+  --marisma-surface: #f5f7f7;
+  --marisma-card: #ffffff;
+  --marisma-text: #24343d;
+  --marisma-muted: #5f7079;
+  --marisma-border: #748993;
+  --marisma-primary: #3d667e;
+  --marisma-primary-hover: #2e5268;
+  --marisma-on-primary: #ffffff;
+  --marisma-focus: #3d667e;
+}
+
 [data-marisma-accent="tidal-blue"][data-marisma-mode="dark"] {
+  color-scheme: dark;
   --marisma-surface: #182630;
   --marisma-card: #23343f;
   --marisma-text: #f2f6f7;
   --marisma-muted: #c9d7df;
-  --marisma-border: #536a77;
+  --marisma-border: #718894;
   --marisma-primary: #afd1e4;
+  --marisma-primary-hover: #c6e3f3;
   --marisma-on-primary: #172b36;
   --marisma-focus: #afd1e4;
+}
+
+:where(:root, [data-marisma-accent], [data-marisma-mode]) :focus-visible,
+:where([data-marisma-accent], [data-marisma-mode]):focus-visible {
+  outline: var(--marisma-focus-width) solid var(--marisma-focus);
+  outline-offset: var(--marisma-focus-offset);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root,
+  [data-marisma-accent],
+  [data-marisma-mode] {
+    --marisma-duration-fast: 0.01ms;
+    --marisma-duration-slow: 0.01ms;
+  }
+}
+
+@media (forced-colors: active) {
+  :root,
+  [data-marisma-accent]:not([data-marisma-mode]),
+  [data-marisma-mode]:not([data-marisma-accent]),
+  [data-marisma-accent][data-marisma-mode] {
+    --marisma-surface: Canvas;
+    --marisma-card: Canvas;
+    --marisma-text: CanvasText;
+    --marisma-muted: GrayText;
+    --marisma-border: CanvasText;
+    --marisma-primary: ButtonFace;
+    --marisma-primary-hover: ButtonFace;
+    --marisma-on-primary: ButtonText;
+    --marisma-focus: Highlight;
+  }
 }
