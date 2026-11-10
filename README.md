@@ -129,6 +129,12 @@ export function MarismaExample() {
 - `apps/consumers/vite-react/` — independent packed Vite fixture
 - `apps/consumers/nextjs/` — independent packed Next.js App Router fixture
 
+## Roadmap and local verification
+
+Marisma's first sprint built the package foundation and Button, Input and Dialog; the complete non-chart library remains in development. Five [grouped implementation specifications](docs/agent/ROUTING.md) (T-007 through T-011) cover the remaining components, forms, application patterns, documentation and release qualification. The [catalog](docs/planning/COMPONENT_CATALOG.md) accounts for all 48 original non-chart source candidates. Plotting remains deferred.
+
+**Tests run locally.** GitHub Actions is not a required validation gate. Before accepting an implementation checkpoint, run the relevant tests and record actual results under the [local verification policy](docs/planning/VERIFICATION_AND_RELEASE.md). A pnpm dependency-build permission may require narrow review before a clean install. The public npm release is separately approval-gated.
+
 ## License
 
 MIT. See [LICENSE](LICENSE). Marisma does not bundle fonts.

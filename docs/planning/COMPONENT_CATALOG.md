@@ -1,6 +1,6 @@
 # Marisma component scope — first non-chart release
 
-Status: APPROVED scope, individual API contracts pending their assigned work units.
+Status: APPROVED first-release scope. Button, Input and Dialog have implementation source, not a public release; the remaining candidates are scheduled into T-007–T-010 and qualified in T-011.
 
 This inventory identifies **48 source-level candidates**, not 48 guaranteed distinct
 npm exports. Adaptation may combine related components or make certain high-level
@@ -76,5 +76,20 @@ Charts, plotting controls, and brand-specific logos are excluded from this relea
 For each row assign PRESERVE, ADAPT, MERGE, or EXCLUDE with a technical reason and
 owner approval for exclusions. Evidence required before marking SHIPPED: exported
 TypeScript contract, working Storybook example, focused tests, accessibility review,
-packaged consumer usage, and relevant responsive/theme checks. None are currently
-marked shipped.
+packaged consumer usage, and relevant responsive/theme checks. No candidate is marked SHIPPED while the package remains unpublished.
+
+## Complete first-release delivery coverage
+
+48 **source-level candidates** are included; some can become documented compositions or merged exports, with an explicit disposition. This mapping prevents the initial six-task sprint from being mistaken for the final product. Charts/plots are a separate post-release project.
+
+| Stage | General UI candidates | Composed-field candidates | Application-composition candidates |
+| --- | --- | --- | --- |
+| S1 source exists; unpublished | Button, Input, Dialog (3) | — | — |
+| T-007 foundation/feedback | Alert, Avatar, Badge, Button Group, Card, Copy Code, Label, Scroll Area, Separator, Spinner, Toast (11) | — | — |
+| T-008 accessible interactions/dates | Calendar, Checkbox, Collapsible, Dropdown Menu, Popover, Radio Group, Select, Switch, Tabs, Textarea, Toggle Group, Tooltip (12) | Date selection field / DateField (1) | — |
+| T-009 native forms/composed fields | Dropzone, Form (2) | Field Callout, Confirmation field dialog, Field Group, Inline change control, Search field, Vertical field separator (6) | — |
+| T-010 data and application composition | Sidebar, Table (2) | Page title field, User menu (2) | Error page view, Application navbar, Record list view, Application shell, Card grid, Footer, Navigation progress, Raw-data view, Page section (9) |
+| T-011 release gate | No new planned family | Documentation and verification | Documentation and verification |
+| **Accounted for** | **30/30** | **9/9** | **9/9** |
+
+For every row, maintain PRESERVE/ADAPT/MERGE/EXCLUDE status, export or documented composition destination, related Storybook/test file, and actual PASS/FAIL/NOT RUN evidence. EXCLUDE requires explicit owner approval. A code file or story does not alone mean SHIPPED.
