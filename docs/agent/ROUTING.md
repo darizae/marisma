@@ -1,6 +1,6 @@
 # Marisma — active task routing
 
-Read `AGENTS.md`, the relevant engineering contract, **one assigned task**, this task's matching row, and the installed quality skill. Numbered ordering does not authorize running ahead.
+Read `AGENTS.md`, `docs/planning/APPROVED_DECISIONS.md`, the relevant engineering contract, **one assigned task**, this task's matching row, and the installed quality skill. Numbered ordering does not authorize running ahead.
 
 ## Historical foundation sprint
 

@@ -1,5 +1,7 @@
 # Marisma — shared engineering contract
 
+**Decisions authority:** `docs/planning/APPROVED_DECISIONS.md` is the canonical approved product/brand/execution register. This contract defines their technical implementation. Do not reverse settled owner decisions or dilute the Tailwind-only and local-first policies.
+
 **Status:** APPROVED technical contract; execution follows numbered task files · **Revision:** 3 · **Date:** 2026-11-10
 
 ## Product contract
@@ -11,6 +13,8 @@ Its first release covers the generalized non-chart catalog in
 interactions, composed fields and reusable application layouts. Scientific plots and
 chart controls are excluded from the first release. No backend, authentication service,
 application data store, router dependency or consumer-side state service is included.
+
+The canonical Marisma leaf logo is `assets/brand/marisma-leaf.svg` (owner-supplied SVG). Landing and Storybook must both display it and link it as their favicon from the single canonical asset file; no redraws or app-specific copies. Brand direction is relaxed coastal estuary, not mountains or woodland.
 
 The design system emphasizes readable 16px-default body typography, 40–44px baseline
 controls (adjustable by explicit density variants), calm spacing, understated surfaces,
@@ -102,3 +106,9 @@ No unreviewed external skill installation is authorized.
 ## Current project phase (2026-11-10)
 
 S1 commits now contain the workspace/lockfile, Tailwind themes, package contract, Button/Input/Dialog, Storybook and Vite/Next.js consumer harnesses. This is **three implemented component families**, not the complete library or a verified public release. All 48 non-chart source candidates remain in approved scope and are allocated to T-007–T-010 with T-011 for full documentation and local release qualification; see the catalog coverage matrix. Plotting remains deferred. The package is private at 0.0.0. Github Actions is optional, intentionally not a gate; all actual test evidence comes from local runs. Publication still needs separate authorization.
+
+## Planning continuity and documentation hygiene
+
+Keep approved product, branding, release, scope and verification choices in `docs/planning/APPROVED_DECISIONS.md`, not only in conversation context. Before generating specs or changing product direction, reconcile that record with the actual component catalog and branch state. Do not commit private interview transcripts, career notes or model/effort allocation details.
+
+At each cluster completion or significant contract/file move, check README, `AGENTS.md`, routing, task status, brand links and active contract for stale scaffold language, contradictory verification claims and broken paths. Make a bounded hygiene correction in the associated reviewed change. Local tests are authoritative; do not burden GitHub with remote CI unless the owner explicitly changes D-19.

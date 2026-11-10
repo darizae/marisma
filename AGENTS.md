@@ -1,11 +1,11 @@
 # Marisma — repository agent instructions
 
-The technical authority is `docs/planning/ENGINEERING_CONTRACT.md`; approved scope is `docs/planning/COMPONENT_CATALOG.md`. The five **proposed** remaining release clusters are `docs/tasks/07_*.md` through `11_*.md`; they need owner review before execution. Earlier tasks 01–06 are historical S1 records, not active assignments. **Execute only the explicitly assigned approved checkpoint of one cluster.**
+The owner's durable approved-decision ledger is `docs/planning/APPROVED_DECISIONS.md`; the implementation contract is `docs/planning/ENGINEERING_CONTRACT.md` and scope is `docs/planning/COMPONENT_CATALOG.md`. Reconcile them before exporting/implementing new clusters; do not repeat settled interview questions or infer unapproved changes. The five **proposed** remaining release clusters are `docs/tasks/07_*.md` through `11_*.md`; they need owner review before execution. Earlier tasks 01–06 are historical S1 records, not active assignments. **Execute only the explicitly assigned approved checkpoint of one cluster.**
 
 ## Read sequence
 
 1. This AGENTS.md.
-2. The relevant sections of the shared engineering contract.
+2. The approved-decision register and relevant sections of the shared engineering contract.
 3. Exactly the assigned task file.
 4. The matching row of `docs/agent/ROUTING.md`.
 5. `.agents/skills/engineering-quality/SKILL.md`.
@@ -21,4 +21,4 @@ React 19, TypeScript, **Tailwind CSS 4 exclusively**, semantic Tailwind tokens a
 
 Work within the assigned paths and internal checkpoints; prefer targeted unit/type checks during editing and real browser/package checks **locally** at named gates. **GitHub Actions is not required and must not be reintroduced without owner approval.** Never call unrun checks PASS: report actual commands/platform/results and PASS, FAIL, NOT RUN or BLOCKED. Do not substitute mocks or regex assertions for a required real integration.
 
-Use short-lived task branches and reviewable PRs when authorized. Never merge, force-push, publish to npm, deploy, tag, access secrets or incur costs without explicit approval. Keep `priv/` untracked. Public docs should describe real capabilities, not promised features. Worker-facing technical tasks remain model-neutral; owner-private model and reasoning-effort allocation does not belong in this repository.
+Use short-lived task branches and reviewable PRs when authorized. Never merge, force-push, publish to npm, deploy, tag, access secrets or incur costs without explicit approval. Keep `priv/` untracked. After each milestone or meaningful contract/file move, reconcile stale Markdown: update AGENTS, active/historical task status, README, routing, catalog and links; do not leave scaffold-era claims. Public docs should describe real capabilities, not promised features. Worker-facing technical tasks remain model-neutral; owner-private model and reasoning-effort allocation does not belong in this repository.

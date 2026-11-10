@@ -23,9 +23,17 @@ function Landing() {
     >
       <div className="mx-auto grid max-w-5xl gap-12 py-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <section>
-          <p className="mb-5 text-sm font-semibold uppercase tracking-widest text-mar-muted">
-            Marisma
-          </p>
+          <div className="mb-5 flex items-center gap-3">
+            <img
+              alt=""
+              aria-hidden="true"
+              className="size-11 shrink-0"
+              src={`${import.meta.env.BASE_URL}marisma-leaf.svg`}
+            />
+            <p className="text-sm font-semibold uppercase tracking-widest text-mar-muted">
+              Marisma
+            </p>
+          </div>
           <h1 className="text-5xl font-semibold tracking-tight">
             Components for calm, capable interfaces.
           </h1>

@@ -56,3 +56,7 @@ Do not run every expensive browser suite on every edit. Browser setup and platfo
 Before public npm publication: reconcile every candidate, verify local acceptance evidence, all package/peer/type/CSS exports, React client boundaries, installed `@source`, Vite/Next.js production consumers, licenses/fonts, package size, version/changelog, and control of the npm namespace. Confirm exact commit and reviewed tarball. A manual local publish is acceptable; no GitHub Actions publish workflow is required.
 
 Do **not** change `private: true`, create a public tag, publish, deploy or use credentials without explicit owner authorization. Report release-essential NOT RUN/BLOCKED cases and ask the owner to decide.
+
+## Brand and decision-record hygiene checks
+
+At each cluster checkpoint and before release candidate qualification, reconcile the owner-approved decisions in `docs/planning/APPROVED_DECISIONS.md` with the implementation contract, catalog, `AGENTS.md`, task statuses and public docs. Verify that internal/interview-private content is not committed. Check logo and favicon reachability from the canonical `assets/brand/marisma-leaf.svg` in both landing and Storybook local builds, including a non-root base path if hosted there. Mark an unrun check NOT RUN; remote CI is never a substitute or requirement.
