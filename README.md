@@ -4,16 +4,18 @@
 
 A Tailwind-first React component library for professional web applications.
 
-Marisma is a prerelease library for React 19 and Tailwind CSS 4. The current
+Marisma is a public library for React 19 and Tailwind CSS 4. The current
 package implements 48 different component families with typed
 public APIs, accessible native or Radix-based interactions, and Reedwater and
 Tidal Blue themes in light and dark modes.
 
-> **Project status:** `@darizae/marisma` is private and is not published to npm.
-> The local release-candidate documentation and qualification evidence are
-> complete for owner review. Use this repository's Storybook and
-> tarball-installed consumer fixtures for evaluation; do not treat the private
-> package as a stable or published release.
+> **Project status:** `@darizae/marisma@0.1.0` is published publicly on npm.
+
+## Install
+
+```bash
+pnpm add @darizae/marisma react react-dom tailwindcss
+```
 
 ## Available components
 
@@ -152,9 +154,9 @@ export function MarismaExample() {
 
 ## Repository structure
 
-- `packages/ui/` — the private React component package and Tailwind theme
+- `packages/ui/` — the published React component source and Tailwind theme
 - `apps/storybook/` — component documentation, interactions, and visual checks
-- `apps/landing/` — truthful prerelease introduction and component preview
+- `apps/landing/` — public introduction and component preview
 - `apps/consumers/vite-react/` — independent packed Vite fixture
 - `apps/consumers/nextjs/` — independent packed Next.js App Router fixture
 
@@ -164,18 +166,16 @@ Marisma's supplied leaf mark is stored once at [`assets/brand/marisma-leaf.svg`]
 
 ## Implementation status and local verification
 
-The approved **48 approved component candidates** have been implemented and documented. The [component catalog](docs/planning/COMPONENT_CATALOG.md) maps them to their public APIs, stories and tests. The [local release-candidate report](docs/release/T-011_RELEASE_CANDIDATE.md) includes the post-implementation hardening checks, tested platform, browser omissions and unpublished package status.
+The approved **48 component candidates** have been implemented, documented and published in `0.1.0`. The [component catalog](docs/planning/COMPONENT_CATALOG.md) maps them to their public APIs, stories and tests. The [local release-candidate report](docs/release/T-011_RELEASE_CANDIDATE.md) preserves the historical qualification evidence.
 
-The completed implementation-task Markdown files were retired from the working
-tree; **Git history** retains their full content. The approved [npm
-release/security preparation](docs/tasks/13_T-013_npm-release-security__Codex-Sol-5.6_High.md)
-creates an exact local candidate but does not authorize publication.
+The completed implementation and release-task Markdown files were retired from
+the working tree; **Git history** retains their full content.
 Maintainers should use [approved decisions](docs/planning/APPROVED_DECISIONS.md),
 the [engineering contract](docs/planning/ENGINEERING_CONTRACT.md), and [current
 source/test routing](docs/agent/ROUTING.md) instead of executing obsolete task
 files.
 
-**Tests run locally.** GitHub Actions is not a required validation gate. Use targeted tests and [local release qualification](docs/planning/VERIFICATION_AND_RELEASE.md) with actual recorded results. Only the reviewed esbuild install script is explicitly allowed. The package is still private and unpublished; npm publication requires an independent owner decision.
+**Tests run locally.** GitHub Actions is not a required validation gate. Use targeted tests and [local release qualification](docs/planning/VERIFICATION_AND_RELEASE.md) with actual recorded results. Only the reviewed esbuild install script is explicitly allowed. Future npm versions require an independently approved exact artifact.
 
 ## License
 

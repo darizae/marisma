@@ -1,11 +1,10 @@
 # Marisma UI package
 
-`@darizae/marisma` is a private release-candidate package for React 19 and Tailwind CSS 4. It currently exports Button, Input, Dialog, 11 foundation/feedback families,
+`@darizae/marisma@0.1.0` is a public package for React 19 and Tailwind CSS 4. It exports Button, Input, Dialog, 11 foundation/feedback families,
 13 interaction/date families, eight form/composed-field families, 13
 data/navigation/application-composition families, and the
 `@darizae/marisma/theme.css` theme entry.
-It is not published to npm; local release-candidate documentation and
-qualification are complete for owner review.
+Install it with `pnpm add @darizae/marisma react react-dom tailwindcss`.
 
 ## Local package evaluation
 
@@ -136,7 +135,7 @@ nearest Marisma subtree theme is bridged into its portal.
   submits the ISO value, and participates in native required/min/max form
   validation; it does not parse localized free-form text. Calendar
   range/multiple selection and broad localization/RTL guarantees are not part
-  of this prerelease contract.
+  of this initial release contract.
 
 ## Form and composed-field exports
 
@@ -181,10 +180,10 @@ nearest Marisma subtree theme is bridged into its portal.
 
 ## Release status
 
-The tracked manifest remains `private: true` at the proposed first-release
-version `0.1.0`. The ignored release toolkit removes the private field only in
-an exact staged candidate. A successful local tarball check is evidence for
-owner review, not permission to publish or a stable compatibility guarantee.
+Version `0.1.0` is published publicly on npm. The tracked manifest remains
+`private: true` as a release safety control; the ignored release toolkit removes
+the private field only from an exact reviewed staged candidate. Future versions
+require their own artifact qualification and publication approval.
 
 The complete catalog disposition and local qualification evidence are recorded
 in the repository's [T-011 release-candidate report](https://github.com/darizae/marisma/blob/main/docs/release/T-011_RELEASE_CANDIDATE.md).

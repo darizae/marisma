@@ -38,7 +38,7 @@ function Landing() {
                 Marisma
               </span>
               <span className="block text-xs text-mar-muted">
-                prerelease component library
+                React component library
               </span>
             </span>
           </a>
@@ -71,15 +71,15 @@ function Landing() {
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-mar-muted">
               A styled, themeable React component library for professional web
-              applications. The release candidate covers all 48 approved,
+              applications. Version 0.1.0 covers all 48 approved,
               non-chart component families with native and Radix-backed
               interactions.
             </p>
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-mar-muted">
               Built for React 19 and Tailwind CSS 4, with router-agnostic
               layouts, readable defaults, and consumer-owned data and state. The
-              package is private and not published to npm; this site documents
-              the local release candidate for owner review.
+              package is published publicly on npm with local release evidence
+              retained in the repository.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
@@ -112,8 +112,8 @@ function Landing() {
                   <DialogTitle>Current component set</DialogTitle>
                   <DialogDescription>
                     Foundation, interaction, form, data, navigation, and
-                    application-composition families are implemented and remain
-                    private prerelease source pending owner review.
+                    application-composition families are implemented and
+                    published in version 0.1.0.
                   </DialogDescription>
                   <DialogClose>Done</DialogClose>
                 </DialogContent>

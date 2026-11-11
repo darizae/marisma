@@ -2,7 +2,7 @@
 
 **Decisions authority:** `docs/planning/APPROVED_DECISIONS.md` is the canonical approved product/brand/execution register. This contract defines their technical implementation. Do not reverse settled owner decisions or dilute the Tailwind-only and local-first policies.
 
-**Status:** APPROVED technical contract; approved component implementation complete, release approval pending · **Revision:** 4 · **Date:** 2026-11-11
+**Status:** APPROVED technical contract; `0.1.0` published · **Revision:** 5 · **Date:** 2026-11-11
 
 ## Product contract
 
@@ -31,8 +31,8 @@ relevant. No blanket accessibility certification is promised.
 
 ## Decided architecture
 
-- **Repository:** single personal-account repository `darizae/marisma` (the repository exists; visibility remains private pending owner approval for public release). One pnpm workspace. No other repositories without separate authorization.
-- **Published unit:** `packages/ui/`, named `@darizae/marisma`. npm scope control is not yet verified and publication remains BLOCKED. Package stays `private: true`.
+- **Repository:** public personal-account repository `darizae/marisma`. One pnpm workspace. No other repositories without separate authorization.
+- **Published unit:** `packages/ui/`, named `@darizae/marisma`; `0.1.0` is public on npm. The tracked package stays `private: true` and exact staged artifacts omit that field only for approved publication.
 - **Consumers:** `apps/storybook/`, `apps/landing/`, `apps/consumers/vite-react/`, `apps/consumers/nextjs/` all depend on `packages/ui`; never reverse that direction.
 - **Runtime:** React 19 with React and React DOM peers, never bundled. Next.js, Vite, Storybook, router and form-framework tooling are consumer/dev dependencies rather than mandatory runtime dependencies for a basic Button.
 - **Styling:** Tailwind CSS 4 ONLY. Utility classes, native `@theme`/`@theme inline` token definitions, semantic CSS variables, CVA variants as needed, complete statically scannable classes. No CSS Modules, CSS-in-JS or alternative styling implementation. Tailwind is a documented peer/consumer requirement.
@@ -57,10 +57,9 @@ builds. T-011 release qualification is recorded in
 `docs/release/T-011_RELEASE_CANDIDATE.md`; there is **no remote CI gate**.
 Never assert tests passed without recorded local evidence.
 
-`packages/ui` deliberately retains `private: true`; `0.1.0` is the proposed
-first public version. The private field is removed only in ignored local
-staging. Selecting an exact artifact, npm publishing, and tagging are
-**distinct later approval gates**. Never use source workspace symlinks as sole
+`packages/ui` deliberately retains `private: true`; `0.1.0` was published from
+the exact approved ignored local staging artifact. Selecting a future artifact,
+npm publishing, and tagging remain **distinct approval gates**. Never use source workspace symlinks as sole
 proof of published compatibility.
 
 ## Public writing and documentation
@@ -90,9 +89,9 @@ variant class is emitted into production CSS. No second Tailwind preflight impor
 
 ## Active engineering context
 
-The approved component catalog has implementation, and the local release-candidate evidence is recorded in `docs/release/T-011_RELEASE_CANDIDATE.md`. There is **one approved release/security preparation specification in execution**; all prior implementation task specifications are completed: the eleven completed cluster/source specs and the hardening note were retired from the working tree after completion; their content remains in Git history. Read `AGENTS.md`, the approved-decision register, and the relevant row of `docs/agent/ROUTING.md` for a newly authorized change. Consult only the owning source/tests and the relevant `docs/planning/VERIFICATION_AND_RELEASE.md` gate. Do not recreate historical specs or treat an old plan as active work. The active scope is `docs/tasks/13_T-013_npm-release-security__Codex-Sol-5.6_High.md`; no publishing action is approved.
+The approved component catalog is published in `0.1.0`, and the historical local release-candidate evidence is recorded in `docs/release/T-011_RELEASE_CANDIDATE.md`. No numbered implementation or release specification is active; completed specs remain in Git history. Read `AGENTS.md`, the approved-decision register, and the relevant row of `docs/agent/ROUTING.md` for a newly authorized change. Do not recreate historical specs or treat an old plan as active work.
 
-**Local tests are the acceptance channel; GitHub Actions is not a gate.** Package publication remains a distinct owner decision.
+**Local tests are the acceptance channel; GitHub Actions is not a gate.** Every future package publication remains a distinct owner decision.
 
 ## Required implementation skills
 
@@ -115,10 +114,8 @@ commit corrected release-evidence package names and addressed InlineEdit
 rejected saves, DateField required validation and bounded DataPreview behavior.
 The [release report](../release/T-011_RELEASE_CANDIDATE.md) records historical
 local tests and disclosed browser omissions; it is not a claim of independent
-review or npm publication. The actual GitHub repository is **public**, and the
-tracked package remains `private: true`; `0.1.0` is proposed for the first
-release. Only release-specific owner decisions and justified corrections
-remain.
+review. The GitHub repository and `@darizae/marisma@0.1.0` are public, while the
+tracked package remains `private: true` as a publication safety control.
 
 ## Planning continuity and documentation hygiene
 

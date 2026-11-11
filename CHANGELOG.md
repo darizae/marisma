@@ -13,8 +13,9 @@ All notable changes to Marisma are documented here.
 - Added local evidence for Storybook, landing, browser, packaged-consumer,
   licensing, and artifact checks.
 - Added local npm identity, dependency, artifact, and release-toolkit security
-  gates for an exact first-release candidate. Publication remains separately
-  approval-gated.
+  gates for exact reviewed release candidates.
+- Published `@darizae/marisma@0.1.0` from the approved SHA-256 artifact and
+  created the `v0.1.0` GitHub release.
 - Updated the local Next.js consumer and forced Storybook's advisory-affected
   docgen `glob` range to a patched release, with local compatibility checks.
 - Narrowed the Node.js engine floor to the directly verified `>=22.18.0` after
