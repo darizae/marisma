@@ -1,5 +1,7 @@
 # Marisma
 
+<img src="assets/brand/marisma-leaf.svg" alt="Marisma leaf brand mark" width="72" height="72" />
+
 A Tailwind-first React component library for professional web applications.
 
 Marisma is a prerelease library for React 19 and Tailwind CSS 4. The current
@@ -128,6 +130,16 @@ export function MarismaExample() {
 - `apps/landing/` — truthful prerelease introduction and component preview
 - `apps/consumers/vite-react/` — independent packed Vite fixture
 - `apps/consumers/nextjs/` — independent packed Next.js App Router fixture
+
+## Brand
+
+Marisma's supplied leaf mark is stored once at [`assets/brand/marisma-leaf.svg`](assets/brand/marisma-leaf.svg). The landing page and Storybook serve this canonical file as their logo and SVG favicon. The visual direction is calm, coastal-estuary modernism, expressed through Reedwater and Tidal Blue themes; the brand mark does not impose a consumer font or application theme. Approved product decisions and asset usage are documented in [`docs/planning/APPROVED_DECISIONS.md`](docs/planning/APPROVED_DECISIONS.md).
+
+## Roadmap and local verification
+
+Marisma's first sprint built the package foundation and Button, Input and Dialog; the complete non-chart library remains in development. Five [grouped implementation specifications](docs/agent/ROUTING.md) (T-007 through T-011) cover the remaining components, forms, application patterns, documentation and release qualification. The [catalog](docs/planning/COMPONENT_CATALOG.md) accounts for all 48 original non-chart source candidates. Plotting remains deferred.
+
+**Tests run locally.** GitHub Actions is not a required validation gate. Before accepting an implementation checkpoint, run the relevant tests and record actual results under the [local verification policy](docs/planning/VERIFICATION_AND_RELEASE.md). A pnpm dependency-build permission may require narrow review before a clean install. The public npm release is separately approval-gated.
 
 ## License
 

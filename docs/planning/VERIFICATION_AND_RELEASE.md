@@ -1,64 +1,62 @@
-# Verification and release constraints — Marisma
+# Marisma — local verification and release policy
 
-**Status:** APPROVED test contracts, NOT proof of passing tests · **Revision:** 2 · **Date:** 2026-11-10
+**Status:** CURRENT planning policy; proposed clusters require owner review · **Revision:** 3 · **Date:** 2026-11-10
 
+## Owner-selected verification policy
 
-Each case is a requirement-to-test contract, not evidence that a test exists or passed.
-Implementers create asserting test files alongside the corresponding implementation
-and report exact commands/results. Prefer minimal deterministic fixtures.
+**Tests run locally by default.** No GitHub Actions success is required for task acceptance, review, merge or release preparation. The automatic remote CI workflow is removed in this planning PR. Do not restore it or introduce another remote workflow without explicit owner approval.
 
-| Case ID | Observable pass/fail behavior | Owning boundary | Checkpoint |
-| --- | --- | --- | --- |
-| IT-ENV-01 | Clean frozen-lockfile install succeeds without private credentials/install hooks | Workspace install | Task |
-| IT-PKG-01 | Each workspace package resolves to intended owned dependency | Manifest and package tooling | Task |
-| SEC-DEP-01 | No known unauthorized, unlicensed or private packages in required release path | Dependency/license audit | T-001 preflight; release recheck |
-| IT-THEME-01 | All four theme combinations update component tokens predictably | Browser + CSS | Task |
-| VIS-THEMES-01 | Representative responsive visual baselines match reviewed reference | Playwright screenshots | Milestone |
-| A11Y-COLOR-01 | Semantic text/focus/nontext indicators meet measured contrast targets | Accessible browser/design test | Task |
-| IT-CSS-01 | App's unrelated elements are not unexpectedly restyled by theme import | Consumer browser | Task |
-| IT-TW-SOURCE-01 | Unique class from compiled installed component exists in production CSS | Installed consumer build | Task |
-| UT-API-01 | Public TS props and refs compile for independent consumer | TypeScript compile | Fast/Task |
-| IT-BUILD-01 | Packed ESM/types/exports are loadable without source aliases | Installed tarball | Task |
-| IT-NEXT-SSR-01 | Server render/hydration succeeds without browser-global exceptions | Next App Router browser/server | Task |
-| UT-STATE-01 | Input controlled/uncontrolled behavior respects ownership and default values | Unit test | Fast |
-| UT-BUTTON-01 | Native click, disabled and loading transitions are correct | Component test | Fast |
-| A11Y-DIALOG-01 | Escape, focus containment, semantic labeling and focus return function | Real browser keyboard | Task |
-| A11Y-INPUT-01 | Label, error, description and keyboard state accessible | DOM + browser | Task |
-| E2E-VITE-01 | Standalone Vite app consumes packed component with compiled Tailwind styles | Installed consumer E2E | Milestone |
-| E2E-NEXT-01 | Standalone Next.js app consumes packed interactive component with hydration | Installed consumer E2E | Milestone |
-| IT-DOCS-01 | Shown code examples typecheck and render as documented | Documentation/component tests | Milestone |
-| PKG-CHECK-01 | Packed archive contains exactly intended files, metadata, CSS and licenses | `npm pack --dry-run` + inspection | Release |
+Local checks remain required at their appropriate gates. Use focused unit and type checks during editing; perform relevant integration/browser checks before cluster acceptance; execute a deliberate release qualification sweep locally. Report exact command, directory, platform/runtime, result and omissions. An existing test file is not evidence that it passed.
 
-**Fast:** focus unit checks, affected TypeScript/lint and CSS assertions; do not run
-full browser matrix on every edit. **Task:** real component and consumer boundaries;
-fix local regressions. **Milestone:** Chromium/Firefox/WebKit browsers, responsive
-viewports, meaningful keyboard flows and screenshot comparisons. **Release:** clean
-installation, license audit, exact npm tarball, version/tag consistency, changelog,
-security checks and human approval. A deferred or blocked case stays NOT RUN/BLOCKED.
-Optimize slow fixtures without weakening actual integration boundaries.
+## Current implementation status
 
-### Publishing gate (not granted)
+S1 has source commits for a lockfile, Tailwind themes, ESM package build, Button/Input/Dialog, Storybook and Vite/Next.js package consumers. No complete local release-qualification record is verified here. The last GitHub Actions run failed at pnpm's unapproved esbuild build script; **this is a local dependency-permissions review item, not a mandate to maintain CI**. In T-007 review version/source/script before narrowly approving an `allowBuilds` entry. Never disable dependency-build safeguards globally.
 
-Public versioning uses SemVer. Before npm publication: verify owner controls the npm
-scope, GitHub repo and package name; remove `private: true` only after separate approval,
-set a reviewed version and changelog, test actual tarball consumers, and configure npm
-trusted publishing with an exact workflow/repository identity. Use OIDC on approved
-GitHub-hosted runners and an appropriate Node/npm version. Verify the released artifact
-exists and its tag/digest matches the reviewed commit. No tag rewrite, unapproved merge,
-automatic publish, or unapproved paid service use.
+The npm package remains `private: true` at version `0.0.0`, unpublished. All 48 non-chart candidates must be accounted for before release; charts remain deferred.
 
-## Status and integration order
+## Existing acceptance cases retained
 
-1. Scaffold is structural only. No npm install/build/browser checks have been run.
-2. `T-001`: validate the package graph and commit the lockfile.
-3. `T-002`: establish semantic tokens and four accessible theme variants.
-4. `T-003`: establish the package build, types and export contract.
-5. `T-004`: deliver Button, Input and Dialog as the first real component slice.
-6. `T-005`: verify Tailwind source detection and real packaged component styling in Vite and Next.js.
-7. `T-006`: validate Storybook, landing documentation, consumer E2E and release readiness (no publication).
-8. The owner reviews each accepted task. Full non-chart catalog work and publishing are later approval gates.
+| Case | Observable boundary |
+| --- | --- |
+| IT-ENV-01 / IT-PKG-01 / SEC-DEP-01 | Clean local frozen install, owned dependency graph and reviewed provenance/licenses |
+| IT-THEME-01 / VIS-THEMES-01 / A11Y-COLOR-01 | Four working themes, reviewed visual baselines and measurable contrast |
+| IT-CSS-01 / IT-TW-SOURCE-01 | No unintended theme CSS global effects; library-only utility in production consumer CSS |
+| UT-API-01 / IT-BUILD-01 / PKG-CHECK-01 | Public TypeScript API, packed ESM/types/exports and artifact inspection |
+| UT-STATE-01 / UT-BUTTON-01 / A11Y-INPUT-01 / A11Y-DIALOG-01 | Input/Button/Dialogs' state, native behavior, naming and focus |
+| IT-NEXT-SSR-01 / E2E-VITE-01 / E2E-NEXT-01 | Server hydration and independent tarball-installed production consumers |
+| IT-DOCS-01 | Documentation examples typecheck and behave as described |
 
-**Open external blocker:** npm owner identity and package availability are not
-verified. This blocks publishing, not local scaffold engineering. The initial Git
-base SHA and actual remote repository creation are also not established; no agent may
-invent or silently create them.
+## Cluster-level acceptance cases
+
+| Case | Cluster | Observable outcome |
+| --- | --- | --- |
+| A11Y-FOUNDATION-01 / UT-FEEDBACK-01 | T-007 | Themed subtree/portal/focus correctness and real feedback/clipboard failure behavior |
+| A11Y-WIDGETS-01 | T-008 | Real keyboard/focus/dismissal and controlled state for overlays, choices and dates |
+| IT-FORMS-01 | T-009 | Native form integration, accessible composed fields and Dropzone failures/cleanup |
+| IT-COMPOSITION-01 | T-010 | Router-agnostic navigation, semantic data display and responsive page compositions |
+| DOCS-CATALOG-01 | T-011 | Every approved candidate has disposition, public use, story and linked local evidence |
+
+These are verification requirements, not claims that tests exist or pass. A browser and keyboard check cannot be replaced with only a static text assertion. Automated accessibility tests do not establish blanket WCAG certification.
+
+## Local commands and checkpoints
+
+| Gate | Commands / evidence |
+| --- | --- |
+| Fast edit | `pnpm --filter @darizae/marisma test`; `pnpm --filter @darizae/marisma typecheck` and owning focused checks |
+| Task integration | `pnpm build`; `pnpm typecheck`; `pnpm test:package-contract`; relevant Storybook interactions |
+| Browser/consumer | `pnpm --filter @marisma/storybook test:browser`; `test:consumers`; `test:next`; `test:visual`, as appropriate |
+| Docs | `pnpm --filter @marisma/storybook test:docs`; `pnpm --filter @marisma/storybook build` |
+| Reproducible environment | Reviewed `pnpm install --frozen-lockfile` in a clean local checkout |
+| Package artifact | `pnpm --dir packages/ui pack --pack-destination ../../priv/tarballs` (create ignored destination) and inspect tarball with real consumer installs |
+
+Do not run every expensive browser suite on every edit. Browser setup and platform requirements must be recorded, especially that Playwright WebKit is not identical to native Safari. Use ignored `priv/` for local test artifacts. An unavailable check is NOT RUN/BLOCKED, not PASS.
+
+## Publication gate — separate explicit authorization
+
+Before public npm publication: reconcile every candidate, verify local acceptance evidence, all package/peer/type/CSS exports, React client boundaries, installed `@source`, Vite/Next.js production consumers, licenses/fonts, package size, version/changelog, and control of the npm namespace. Confirm exact commit and reviewed tarball. A manual local publish is acceptable; no GitHub Actions publish workflow is required.
+
+Do **not** change `private: true`, create a public tag, publish, deploy or use credentials without explicit owner authorization. Report release-essential NOT RUN/BLOCKED cases and ask the owner to decide.
+
+## Brand and decision-record hygiene checks
+
+At each cluster checkpoint and before release candidate qualification, reconcile the owner-approved decisions in `docs/planning/APPROVED_DECISIONS.md` with the implementation contract, catalog, `AGENTS.md`, task statuses and public docs. Verify that internal/interview-private content is not committed. Check logo and favicon reachability from the canonical `assets/brand/marisma-leaf.svg` in both landing and Storybook local builds, including a non-root base path if hosted there. Mark an unrun check NOT RUN; remote CI is never a substitute or requirement.

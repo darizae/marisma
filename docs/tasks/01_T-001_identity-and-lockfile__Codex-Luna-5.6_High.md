@@ -1,6 +1,8 @@
 # 01 — T-001: Independent identity, manifests and reproducible foundation
 
-**Status:** APPROVED, contingent on prerequisites · **Sprint:** S1 · **Date:** 2026-11-10
+**Status:** HISTORICAL S1 ASSIGNMENT — source commit exists; acceptance not established by this status update · **Date:** 2026-11-10
+
+> **Historical only.** The six S1 implementation stages have corresponding source commits. This file is not an active task assignment; the remaining non-chart release is covered by proposed T-007–T-011. Local tests remain required at gates, but GitHub Actions is not. Do not call unverified checks PASS.
 
 ## Task boundary
 
@@ -14,7 +16,7 @@
 
 1. `AGENTS.md`.
 2. `docs/planning/ENGINEERING_CONTRACT.md` (approved product, architecture and shared constraints).
-3. This **single task file** (`docs/tasks/01_T-001_identity-and-lockfile.md`).
+3. This **single task file** (`docs/tasks/01_T-001_identity-and-lockfile__Codex-Luna-5.6_High.md`).
 4. Matching `T-001` row in `docs/agent/ROUTING.md`.
 5. `.agents/skills/engineering-quality/SKILL.md`.
 6. This task's owning source files: `package.json`; `pnpm-workspace.yaml`; `packages/ui/package.json`; `docs/planning/COMPONENT_CATALOG.md`; `.gitignore`; `README.md`.

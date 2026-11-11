@@ -1,6 +1,8 @@
 # Marisma — shared engineering contract
 
-**Status:** APPROVED technical contract; execution follows numbered task files · **Revision:** 2 · **Date:** 2026-11-10
+**Decisions authority:** `docs/planning/APPROVED_DECISIONS.md` is the canonical approved product/brand/execution register. This contract defines their technical implementation. Do not reverse settled owner decisions or dilute the Tailwind-only and local-first policies.
+
+**Status:** APPROVED technical contract; execution follows numbered task files · **Revision:** 3 · **Date:** 2026-11-10
 
 ## Product contract
 
@@ -11,6 +13,8 @@ Its first release covers the generalized non-chart catalog in
 interactions, composed fields and reusable application layouts. Scientific plots and
 chart controls are excluded from the first release. No backend, authentication service,
 application data store, router dependency or consumer-side state service is included.
+
+The canonical Marisma leaf logo is `assets/brand/marisma-leaf.svg` (owner-supplied SVG). Landing and Storybook must both display it and link it as their favicon from the single canonical asset file; no redraws or app-specific copies. Brand direction is relaxed coastal estuary, not mountains or woodland.
 
 The design system emphasizes readable 16px-default body typography, 40–44px baseline
 controls (adjustable by explicit density variants), calm spacing, understated surfaces,
@@ -28,8 +32,8 @@ relevant. No blanket accessibility certification is promised.
 
 ## Decided architecture
 
-- **Repository:** single personal-account repository `darizae/marisma` (creation not yet performed). One pnpm workspace. No other repositories without separate authorization.
-- **Published unit:** `packages/ui/`, provisionally named `@darizae/marisma`. This npm scope requires owner control verification; publication stays BLOCKED until verified. The package remains `private: true` in this scaffold.
+- **Repository:** single personal-account repository `darizae/marisma` (public GitHub repository exists; the npm package remains private). One pnpm workspace. No other repositories without separate authorization.
+- **Published unit:** `packages/ui/`, named `@darizae/marisma`. npm scope control is not yet verified and publication remains BLOCKED. Package stays `private: true`.
 - **Consumers:** `apps/storybook/`, `apps/landing/`, `apps/consumers/vite-react/`, `apps/consumers/nextjs/` all depend on `packages/ui`; never reverse that direction.
 - **Runtime:** React 19 with React and React DOM peers, never bundled. Next.js, Vite, Storybook, router and form-framework tooling are consumer/dev dependencies rather than mandatory runtime dependencies for a basic Button.
 - **Styling:** Tailwind CSS 4 ONLY. Utility classes, native `@theme`/`@theme inline` token definitions, semantic CSS variables, CVA variants as needed, complete statically scannable classes. No CSS Modules, CSS-in-JS or alternative styling implementation. Tailwind is a documented peer/consumer requirement.
@@ -44,18 +48,9 @@ relevant. No blanket accessibility certification is promised.
 
 ### Repository, package and dependency contract
 
-Target repository is `darizae/marisma`; **base ref is not yet a commit**. The attached
-scaffold ZIP is the authorized starting file tree. Before any Git-branch task, the owner
-must create/authorize the repository and the implementer must record its actual default
-branch and initial SHA. Do not invent a SHA. All tasks in this first sprint own this one
-repository only. Build/release tracks must not depend on unpublished or cross-repo code.
+The approved repository `darizae/marisma` now exists. This planning PR is based on `main` at `e09681ba6e9d05577c6d6d1735fb02f9e4d7fed2`; each implementer must recheck the actual base SHA before work. Source, consumers and release preparation remain in this one repository. Do not create other repositories or depend on unapproved unpublished packages.
 
-Initial manifests use a **provisional, uninstalled dependency snapshot** (primarily
-source-template versions) and registry-verified React `19.3.1` and Tailwind `4.3.5`.
-The exact complete dependency graph, package-manager compatibility and lockfile are
-**NOT VERIFIED**. `T-001` must resolve, review and commit `pnpm-lock.yaml` before any
-claimed reproducible build; adjust incorrect ranges under the same reviewed package
-contract. Do not claim package versions were compatibility-tested until verified.
+Current manifests and `pnpm-lock.yaml` exist. Full local clean-install and release qualification is **not independently verified** by this planning update. A previous remote run stopped on pnpm's unapproved `esbuild` build script. T-007 must review source/version/script and, if justified, narrowly approve the required dependency build locally; there is **no remote CI gate**. Never assert tests passed without recorded local evidence.
 
 `packages/ui` is deliberately `private: true`, version `0.0.0`. Removing the private
 flag, selecting a public version/tag, and npm publishing are **distinct later approval
@@ -88,14 +83,13 @@ variant class is emitted into production CSS. No second Tailwind preflight impor
 
 ## Task context and routing
 
-Implementation is split into **six sequenced, individually approved technical task files**
-under `docs/tasks/`. The active work unit is named explicitly by the owner.
+The six S1 files `docs/tasks/01_*.md` through `06_*.md` are historical. The remaining non-chart release is mapped to **five proposed cluster files T-007 through T-011**, each with internal checkpoints; they require owner review before execution. Numbered order is dependency order, not blanket authorization.
 Read root `AGENTS.md`, this shared contract, **one assigned numbered task file**,
 the corresponding row in `docs/agent/ROUTING.md`,
 `.agents/skills/engineering-quality/SKILL.md`, and only the task's initial source/test paths.
 Consult `docs/planning/VERIFICATION_AND_RELEASE.md` only for the case IDs and gates
 listed in the assigned task. Do not read subsequent tasks as a general context dump.
-Tests and workflows marked "create" are not presumed to exist.
+Tests marked "create" are not presumed to exist. **GitHub Actions is not a required gate**; local testing remains mandatory at the relevant checkpoint.
 
 ## Required implementation skills
 
@@ -108,3 +102,17 @@ https://playwright.dev/docs/test-snapshots,
 https://docs.npmjs.com/trusted-publishers/.
 These links are authoritative references, **not** additional installed skills.
 No unreviewed external skill installation is authorized.
+
+## Current project phase (2026-11-10)
+
+S1 commits now contain the workspace/lockfile, Tailwind themes, package contract, Button/Input/Dialog, Storybook and Vite/Next.js consumer harnesses. This is **three implemented component families**, not the complete library or a verified public release. All 48 non-chart source candidates remain in approved scope and are allocated to T-007–T-010 with T-011 for full documentation and local release qualification; see the catalog coverage matrix. Plotting remains deferred. The package is private at 0.0.0. Github Actions is optional, intentionally not a gate; all actual test evidence comes from local runs. Publication still needs separate authorization.
+
+## Planning continuity and documentation hygiene
+
+Keep approved product, branding, release, scope and verification choices in `docs/planning/APPROVED_DECISIONS.md`, not only in conversation context. Before generating specs or changing product direction, reconcile that record with the actual component catalog and branch state. Numbered task filenames include the owner's explicit recommended coding model and reasoning-effort suffix; those values are nonbinding routing hints. Do not put model comparisons, pricing, fallback policy, career notes or private interview transcripts into the repository or technical task bodies.
+
+At each cluster completion or significant contract/file move, check README, `AGENTS.md`, routing, task status, brand links and active contract for stale scaffold language, contradictory verification claims and broken paths. Make a bounded hygiene correction in the associated reviewed change. Local tests are authoritative; do not burden GitHub with remote CI unless the owner explicitly changes D-19.
+
+## Sequenced spec filename convention
+
+All numbered `docs/tasks/` Markdown files (historical and future) use `NN_T-XXX_topic__Codex-<recommended-model>_<reasoning-effort>.md`. The suffix is owner-requested and may be updated after private availability assessment; the technical instructions inside remain agent-neutral. Maintain exact filename links in routing, self-references and related documentation when renaming. Do not add model rankings, cost estimates or decision matrices to repository files.

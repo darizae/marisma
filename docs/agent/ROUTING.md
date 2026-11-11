@@ -1,29 +1,30 @@
-# Agent routing — sequenced active work
+# Marisma — active task routing
 
-Start at root `AGENTS.md`, read `docs/planning/ENGINEERING_CONTRACT.md`, and load
-**only the assigned task** from the following table. The task file supplies an exact
-initial read set, allowed paths, prerequisites and verification cases. This table
-is navigation, not a second source of requirements.
+Read `AGENTS.md`, `docs/planning/APPROVED_DECISIONS.md`, the relevant engineering contract, **one assigned task**, this task's matching row, and the installed quality skill. Numbered ordering does not authorize running ahead.
 
-| Order | Task | Exact technical specification | Owner/concern |
-| --- | --- | --- | --- |
-| 01 | `T-001` | `docs/tasks/01_T-001_identity-and-lockfile.md` | Workspace identity + lockfile |
-| 02 | `T-002` | `docs/tasks/02_T-002_tailwind-theme-tokens.md` | Tailwind theme tokens |
-| 03 | `T-003` | `docs/tasks/03_T-003_package-api-build.md` | Package API + build |
-| 04 | `T-004` | `docs/tasks/04_T-004_button-input-dialog.md` | Button/Input/Dialog |
-| 05 | `T-005` | `docs/tasks/05_T-005_tailwind-consumer-integration.md` | Installed Tailwind consumers |
-| 06 | `T-006` | `docs/tasks/06_T-006_storybook-and-release-readiness.md` | Documentation + qualification |
+## Historical foundation sprint
 
-Shared technical checks: `docs/planning/VERIFICATION_AND_RELEASE.md`.
-Shared project skill: `.agents/skills/engineering-quality/SKILL.md`.
-Component scope authority: `docs/planning/COMPONENT_CATALOG.md`.
+Files `docs/tasks/01_*.md` through `06_*.md` describe the earlier S1 work: workspace, lockfile, Tailwind theme, package build, Button/Input/Dialog, Storybook and consumer harnesses. Source commits are present, but complete local acceptance evidence is not established by this planning change. Those files are historical.
 
-A task may start only after its named prerequisites are accepted. The numbered order
-was chosen so package output and the representative components exist **before** the
-installed Tailwind consumer test requires their generated classes. Do not run the
-whole queue in one assignment. The next task requires explicit owner review and
-assignment.
+Historical exact paths (reference only, not runnable assignments):
 
-For source/test ownership, consult the named file's `Initial read set`; never sweep
-all documentation. Files described as future tests or workflows must be created by
-the assigned task rather than assumed to exist.
+- `docs/tasks/01_T-001_identity-and-lockfile__Codex-Luna-5.6_High.md`
+- `docs/tasks/02_T-002_tailwind-theme-tokens__Codex-Sol-5.6_High.md`
+- `docs/tasks/03_T-003_package-api-build__Codex-Sol-5.6_Extra-High.md`
+- `docs/tasks/04_T-004_button-input-dialog__Codex-Sol-5.6_High.md`
+- `docs/tasks/05_T-005_tailwind-consumer-integration__Codex-Sol-5.6_Extra-High.md`
+- `docs/tasks/06_T-006_storybook-and-release-readiness__Codex-Luna-5.6_High.md`
+
+## Remaining first-release clusters — proposed for owner review
+
+| Order | Exact technical task | Source / verification focus |
+| --- | --- | --- |
+| 07 | `docs/tasks/07_T-007_foundations-feedback__Codex-Sol-5.6_High.md` | Basic presentation/feedback primitives, local foundation fixes, tokens and theme scope |
+| 08 | `docs/tasks/08_T-008_interaction-widgets__Codex-Sol-5.6_Extra-High.md` | Accessible selection, overlay, date controls and keyboard behavior |
+| 09 | `docs/tasks/09_T-009_forms-composed-fields__Codex-Sol-5.6_High.md` | Native forms, composed fields, Dropzone, error/cancel behavior |
+| 10 | `docs/tasks/10_T-010_application-compositions__Codex-Sol-5.6_Extra-High.md` | Table, Sidebar, data display, router-agnostic page layouts |
+| 11 | `docs/tasks/11_T-011_documentation-release__Codex-Luna-5.6_High.md` | Complete Storybook, landing, local browser/tarball qualification and release candidate |
+
+Each cluster includes bounded **internal checkpoints** and must be reviewed before advancing. Don't create a new spec for every simple component. The authoritative 48-candidate mapping is `docs/planning/COMPONENT_CATALOG.md`.
+
+Shared local verification policy: `docs/planning/VERIFICATION_AND_RELEASE.md`. Shared skill: `.agents/skills/engineering-quality/SKILL.md`. The model and reasoning effort shown by each task filename are owner-requested **recommendations only**; verify availability before assigning. Technical task bodies remain model-neutral. GitHub Actions is optional and not a gate. npm publication requires separate owner approval.

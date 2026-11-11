@@ -1,6 +1,8 @@
 # 06 — T-006: Storybook, landing, consumer evidence and review report
 
-**Status:** APPROVED, contingent on prerequisites · **Sprint:** S1 · **Date:** 2026-11-10
+**Status:** HISTORICAL S1 ASSIGNMENT — source commit exists; acceptance not established by this status update · **Date:** 2026-11-10
+
+> **Historical only.** The six S1 implementation stages have corresponding source commits. This file is not an active task assignment; the remaining non-chart release is covered by proposed T-007–T-011. Local tests remain required at gates, but GitHub Actions is not. Do not call unverified checks PASS.
 
 ## Task boundary
 
@@ -14,7 +16,7 @@
 
 1. `AGENTS.md`.
 2. `docs/planning/ENGINEERING_CONTRACT.md` (approved product, architecture and shared constraints).
-3. This **single task file** (`docs/tasks/06_T-006_storybook-and-release-readiness.md`).
+3. This **single task file** (`docs/tasks/06_T-006_storybook-and-release-readiness__Codex-Luna-5.6_High.md`).
 4. Matching `T-006` row in `docs/agent/ROUTING.md`.
 5. `.agents/skills/engineering-quality/SKILL.md`.
 6. This task's owning source files: `apps/storybook/.storybook/main.ts`; `apps/storybook/.storybook/preview.ts`; `apps/landing/src/main.tsx`; `apps/consumers/vite-react/src/main.tsx`; `apps/consumers/nextjs/app/page.tsx`; `README.md`; `packages/ui/README.md`.
