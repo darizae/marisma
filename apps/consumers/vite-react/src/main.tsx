@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
+  AppNavbar,
+  AppNavbarLink,
   Button,
   Checkbox,
+  DataPreview,
   DateField,
   Dialog,
   DialogClose,
@@ -10,9 +13,19 @@ import {
   DialogDescription,
   DialogTitle,
   DialogTrigger,
+  DropdownMenuItem,
   Input,
+  PageSection,
   SearchField,
   Select,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+  TableRowHeader,
+  UserMenu,
 } from "@darizae/marisma";
 import "./styles.css";
 
@@ -79,6 +92,19 @@ function ConsumerScaffold() {
             focus all resolve from semantic Marisma tokens.
           </p>
           <div className="mt-6 grid max-w-md gap-4">
+            <AppNavbar
+              actions={
+                <UserMenu description="vite@example.test" name="Vite user">
+                  <DropdownMenuItem>Profile</DropdownMenuItem>
+                </UserMenu>
+              }
+              brand="Fixture"
+              sticky={false}
+            >
+              <AppNavbarLink current href="#components">
+                Components
+              </AppNavbarLink>
+            </AppNavbar>
             <Input
               defaultValue="Marisma"
               description="A native uncontrolled input from the public package."
@@ -121,6 +147,36 @@ function ConsumerScaffold() {
               </Dialog>
             </div>
           </div>
+
+          <PageSection
+            className="mt-8"
+            description="Rendered from the installed public API."
+            title="Packaged compositions"
+          >
+            <Table
+              aria-label="Vite station table"
+              scrollLabel="Vite station data"
+            >
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Station</TableHead>
+                  <TableHead>Status</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableRowHeader>North bank</TableRowHeader>
+                  <TableCell>Current</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+            <DataPreview
+              collapsedCharacters={80}
+              data={{ consumer: "Vite", status: "hydrated" }}
+              label="Vite fixture data"
+              maxCharacters={160}
+            />
+          </PageSection>
 
           <aside
             className="mt-8 rounded-xl border border-mar-border bg-mar-card p-5 text-mar-text"

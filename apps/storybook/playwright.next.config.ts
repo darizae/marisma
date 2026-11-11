@@ -13,7 +13,8 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "pnpm --dir ../consumers/nextjs start",
+    command:
+      "pnpm --dir ../consumers/nextjs build && pnpm --dir ../consumers/nextjs start",
     url: "http://127.0.0.1:3100",
     reuseExistingServer: false,
     timeout: 120_000,

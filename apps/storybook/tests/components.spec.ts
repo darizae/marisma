@@ -307,6 +307,127 @@ test("IT-FORMS-01: Dropzone supports native input, drag rejection, clearing, and
   await expect(input).toHaveValue("");
 });
 
+test("IT-COMPOSITION-01: semantic data displays preserve states and keyboard overflow", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(
+    "/iframe.html?id=data-display-table--semantic-and-scrollable&viewMode=story",
+  );
+  const table = page.getByRole("table", { name: "Tide stations" });
+  const region = page.getByRole("region", { name: "Tide station records" });
+  await expect(table).toBeVisible();
+  await expect(
+    page.getByRole("columnheader", { name: "Station" }),
+  ).toHaveAttribute("scope", "col");
+  await expect(
+    page.getByRole("rowheader", { name: "North bank observation platform" }),
+  ).toHaveAttribute("scope", "row");
+  await region.focus();
+  await expect(region).toBeFocused();
+  await expect
+    .poll(() => region.evaluate((node) => node.scrollWidth - node.clientWidth))
+    .toBeGreaterThan(0);
+  await page.keyboard.press("ArrowRight");
+  await page.keyboard.press("ArrowRight");
+  await page.keyboard.press("ArrowRight");
+  await expect
+    .poll(() => region.evaluate((node) => node.scrollLeft))
+    .toBeGreaterThan(0);
+
+  await page.goto(
+    "/iframe.html?id=data-display-recordlist--loading&viewMode=story",
+  );
+  await expect(page.getByRole("status")).toContainText("Loading records");
+  await page.goto(
+    "/iframe.html?id=data-display-recordlist--error&viewMode=story",
+  );
+  await expect(page.getByRole("alert")).toContainText(
+    "Station records could not be loaded",
+  );
+  await page.goto(
+    "/iframe.html?id=data-display-recordlist--large-record-count&viewMode=story",
+  );
+  await expect(page.getByRole("listitem")).toHaveCount(150);
+});
+
+test("IT-COMPOSITION-01: mobile sidebar contains focus, dismisses, and preserves theme", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(
+    "/iframe.html?id=compositions-application-page--tidal-blue-dark&viewMode=story",
+  );
+  const trigger = page.getByRole("button", { name: "Menu", exact: true });
+  await expect(trigger).toBeVisible();
+  await trigger.click();
+
+  const sidebar = page.getByRole("dialog", { name: "Monitoring workspace" });
+  await expect(sidebar).toBeVisible();
+  await expect(page.locator('[data-marisma-portal="sidebar"]')).toHaveAttribute(
+    "data-marisma-accent",
+    "tidal-blue",
+  );
+  await expect(page.locator('[data-marisma-portal="sidebar"]')).toHaveAttribute(
+    "data-marisma-mode",
+    "dark",
+  );
+  await expect(
+    page.getByRole("link", { name: "Overview" }).last(),
+  ).toHaveAttribute("aria-current", "page");
+
+  for (let index = 0; index < 6; index += 1) {
+    await page.keyboard.press("Tab");
+    await expect
+      .poll(() =>
+        sidebar.evaluate((element) => element.contains(document.activeElement)),
+      )
+      .toBe(true);
+  }
+  await page.keyboard.press("Escape");
+  await expect(sidebar).toBeHidden();
+  await expect(trigger).toBeFocused();
+  expect(
+    await page.evaluate(() => document.documentElement.scrollWidth),
+  ).toBeLessThanOrEqual(390);
+});
+
+test("IT-COMPOSITION-01: integrated application landmarks and page patterns interoperate", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto(
+    "/iframe.html?id=compositions-application-page--reedwater-light&viewMode=story",
+  );
+
+  await expect(page.getByRole("main")).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "Skip to content" }),
+  ).toHaveAttribute("href", "#marisma-main-content");
+  await expect(
+    page.getByRole("navigation", { name: "Workspace" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { level: 1, name: "Estuary overview" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("navigation", { name: "Station onboarding" }),
+  ).toBeVisible();
+  await expect(page.getByRole("contentinfo")).toBeVisible();
+  await expect(
+    page.getByRole("table", { name: "Station states" }),
+  ).toBeVisible();
+
+  await page
+    .getByRole("button", { name: "Open user menu for Ada Lovelace" })
+    .click();
+  await expect(page.getByRole("menuitem", { name: "Profile" })).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(
+    page.getByRole("button", { name: "Open user menu for Ada Lovelace" }),
+  ).toBeFocused();
+});
+
 test("selection controls expose keyboard, disabled, read-only, and error states", async ({
   page,
 }) => {

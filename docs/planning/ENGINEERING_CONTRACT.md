@@ -89,11 +89,10 @@ variant class is emitted into production CSS. No second Tailwind preflight impor
 ## Task context and routing
 
 The six S1 files `docs/tasks/01_*.md` through `06_*.md` are historical. T-007,
-the explicitly authorized T-008, and the explicitly authorized T-009 have
-locally verified implementation awaiting owner review. The remaining non-chart
-release is mapped to **two proposed cluster files T-010 and T-011**, each with
-internal checkpoints and requiring owner review before execution. Numbered order is dependency
-order, not blanket authorization.
+the explicitly authorized T-008, T-009, and T-010 have locally verified
+implementation awaiting owner review. T-011 remains proposed and requires
+owner review before execution. Numbered order is dependency order, not blanket
+authorization.
 Read root `AGENTS.md`, this shared contract, **one assigned numbered task file**,
 the corresponding row in `docs/agent/ROUTING.md`,
 `.agents/skills/engineering-quality/SKILL.md`, and only the task's initial source/test paths.
@@ -116,13 +115,13 @@ No unreviewed external skill installation is authorized.
 ## Current project phase (2026-11-11)
 
 S1 commits contain the workspace/lockfile, Tailwind themes, package contract,
-Button/Input/Dialog, Storybook and Vite/Next.js consumer harnesses. T-007,
-T-008, and T-009 add locally verified source for 11 foundation/feedback, 13
-interaction/date, and eight form/composed-field candidates, for **35 implemented
-component families** total—not the complete library or a verified public release.
-All 48 non-chart source candidates remain in approved scope; T-010 covers the
-remaining implementation and T-011 covers full documentation and local release
-qualification. Plotting remains deferred. The package is private at 0.0.0.
+Button/Input/Dialog, Storybook and Vite/Next.js consumer harnesses. T-007
+through T-010 add locally verified source for the remaining foundation,
+interaction/date, form, data, navigation, and application-composition
+candidates, for **48 implemented component families** total. This completes the
+approved non-chart source catalog, not full documentation/release qualification
+or a public release. T-011 covers that final local qualification. Plotting
+remains deferred. The package is private at 0.0.0.
 GitHub Actions is optional, intentionally not a gate; all actual test evidence
 comes from local runs. Publication still needs separate authorization.
 

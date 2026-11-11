@@ -48,14 +48,15 @@
 
 ## Current facts versus decisions
 
-As of T-009, the repo contains locally verified implementation source for
+As of T-010, the repo contains locally verified implementation source for
 Button, Input, Dialog, 11 foundation/feedback candidates, 12 interaction/date
-general candidates, DateField, and eight form/composed-field candidates:
-**35 component families** total, plus the
+general candidates, DateField, eight form/composed-field candidates, and all
+13 data/navigation/application-composition candidates: **48 component
+families** total, plus the
 workspace/documentation/integration harnesses. This is **not** the completed
-catalog or a published npm package. Tests must be described by actual local
-execution evidence, not assumed from files or commits. The owner-approved
-release scope and architecture remain unchanged.
+release qualification or a published npm package. Tests must be described by
+actual local execution evidence, not assumed from files or commits. The
+owner-approved release scope and architecture remain unchanged.
 
 ## Required handoff reconciliation
 

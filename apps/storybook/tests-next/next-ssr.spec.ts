@@ -17,7 +17,9 @@ test("interactive package components hydrate without runtime failures", async ({
   const input = page.getByRole("textbox", { name: "Library name" });
   await input.fill("Tidal UI");
   await page.getByRole("button", { name: "Confirm hydration" }).click();
-  await expect(page.getByText("Hydrated Tidal UI")).toBeVisible();
+  await expect(page.locator('p[aria-live="polite"]')).toHaveText(
+    "Hydrated Tidal UI",
+  );
 
   const trigger = page.getByRole("button", { name: "Open details" });
   await trigger.click();
@@ -39,6 +41,19 @@ test("interactive package components hydrate without runtime failures", async ({
   const search = page.getByRole("searchbox", { name: "Hydrated search" });
   await search.fill("estuary");
   await page.getByRole("button", { name: "Search", exact: true }).click();
-  await expect(page.getByText("Searching for estuary")).toBeVisible();
+  await expect(page.locator('p[aria-live="polite"]')).toHaveText(
+    "Searching for estuary",
+  );
+  await expect(
+    page.getByRole("table", { name: "Next station table" }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", { name: "Open user menu for Next user" })
+    .click();
+  await expect(page.getByRole("menuitem", { name: "Profile" })).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(
+    page.getByRole("button", { name: "Open user menu for Next user" }),
+  ).toBeFocused();
   expect(errors).toEqual([]);
 });

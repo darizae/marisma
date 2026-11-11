@@ -33,6 +33,64 @@ export {
 export { InlineEdit, type InlineEditProps } from "./components/inline-edit";
 export { SearchField, type SearchFieldProps } from "./components/search-field";
 export {
+  AppNavbar,
+  AppNavbarLink,
+  type AppNavbarLinkProps,
+  type AppNavbarProps,
+} from "./components/app-navbar";
+export { AppShell, type AppShellProps } from "./components/app-shell";
+export {
+  CardGrid,
+  CardGridItem,
+  cardGridVariants,
+  type CardGridProps,
+} from "./components/card-grid";
+export { DataPreview, type DataPreviewProps } from "./components/data-preview";
+export { ErrorView, type ErrorViewProps } from "./components/error-view";
+export { PageFooter, type PageFooterProps } from "./components/page-footer";
+export { PageHeading, type PageHeadingProps } from "./components/page-heading";
+export { PageSection, type PageSectionProps } from "./components/page-section";
+export {
+  RecordList,
+  RecordListItem,
+  type RecordListItemProps,
+  type RecordListProps,
+} from "./components/record-list";
+export {
+  Sidebar,
+  SidebarContent,
+  SidebarLink,
+  SidebarNav,
+  SidebarTrigger,
+  type SidebarContentProps,
+  type SidebarLinkProps,
+  type SidebarNavProps,
+  type SidebarProps,
+  type SidebarTriggerProps,
+} from "./components/sidebar";
+export {
+  StepProgress,
+  StepProgressItem,
+  StepProgressLink,
+  type StepProgressItemProps,
+  type StepProgressLinkProps,
+  type StepProgressProps,
+  type StepProgressStatus,
+} from "./components/step-progress";
+export {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+  TableRowHeader,
+  type TableProps,
+} from "./components/table";
+export { UserMenu, type UserMenuProps } from "./components/user-menu";
+export {
   Dropzone,
   type DropzoneProps,
   type DropzoneRejection,

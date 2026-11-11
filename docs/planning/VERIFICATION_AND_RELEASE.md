@@ -1,6 +1,6 @@
 # Marisma — local verification and release policy
 
-**Status:** CURRENT planning policy; T-007 and T-008 are locally verified and later clusters require owner review · **Revision:** 5 · **Date:** 2026-11-11
+**Status:** CURRENT planning policy; T-007 through T-010 are locally verified and T-011 requires owner review · **Revision:** 6 · **Date:** 2026-11-11
 
 ## Owner-selected verification policy
 
@@ -14,7 +14,10 @@ S1 has source commits for a lockfile, Tailwind themes, ESM package build,
 Button/Input/Dialog, Storybook and Vite/Next.js package consumers. T-007 adds
 locally verified source for 11 foundation/feedback candidates; T-008 adds 12
 interaction/date candidates and DateField; T-009 adds Form, Dropzone, and six
-composed fields with local Chromium and packed consumer evidence. The T-007 dependency review approved only esbuild 0.28.2
+composed fields with local Chromium and packed consumer evidence. T-010 adds
+the final 13 data, navigation, and application-composition candidates with
+IT-COMPOSITION-01 Chromium, responsive visual, and packed Vite/Next evidence.
+The T-007 dependency review approved only esbuild 0.28.2
 after inspecting the package source,
 postinstall behavior, binary hash verification, and version check; a clean
 frozen install now reports no ignored builds. This does not replace the complete

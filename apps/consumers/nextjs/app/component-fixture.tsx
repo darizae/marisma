@@ -2,8 +2,11 @@
 
 import { useState } from "react";
 import {
+  AppNavbar,
+  AppNavbarLink,
   Button,
   Checkbox,
+  DataPreview,
   DateField,
   Dialog,
   DialogClose,
@@ -11,9 +14,19 @@ import {
   DialogDescription,
   DialogTitle,
   DialogTrigger,
+  DropdownMenuItem,
   Input,
+  PageSection,
   SearchField,
   Select,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+  TableRowHeader,
+  UserMenu,
 } from "@darizae/marisma";
 
 export function ComponentFixture() {
@@ -22,6 +35,19 @@ export function ComponentFixture() {
 
   return (
     <section className="grid gap-5 rounded-xl border border-mar-border bg-mar-card p-6">
+      <AppNavbar
+        actions={
+          <UserMenu description="next@example.test" name="Next user">
+            <DropdownMenuItem>Profile</DropdownMenuItem>
+          </UserMenu>
+        }
+        brand="Fixture"
+        sticky={false}
+      >
+        <AppNavbarLink current href="#components">
+          Components
+        </AppNavbarLink>
+      </AppNavbar>
       <Input
         description="This controlled value is hydrated by the Next.js client."
         label="Library name"
@@ -64,6 +90,28 @@ export function ComponentFixture() {
           <DialogClose>Done</DialogClose>
         </DialogContent>
       </Dialog>
+      <PageSection title="Hydrated compositions">
+        <Table aria-label="Next station table" scrollLabel="Next station data">
+          <TableHeader>
+            <TableRow>
+              <TableHead>Station</TableHead>
+              <TableHead>Status</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableRowHeader>North bank</TableRowHeader>
+              <TableCell>Current</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+        <DataPreview
+          collapsedCharacters={80}
+          data={{ consumer: "Next.js", status }}
+          label="Next fixture data"
+          maxCharacters={160}
+        />
+      </PageSection>
     </section>
   );
 }

@@ -1,10 +1,11 @@
 # Marisma UI package
 
 `@darizae/marisma` is a private prerelease package for React 19 and Tailwind CSS 4. It currently exports Button, Input, Dialog, 11 foundation/feedback families,
-13 interaction/date families, eight form/composed-field families, and the
+13 interaction/date families, eight form/composed-field families, 13
+data/navigation/application-composition families, and the
 `@darizae/marisma/theme.css` theme entry.
-It is not published to npm, and the broader non-chart catalog is still in
-development.
+It is not published to npm; complete documentation and release qualification
+remain pending.
 
 ## Local package evaluation
 
@@ -153,6 +154,26 @@ nearest Marisma subtree theme is bridged into its portal.
   failures and supports clearing, reselection, and form reset. These are local
   metadata checks only: Dropzone does not upload, parse, execute, persist, or
   malware-scan files.
+
+## Data, navigation, and application-composition exports
+
+- `Table` exposes semantic table parts with column/row header scopes inside a
+  keyboard-focusable responsive overflow region. It is not an enterprise data
+  grid; callers own records, sorting, filtering, selection, and actions.
+- `RecordList` requires caller-owned records, stable keys, and record rendering,
+  and provides presentational loading, empty, and error surfaces. `CardGrid`
+  and `PageSection` provide semantic responsive layout without owning data.
+- `DataPreview` renders structured or text input as text only, handles circular
+  structures, and enforces collapsed and hard character limits. It never
+  injects supplied HTML.
+- `Sidebar` uses a static desktop aside and a focus-contained mobile dialog.
+  `AppNavbar`, `AppShell`, `PageFooter`, and `StepProgress` provide landmarks,
+  skip navigation, responsive layout, and current-step/page semantics.
+  Navigation links are native by default and accept consumer link components
+  through `asChild`; no router is required.
+- `PageHeading`, `UserMenu`, and `ErrorView` keep page context, identity/actions,
+  retry controls, and destinations caller-owned. No auth, session, fetch, or
+  persistence behavior is included.
 
 ## Release status
 

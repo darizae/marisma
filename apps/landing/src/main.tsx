@@ -38,14 +38,14 @@ function Landing() {
             Components for calm, capable interfaces.
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-relaxed text-mar-muted">
-            The current prerelease implements Button, Input, and Dialog for
-            React 19 and Tailwind CSS 4. The package remains private and is not
-            published to npm.
+            The current prerelease implements the approved 48-family non-chart
+            catalog for React 19 and Tailwind CSS 4. The package remains private
+            and is not published to npm.
           </p>
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-mar-muted">
             Evaluate the checked-out package through Storybook or the
             tarball-installed Vite and Next.js fixtures in this repository. The
-            broader non-chart catalog is still in development.
+            complete documentation and local release-qualification gate remains.
           </p>
         </section>
 
@@ -63,8 +63,9 @@ function Landing() {
               <DialogContent>
                 <DialogTitle>Current component set</DialogTitle>
                 <DialogDescription>
-                  Button, Input, and Dialog are implemented; additional
-                  component families are not yet available.
+                  Foundation, interaction, form, data, navigation, and
+                  application-composition families are implemented and remain
+                  prerelease source pending full qualification.
                 </DialogDescription>
                 <DialogClose>Done</DialogClose>
               </DialogContent>

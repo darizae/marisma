@@ -7,7 +7,7 @@ export default function Page() {
         <div>
           <h1 className="text-2xl font-semibold">Next.js component fixture</h1>
           <p className="mt-3 text-base text-mar-muted">
-            Button, Input, Dialog, Checkbox, Select, DateField, and SearchField
+            Foundation, interaction, form, and application-composition exports
             render on the server and remain interactive after hydration.
           </p>
         </div>

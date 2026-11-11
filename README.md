@@ -5,14 +5,14 @@
 A Tailwind-first React component library for professional web applications.
 
 Marisma is a prerelease library for React 19 and Tailwind CSS 4. The current
-package implements 35 component families with typed public APIs, accessible
-native or Radix-based interactions, and Reedwater and Tidal Blue themes in light
-and dark modes.
+package implements all 48 approved non-chart component families with typed
+public APIs, accessible native or Radix-based interactions, and Reedwater and
+Tidal Blue themes in light and dark modes.
 
 > **Project status:** `@darizae/marisma` is private and is not published to npm.
-> The broader non-chart catalog is still in development. Use this repository's
-> Storybook and tarball-installed consumer fixtures for evaluation; do not treat
-> the package as a stable release.
+> Full documentation and release qualification remain in development. Use this
+> repository's Storybook and tarball-installed consumer fixtures for evaluation;
+> do not treat the package as a stable release.
 
 ## Available components
 
@@ -40,6 +40,12 @@ and dark modes.
 - Forms and composed fields — native `Form`, `FieldGroup`, `FieldDivider`, and
   `FieldCallout`; guarded `ConfirmationDialog`, `InlineEdit`, and `SearchField`
   interactions; and `Dropzone` for validated local file selection.
+- Data and content — semantic compound `Table`, caller-keyed `RecordList`,
+  responsive `CardGrid`, capped text-only `DataPreview`, and `PageSection`.
+- Navigation and application layout — responsive `Sidebar`, `AppNavbar`,
+  `AppShell`, `PageFooter`, and `StepProgress`, with native or consumer link
+  components and no required router.
+- Page patterns — `PageHeading`, caller-owned `UserMenu`, and `ErrorView`.
 
 Storybook includes controls, keyboard notes, interaction coverage, and theme
 switching for these components. No charting, routing, data fetching,
@@ -155,11 +161,11 @@ Marisma's supplied leaf mark is stored once at [`assets/brand/marisma-leaf.svg`]
 
 ## Roadmap and local verification
 
-Marisma's foundation/feedback, interaction/date, and form/composed-field
-clusters now have locally verified source for 32 additional candidates
-alongside Button, Input, and Dialog. Two remaining
-[grouped implementation specifications](docs/agent/ROUTING.md) (T-010 and
-T-011) cover application patterns, documentation, and release qualification.
+Marisma's foundation/feedback, interaction/date, form/composed-field, and
+application-composition clusters now have locally verified source for the full
+48-candidate non-chart catalog. The remaining
+[grouped implementation specification](docs/agent/ROUTING.md) (T-011) covers
+complete documentation and local release qualification.
 The [catalog](docs/planning/COMPONENT_CATALOG.md)
 accounts for all 48 original non-chart source candidates. Plotting remains
 deferred.

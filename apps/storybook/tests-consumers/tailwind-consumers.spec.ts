@@ -348,6 +348,13 @@ test("packed Vite consumer generates component CSS without restyling native cont
   await search.fill("reeds");
   await page.getByRole("button", { name: "Search", exact: true }).click();
   await expect(page.getByText("Searching for reeds")).toBeVisible();
+  await expect(
+    page.getByRole("table", { name: "Vite station table" }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", { name: "Open user menu for Vite user" })
+    .click();
+  await expect(page.getByRole("menuitem", { name: "Profile" })).toBeVisible();
 });
 
 test("packed Next.js consumer hydrates its styled interactive component", async ({
@@ -365,7 +372,9 @@ test("packed Next.js consumer hydrates its styled interactive component", async 
   await expectMarismaAndNativeStyles(page, "Confirm hydration");
   await page.getByRole("textbox", { name: "Library name" }).fill("T-005");
   await page.getByRole("button", { name: "Confirm hydration" }).click();
-  await expect(page.getByText("Hydrated T-005")).toBeVisible();
+  await expect(page.locator('p[aria-live="polite"]')).toHaveText(
+    "Hydrated T-005",
+  );
 
   await page.getByRole("button", { name: "Open details" }).click();
   await expect(
@@ -385,6 +394,15 @@ test("packed Next.js consumer hydrates its styled interactive component", async 
   const search = page.getByRole("searchbox", { name: "Hydrated search" });
   await search.fill("estuary");
   await page.getByRole("button", { name: "Search", exact: true }).click();
-  await expect(page.getByText("Searching for estuary")).toBeVisible();
+  await expect(page.locator('p[aria-live="polite"]')).toHaveText(
+    "Searching for estuary",
+  );
+  await expect(
+    page.getByRole("table", { name: "Next station table" }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", { name: "Open user menu for Next user" })
+    .click();
+  await expect(page.getByRole("menuitem", { name: "Profile" })).toBeVisible();
   expect(hydrationProblems).toEqual([]);
 });
