@@ -3,6 +3,8 @@
 import { useState } from "react";
 import {
   Button,
+  Checkbox,
+  DateField,
   Dialog,
   DialogClose,
   DialogContent,
@@ -10,6 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
   Input,
+  Select,
 } from "@darizae/marisma";
 
 export function ComponentFixture() {
@@ -27,6 +30,22 @@ export function ComponentFixture() {
       <Button onClick={() => setStatus(`Hydrated ${name}`)}>
         Confirm hydration
       </Button>
+      <Checkbox defaultChecked label="Hydrated checkbox" />
+      <Select
+        defaultValue="reedwater"
+        label="Hydrated select"
+        options={[
+          { label: "Reedwater", value: "reedwater" },
+          { label: "Tidal Blue", value: "tidal-blue" },
+        ]}
+      />
+      <DateField
+        defaultValue="2026-11-11"
+        label="Hydrated date"
+        locale="en-GB"
+        timeZone="Europe/Madrid"
+        weekStartsOn={1}
+      />
       <p aria-live="polite" className="text-sm text-mar-muted">
         {status}
       </p>

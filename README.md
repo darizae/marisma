@@ -5,7 +5,7 @@
 A Tailwind-first React component library for professional web applications.
 
 Marisma is a prerelease library for React 19 and Tailwind CSS 4. The current
-package implements 14 component families with typed public APIs, accessible
+package implements 27 component families with typed public APIs, accessible
 native or Radix-based interactions, and Reedwater and Tidal Blue themes in light
 and dark modes.
 
@@ -28,6 +28,15 @@ and dark modes.
 - Feedback and utilities — `CopyCode` with clipboard failure feedback,
   focusable native `ScrollArea`, and dependency-free `ToastProvider`,
   `ToastAction`, and `useToast` exports.
+- Selection and disclosure — `Checkbox`, `Switch`, `RadioGroup`,
+  `ToggleGroup`, `Collapsible`, and native `Textarea`, including controlled,
+  uncontrolled, disabled, read-only, invalid, and indeterminate states where
+  applicable.
+- Overlays and navigation — portalled `Popover`, `Tooltip`, and nested
+  `DropdownMenu` primitives plus `Tabs`, with Radix keyboard/focus behavior and
+  automatic nearest-subtree theme bridging.
+- Complex selection and dates — single-value, non-searchable `Select`, a
+  keyboard date-grid `Calendar`, and composed `DateField`.
 
 Storybook includes controls, keyboard notes, interaction coverage, and theme
 switching for these components. No charting, routing, data fetching,
@@ -143,10 +152,10 @@ Marisma's supplied leaf mark is stored once at [`assets/brand/marisma-leaf.svg`]
 
 ## Roadmap and local verification
 
-Marisma's foundation/feedback cluster now has locally verified source for 11
-additional candidates alongside Button, Input, and Dialog. Four remaining
-[grouped implementation specifications](docs/agent/ROUTING.md) (T-008 through
-T-011) cover interactions, forms, application patterns, documentation, and
+Marisma's foundation/feedback and interaction/date clusters now have locally
+verified source for 24 additional candidates alongside Button, Input, and
+Dialog. Three remaining [grouped implementation specifications](docs/agent/ROUTING.md)
+(T-009 through T-011) cover forms, application patterns, documentation, and
 release qualification. The [catalog](docs/planning/COMPONENT_CATALOG.md)
 accounts for all 48 original non-chart source candidates. Plotting remains
 deferred.

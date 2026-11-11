@@ -1,17 +1,14 @@
 "use client";
 
 import {
-  useLayoutEffect,
-  useRef,
-  useState,
   type ComponentPropsWithoutRef,
   type ComponentPropsWithRef,
-  type RefObject,
 } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import type { VariantProps } from "class-variance-authority";
 import { buttonVariants } from "./button";
 import { cn } from "../lib/cn";
+import { usePortalTheme } from "../lib/portal-theme";
 
 export const Dialog = DialogPrimitive.Root;
 export type DialogProps = ComponentPropsWithRef<typeof DialogPrimitive.Root>;
@@ -38,54 +35,16 @@ export function DialogTrigger({
   );
 }
 
-type PortalTheme = {
-  accent?: string;
-  mode?: string;
-};
-
-function themeAt(anchor: HTMLElement | null): PortalTheme {
-  let current = anchor?.parentElement ?? null;
-  let accent: string | undefined;
-  let mode: string | undefined;
-
-  while (current && (!accent || !mode)) {
-    accent ??= current.getAttribute("data-marisma-accent") ?? undefined;
-    mode ??= current.getAttribute("data-marisma-mode") ?? undefined;
-    current = current.parentElement;
-  }
-
-  return { accent, mode };
-}
-
-function usePortalTheme(anchor: RefObject<HTMLSpanElement | null>) {
-  const [theme, setTheme] = useState<PortalTheme>({});
-
-  useLayoutEffect(() => {
-    const update = () => setTheme(themeAt(anchor.current));
-    update();
-    const observer = new MutationObserver(update);
-    observer.observe(document.documentElement, {
-      attributeFilter: ["data-marisma-accent", "data-marisma-mode"],
-      attributes: true,
-      subtree: true,
-    });
-    return () => observer.disconnect();
-  }, [anchor]);
-
-  return theme;
-}
-
 export type DialogPortalProps = ComponentPropsWithoutRef<
   typeof DialogPrimitive.Portal
 >;
 
 export function DialogPortal({ children, ...props }: DialogPortalProps) {
-  const anchor = useRef<HTMLSpanElement>(null);
-  const theme = usePortalTheme(anchor);
+  const { anchorRef, theme } = usePortalTheme();
 
   return (
     <>
-      <span aria-hidden="true" className="hidden" ref={anchor} />
+      <span aria-hidden="true" className="hidden" ref={anchorRef} />
       <DialogPrimitive.Portal {...props}>
         <div
           className="contents"

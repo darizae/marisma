@@ -1,6 +1,6 @@
 # 08 — T-008: Accessible interactive controls, overlays and dates
 
-**Status:** PROPOSED FOR OWNER REVIEW · **Phase:** S2, cluster 2/5 · **Repository:** darizae/marisma
+**Status:** IMPLEMENTED AND LOCALLY VERIFIED — OWNER REVIEW REQUIRED · **Phase:** S2, cluster 2/5 · **Repository:** darizae/marisma
 **Dependency:** T-007 accepted, shared tokens/local verification reliable.
 
 ## Outcome and exact catalog coverage
@@ -34,3 +34,28 @@ Use existing appropriate Radix primitives instead of rebuilding focus/keyboard m
 - Update catalog dispositions and public docs based on actual behavior. No acceptance based on existence of a story or an unexecuted test file.
 
 **Stop:** owner reviews evidence and proposed API changes before T-009. No autonomous merge or publication.
+
+## Local completion evidence
+
+Completed checkpoints A, B, and C on Darwin 25.6.0 arm64 with Node 26.13.0,
+pnpm 11.9.0, and Playwright Chromium. The package remains private and
+unpublished.
+
+- PASS — `pnpm --filter @darizae/marisma test`
+- PASS — `pnpm typecheck`
+- PASS — `pnpm build`
+- PASS — `pnpm test:package-contract`
+- PASS — `pnpm --filter @marisma/storybook test:browser`
+- PASS — `pnpm --filter @marisma/storybook test:consumers`
+- PASS — fresh `pnpm --filter @marisma/consumer-next build` followed by
+  `pnpm --filter @marisma/storybook test:next`
+- PASS — `pnpm --filter @marisma/storybook test:docs`
+- PASS — `pnpm --filter @marisma/storybook build`
+- PASS — direct runtime dependency review: all ten added `@radix-ui/react-*`
+  packages resolve to the official `radix-ui/primitives` repository, use the
+  MIT license, and declare no preinstall/install/postinstall lifecycle scripts.
+- NOT RUN — Playwright Firefox and WebKit; T-008 explicitly permits deferral to
+  release qualification.
+- PASS — the existing documentation visual baselines also ran inside
+  `test:browser`; T-008 added a four-theme browser matrix without changing
+  those baseline images.

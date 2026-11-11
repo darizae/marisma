@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   Button,
+  Checkbox,
+  DateField,
   Dialog,
   DialogClose,
   DialogContent,
@@ -9,6 +11,7 @@ import {
   DialogTitle,
   DialogTrigger,
   Input,
+  Select,
 } from "@darizae/marisma";
 import "./styles.css";
 
@@ -78,6 +81,22 @@ function ConsumerScaffold() {
               defaultValue="Marisma"
               description="A native uncontrolled input from the public package."
               label="Library name"
+            />
+            <Checkbox defaultChecked label="Include archived records" />
+            <Select
+              defaultValue="reedwater"
+              label="Consumer accent"
+              options={[
+                { label: "Reedwater", value: "reedwater" },
+                { label: "Tidal Blue", value: "tidal-blue" },
+              ]}
+            />
+            <DateField
+              defaultValue="2026-11-11"
+              label="Consumer date"
+              locale="en-GB"
+              timeZone="Europe/Madrid"
+              weekStartsOn={1}
             />
             <div className="flex flex-wrap gap-3">
               <Button type="button">Focus this action</Button>

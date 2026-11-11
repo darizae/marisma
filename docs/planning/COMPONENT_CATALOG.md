@@ -1,9 +1,9 @@
 # Marisma component scope — first non-chart release
 
 Status: APPROVED first-release scope. Button, Input, Dialog, and the 11 T-007
-foundation/feedback candidates have locally verified implementation source, not
-a public release; the remaining candidates are scheduled into T-008–T-010 and
-qualified in T-011.
+foundation/feedback candidates plus the 13 T-008 interaction/date candidates
+have locally verified implementation source, not a public release; the
+remaining candidates are scheduled into T-009–T-010 and qualified in T-011.
 
 This inventory identifies **48 source-level candidates**, not 48 guaranteed distinct
 npm exports. Adaptation may combine related components or make certain high-level
@@ -89,7 +89,7 @@ packaged consumer usage, and relevant responsive/theme checks. No candidate is m
 | --- | --- | --- | --- |
 | S1 source exists; unpublished | Button, Input, Dialog (3) | — | — |
 | T-007 foundation/feedback; locally verified source | Alert, Avatar, Badge, Button Group, Card, Copy Code, Label, Scroll Area, Separator, Spinner, Toast (11) | — | — |
-| T-008 accessible interactions/dates | Calendar, Checkbox, Collapsible, Dropdown Menu, Popover, Radio Group, Select, Switch, Tabs, Textarea, Toggle Group, Tooltip (12) | Date selection field / DateField (1) | — |
+| T-008 accessible interactions/dates; locally verified source | Calendar, Checkbox, Collapsible, Dropdown Menu, Popover, Radio Group, Select, Switch, Tabs, Textarea, Toggle Group, Tooltip (12) | Date selection field / DateField (1) | — |
 | T-009 native forms/composed fields | Dropzone, Form (2) | Field Callout, Confirmation field dialog, Field Group, Inline change control, Search field, Vertical field separator (6) | — |
 | T-010 data and application composition | Sidebar, Table (2) | Page title field, User menu (2) | Error page view, Application navbar, Record list view, Application shell, Card grid, Footer, Navigation progress, Raw-data view, Page section (9) |
 | T-011 release gate | No new planned family | Documentation and verification | Documentation and verification |
@@ -115,5 +115,29 @@ not SHIPPED components.
 | Separator | `Separator`; decorative by default, semantic orientation on request | `separator.tsx`, `Separator.stories.tsx`, `foundation.test.tsx` |
 | Spinner | `Spinner`; optional status name and reduced-motion fallback | `spinner.tsx`, `Spinner.stories.tsx`, unit/browser suites |
 | Toast | `ToastProvider`, `ToastAction`, `useToast`; bounded dependency-free stack with timed/manual dismissal | `toast.tsx`, `Toast.stories.tsx`, `feedback.test.tsx`, browser suite |
+
+## T-008 candidate dispositions
+
+All T-008 candidates are **ADAPT**: each catalog direction is represented by a
+typed public export, a Storybook example with keyboard/API notes, focused unit
+coverage, and the shared real-Chromium A11Y-WIDGETS-01 suite. Portalled widgets
+carry the nearest Marisma theme scope. They remain unpublished prerelease
+source, not SHIPPED components.
+
+| Candidate | Destination and adaptation | Primary evidence |
+| --- | --- | --- |
+| Calendar | `Calendar`; single Gregorian civil-date grid with locale labels, explicit week start/time zone, boundaries, disabled dates, roving focus and selected-day announcement | `calendar.tsx`, `Calendar.stories.tsx`, `date.test.tsx`, browser suite |
+| Checkbox | `Checkbox`; labeled Radix checkbox with checked/unchecked/indeterminate, controlled/uncontrolled, invalid, disabled and read-only states | `checkbox.tsx`, `Checkbox.stories.tsx`, `selection.test.tsx`, browser suite |
+| Collapsible | `Collapsible`, `CollapsibleTrigger`, `CollapsibleContent`; Radix controlled/uncontrolled disclosure | `collapsible.tsx`, `Collapsible.stories.tsx`, `selection.test.tsx`, browser suite |
+| Dropdown Menu | `DropdownMenu` composition; grouped, checkable, radio, nested and danger items with keyboard dismissal/focus return and collision-aware portals | `dropdown-menu.tsx`, `DropdownMenu.stories.tsx`, `overlays.test.tsx`, browser suite |
+| Popover | `Popover` composition; controlled/uncontrolled non-modal portal with Escape/outside dismissal and focus handling | `popover.tsx`, `Popover.stories.tsx`, `overlays.test.tsx`, browser suite |
+| Radio Group | `RadioGroup`, `RadioGroupItem`; labeled controlled/uncontrolled Radix group with arrow selection, disabled items, invalid and read-only states | `radio-group.tsx`, `RadioGroup.stories.tsx`, `selection.test.tsx`, browser suite |
+| Select | `Select`; labeled single-value non-searchable Radix field with option groups, disabled/empty options, required/invalid and read-only states | `select.tsx`, `Select.stories.tsx`, `date.test.tsx`, browser suite |
+| Switch | `Switch`; labeled Radix immediate setting with controlled/uncontrolled, invalid, disabled and read-only states | `switch.tsx`, `Switch.stories.tsx`, `selection.test.tsx`, browser suite |
+| Tabs | `Tabs`, `TabsList`, `TabsTrigger`, `TabsContent`; Radix controlled/uncontrolled tabs with automatic/manual activation and panel relationships | `tabs.tsx`, `Tabs.stories.tsx`, `overlays.test.tsx`, browser suite |
+| Textarea | `Textarea`; labeled native text area with resize, native props/ref, description/error, disabled and read-only states | `textarea.tsx`, `Textarea.stories.tsx`, `selection.test.tsx`, browser suite |
+| Toggle Group | `ToggleGroup`, `ToggleGroupItem`; Radix single/multiple groups with roving focus and controlled/uncontrolled/read-only ownership | `toggle-group.tsx`, `ToggleGroup.stories.tsx`, `selection.test.tsx`, browser suite |
+| Tooltip | `TooltipProvider`, `Tooltip`, `TooltipTrigger`, `TooltipContent`; short non-interactive hover/focus help with Escape dismissal | `tooltip.tsx`, `Tooltip.stories.tsx`, `overlays.test.tsx`, browser suite |
+| Date selection field | `DateField`; read-only formatted display plus portalled `Calendar`, strict ISO civil-date submission, validation relationships and focus return | `date-field.tsx`, `DateField.stories.tsx`, `date.test.tsx`, packed consumer/browser suites |
 
 For every row, maintain PRESERVE/ADAPT/MERGE/EXCLUDE status, export or documented composition destination, related Storybook/test file, and actual PASS/FAIL/NOT RUN evidence. EXCLUDE requires explicit owner approval. A code file or story does not alone mean SHIPPED.

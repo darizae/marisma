@@ -192,3 +192,311 @@ test("Spinner disables rotation for reduced motion", async ({ page }) => {
     "none",
   );
 });
+
+test("selection controls expose keyboard, disabled, read-only, and error states", async ({
+  page,
+}) => {
+  await page.goto(
+    "/iframe.html?id=components-checkbox--tidal-blue-dark&viewMode=story",
+  );
+  const checkbox = page.getByRole("checkbox", {
+    name: "Include archived records",
+  });
+  await checkbox.focus();
+  await page.keyboard.press("Space");
+  await expect(checkbox).not.toBeChecked();
+
+  await page.goto(
+    "/iframe.html?id=components-switch--tidal-blue-dark&viewMode=story",
+  );
+  const switchControl = page.getByRole("switch", { name: "Tide alerts" });
+  await switchControl.focus();
+  await page.keyboard.press("Space");
+  await expect(switchControl).not.toBeChecked();
+
+  await page.goto(
+    "/iframe.html?id=components-radio-group--tidal-blue-dark&viewMode=story",
+  );
+  const firstRadio = page.getByRole("radio", { name: "Reedwater" });
+  await firstRadio.focus();
+  await page.keyboard.press("ArrowDown");
+  await expect(page.getByRole("radio", { name: "Tidal Blue" })).toBeChecked();
+  await expect(
+    page.getByRole("radio", { name: "Archive gray" }),
+  ).toBeDisabled();
+
+  await page.goto(
+    "/iframe.html?id=components-textarea--ownership-and-errors&viewMode=story",
+  );
+  const invalid = page.getByRole("textbox", { name: "Invalid note" });
+  await expect(invalid).toHaveAttribute("aria-invalid", "true");
+  await expect(invalid).toHaveAccessibleDescription("A note is required.");
+  await expect(
+    page.getByRole("textbox", { name: "Published note" }),
+  ).toHaveAttribute("readonly");
+});
+
+test("toggle groups and collapsibles use roving focus and disclosure semantics", async ({
+  page,
+}) => {
+  await page.goto(
+    "/iframe.html?id=components-toggle-group--tidal-blue-dark&viewMode=story",
+  );
+  const bold = page.getByRole("button", { name: "Bold" });
+  await bold.focus();
+  await page.keyboard.press("ArrowRight");
+  const italic = page.getByRole("button", { name: "Italic" });
+  await expect(italic).toBeFocused();
+  await page.keyboard.press("Space");
+  await expect(italic).toHaveAttribute("data-state", "on");
+
+  await page.goto(
+    "/iframe.html?id=components-collapsible--tidal-blue-dark&viewMode=story",
+  );
+  const trigger = page.getByRole("button", { name: "Station details" });
+  await trigger.focus();
+  await page.keyboard.press("Enter");
+  await expect(trigger).toHaveAttribute("aria-expanded", "true");
+  await expect(page.getByText(/Last sampled today/)).toBeVisible();
+  await expect(trigger).toBeFocused();
+});
+
+test("Popover dismisses outside and with Escape, restores focus, and bridges subtree theme", async ({
+  page,
+}) => {
+  await page.goto(
+    "/iframe.html?id=components-popover--subtree-theme-portal&viewMode=story",
+  );
+  const trigger = page.getByRole("button", { name: "Open filters" });
+  await trigger.click();
+  const dialog = page.getByRole("dialog", { name: "Record filters" });
+  const portal = page.locator('[data-marisma-portal="popover"]');
+  await expect(dialog).toBeVisible();
+  await expect(portal).toHaveAttribute("data-marisma-accent", "tidal-blue");
+  await expect(portal).toHaveAttribute("data-marisma-mode", "dark");
+  await page.keyboard.press("Escape");
+  await expect(dialog).toBeHidden();
+  await expect(trigger).toBeFocused();
+
+  await trigger.click();
+  const outsideBox = await page
+    .getByRole("button", { name: "Outside target" })
+    .boundingBox();
+  expect(outsideBox).not.toBeNull();
+  await page.mouse.click(
+    outsideBox!.x + outsideBox!.width / 2,
+    outsideBox!.y + outsideBox!.height / 2,
+  );
+  await expect(dialog).toBeHidden();
+});
+
+test("Tooltip opens on focus, contains no focusable content, and closes with Escape", async ({
+  page,
+}) => {
+  await page.goto(
+    "/iframe.html?id=components-tooltip--tidal-blue-dark&viewMode=story",
+  );
+  const trigger = page.getByRole("button", { name: "Station help" });
+  await trigger.focus();
+  const tooltip = page.getByRole("tooltip");
+  await expect(tooltip).toContainText("Uses the nearest active station");
+  await expect(
+    page.locator('[data-marisma-portal="tooltip"]:has([role="tooltip"])'),
+  ).toHaveAttribute("data-marisma-mode", "dark");
+  await expect(
+    tooltip.locator("button, a, input, select, textarea"),
+  ).toHaveCount(0);
+  await page.keyboard.press("Escape");
+  await expect(tooltip).toBeHidden();
+  await expect(trigger).toBeFocused();
+});
+
+test("Dropdown Menu supports submenus, destructive styling, viewport collision, and focus return", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 320, height: 280 });
+  await page.goto(
+    "/iframe.html?id=components-dropdown-menu--tidal-blue-dark&viewMode=story",
+  );
+  const trigger = page.getByRole("button", { name: "Record actions" });
+  await expect(trigger).toHaveCSS("min-height", "44px");
+  await trigger.focus();
+  await page.keyboard.press("Enter");
+  const menu = page.getByRole("menu", { name: "Record actions" });
+  await expect(menu).toBeVisible();
+  await expect(
+    page.locator('[data-marisma-portal="dropdown-menu"]:has([role="menu"])'),
+  ).toHaveAttribute("data-marisma-mode", "dark");
+  await expect(
+    page.getByRole("menuitem", { name: "Delete record" }),
+  ).toHaveClass(/text-mar-danger/);
+  const menuBox = await menu.boundingBox();
+  expect(menuBox).not.toBeNull();
+  expect(menuBox!.y + menuBox!.height).toBeLessThanOrEqual(280);
+  await page.keyboard.press("Escape");
+  await expect(trigger).toBeFocused();
+
+  await page.setViewportSize({ width: 1280, height: 720 });
+  await page.goto(
+    "/iframe.html?id=components-dropdown-menu--tidal-blue-dark&viewMode=story",
+  );
+  const wideTrigger = page.getByRole("button", { name: "Record actions" });
+  await wideTrigger.click();
+  const moveTo = page.getByRole("menuitem", { name: "Move to" });
+  await moveTo.press("ArrowRight");
+  await expect(page.getByRole("menu", { name: "Move to" })).toBeVisible();
+  await page.keyboard.press("Escape");
+  await page.keyboard.press("Escape");
+  await expect(wideTrigger).toBeFocused();
+});
+
+test("Tabs maintain tab/tabpanel relationships and skip disabled tabs", async ({
+  page,
+}) => {
+  await page.goto(
+    "/iframe.html?id=components-tabs--tidal-blue-dark&viewMode=story",
+  );
+  const overview = page.getByRole("tab", { name: "Overview" });
+  await overview.focus();
+  await page.keyboard.press("ArrowRight");
+  const history = page.getByRole("tab", { name: "History" });
+  await expect(history).toBeFocused();
+  await expect(history).toHaveAttribute("aria-selected", "true");
+  await expect(page.getByRole("tabpanel", { name: "History" })).toBeVisible();
+  await page.keyboard.press("ArrowRight");
+  await expect(overview).toBeFocused();
+});
+
+test("Select is single-value, skips disabled options, dismisses, and restores focus", async ({
+  page,
+}) => {
+  await page.goto(
+    "/iframe.html?id=components-select--tidal-blue-dark&viewMode=story",
+  );
+  const trigger = page.getByRole("combobox", {
+    exact: true,
+    name: "Controlled accent",
+  });
+  await trigger.focus();
+  await page.keyboard.press("Enter");
+  const disabledOption = page.getByRole("option", { name: "Archive gray" });
+  await expect(disabledOption).toHaveAttribute("data-disabled");
+  await expect(
+    page.locator('[data-marisma-portal="select"]:has([role="listbox"])'),
+  ).toHaveAttribute("data-marisma-mode", "dark");
+  await page.keyboard.press("t");
+  await expect(page.getByRole("option", { name: "Tidal Blue" })).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(trigger).toContainText("Tidal Blue");
+  await expect(trigger).toBeFocused();
+  await expect(
+    page.getByRole("combobox", { exact: true, name: "Read-only accent" }),
+  ).toHaveAttribute("aria-readonly", "true");
+});
+
+test("Calendar enforces disabled dates and performs APG date-grid navigation", async ({
+  page,
+}) => {
+  await page.goto(
+    "/iframe.html?id=components-calendar--tidal-blue-dark&viewMode=story",
+  );
+  const selected = page.getByRole("button", {
+    name: "Wednesday, 11 November 2026, selected",
+  });
+  await selected.focus();
+  await page.keyboard.press("ArrowRight");
+  const disabledDay = page.getByRole("button", {
+    name: "Thursday, 12 November 2026",
+  });
+  await expect(disabledDay).toBeFocused();
+  await expect(disabledDay).toHaveAttribute("aria-disabled", "true");
+  await page.keyboard.press("Enter");
+  await expect(selected).toHaveAttribute("aria-label", /selected/);
+  await page.keyboard.press("ArrowRight");
+  await page.keyboard.press("Enter");
+  await expect(
+    page.getByRole("button", {
+      name: "Friday, 13 November 2026, selected",
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByText("Selected Friday, 13 November 2026"),
+  ).toBeAttached();
+  await page.keyboard.press("PageDown");
+  await expect(page.getByRole("grid", { name: "December 2026" })).toBeVisible();
+});
+
+test("DateField focuses its selected day, formats and submits ISO, then restores focus", async ({
+  page,
+}) => {
+  await page.goto(
+    "/iframe.html?id=components-date-field--tidal-blue-dark&viewMode=story",
+  );
+  const input = page.getByRole("textbox", {
+    name: "Controlled observation date",
+  });
+  await expect(input).toHaveValue("11 Nov 2026");
+  const trigger = page.getByRole("button", {
+    name: "Change date, Wednesday, 11 November 2026",
+  });
+  await trigger.click();
+  const selectedDay = page.getByRole("button", {
+    name: "Wednesday, 11 November 2026, selected",
+  });
+  await expect(selectedDay).toBeFocused();
+  await page.keyboard.press("ArrowRight");
+  await page.keyboard.press("ArrowRight");
+  await page.keyboard.press("Enter");
+  await expect(input).toHaveValue("13 Nov 2026");
+  await expect(
+    page.getByRole("button", {
+      name: "Change date, Friday, 13 November 2026",
+    }),
+  ).toBeFocused();
+  await expect(page.locator('input[name="observationDate"]')).toHaveValue(
+    "2026-11-13",
+  );
+});
+
+test("all interaction families render without horizontal overflow in four themes", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(
+    "/iframe.html?id=foundations-interaction-themes--all-widgets&viewMode=story",
+  );
+  const samples = page.locator(".interaction-theme-sample");
+  await expect(samples).toHaveCount(4);
+  for (const sample of await samples.all()) {
+    await expect(sample.getByRole("checkbox")).toHaveCount(1);
+    await expect(sample.getByRole("switch")).toHaveCount(1);
+    await expect(sample.getByRole("radiogroup")).toHaveCount(2);
+    await expect(sample.getByRole("tablist")).toHaveCount(1);
+    await expect(sample.getByRole("combobox")).toHaveCount(1);
+    await expect(sample.getByRole("grid")).toHaveCount(1);
+  }
+  const themeSignatures = await samples.evaluateAll((nodes) =>
+    nodes.map((node) => {
+      const style = getComputedStyle(node);
+      return `${style.backgroundColor}|${style.color}|${style.colorScheme}`;
+    }),
+  );
+  expect(new Set(themeSignatures).size).toBe(4);
+  expect(
+    await page.evaluate(() => document.documentElement.scrollWidth),
+  ).toBeLessThanOrEqual(390);
+});
+
+test("interaction motion collapses to the reduced-motion duration", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto(
+    "/iframe.html?id=components-popover--subtree-theme-portal&viewMode=story",
+  );
+  await page.getByRole("button", { name: "Open filters" }).click();
+  const duration = await page
+    .getByRole("dialog", { name: "Record filters" })
+    .evaluate((element) => getComputedStyle(element).transitionDuration);
+  expect(Number.parseFloat(duration)).toBeLessThanOrEqual(0.001);
+});

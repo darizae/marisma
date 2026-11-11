@@ -325,6 +325,25 @@ test("packed Vite consumer generates component CSS without restyling native cont
   await expect(
     page.getByRole("dialog", { name: "Vite component fixture" }),
   ).toBeVisible();
+  await page.keyboard.press("Escape");
+
+  const checkbox = page.getByRole("checkbox", {
+    name: "Include archived records",
+  });
+  await checkbox.click();
+  await expect(checkbox).not.toBeChecked();
+  const select = page.getByRole("combobox", { name: "Consumer accent" });
+  await select.click();
+  await page.getByRole("option", { name: "Tidal Blue" }).click();
+  await expect(select).toContainText("Tidal Blue");
+  const dateTrigger = page.getByRole("button", {
+    name: "Change date, Wednesday, 11 November 2026",
+  });
+  await dateTrigger.click();
+  await page.getByRole("button", { name: "Friday, 13 November 2026" }).click();
+  await expect(
+    page.getByRole("textbox", { name: "Consumer date" }),
+  ).toHaveValue("13 Nov 2026");
 });
 
 test("packed Next.js consumer hydrates its styled interactive component", async ({
@@ -348,5 +367,16 @@ test("packed Next.js consumer hydrates its styled interactive component", async 
   await expect(
     page.getByRole("dialog", { name: "Hydrated dialog" }),
   ).toBeVisible();
+  await page.keyboard.press("Escape");
+  const checkbox = page.getByRole("checkbox", { name: "Hydrated checkbox" });
+  await checkbox.click();
+  await expect(checkbox).not.toBeChecked();
+  const select = page.getByRole("combobox", { name: "Hydrated select" });
+  await select.click();
+  await page.getByRole("option", { name: "Tidal Blue" }).click();
+  await expect(select).toContainText("Tidal Blue");
+  await expect(
+    page.getByRole("textbox", { name: "Hydrated date" }),
+  ).toHaveValue("11 Nov 2026");
   expect(hydrationProblems).toEqual([]);
 });

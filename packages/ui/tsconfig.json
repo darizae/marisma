@@ -1,14 +1,8 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": [
-    "src",
-    "tsdown.config.ts"
-  ],
+  "include": ["src", "tsdown.config.ts"],
   "compilerOptions": {
     "rootDir": ".",
-    "types": [
-      "react",
-      "react-dom"
-    ]
+    "types": ["react", "react-dom", "@testing-library/jest-dom/vitest"]
   }
 }

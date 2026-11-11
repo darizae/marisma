@@ -48,8 +48,9 @@
 
 ## Current facts versus decisions
 
-As of T-007, the repo contains locally verified implementation source for
-Button, Input, Dialog, and 11 foundation/feedback candidates, plus the first
+As of T-008, the repo contains locally verified implementation source for
+Button, Input, Dialog, 11 foundation/feedback candidates, 12 interaction/date
+general candidates, and DateField: **27 component families** total, plus the
 workspace/documentation/integration harnesses. This is **not** the completed
 catalog or a published npm package. Tests must be described by actual local
 execution evidence, not assumed from files or commits. The owner-approved

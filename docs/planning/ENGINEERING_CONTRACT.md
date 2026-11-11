@@ -89,10 +89,11 @@ variant class is emitted into production CSS. No second Tailwind preflight impor
 ## Task context and routing
 
 The six S1 files `docs/tasks/01_*.md` through `06_*.md` are historical. T-007
-has locally verified implementation awaiting owner review. The remaining
-non-chart release is mapped to **four proposed cluster files T-008 through
-T-011**, each with internal checkpoints and requiring owner review before
-execution. Numbered order is dependency order, not blanket authorization.
+and the explicitly authorized T-008 have locally verified implementation
+awaiting owner review. The remaining non-chart release is mapped to **three
+proposed cluster files T-009 through T-011**, each with internal checkpoints
+and requiring owner review before execution. Numbered order is dependency
+order, not blanket authorization.
 Read root `AGENTS.md`, this shared contract, **one assigned numbered task file**,
 the corresponding row in `docs/agent/ROUTING.md`,
 `.agents/skills/engineering-quality/SKILL.md`, and only the task's initial source/test paths.
@@ -112,18 +113,18 @@ https://docs.npmjs.com/trusted-publishers/.
 These links are authoritative references, **not** additional installed skills.
 No unreviewed external skill installation is authorized.
 
-## Current project phase (2026-11-10)
+## Current project phase (2026-11-11)
 
 S1 commits contain the workspace/lockfile, Tailwind themes, package contract,
-Button/Input/Dialog, Storybook and Vite/Next.js consumer harnesses. T-007 adds
-locally verified source for 11 foundation/feedback candidates, for **14
-implemented component families** total—not the complete library or a verified
-public release. All 48 non-chart source candidates remain in approved scope;
-T-008–T-010 cover the remaining implementation and T-011 covers full
-documentation and local release qualification. Plotting remains deferred. The
-package is private at 0.0.0. GitHub Actions is optional, intentionally not a
-gate; all actual test evidence comes from local runs. Publication still needs
-separate authorization.
+Button/Input/Dialog, Storybook and Vite/Next.js consumer harnesses. T-007 and
+T-008 add locally verified source for 11 foundation/feedback candidates and 13
+interaction/date candidates, for **27 implemented component families**
+total—not the complete library or a verified public release. All 48 non-chart
+source candidates remain in approved scope; T-009–T-010 cover the remaining
+implementation and T-011 covers full documentation and local release
+qualification. Plotting remains deferred. The package is private at 0.0.0.
+GitHub Actions is optional, intentionally not a gate; all actual test evidence
+comes from local runs. Publication still needs separate authorization.
 
 ## Planning continuity and documentation hygiene
 

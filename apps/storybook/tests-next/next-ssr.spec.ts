@@ -26,5 +26,15 @@ test("interactive package components hydrate without runtime failures", async ({
   await page.keyboard.press("Escape");
   await expect(dialog).toBeHidden();
   await expect(trigger).toBeFocused();
+  const checkbox = page.getByRole("checkbox", { name: "Hydrated checkbox" });
+  await checkbox.click();
+  await expect(checkbox).not.toBeChecked();
+  const select = page.getByRole("combobox", { name: "Hydrated select" });
+  await select.click();
+  await page.getByRole("option", { name: "Tidal Blue" }).click();
+  await expect(select).toContainText("Tidal Blue");
+  await expect(
+    page.getByRole("textbox", { name: "Hydrated date" }),
+  ).toHaveValue("11 Nov 2026");
   expect(errors).toEqual([]);
 });

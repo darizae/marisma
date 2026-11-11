@@ -1,9 +1,10 @@
 # Marisma UI package
 
 `@darizae/marisma` is a private prerelease package for React 19 and Tailwind CSS
-4. It currently exports Button, Input, Dialog, 11 foundation/feedback component
-families, and the `@darizae/marisma/theme.css` theme entry. It is not published
-to npm, and the broader non-chart catalog is still in development.
+4. It currently exports Button, Input, Dialog, 11 foundation/feedback families,
+13 interaction/date families, and the `@darizae/marisma/theme.css` theme entry.
+It is not published to npm, and the broader non-chart catalog is still in
+development.
 
 ## Local package evaluation
 
@@ -111,6 +112,29 @@ nearest Marisma subtree theme is bridged into its portal.
   timed notifications. This small provider was chosen over Radix Toast or
   Sonner to avoid a new runtime dependency; place it inside the active Marisma
   theme scope.
+
+## Interaction and date exports
+
+- `Checkbox`, `Switch`, `RadioGroup`, `ToggleGroup`, and `Collapsible` use
+  Radix interaction primitives. `Textarea` preserves native text editing and
+  resize behavior. Controlled and uncontrolled ownership is supported; field
+  wrappers expose description/error relationships and distinguish read-only
+  from disabled where that distinction is meaningful.
+- `Popover`, `Tooltip`, and `DropdownMenu` portal their content while carrying
+  the nearest Marisma accent/mode attributes. `DropdownMenu` includes grouped,
+  checkable, radio, nested, and explicitly destructive items. `Tabs` supports
+  Radix automatic/manual activation and horizontal/vertical orientation.
+- `Select` is intentionally single-value and non-searchable. It supports option
+  groups, disabled options, required/invalid states, empty options, and
+  controlled, uncontrolled, disabled, or read-only ownership.
+- `Calendar` and `DateField` accept strict Gregorian `YYYY-MM-DD` civil-date
+  strings. These values are not instants and never shift between time zones.
+  `locale` controls visible/announced formatting, `weekStartsOn` controls the
+  grid, and `timeZone` determines only what date counts as today. `min`, `max`,
+  and `disabledDate` constrain selection. `DateField` formats for display and
+  submits the ISO value; it does not parse localized free-form text. Calendar
+  range/multiple selection and broad localization/RTL guarantees are not part
+  of this prerelease contract.
 
 ## Release status
 
