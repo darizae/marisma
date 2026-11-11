@@ -26,7 +26,7 @@ disable dependency-build safeguards globally.
 
 The release report `docs/release/T-011_RELEASE_CANDIDATE.md` records the full local sweep and the later hardening checks. The npm package remains
 `private: true` at version `0.0.0`, unpublished; owner publication approval is
-still required. Charts remain deferred.
+still required.
 
 ## Existing acceptance cases retained
 
@@ -74,3 +74,7 @@ Do **not** change `private: true`, create a public tag, publish, deploy or use c
 ## Brand and decision-record hygiene checks
 
 Before each new work-unit handoff and before release qualification, reconcile the owner-approved decisions in `docs/planning/APPROVED_DECISIONS.md` with the implementation contract, catalog, `AGENTS.md`, active work status and public docs. Verify that internal/interview-private content is not committed. Check logo and favicon reachability from the canonical `assets/brand/marisma-leaf.svg` in both landing and Storybook local builds, including a non-root base path if hosted there. Mark an unrun check NOT RUN; remote CI is never a substitute or requirement.
+
+## Proposed npm release/security qualification (not yet executed)
+
+Before the owner approves first npm publication, review and execute the bounded **local** release gates in `docs/tasks/13_T-013_npm-release-security__Codex-Sol-5.6_Extra-High.md`: dependency advisory and install-script inspection, code trust-boundary review, secret and package-file checks, reproducible tarball installation, browser/SSR checks, publish identity and access verification, and incident response preparation. The agent must create and **test reusable private `priv/release/` scripts** covering npm identity/registry preflight, audits, artifact build/inspection/hash, independent consumers, safe owner-approved interactive publish and later SemVer patch preparation. These files are Git-ignored and must be backed up privately, never put in the npm package or public repository. The owner has already set up npm login and 2FA; the local agent may run `npm whoami` and other safe read-only authenticated checks, but never inspect auth material. Existing local release-candidate results are historical evidence, not automatic approval of a new artifact. Any unavailable or unrun security check is BLOCKED/NOT RUN. Do not introduce remote CI or publish without separate authorization.
