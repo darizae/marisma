@@ -1,8 +1,7 @@
 # Marisma — current maintainer routing
 
-**Status:** The initial component catalog is implemented as a **private local
-release candidate**. The approved T-013 release/security preparation is in
-execution; publication is not authorized. Historical T-001–T-012 work is
+**Status:** The initial component catalog is published as
+`@darizae/marisma@0.1.0`. The T-013 release/security work is complete. Historical T-001–T-013 work is
 preserved in Git commit history; the enduring component evidence is
 `docs/release/T-011_RELEASE_CANDIDATE.md`.
 
@@ -20,6 +19,8 @@ Start at `AGENTS.md`, consult `docs/planning/APPROVED_DECISIONS.md` and the rele
 
 The five grouped release clusters T-007–T-011 and subsequent hardening have been implemented, but **owner publication review remains separate**. Do not infer local test results beyond those actually recorded. Avoid adding remote CI requirements: local checks are the owner-approved evidence channel. Future task specs, if needed, use the model/effort filename suffix described in `AGENTS.md`; the task body stays model-neutral.
 
-## Next task — preparation approved now (stacked branch if PR #3 open)
+## Next task
 
-`docs/tasks/13_T-013_npm-release-security__Codex-Sol-5.6_High.md` defines the local security assessment, exact-artifact preflight and manual npm publication decision gates. Its filename is an owner-requested routing hint. The owner has approved local security preparation, **agent-generated and tested reusable private scripts in ignored `priv/release/`**, and an exact-artifact release proposal on a separate task branch based on PR #3's reviewed head, or `main` after merge. Never silently merge PR #3. The owner has already set up npm login/2FA: the agent may use safe `npm whoami` / registry metadata commands and prepare a locally publishable staged tarball; it must not read credentials, stage to npm, merge, tag or publish yet. After **separate owner approval of exact version and tarball SHA-256**, the agent may run the local interactive publish command while the owner handles 2FA. No remote workflow is authorized.
+No implementation or release task is active. Future package versions use the
+ignored, owner-private `priv/release/` toolkit and require a fresh reviewed
+version, commit, artifact digest and explicit publication authorization.

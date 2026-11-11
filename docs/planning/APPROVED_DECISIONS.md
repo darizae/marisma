@@ -23,7 +23,7 @@
 | D-08 | Tailwind setup may be required in consuming applications.                                                              | Document Vite/Next installation, single Tailwind import, token import and installed-package `@source` registration.                                                                       |
 | D-09 | Use accessible native HTML and appropriate established Radix primitives.                                               | WCAG 2.2 AA as a tested target for supported components, clear controlled/uncontrolled contracts, keyboard/focus/error states; don't claim universal certification.                       |
 | D-10 | Public components should be composable and router/data/auth-provider-agnostic.                                         | Application owns links, API calls, records, persistence and async behavior; optional framework adapters must not burden basic consumers.                                                  |
-| D-11 | Personal GitHub ownership at `darizae/marisma` and planned public **npm** package `@darizae/marisma`, **MIT** license. | Package remains private until npm identity, full local qualification and distinct publication approval. No organization required.                                                         |
+| D-11 | Personal GitHub ownership at `darizae/marisma` and public **npm** package `@darizae/marisma`, **MIT** license. | `0.1.0` was published from the exact approved staged artifact; future versions require the same distinct approval. No organization required. |
 | D-12 | One pnpm workspace, one published UI package, Storybook and landing, independent Vite/Next consumer harnesses.         | No arbitrary extra packages or repositories; build/pack/consume from the public package boundary.                                                                                         |
 
 ## Scope and release strategy
@@ -56,8 +56,7 @@ general candidates, DateField, eight form/composed-field candidates, and all
 13 data/navigation/application-composition candidates: **48 component
 families** total, plus the workspace/documentation/integration harnesses. The
 local release-candidate evidence is recorded in
-`docs/release/T-011_RELEASE_CANDIDATE.md`; this is **not** a published npm
-package. Tests must be described by actual local execution evidence, not
+`docs/release/T-011_RELEASE_CANDIDATE.md`; `0.1.0` is published on npm. Tests must be described by actual local execution evidence, not
 assumed from files or commits. The owner-approved release scope and
 architecture remain unchanged.
 
@@ -67,20 +66,17 @@ Before exporting any new approved work unit: read **this register**, the shared 
 
 ## Retired task-spec policy (2026-11-11)
 
-The implementation assignments T-001–T-011 and the one-off hardening review have completed their coding phase. Their Markdown task files are intentionally removed from the current branch in a documentation-hygiene PR after their outcomes were recorded in the component catalog and release-candidate report. Git history preserves their exact wording and recommended model/effort filenames. This removes stale instructions from active agent context; it **does not** constitute owner acceptance of npm publication. Any new implementation cluster requires a fresh, owner-approved scoped task file using the filename convention.
+The implementation assignments T-001–T-011, the one-off hardening review and T-013 release work have completed. Their Markdown task files are intentionally removed after their outcomes were recorded in the catalog, release evidence, npm registry and GitHub release. Git history preserves their exact wording and recommended model/effort filenames. Any new implementation cluster requires a fresh, owner-approved scoped task file using the filename convention.
 
 ## Current release planning boundary (2026-11-11)
 
-The existing UI component catalog is implemented and locally tested according
-to the release report. Public npm distribution is still pending. The tracked
-package remains `private: true`; `0.1.0` is the proposed first public version on
-the T-013 task branch. Release-security preparation, including a reusable
-ignored `priv/release/` toolkit, is approved now from merged PR #3 in
-`docs/tasks/13_T-013_npm-release-security__Codex-Sol-5.6_High.md`. This does
-not approve publishing, enabling a new remote workflow, changing package
-credentials or tagging a release. The official owner-private decision history
-is not exported into this public document.
+The existing UI component catalog is implemented, locally qualified and
+published as `@darizae/marisma@0.1.0`. The tracked package remains
+`private: true`; publication used the exact approved staged artifact. The
+credential-free reusable toolkit remains ignored under `priv/release/`.
+Future publishing, remote workflows, credential changes and tags require fresh
+explicit authorization.
 
 ## Owner release-delegation update (2026-11-11)
 
-The owner has already registered the npm account, enabled 2FA and authenticated the **local CLI**. Coding agents are expected to perform as much routine release work as their real shell permissions permit, including `npm whoami`, package audits, manifest/version PRs, exact-tarball staging and verification, and creation/testing of **private reusable scripts** under ignored `priv/release/` for first release and future patches. The agent may **initiate the interactive publish after separate final authorization**, while the owner completes only unavoidable 2FA/OS/browser interactions. No live registry write or account-setting change is yet authorized.
+The owner has registered the npm account, enabled 2FA and authenticated the **local CLI**. `0.1.0` was published interactively after exact-artifact authorization, and package publishing now requires MFA. Coding agents may prepare future reviewed artifacts and private release scripts, but no later registry write or account-setting change is authorized without a fresh owner instruction.
