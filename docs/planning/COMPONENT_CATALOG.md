@@ -1,14 +1,12 @@
 # Marisma component scope — first non-chart release
 
-Status: APPROVED first-release scope. All 48 source-level candidates have
-locally verified implementation source through T-010 and release-candidate
-documentation/evidence through T-011, not a public release.
+Status: APPROVED first-release scope. All 48 source-level candidates have implementation source, stories and recorded local verification evidence. The separate release report includes post-implementation hardening checks; the package is not published.
 
 This inventory identifies **48 source-level candidates**, not 48 guaranteed distinct
 npm exports. Adaptation may combine related components or make certain high-level
 patterns documented compositions rather than separate primitives. Every candidate
 must receive an explicit disposition and a verified behavior contract before release.
-Charts, plotting controls, and brand-specific logos are excluded from this release.
+Charts, plotting controls, and brand-specific logos are excluded from the published component API. The Marisma brand logo lives in the repository for documentation only.
 
 ## 30 general UI candidates
 
@@ -81,6 +79,9 @@ TypeScript contract, working Storybook example, focused tests, accessibility rev
 packaged consumer usage, and relevant responsive/theme checks. No candidate is marked SHIPPED while the package remains unpublished.
 
 ## Complete first-release delivery coverage
+
+The numbered work-stage names below are *historical provenance labels*, not links to current executable tasks. Completed task specifications are preserved in Git history; the following catalog dispositions and the release report are current.
+
 
 48 **source-level candidates** are included; some can become documented compositions or merged exports, with an explicit disposition. This mapping prevents the initial six-task sprint from being mistaken for the final product. Charts/plots are a separate post-release project.
 
