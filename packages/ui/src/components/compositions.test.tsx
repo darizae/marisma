@@ -163,6 +163,35 @@ describe("data and content compositions", () => {
     await user.click(screen.getByRole("button", { name: "Show more" }));
     expect(code.textContent?.length).toBe(60);
   });
+
+  it("stops before expensive trailing values and distinguishes shared objects from cycles", () => {
+    const shared = { value: "shared" };
+    const sharedResult = render(
+      <DataPreview
+        data={{ first: shared, second: shared }}
+        maxCharacters={200}
+      />,
+    );
+    expect(screen.queryByText("[Circular]")).not.toBeInTheDocument();
+    sharedResult.unmount();
+
+    render(
+      <DataPreview
+        data={{
+          leading: "x".repeat(80),
+          trailing: {
+            get value() {
+              throw new Error("should not be read");
+            },
+          },
+        }}
+        maxCharacters={40}
+      />,
+    );
+
+    expect(screen.getByText(/Previewing 40 of 40\+/)).toBeVisible();
+    expect(screen.queryByText("[Circular]")).not.toBeInTheDocument();
+  });
 });
 
 describe("navigation and shell compositions", () => {

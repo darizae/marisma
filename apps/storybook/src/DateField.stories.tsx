@@ -42,6 +42,33 @@ function DateFieldStates() {
   );
 }
 
+function RequiredDateFieldFixture() {
+  const [submitted, setSubmitted] = useState(false);
+
+  return (
+    <form
+      className="grid max-w-lg gap-4"
+      onSubmit={(event) => {
+        event.preventDefault();
+        setSubmitted(true);
+      }}
+    >
+      <DateField
+        label="Required observation date"
+        name="observationDate"
+        required
+      />
+      <button
+        className="min-h-11 rounded-lg bg-mar-accent px-4 py-2 font-semibold text-mar-accent-foreground"
+        type="submit"
+      >
+        Submit date
+      </button>
+      {submitted ? <p role="status">Submitted</p> : null}
+    </form>
+  );
+}
+
 const meta = {
   title: "Components/Date Field",
   component: DateFieldStates,
@@ -77,6 +104,10 @@ export const OwnershipAndValidation: Story = {
     await expect(input).toHaveValue("13 Nov 2026");
     await expect(trigger).toHaveFocus();
   },
+};
+
+export const RequiredValidation: Story = {
+  render: () => <RequiredDateFieldFixture />,
 };
 
 export const TidalBlueDark: Story = {

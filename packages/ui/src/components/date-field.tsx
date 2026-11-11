@@ -165,11 +165,18 @@ export function DateField({
           </PopoverContent>
         )}
       </Popover>
-      {name ? (
+      {name || required ? (
         <input
+          aria-hidden="true"
+          className="sr-only"
           disabled={disabled}
+          max={max}
+          min={min}
           name={name}
-          type="hidden"
+          onChange={() => undefined}
+          required={required}
+          tabIndex={-1}
+          type="date"
           value={resolvedValue}
         />
       ) : null}

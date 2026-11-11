@@ -705,6 +705,27 @@ test("DateField focuses its selected day, formats and submits ISO, then restores
   );
 });
 
+test("DateField required values participate in native form validation", async ({
+  page,
+}) => {
+  await page.goto(
+    "/iframe.html?id=components-date-field--required-validation&viewMode=story",
+  );
+  const validationInput = page.locator(
+    'input[type="date"][name="observationDate"]',
+  );
+  await expect(validationInput).toHaveAttribute("required", "");
+  await expect(validationInput).not.toBeFocused();
+  expect(
+    await validationInput.evaluate((input) =>
+      (input as HTMLInputElement).checkValidity(),
+    ),
+  ).toBe(false);
+
+  await page.getByRole("button", { name: "Submit date" }).click();
+  await expect(page.getByRole("status", { name: "Submitted" })).toHaveCount(0);
+});
+
 test("all interaction families render without horizontal overflow in four themes", async ({
   page,
 }) => {

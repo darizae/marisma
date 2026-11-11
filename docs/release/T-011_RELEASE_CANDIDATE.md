@@ -2,7 +2,7 @@
 
 **Status:** Local release candidate; owner review pending
 **Qualified:** 2026-11-11 · Darwin arm64 · Node 26.13.0 · pnpm 11.9.0
-**Package:** `@darizee/marisma@0.0.0` · `private: true` · MIT · unpublished
+**Package:** `@darizae/marisma@0.0.0` · `private: true` · MIT · unpublished
 
 This report is the evidence handoff for T-011. It covers the complete approved
 non-chart catalog, public documentation, Storybook and landing assets, package
@@ -76,8 +76,8 @@ inference from an existing test file.
 
 | Gate                             | Command                                                              | Platform/runtime                                                         | Result                                                                  |
 | -------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
-| UI unit suite                    | `pnpm --filter @darizee/marisma test`                                | Darwin arm64, Node 26.13.0                                               | PASS                                                                    |
-| UI typecheck                     | `pnpm --filter @darizee/marisma typecheck`                           | Darwin arm64, Node 26.13.0                                               | PASS                                                                    |
+| UI unit suite                    | `pnpm --filter @darizae/marisma --fail-if-no-match test`             | Darwin arm64, Node 26.13.0                                               | PASS                                                                    |
+| UI typecheck                     | `pnpm --filter @darizae/marisma --fail-if-no-match typecheck`        | Darwin arm64, Node 26.13.0                                               | PASS                                                                    |
 | Workspace build                  | `pnpm build`                                                         | Darwin arm64, Node 26.13.0                                               | PASS                                                                    |
 | Workspace typecheck              | `pnpm typecheck`                                                     | Darwin arm64, Node 26.13.0                                               | PASS                                                                    |
 | Package contract                 | `pnpm test:package-contract`                                         | Darwin arm64, Node 26.13.0                                               | PASS                                                                    |
@@ -94,13 +94,31 @@ inference from an existing test file.
 | Explicit package archive         | `pnpm --dir packages/ui pack --pack-destination ../../priv/tarballs` | Darwin arm64, Node 26.13.0                                               | PASS; `priv/tarballs/` artifact, ignored                                |
 | Firefox browser sweep            | Playwright Firefox project                                           | Firefox binary unavailable in local cache                                | NOT RUN                                                                 |
 | WebKit browser sweep             | Playwright WebKit project                                            | WebKit binary unavailable in local cache; not identical to native Safari | NOT RUN                                                                 |
-| npm identity/availability        | `npm view @darizee/marisma name version --json`                      | npm registry, unauthenticated                                            | BLOCKED; registry returned E404, which does not prove namespace control |
+| npm identity/availability        | `npm view @darizae/marisma name version --json`                      | npm registry, unauthenticated                                            | BLOCKED; registry returned E404, which does not prove namespace control |
 
 The Chromium checks cover keyboard focus, dismissal, theme portals, forms,
 Dropzone failures, responsive composition behavior, packaged CSS source
 detection, and representative screenshots. Automated accessibility checks are
 not a blanket WCAG certification. Firefox, WebKit, native Safari, and npm
 namespace control remain release evidence omissions.
+
+## T-012 hardening update
+
+The release evidence typo and focused implementation findings were addressed
+locally on 2026-11-11. The following checks were run from the repository root
+on Darwin arm64 with Node 26.13.0 and pnpm 11.9.0:
+
+| Check                                                                    | Result                 |
+| ------------------------------------------------------------------------ | ---------------------- |
+| `pnpm --filter @darizae/marisma --fail-if-no-match test`                 | PASS                   |
+| `pnpm --filter @darizae/marisma --fail-if-no-match typecheck`            | PASS                   |
+| `pnpm --filter @marisma/storybook --fail-if-no-match typecheck`          | PASS                   |
+| `pnpm --filter @marisma/storybook --fail-if-no-match test:docs`          | PASS                   |
+| `pnpm test:package-contract`                                             | PASS                   |
+| `pnpm --filter @marisma/storybook --fail-if-no-match test:consumers`     | PASS                   |
+| `pnpm --filter @marisma/storybook --fail-if-no-match test:next`          | PASS on isolated rerun |
+| Focused `DateField required values participate` Chromium test            | PASS                   |
+| Fresh `pnpm --filter @marisma/storybook --fail-if-no-match test:browser` | PASS                   |
 
 ## Artifact and audit notes
 
@@ -129,7 +147,7 @@ than an automatic promotion of `0.0.0`.
 
 Proposed checklist:
 
-1. Confirm npm account control of `@darizee/marisma` and choose the public
+1. Confirm npm account control of `@darizae/marisma` and choose the public
    version/tag; do not infer either from the E404 query above.
 2. Re-run the local qualification commands and inspect the exact tarball from
    the reviewed commit.

@@ -194,6 +194,34 @@ describe("native forms and composed fields", () => {
     ).toHaveValue("North bank");
   });
 
+  it("keeps rejected async saves in edit mode and reports the failure", async () => {
+    const user = userEvent.setup();
+    const saveError = new Error("persistence failed");
+    const onSave = vi.fn().mockRejectedValue(saveError);
+    const onSaveError = vi.fn();
+
+    render(
+      <InlineEdit
+        label="Station name"
+        onSave={onSave}
+        onSaveError={onSaveError}
+        value="North bank"
+      />,
+    );
+
+    await user.click(screen.getByRole("button", { name: "Edit Station name" }));
+    const input = screen.getByRole("textbox", { name: "Station name" });
+    await user.clear(input);
+    await user.type(input, "Estuary edge");
+    await user.click(screen.getByRole("button", { name: "Save" }));
+
+    await waitFor(() => expect(onSaveError).toHaveBeenCalledWith(saveError));
+    expect(screen.getByRole("textbox", { name: "Station name" })).toBeVisible();
+    expect(
+      screen.getByText("Unable to save changes. Please try again."),
+    ).toBeVisible();
+  });
+
   it("enforces the empty-search policy, submits from the keyboard, and clears with focus", async () => {
     const user = userEvent.setup();
     const onSearch = vi.fn();

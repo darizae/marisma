@@ -17,6 +17,7 @@ export type InlineEditProps = {
   defaultValue?: string;
   onValueChange?: (value: string) => void;
   onSave?: (value: string) => void | Promise<void>;
+  onSaveError?: (error: unknown) => void;
   onCancel?: () => void;
   pending?: boolean;
   disabled?: boolean;
@@ -44,6 +45,7 @@ export function InlineEdit({
   name,
   onCancel,
   onSave,
+  onSaveError,
   onValueChange,
   pending = false,
   placeholder,
@@ -56,6 +58,7 @@ export function InlineEdit({
   const [draft, setDraft] = useState(value ?? defaultValue);
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState<ReactNode>();
   const inputRef = useRef<HTMLInputElement>(null);
   const editRef = useRef<HTMLButtonElement>(null);
   const hasMounted = useRef(false);
@@ -73,6 +76,7 @@ export function InlineEdit({
 
   const beginEditing = () => {
     setDraft(resolvedValue);
+    setSaveError(undefined);
     setEditing(true);
   };
 
@@ -85,12 +89,16 @@ export function InlineEdit({
 
   const save = async () => {
     if (busy || (required && draft.trim() === "")) return;
+    setSaveError(undefined);
     setSaving(true);
     try {
       await onSave?.(draft);
       if (value === undefined) setInternalValue(draft);
       onValueChange?.(draft);
       setEditing(false);
+    } catch (error) {
+      setSaveError("Unable to save changes. Please try again.");
+      onSaveError?.(error);
     } finally {
       setSaving(false);
     }
@@ -113,7 +121,7 @@ export function InlineEdit({
           <Input
             description={description}
             disabled={disabled}
-            error={error}
+            error={saveError ?? error}
             label={label}
             onChange={(event) => setDraft(event.currentTarget.value)}
             onKeyDown={handleKeyDown}

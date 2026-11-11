@@ -32,7 +32,7 @@ relevant. No blanket accessibility certification is promised.
 
 ## Decided architecture
 
-- **Repository:** single personal-account repository `darizae/marisma` (public GitHub repository exists; the npm package remains private). One pnpm workspace. No other repositories without separate authorization.
+- **Repository:** single personal-account repository `darizae/marisma` (the repository exists; visibility remains private pending owner approval for public release). One pnpm workspace. No other repositories without separate authorization.
 - **Published unit:** `packages/ui/`, named `@darizae/marisma`. npm scope control is not yet verified and publication remains BLOCKED. Package stays `private: true`.
 - **Consumers:** `apps/storybook/`, `apps/landing/`, `apps/consumers/vite-react/`, `apps/consumers/nextjs/` all depend on `packages/ui`; never reverse that direction.
 - **Runtime:** React 19 with React and React DOM peers, never bundled. Next.js, Vite, Storybook, router and form-framework tooling are consumer/dev dependencies rather than mandatory runtime dependencies for a basic Button.
@@ -48,7 +48,7 @@ relevant. No blanket accessibility certification is promised.
 
 ### Repository, package and dependency contract
 
-The approved repository `darizae/marisma` now exists. This planning PR is based on `main` at `e09681ba6e9d05577c6d6d1735fb02f9e4d7fed2`; each implementer must recheck the actual base SHA before work. Source, consumers and release preparation remain in this one repository. Do not create other repositories or depend on unapproved unpublished packages.
+The approved repository `darizae/marisma` now exists. Each implementer must recheck the actual base SHA before work. Source, consumers and release preparation remain in this one repository. Do not create other repositories or depend on unapproved unpublished packages.
 
 Current manifests and `pnpm-lock.yaml` exist. T-007 reviewed esbuild 0.28.2's
 package source, `node install.js` postinstall, platform-binary hash verification,

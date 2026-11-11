@@ -132,8 +132,9 @@ nearest Marisma subtree theme is bridged into its portal.
   strings. These values are not instants and never shift between time zones.
   `locale` controls visible/announced formatting, `weekStartsOn` controls the
   grid, and `timeZone` determines only what date counts as today. `min`, `max`,
-  and `disabledDate` constrain selection. `DateField` formats for display and
-  submits the ISO value; it does not parse localized free-form text. Calendar
+  and `disabledDate` constrain selection. `DateField` formats for display,
+  submits the ISO value, and participates in native required/min/max form
+  validation; it does not parse localized free-form text. Calendar
   range/multiple selection and broad localization/RTL guarantees are not part
   of this prerelease contract.
 
@@ -145,8 +146,9 @@ nearest Marisma subtree theme is bridged into its portal.
   `FieldDivider` and `FieldCallout` adapt the existing separator and alert
   contracts without duplicating them.
 - `ConfirmationDialog` makes confirm, cancel, Escape, pending, repeated-click,
-  and focus-return behavior explicit. `InlineEdit` keeps a cancellable draft
-  and leaves controlled optimistic updates and persistence to the caller.
+  and focus-return behavior explicit. `InlineEdit` keeps a cancellable draft,
+  reports rejected async saves through `onSaveError`, and leaves controlled
+  optimistic updates and persistence to the caller.
   `SearchField` provides clear/search actions, Enter submission, query trimming,
   and an explicit empty-query policy.
 - `Dropzone` combines a keyboard-accessible native file input with drag and
@@ -164,8 +166,8 @@ nearest Marisma subtree theme is bridged into its portal.
   and provides presentational loading, empty, and error surfaces. `CardGrid`
   and `PageSection` provide semantic responsive layout without owning data.
 - `DataPreview` renders structured or text input as text only, handles circular
-  structures, and enforces collapsed and hard character limits. It never
-  injects supplied HTML.
+  structures, bounds serialization before enforcing collapsed and hard
+  character limits, and never injects supplied HTML.
 - `Sidebar` uses a static desktop aside and a focus-contained mobile dialog.
   `AppNavbar`, `AppShell`, `PageFooter`, and `StepProgress` provide landmarks,
   skip navigation, responsive layout, and current-step/page semantics.

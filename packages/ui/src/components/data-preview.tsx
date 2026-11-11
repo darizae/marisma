@@ -5,6 +5,7 @@ import { Button } from "./button";
 import { cn } from "../lib/cn";
 
 const MAX_PREVIEW_CHARACTERS = 100_000;
+const MAX_SERIALIZATION_DEPTH = 50;
 
 export type DataPreviewProps = Omit<
   ComponentPropsWithRef<"section">,
@@ -18,27 +19,116 @@ export type DataPreviewProps = Omit<
   defaultExpanded?: boolean;
 };
 
-function serializeData(data: unknown) {
-  if (typeof data === "string") return data;
+function serializeData(data: unknown, maxCharacters: number) {
+  let text = "";
+  let truncated = false;
+  const active = new Set<object>();
 
-  try {
-    const seen = new WeakSet<object>();
-    const serialized = JSON.stringify(
-      data,
-      (_key, value: unknown) => {
-        if (typeof value === "bigint") return `${String(value)}n`;
-        if (typeof value === "object" && value !== null) {
-          if (seen.has(value)) return "[Circular]";
-          seen.add(value);
+  const write = (chunk: string) => {
+    const remaining = maxCharacters - text.length;
+    if (remaining <= 0) {
+      truncated = true;
+      return false;
+    }
+    if (chunk.length > remaining) {
+      text += chunk.slice(0, remaining);
+      truncated = true;
+      return false;
+    }
+    text += chunk;
+    return true;
+  };
+
+  const writeValue = (value: unknown, depth: number): void => {
+    if (truncated) return;
+    const indent = "  ".repeat(depth);
+
+    if (depth > MAX_SERIALIZATION_DEPTH) {
+      write("[Max depth]");
+      return;
+    }
+    if (value === null) {
+      write("null");
+      return;
+    }
+    switch (typeof value) {
+      case "string":
+        write(JSON.stringify(value));
+        return;
+      case "number":
+      case "boolean":
+        write(String(value));
+        return;
+      case "bigint":
+        write(JSON.stringify(`${String(value)}n`));
+        return;
+      case "undefined":
+        write("undefined");
+        return;
+      case "symbol":
+      case "function":
+        write(String(value));
+        return;
+      default:
+        break;
+    }
+
+    if (active.has(value)) {
+      write("[Circular]");
+      return;
+    }
+
+    active.add(value);
+    try {
+      if (Array.isArray(value)) {
+        write("[");
+        let first = true;
+        for (let index = 0; index < value.length && !truncated; index += 1) {
+          if (first) write("\n");
+          else write(",\n");
+          write(`${"  ".repeat(depth + 1)}`);
+          writeValue(value[index], depth + 1);
+          first = false;
         }
-        return value;
-      },
-      2,
-    );
-    return serialized ?? String(data);
-  } catch (error) {
-    return `[Unable to serialize data: ${error instanceof Error ? error.message : "unknown error"}]`;
+        if (!truncated) {
+          if (!first) write(`\n${indent}`);
+          write("]");
+        }
+        return;
+      }
+
+      write("{");
+      const record = value as Record<string, unknown>;
+      let first = true;
+      for (const key in record) {
+        if (!Object.prototype.hasOwnProperty.call(record, key)) continue;
+        if (first) write("\n");
+        else write(",\n");
+        write(`${"  ".repeat(depth + 1)}${JSON.stringify(key)}: `);
+        writeValue(record[key], depth + 1);
+        first = false;
+        if (truncated) break;
+      }
+      if (!truncated) {
+        if (!first) write(`\n${indent}`);
+        write("}");
+      }
+    } catch (error) {
+      write(
+        `[Unable to serialize data: ${error instanceof Error ? error.message : "unknown error"}]`,
+      );
+    } finally {
+      active.delete(value);
+    }
+  };
+
+  if (typeof data === "string") {
+    write(data);
+  } else {
+    writeValue(data, 0);
   }
+
+  return { text, truncated };
 }
 
 export function DataPreview({
@@ -51,13 +141,16 @@ export function DataPreview({
   ...props
 }: DataPreviewProps) {
   const [expanded, setExpanded] = useState(defaultExpanded);
-  const serialized = useMemo(() => serializeData(data), [data]);
   const resolvedMax = Math.min(
     MAX_PREVIEW_CHARACTERS,
     Math.max(
       1,
       Number.isFinite(maxCharacters) ? Math.floor(maxCharacters) : 20_000,
     ),
+  );
+  const serialized = useMemo(
+    () => serializeData(data, resolvedMax),
+    [data, resolvedMax],
   );
   const resolvedCollapsed = Math.min(
     resolvedMax,
@@ -68,8 +161,8 @@ export function DataPreview({
         : 1_500,
     ),
   );
-  const capped = serialized.slice(0, resolvedMax);
-  const limited = serialized.length > capped.length;
+  const capped = serialized.text;
+  const limited = serialized.truncated;
   const collapsible = capped.length > resolvedCollapsed;
   const visible = expanded ? capped : capped.slice(0, resolvedCollapsed);
 
@@ -108,7 +201,7 @@ export function DataPreview({
       {limited ? (
         <p className="border-t border-mar-border px-4 py-3 text-sm text-mar-muted">
           Previewing {capped.length.toLocaleString()} of{" "}
-          {serialized.length.toLocaleString()} characters.
+          {capped.length.toLocaleString()}+ characters.
         </p>
       ) : null}
     </section>

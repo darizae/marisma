@@ -165,6 +165,25 @@ describe("complex selection and dates", () => {
     ).toBe("2026-11-13");
   });
 
+  it("uses a native date control for required form validation", () => {
+    const onSubmit = vi.fn((event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+    });
+
+    render(
+      <form onSubmit={onSubmit}>
+        <DateField label="Observation date" name="observationDate" required />
+        <button type="submit">Submit</button>
+      </form>,
+    );
+
+    const validationInput = document.querySelector<HTMLInputElement>(
+      'input[type="date"][name="observationDate"]',
+    );
+    expect(validationInput).toBeRequired();
+    expect(validationInput).not.toBeValid();
+  });
+
   it("rejects ambiguous or impossible calendar-date values", () => {
     expect(() => render(<Calendar value="11/31/2026" />)).toThrowError(
       /YYYY-MM-DD/,
