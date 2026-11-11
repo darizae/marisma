@@ -5,7 +5,7 @@
 A Tailwind-first React component library for professional web applications.
 
 Marisma is a prerelease library for React 19 and Tailwind CSS 4. The current
-package implements all 48 approved non-chart component families with typed
+package implements 48 different component families with typed
 public APIs, accessible native or Radix-based interactions, and Reedwater and
 Tidal Blue themes in light and dark modes.
 
