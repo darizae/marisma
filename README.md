@@ -49,7 +49,7 @@ Tidal Blue themes in light and dark modes.
 - Page patterns — `PageHeading`, caller-owned `UserMenu`, and `ErrorView`.
 
 Storybook includes controls, keyboard notes, interaction coverage, and theme
-switching for these components. No charting, routing, data fetching,
+switching for these components. No routing, data fetching,
 authentication, or persisted theme settings are included.
 
 ## Development checkout
@@ -162,9 +162,9 @@ Marisma's supplied leaf mark is stored once at [`assets/brand/marisma-leaf.svg`]
 
 ## Implementation status and local verification
 
-The approved **48 non-chart source candidates** have been implemented and documented. The [component catalog](docs/planning/COMPONENT_CATALOG.md) maps them to their public APIs, stories and tests. The [local release-candidate report](docs/release/T-011_RELEASE_CANDIDATE.md) includes the post-implementation hardening checks, tested platform, browser omissions and unpublished package status. Charting and plotting remain deferred.
+The approved **48 approved component candidates** have been implemented and documented. The [component catalog](docs/planning/COMPONENT_CATALOG.md) maps them to their public APIs, stories and tests. The [local release-candidate report](docs/release/T-011_RELEASE_CANDIDATE.md) includes the post-implementation hardening checks, tested platform, browser omissions and unpublished package status.
 
-The completed implementation-task Markdown files were retired from the working tree; **Git history** retains their full content. Maintainers should use [approved decisions](docs/planning/APPROVED_DECISIONS.md), the [engineering contract](docs/planning/ENGINEERING_CONTRACT.md), and [current source/test routing](docs/agent/ROUTING.md) instead of executing obsolete task files.
+The completed implementation-task Markdown files were retired from the working tree; **Git history** retains their full content. A separate [npm release/security plan](docs/tasks/13_T-013_npm-release-security__Codex-Sol-5.6_High.md) is proposed for owner review and does not authorize publication. Maintainers should use [approved decisions](docs/planning/APPROVED_DECISIONS.md), the [engineering contract](docs/planning/ENGINEERING_CONTRACT.md), and [current source/test routing](docs/agent/ROUTING.md) instead of executing obsolete task files.
 
 **Tests run locally.** GitHub Actions is not a required validation gate. Use targeted tests and [local release qualification](docs/planning/VERIFICATION_AND_RELEASE.md) with actual recorded results. Only the reviewed esbuild install script is explicitly allowed. The package is still private and unpublished; npm publication requires an independent owner decision.
 

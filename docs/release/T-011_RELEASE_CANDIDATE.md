@@ -5,7 +5,7 @@
 **Package:** `@darizae/marisma@0.0.0` · `private: true` · MIT · unpublished
 
 This report is the evidence handoff for T-011. It covers the complete approved
-non-chart catalog, public documentation, Storybook and landing assets, package
+component catalog, public documentation, Storybook and landing assets, package
 consumption, and the local release checklist. It does not authorize publication,
 tagging, deployment, or removal of `private: true`.
 
@@ -133,7 +133,7 @@ on Darwin arm64 with Node 26.13.0 and pnpm 11.9.0:
   branding and the landing build both serve that file; the Chromium brand gate
   verifies the landing logo and favicon at `/marisma/`, while the Storybook
   browser gate verifies its root-served favicon and SVG.
-- No charting or scientific-visualization dependency was added. No backend,
+- No backend,
   auth, router, persistence, font download, remote CI workflow, or publication
   workflow was added.
 
