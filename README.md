@@ -10,9 +10,10 @@ public APIs, accessible native or Radix-based interactions, and Reedwater and
 Tidal Blue themes in light and dark modes.
 
 > **Project status:** `@darizae/marisma` is private and is not published to npm.
-> Full documentation and release qualification remain in development. Use this
-> repository's Storybook and tarball-installed consumer fixtures for evaluation;
-> do not treat the package as a stable release.
+> The local release-candidate documentation and qualification evidence are
+> complete for owner review. Use this repository's Storybook and
+> tarball-installed consumer fixtures for evaluation; do not treat the private
+> package as a stable or published release.
 
 ## Available components
 
@@ -163,9 +164,10 @@ Marisma's supplied leaf mark is stored once at [`assets/brand/marisma-leaf.svg`]
 
 Marisma's foundation/feedback, interaction/date, form/composed-field, and
 application-composition clusters now have locally verified source for the full
-48-candidate non-chart catalog. The remaining
-[grouped implementation specification](docs/agent/ROUTING.md) (T-011) covers
-complete documentation and local release qualification.
+48-candidate non-chart catalog. T-011 completes the documentation and local
+release-candidate qualification; see the [release-candidate report](docs/release/T-011_RELEASE_CANDIDATE.md)
+for feature dispositions, exact commands, browser coverage, packed-artifact
+evidence, and publication gating.
 The [catalog](docs/planning/COMPONENT_CATALOG.md)
 accounts for all 48 original non-chart source candidates. Plotting remains
 deferred.

@@ -1,6 +1,6 @@
 # Marisma — repository agent instructions
 
-The owner's durable approved-decision ledger is `docs/planning/APPROVED_DECISIONS.md`; the implementation contract is `docs/planning/ENGINEERING_CONTRACT.md` and scope is `docs/planning/COMPONENT_CATALOG.md`. Reconcile them before exporting/implementing new clusters; do not repeat settled interview questions or infer unapproved changes. T-007, the explicitly authorized T-008, T-009, and T-010 have locally verified implementation awaiting owner review; the **proposed** remaining release cluster is `docs/tasks/11_*.md` and needs owner review before execution. Earlier tasks 01–06 are historical S1 records, not active assignments. **Execute only the explicitly assigned approved checkpoint of one cluster.**
+The owner's durable approved-decision ledger is `docs/planning/APPROVED_DECISIONS.md`; the implementation contract is `docs/planning/ENGINEERING_CONTRACT.md` and scope is `docs/planning/COMPONENT_CATALOG.md`. Reconcile them before exporting/implementing new clusters; do not repeat settled interview questions or infer unapproved changes. T-007 through T-011 have locally verified implementation and release-candidate evidence awaiting owner review; publication remains separately gated. Earlier tasks 01–06 are historical S1 records, not active assignments. **Execute only the explicitly assigned approved checkpoint of one cluster.**
 
 ## Read sequence
 

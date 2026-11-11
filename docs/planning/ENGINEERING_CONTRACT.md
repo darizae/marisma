@@ -54,8 +54,9 @@ Current manifests and `pnpm-lock.yaml` exist. T-007 reviewed esbuild 0.28.2's
 package source, `node install.js` postinstall, platform-binary hash verification,
 and version check, then added the narrow `allowBuilds.esbuild: true` permission.
 A clean frozen-lockfile install now runs that single script with no ignored
-builds. Full release qualification remains a later T-011 gate; there is **no
-remote CI gate**. Never assert tests passed without recorded local evidence.
+builds. T-011 release qualification is recorded in
+`docs/release/T-011_RELEASE_CANDIDATE.md`; there is **no remote CI gate**.
+Never assert tests passed without recorded local evidence.
 
 `packages/ui` is deliberately `private: true`, version `0.0.0`. Removing the private
 flag, selecting a public version/tag, and npm publishing are **distinct later approval
@@ -88,11 +89,9 @@ variant class is emitted into production CSS. No second Tailwind preflight impor
 
 ## Task context and routing
 
-The six S1 files `docs/tasks/01_*.md` through `06_*.md` are historical. T-007,
-the explicitly authorized T-008, T-009, and T-010 have locally verified
-implementation awaiting owner review. T-011 remains proposed and requires
-owner review before execution. Numbered order is dependency order, not blanket
-authorization.
+The six S1 files `docs/tasks/01_*.md` through `06_*.md` are historical. T-007
+through T-011 have locally verified implementation/evidence awaiting owner
+review. Numbered order is dependency order, not blanket authorization.
 Read root `AGENTS.md`, this shared contract, **one assigned numbered task file**,
 the corresponding row in `docs/agent/ROUTING.md`,
 `.agents/skills/engineering-quality/SKILL.md`, and only the task's initial source/test paths.
@@ -119,9 +118,9 @@ Button/Input/Dialog, Storybook and Vite/Next.js consumer harnesses. T-007
 through T-010 add locally verified source for the remaining foundation,
 interaction/date, form, data, navigation, and application-composition
 candidates, for **48 implemented component families** total. This completes the
-approved non-chart source catalog, not full documentation/release qualification
-or a public release. T-011 covers that final local qualification. Plotting
-remains deferred. The package is private at 0.0.0.
+approved non-chart source catalog. T-011 adds the complete documentation and
+local release-candidate qualification evidence; it is not a public release.
+Plotting remains deferred. The package is private at 0.0.0.
 GitHub Actions is optional, intentionally not a gate; all actual test evidence
 comes from local runs. Publication still needs separate authorization.
 

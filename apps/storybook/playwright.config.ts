@@ -2,6 +2,7 @@ import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
   testDir: "./tests",
+  testIgnore: "brand.spec.ts",
   fullyParallel: false,
   use: {
     baseURL: "http://127.0.0.1:6006",

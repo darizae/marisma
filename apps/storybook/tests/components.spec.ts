@@ -1,5 +1,17 @@
 import { expect, test } from "@playwright/test";
 
+test("Storybook serves the canonical Marisma leaf brand asset", async ({
+  page,
+}) => {
+  await page.goto("/");
+
+  const favicon = page.locator('link[rel="icon"]');
+  await expect(favicon).toHaveAttribute("href", "./marisma-leaf.svg");
+  const assetResponse = await page.request.get("/marisma-leaf.svg");
+  expect(assetResponse.ok()).toBe(true);
+  expect(assetResponse.headers()["content-type"]).toContain("image/svg+xml");
+});
+
 test("Button negative states remain inactive", async ({ page }) => {
   await page.goto("/iframe.html?id=components-button--behavior&viewMode=story");
 

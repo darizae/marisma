@@ -4,8 +4,8 @@
 13 interaction/date families, eight form/composed-field families, 13
 data/navigation/application-composition families, and the
 `@darizae/marisma/theme.css` theme entry.
-It is not published to npm; complete documentation and release qualification
-remain pending.
+It is not published to npm; local release-candidate documentation and
+qualification are complete for owner review.
 
 ## Local package evaluation
 
@@ -180,6 +180,9 @@ nearest Marisma subtree theme is bridged into its portal.
 The package remains `private: true` at version `0.0.0`. A successful local
 tarball check is evidence for owner review, not permission to publish or a
 stable compatibility guarantee.
+
+The complete catalog disposition and local qualification evidence are recorded
+in the repository's [T-011 release-candidate report](https://github.com/darizae/marisma/blob/main/docs/release/T-011_RELEASE_CANDIDATE.md).
 
 MIT licensed. The package archive includes its LICENSE file and does not bundle
 fonts.

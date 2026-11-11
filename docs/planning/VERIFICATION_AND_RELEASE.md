@@ -1,6 +1,6 @@
 # Marisma — local verification and release policy
 
-**Status:** CURRENT planning policy; T-007 through T-010 are locally verified and T-011 requires owner review · **Revision:** 6 · **Date:** 2026-11-11
+**Status:** CURRENT planning policy; T-007 through T-011 are locally verified and awaiting owner review · **Revision:** 7 · **Date:** 2026-11-11
 
 ## Owner-selected verification policy
 
@@ -20,11 +20,14 @@ IT-COMPOSITION-01 Chromium, responsive visual, and packed Vite/Next evidence.
 The T-007 dependency review approved only esbuild 0.28.2
 after inspecting the package source,
 postinstall behavior, binary hash verification, and version check; a clean
-frozen install now reports no ignored builds. This does not replace the complete
-T-011 release-qualification sweep or create a remote CI requirement. Never
+frozen install now reports no ignored builds. T-011 records the complete
+release-qualification sweep without creating a remote CI requirement. Never
 disable dependency-build safeguards globally.
 
-The npm package remains `private: true` at version `0.0.0`, unpublished. All 48 non-chart candidates must be accounted for before release; charts remain deferred.
+T-011 records the complete local release-candidate sweep in
+`docs/release/T-011_RELEASE_CANDIDATE.md`. The npm package remains
+`private: true` at version `0.0.0`, unpublished; owner publication approval is
+still required. Charts remain deferred.
 
 ## Existing acceptance cases retained
 
