@@ -45,6 +45,8 @@
 | D-20 | Long interviews must not lose consequential product decisions as context grows.                                                                             | Maintain this approved-decision record; reconcile it before plans, new task handoffs and release review. Private interview notes remain outside the public repository.                                                              |
 | D-21 | Each sequenced task Markdown filename must include the **recommended coding model and reasoning effort** as a suffix, as explicitly requested by the owner. | The filename carries a recommendation only; worker-facing task bodies remain technically model-neutral. Keep model comparisons, costs, alternatives/fallbacks, career motives and private interview records outside the repository. |
 
+| D-22 | **First npm publication is a manual, interactive 2FA action performed by the owner**, not a token-driven agent action or an automated remote workflow. | Agents may audit, test, pack locally and propose a release candidate, but cannot log in, stage, publish, switch the private guard, tag or grant permissions. Require a separate approval for an exact final artifact and version. |
+
 ## Current facts versus decisions
 
 As of post-T-012 hardening, the repo contains locally tested implementation source and
@@ -61,7 +63,7 @@ architecture remain unchanged.
 
 ## Required handoff reconciliation
 
-Before exporting any new approved work unit: read **this register**, the shared engineering contract, component catalog and current source/test status; reconcile contradictory or stale paths; preserve the owner's fixed decisions; list exact unresolved implementation facts and separate approvals. Before declaring release readiness: verify every catalog candidate's disposition and actual local evidence. If a new choice contradicts D-01–D-21, obtain owner approval first and amend this record in the same reviewed change.
+Before exporting any new approved work unit: read **this register**, the shared engineering contract, component catalog and current source/test status; reconcile contradictory or stale paths; preserve the owner's fixed decisions; list exact unresolved implementation facts and separate approvals. Before declaring release readiness: verify every catalog candidate's disposition and actual local evidence. If a new choice contradicts D-01–D-22, obtain owner approval first and amend this record in the same reviewed change.
 
 ## Retired task-spec policy (2026-11-11)
 
@@ -69,4 +71,4 @@ The implementation assignments T-001–T-011 and the one-off hardening review ha
 
 ## Current release planning boundary (2026-11-11)
 
-The existing UI component catalog is implemented and locally tested according to the release report. Public npm distribution is still pending: the package is `private: true`, version `0.0.0`. Release-security preparation is proposed in `docs/tasks/13_T-013_npm-release-security__Codex-Sol-5.6_Extra-High.md`. This does not approve publishing, enabling a new remote workflow, changing package credentials or tagging a release. The official owner-private decision history is not exported into this public document.
+The existing UI component catalog is implemented and locally tested according to the release report. Public npm distribution is still pending: the package is `private: true`, version `0.0.0`. Release-security preparation is approved subject to PR #3 merge in `docs/tasks/13_T-013_npm-release-security__Codex-Sol-5.6_Extra-High.md`. This does not approve publishing, enabling a new remote workflow, changing package credentials or tagging a release. The official owner-private decision history is not exported into this public document.

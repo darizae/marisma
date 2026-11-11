@@ -16,6 +16,6 @@ Start at `AGENTS.md`, consult `docs/planning/APPROVED_DECISIONS.md` and the rele
 
 The five grouped release clusters T-007–T-011 and subsequent hardening have been implemented, but **owner publication review remains separate**. Do not infer local test results beyond those actually recorded. Avoid adding remote CI requirements: local checks are the owner-approved evidence channel. Future task specs, if needed, use the model/effort filename suffix described in `AGENTS.md`; the task body stays model-neutral.
 
-## Proposed next task — owner review required
+## Next task — preparation approved after PR #3 merge
 
-`docs/tasks/13_T-013_npm-release-security__Codex-Sol-5.6_Extra-High.md` defines the local security assessment, exact-artifact preflight and manual npm publication decision gates. Its filename is an owner-requested routing hint, not execution permission. No publication, version change, workflow creation or npm credential action is approved by this plan.
+`docs/tasks/13_T-013_npm-release-security__Codex-Sol-5.6_Extra-High.md` defines the local security assessment, exact-artifact preflight and manual npm publication decision gates. Its filename is an owner-requested routing hint. The owner has approved local security preparation and a publication proposal after PR #3 merges, **not** publication itself. Do not stage, log in, use npm credentials, change the private guard, tag or publish. A first version remains for owner approval; no remote workflow is authorized.

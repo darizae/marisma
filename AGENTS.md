@@ -1,6 +1,6 @@
 # Marisma — maintainer and agent entry point
 
-**Current state:** The complete approved **48-candidate component catalog** has implementation, Storybook coverage and recorded local release-candidate evidence. The npm package is still **private, version 0.0.0 and unpublished**. The source repository is public. **One proposed release/security specification exists; it is not approved for worker execution.** Historical task Markdown files were retired from the working tree after completion and remain recoverable through Git history. The current release evidence is `docs/release/T-011_RELEASE_CANDIDATE.md`.
+**Current state:** The complete approved **48-candidate component catalog** has implementation, Storybook coverage and recorded local release-candidate evidence. The npm package is still **private, version 0.0.0 and unpublished**. The source repository is public. **One release/security preparation specification is approved for execution only after PR #3 is merged; npm publication remains blocked.** Historical task Markdown files were retired from the working tree after completion and remain recoverable through Git history. The current release evidence is `docs/release/T-011_RELEASE_CANDIDATE.md`.
 
 ## Read only the context relevant to the assigned work
 
@@ -10,7 +10,7 @@
 4. `.agents/skills/engineering-quality/SKILL.md` — shared implementation safeguards.
 5. `docs/planning/VERIFICATION_AND_RELEASE.md` and the release evidence report **only** for the applicable verification/release gate.
 
-Do not recursively read all documentation. The proposed release/security plan is `docs/tasks/13_T-013_npm-release-security__Codex-Sol-5.6_Extra-High.md`. It is planning material until the owner approves implementation; no publication is authorized. Each new approved work unit must specify its exact initial read set, allowed files, acceptance checks and stop conditions. A model label in a future spec filename is an owner-requested nonbinding recommendation; keep the technical task body model-neutral and do not commit model comparisons or private interview transcripts.
+Do not recursively read all documentation. The proposed release/security plan is `docs/tasks/13_T-013_npm-release-security__Codex-Sol-5.6_Extra-High.md`. Its security preparation and local verification are owner-approved subject to merging PR #3; no npm publication, login, staging, token use or removal of the private publication guard is authorized. Each new approved work unit must specify its exact initial read set, allowed files, acceptance checks and stop conditions. A model label in a future spec filename is an owner-requested nonbinding recommendation; keep the technical task body model-neutral and do not commit model comparisons or private interview transcripts.
 
 ## Non-negotiable architecture
 
