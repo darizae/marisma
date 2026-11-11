@@ -17,6 +17,8 @@ All notable changes to Marisma are documented here.
   approval-gated.
 - Updated the local Next.js consumer and forced Storybook's advisory-affected
   docgen `glob` range to a patched release, with local compatibility checks.
+- Narrowed the Node.js engine floor to the directly verified `>=22.15.0` after
+  the current test toolchain proved incompatible with 22.14.
 
 ## [0.0.0] — Unpublished prerelease
 
