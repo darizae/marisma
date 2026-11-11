@@ -1,6 +1,6 @@
 # Marisma — maintainer and agent entry point
 
-**Current state:** The complete approved approved **48-candidate component catalog** has implementation, Storybook coverage and recorded local release-candidate evidence. The npm package is still **private, version 0.0.0 and unpublished**. The source repository is public. **One proposed release/security specification exists; it is not approved for worker execution.** Historical task Markdown files were retired from the working tree after completion and remain recoverable through Git history. The current release evidence is `docs/release/T-011_RELEASE_CANDIDATE.md`.
+**Current state:** The complete approved **48-candidate component catalog** has implementation, Storybook coverage and recorded local release-candidate evidence. The npm package is still **private, version 0.0.0 and unpublished**. The source repository is public. **One proposed release/security specification exists; it is not approved for worker execution.** Historical task Markdown files were retired from the working tree after completion and remain recoverable through Git history. The current release evidence is `docs/release/T-011_RELEASE_CANDIDATE.md`.
 
 ## Read only the context relevant to the assigned work
 

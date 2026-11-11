@@ -112,7 +112,7 @@ The workspace, four Tailwind theme variants, published-package boundary, Storybo
 
 Keep approved product, branding, release, scope and verification choices in `docs/planning/APPROVED_DECISIONS.md`, not only in conversation context. Before generating specs or changing product direction, reconcile that record with the actual component catalog and branch state. Numbered task filenames include the owner's explicit recommended coding model and reasoning-effort suffix; those values are nonbinding routing hints. Do not put model comparisons, pricing, fallback policy, career notes or private interview transcripts into the repository or technical task bodies.
 
-At each milestone, publication or significant contract/file move, check README, `AGENTS.md`, routing, catalog, brand links and active contract for stale statements, contradictory verification claims and broken paths. Make a bounded hygiene correction in the associated reviewed change. Local tests are authoritative; do not burden GitHub with remote CI unless the owner explicitly changes D-19.
+At each milestone, publication or significant contract/file move, check README, `AGENTS.md`, routing, catalog, brand links and active contract for stale statements, contradictory verification claims and broken paths. Make a bounded hygiene correction in the associated reviewed change. Local tests are authoritative; do not burden GitHub with remote CI unless the owner explicitly changes D-18.
 
 ## Sequenced spec filename convention
 
