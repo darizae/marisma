@@ -1,8 +1,8 @@
 # Marisma UI package
 
-`@darizae/marisma` is a private prerelease package for React 19 and Tailwind CSS
-4. It currently exports Button, Input, Dialog, 11 foundation/feedback families,
-13 interaction/date families, and the `@darizae/marisma/theme.css` theme entry.
+`@darizae/marisma` is a private prerelease package for React 19 and Tailwind CSS 4. It currently exports Button, Input, Dialog, 11 foundation/feedback families,
+13 interaction/date families, eight form/composed-field families, and the
+`@darizae/marisma/theme.css` theme entry.
 It is not published to npm, and the broader non-chart catalog is still in
 development.
 
@@ -135,6 +135,24 @@ nearest Marisma subtree theme is bridged into its portal.
   submits the ISO value; it does not parse localized free-form text. Calendar
   range/multiple selection and broad localization/RTL guarantees are not part
   of this prerelease contract.
+
+## Form and composed-field exports
+
+- `Form` preserves native HTML submission, reset, validation, and keyboard
+  order while optionally rendering a caller-provided linked error summary.
+  `FieldGroup` uses native `fieldset`/`legend` semantics and disabled grouping;
+  `FieldDivider` and `FieldCallout` adapt the existing separator and alert
+  contracts without duplicating them.
+- `ConfirmationDialog` makes confirm, cancel, Escape, pending, repeated-click,
+  and focus-return behavior explicit. `InlineEdit` keeps a cancellable draft
+  and leaves controlled optimistic updates and persistence to the caller.
+  `SearchField` provides clear/search actions, Enter submission, query trimming,
+  and an explicit empty-query policy.
+- `Dropzone` combines a keyboard-accessible native file input with drag and
+  drop. It can reject declared MIME/extension, size, count, and duplicate
+  failures and supports clearing, reselection, and form reset. These are local
+  metadata checks only: Dropzone does not upload, parse, execute, persist, or
+  malware-scan files.
 
 ## Release status
 

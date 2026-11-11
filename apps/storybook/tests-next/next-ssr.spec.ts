@@ -36,5 +36,9 @@ test("interactive package components hydrate without runtime failures", async ({
   await expect(
     page.getByRole("textbox", { name: "Hydrated date" }),
   ).toHaveValue("11 Nov 2026");
+  const search = page.getByRole("searchbox", { name: "Hydrated search" });
+  await search.fill("estuary");
+  await page.getByRole("button", { name: "Search", exact: true }).click();
+  await expect(page.getByText("Searching for estuary")).toBeVisible();
   expect(errors).toEqual([]);
 });

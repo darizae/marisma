@@ -344,6 +344,10 @@ test("packed Vite consumer generates component CSS without restyling native cont
   await expect(
     page.getByRole("textbox", { name: "Consumer date" }),
   ).toHaveValue("13 Nov 2026");
+  const search = page.getByRole("searchbox", { name: "Consumer search" });
+  await search.fill("reeds");
+  await page.getByRole("button", { name: "Search", exact: true }).click();
+  await expect(page.getByText("Searching for reeds")).toBeVisible();
 });
 
 test("packed Next.js consumer hydrates its styled interactive component", async ({
@@ -378,5 +382,9 @@ test("packed Next.js consumer hydrates its styled interactive component", async 
   await expect(
     page.getByRole("textbox", { name: "Hydrated date" }),
   ).toHaveValue("11 Nov 2026");
+  const search = page.getByRole("searchbox", { name: "Hydrated search" });
+  await search.fill("estuary");
+  await page.getByRole("button", { name: "Search", exact: true }).click();
+  await expect(page.getByText("Searching for estuary")).toBeVisible();
   expect(hydrationProblems).toEqual([]);
 });

@@ -12,6 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
   Input,
+  SearchField,
   Select,
 } from "@darizae/marisma";
 
@@ -45,6 +46,10 @@ export function ComponentFixture() {
         locale="en-GB"
         timeZone="Europe/Madrid"
         weekStartsOn={1}
+      />
+      <SearchField
+        label="Hydrated search"
+        onSearch={(query) => setStatus(`Searching for ${query}`)}
       />
       <p aria-live="polite" className="text-sm text-mar-muted">
         {status}

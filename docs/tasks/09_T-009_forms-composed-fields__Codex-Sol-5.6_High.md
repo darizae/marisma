@@ -1,6 +1,6 @@
 # 09 — T-009: Forms, field compositions and file interaction
 
-**Status:** PROPOSED FOR OWNER REVIEW · **Phase:** S3, cluster 3/5 · **Repository:** darizae/marisma
+**Status:** LOCALLY VERIFIED; OWNER REVIEW REQUIRED · **Phase:** S3, cluster 3/5 · **Repository:** darizae/marisma
 **Dependency:** T-008 accepted; interaction contracts and semantic feedback tokens available.
 
 ## Outcome and exact catalog coverage
@@ -34,3 +34,9 @@ Core Form and fields must work with native React form state, validation and HTML
 - Ensure source/README accurately distinguish validation from security and local file selection from upload.
 
 **Stop:** deliver reviewable commits/PR, actual test evidence and remaining blockers; do not publish or start T-010 without owner acceptance.
+
+## Implemented disposition and local evidence
+
+All eight assigned candidates are **ADAPT** dispositions with public typed exports and Storybook examples: `Form`, `FieldGroup`, `FieldDivider`, `FieldCallout`, `ConfirmationDialog`, `InlineEdit`, `SearchField`, and `Dropzone`. Form values, validation policy, async work, persistence, and upload remain consumer-owned. Dropzone performs only declared metadata checks and local selection; it does not upload, parse, execute, persist, or malware-scan files.
+
+Local verification completed on 2026-11-11 with the UI unit suite, workspace typecheck, package build/contract test, Storybook Chromium interaction suite, Storybook docs/build checks, and tarball-installed Vite/Next.js production consumers. Playwright Chromium covered IT-FORMS-01, including native input and `DataTransfer` drag events; native Safari, mobile assistive technology, and real-device file pickers remain outside this local browser evidence.

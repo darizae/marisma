@@ -11,6 +11,7 @@ import {
   DialogTitle,
   DialogTrigger,
   Input,
+  SearchField,
   Select,
 } from "@darizae/marisma";
 import "./styles.css";
@@ -26,6 +27,7 @@ type Theme = (typeof themes)[number];
 
 function ConsumerScaffold() {
   const [theme, setTheme] = useState<Theme>(themes[0]);
+  const [searchStatus, setSearchStatus] = useState("No search submitted");
   const nestedAccent =
     theme.accent === "reedwater" ? "tidal-blue" : "reedwater";
   const nestedMode = theme.mode === "light" ? "dark" : "light";
@@ -98,6 +100,13 @@ function ConsumerScaffold() {
               timeZone="Europe/Madrid"
               weekStartsOn={1}
             />
+            <SearchField
+              label="Consumer search"
+              onSearch={(query) => setSearchStatus(`Searching for ${query}`)}
+            />
+            <p aria-live="polite" className="text-sm text-mar-muted">
+              {searchStatus}
+            </p>
             <div className="flex flex-wrap gap-3">
               <Button type="button">Focus this action</Button>
               <Dialog>

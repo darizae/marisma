@@ -193,6 +193,120 @@ test("Spinner disables rotation for reduced motion", async ({ page }) => {
   );
 });
 
+test("IT-FORMS-01: native form validation, submission, and reset preserve accessible relationships", async ({
+  page,
+}) => {
+  await page.goto(
+    "/iframe.html?id=forms-form-foundation--manual&viewMode=story",
+  );
+
+  const projectName = page.getByRole("textbox", { name: "Project name" });
+  await page.getByRole("button", { name: "Submit" }).click();
+  const summary = page.getByRole("alert", {
+    name: "Please fix the following",
+  });
+  await expect(summary).toBeVisible();
+  await expect(projectName).toHaveAttribute("aria-invalid", "true");
+  await summary.getByRole("link", { name: "Enter a project name." }).click();
+  await expect(projectName).toBeFocused();
+
+  await projectName.fill("Tidal observations");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByText("Submitted Tidal observations")).toBeVisible();
+  await page.getByRole("button", { name: "Reset" }).click();
+  await expect(projectName).toHaveValue("");
+  await expect(page.getByText("Reset to native defaults")).toBeVisible();
+});
+
+test("IT-FORMS-01: composed confirmation, inline edit, and search preserve keyboard and focus behavior", async ({
+  page,
+}) => {
+  await page.goto(
+    "/iframe.html?id=forms-confirmation-dialog--manual&viewMode=story",
+  );
+  const confirmationTrigger = page.getByRole("button", {
+    name: "Remove station",
+  });
+  await confirmationTrigger.focus();
+  await page.keyboard.press("Enter");
+  const dialog = page.getByRole("dialog", { name: "Remove station?" });
+  await expect(dialog).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(dialog).toBeHidden();
+  await expect(confirmationTrigger).toBeFocused();
+
+  await page.goto("/iframe.html?id=forms-inline-edit--manual&viewMode=story");
+  const edit = page.getByRole("button", { name: "Edit Station name" });
+  await edit.click();
+  const inlineInput = page.getByRole("textbox", { name: "Station name" });
+  await inlineInput.fill("Temporary draft");
+  await page.keyboard.press("Escape");
+  await expect(page.getByText("North bank")).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Edit Station name" }),
+  ).toBeFocused();
+
+  await page.goto("/iframe.html?id=forms-search-field--manual&viewMode=story");
+  const search = page.getByRole("searchbox", { name: "Search stations" });
+  await search.fill(" reeds ");
+  await page.keyboard.press("Enter");
+  await expect(page.getByText("Searching for reeds")).toBeVisible();
+  await page.getByRole("button", { name: "Clear search" }).click();
+  await expect(search).toHaveValue("");
+  await expect(search).toBeFocused();
+});
+
+test("IT-FORMS-01: Dropzone supports native input, drag rejection, clearing, and keyboard access", async ({
+  page,
+}) => {
+  await page.goto("/iframe.html?id=forms-dropzone--manual&viewMode=story");
+  const input = page.getByLabel("Choose evidence files");
+  await input.focus();
+  await expect(input).toBeFocused();
+  await input.setInputFiles({
+    buffer: Buffer.from("image"),
+    mimeType: "image/png",
+    name: "marsh.png",
+  });
+  await expect(page.getByText("marsh.png")).toBeVisible();
+
+  const surface = page.getByTestId("dropzone-surface");
+  await surface.evaluate((element) => {
+    const transfer = new DataTransfer();
+    transfer.items.add(
+      new File(["notes"], "notes.txt", { type: "text/plain" }),
+    );
+    element.dispatchEvent(
+      new DragEvent("dragenter", {
+        bubbles: true,
+        cancelable: true,
+        dataTransfer: transfer,
+      }),
+    );
+  });
+  await expect(page.getByText("Drop files here")).toBeVisible();
+  await surface.evaluate((element) => {
+    const transfer = new DataTransfer();
+    transfer.items.add(
+      new File(["notes"], "notes.txt", { type: "text/plain" }),
+    );
+    element.dispatchEvent(
+      new DragEvent("drop", {
+        bubbles: true,
+        cancelable: true,
+        dataTransfer: transfer,
+      }),
+    );
+  });
+  await expect(page.getByRole("alert")).toContainText(
+    "notes.txt is not an accepted file type",
+  );
+
+  await page.getByRole("button", { name: "Clear files" }).click();
+  await expect(page.getByText("marsh.png")).toHaveCount(0);
+  await expect(input).toHaveValue("");
+});
+
 test("selection controls expose keyboard, disabled, read-only, and error states", async ({
   page,
 }) => {

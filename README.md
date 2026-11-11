@@ -5,7 +5,7 @@
 A Tailwind-first React component library for professional web applications.
 
 Marisma is a prerelease library for React 19 and Tailwind CSS 4. The current
-package implements 27 component families with typed public APIs, accessible
+package implements 35 component families with typed public APIs, accessible
 native or Radix-based interactions, and Reedwater and Tidal Blue themes in light
 and dark modes.
 
@@ -37,6 +37,9 @@ and dark modes.
   automatic nearest-subtree theme bridging.
 - Complex selection and dates — single-value, non-searchable `Select`, a
   keyboard date-grid `Calendar`, and composed `DateField`.
+- Forms and composed fields — native `Form`, `FieldGroup`, `FieldDivider`, and
+  `FieldCallout`; guarded `ConfirmationDialog`, `InlineEdit`, and `SearchField`
+  interactions; and `Dropzone` for validated local file selection.
 
 Storybook includes controls, keyboard notes, interaction coverage, and theme
 switching for these components. No charting, routing, data fetching,
@@ -152,11 +155,12 @@ Marisma's supplied leaf mark is stored once at [`assets/brand/marisma-leaf.svg`]
 
 ## Roadmap and local verification
 
-Marisma's foundation/feedback and interaction/date clusters now have locally
-verified source for 24 additional candidates alongside Button, Input, and
-Dialog. Three remaining [grouped implementation specifications](docs/agent/ROUTING.md)
-(T-009 through T-011) cover forms, application patterns, documentation, and
-release qualification. The [catalog](docs/planning/COMPONENT_CATALOG.md)
+Marisma's foundation/feedback, interaction/date, and form/composed-field
+clusters now have locally verified source for 32 additional candidates
+alongside Button, Input, and Dialog. Two remaining
+[grouped implementation specifications](docs/agent/ROUTING.md) (T-010 and
+T-011) cover application patterns, documentation, and release qualification.
+The [catalog](docs/planning/COMPONENT_CATALOG.md)
 accounts for all 48 original non-chart source candidates. Plotting remains
 deferred.
 
