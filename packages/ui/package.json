@@ -10,7 +10,7 @@
     "url": "git+https://github.com/darizae/marisma.git"
   },
   "engines": {
-    "node": ">=22.15.0"
+    "node": ">=22.18.0"
   },
   "exports": {
     ".": {

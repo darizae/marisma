@@ -54,8 +54,8 @@ authentication, or persisted theme settings are included.
 
 ## Development checkout
 
-The monorepo requires Node.js 22.15.0 or newer and pnpm 11.9.0. The 22.15
-floor is verified directly; the current test stack requires its zlib CRC32 API.
+The monorepo requires Node.js 22.18.0 or newer and pnpm 11.9.0. The 22.18
+floor is verified directly and matches the current package build tool.
 
 ```bash
 pnpm install --frozen-lockfile
