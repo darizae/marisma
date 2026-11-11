@@ -1,6 +1,6 @@
 # 13 — T-013: Secure npm release preparation
 
-**Status:** OWNER-APPROVED for delegated, local-agent-led security preparation, private release tooling and publish-ready candidate creation **after PR #3 merges**. The agent may initiate the final CLI publish **only after a distinct explicit owner approval identifying the version and exact SHA-256 artifact**. No publication has yet been authorized.
+**Status:** OWNER-APPROVED for delegated, local-agent-led security preparation, private release tooling and publish-ready candidate creation **against the reviewed PR #3 branch or merged `main`**. The agent may initiate the final CLI publish **only after a distinct explicit owner approval identifying the version and exact SHA-256 artifact**. No publication has yet been authorized.
 **Repository:** `darizae/marisma` · **Publication target:** `@darizae/marisma` · **Chosen method:** *agent-operated* local npm CLI using the owner's **existing authenticated session**, with owner responding personally to 2FA/OS/browser prompts. No new npm tokens, remote publishing workflow or remote CI. **Verification:** local-first.
 **Dependencies:** Implemented 48-candidate component catalog, existing local T-011/T-012 qualification evidence, current package metadata and owner's approved decisions.
 
@@ -82,7 +82,7 @@ Implement using auditable bash/node utilities already present on the owner's mac
 
 ## Execution checkpoint
 
-**Working branch prerequisite:** PR #3 must be merged first; begin from the latest `main` SHA on a new task branch. If PR #3 remains open, do not improvise or run its task as if it were on `main`. No first-publication authorization is implied by the merge itself.
+**Branch/start rule:** The owner has approved **preparation now**. If PR #3 is still open, fetch its exact head `docs/remove-deferred-scope-and-plan-npm-security`, confirm this T-013 revision exists, and create a **separate, short-lived task branch from that head**. Open a *stacked PR targeting the PR #3 branch*; once PR #3 is merged, refresh against `main` and retarget appropriately without destructive force-push. If PR #3 is already merged, branch from verified current `main`. Report branch/base SHA. Do not merge either PR without review, and do not publish until final release approval.
 
 ## Maintainer references
 
