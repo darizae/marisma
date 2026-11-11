@@ -100,12 +100,34 @@ test("the packed package exposes loadable ESM, declarations, and theme CSS", () 
     assert.deepEqual(packResult.files.map(({ path }) => path).sort(), [
       "LICENSE",
       "README.md",
+      "dist/components/alert.d.ts",
+      "dist/components/alert.js",
+      "dist/components/avatar.d.ts",
+      "dist/components/avatar.js",
+      "dist/components/badge.d.ts",
+      "dist/components/badge.js",
+      "dist/components/button-group.d.ts",
+      "dist/components/button-group.js",
       "dist/components/button.d.ts",
       "dist/components/button.js",
+      "dist/components/card.d.ts",
+      "dist/components/card.js",
+      "dist/components/copy-code.d.ts",
+      "dist/components/copy-code.js",
       "dist/components/dialog.d.ts",
       "dist/components/dialog.js",
       "dist/components/input.d.ts",
       "dist/components/input.js",
+      "dist/components/label.d.ts",
+      "dist/components/label.js",
+      "dist/components/scroll-area.d.ts",
+      "dist/components/scroll-area.js",
+      "dist/components/separator.d.ts",
+      "dist/components/separator.js",
+      "dist/components/spinner.d.ts",
+      "dist/components/spinner.js",
+      "dist/components/toast.d.ts",
+      "dist/components/toast.js",
       "dist/index.d.ts",
       "dist/index.js",
       "dist/lib/cn.js",
@@ -151,6 +173,28 @@ test("the packed package exposes loadable ESM, declarations, and theme CSS", () 
     assert.ok(packedPaths.has(rootExport.types.slice(2)));
     assert.ok(packedPaths.has(manifest.exports["./theme.css"].slice(2)));
 
+    for (const clientModule of [
+      "avatar",
+      "copy-code",
+      "dialog",
+      "input",
+      "toast",
+    ]) {
+      assert.match(
+        readFileSync(
+          join(
+            installedPackageDirectory,
+            "dist",
+            "components",
+            `${clientModule}.js`,
+          ),
+          "utf8",
+        ),
+        /^"use client";/,
+        `${clientModule} must preserve its client boundary`,
+      );
+    }
+
     const consumerDirectory = join(temporaryDirectory, "consumer");
     mkdirSync(consumerDirectory, { recursive: true });
     writeFileSync(
@@ -189,7 +233,7 @@ test("the packed package exposes loadable ESM, declarations, and theme CSS", () 
         "import { fileURLToPath } from 'node:url';",
         "const api = await import('@darizae/marisma');",
         "assert.equal(typeof api, 'object');",
-        "for (const name of ['Button', 'Input', 'Dialog', 'DialogContent']) assert.equal(typeof api[name], 'function');",
+        "for (const name of ['Alert', 'Avatar', 'Badge', 'Button', 'ButtonGroup', 'Card', 'CardContent', 'CardFooter', 'CopyCode', 'Dialog', 'DialogContent', 'Input', 'Label', 'ScrollArea', 'Separator', 'Spinner', 'ToastAction', 'ToastProvider', 'useToast']) assert.equal(typeof api[name], 'function', name);",
         "const themePath = fileURLToPath(import.meta.resolve('@darizae/marisma/theme.css'));",
         `assert.equal(themePath, ${JSON.stringify(realpathSync(join(consumerPackageDirectory, "src/styles/theme.css")))});`,
       ].join("\n"),
@@ -201,8 +245,8 @@ test("the packed package exposes loadable ESM, declarations, and theme CSS", () 
       typeFixture,
       [
         "import { createRef } from 'react';",
-        "import { Button, Dialog, DialogContent, DialogTitle, DialogTrigger, Input } from '@darizae/marisma';",
-        "import type { ButtonProps, DialogContentProps, DialogProps, InputProps } from '@darizae/marisma';",
+        "import { Alert, Avatar, Badge, Button, ButtonGroup, Card, CardContent, CopyCode, Dialog, DialogContent, DialogTitle, DialogTrigger, Input, Label, ScrollArea, Separator, Spinner, ToastProvider } from '@darizae/marisma';",
+        "import type { AlertProps, AvatarProps, BadgeProps, ButtonGroupProps, ButtonProps, CopyCodeProps, DialogContentProps, DialogPortalProps, DialogProps, InputProps, LabelProps, ScrollAreaProps, SeparatorProps, SpinnerProps, ToastProviderProps } from '@darizae/marisma';",
         "const buttonRef = createRef<HTMLButtonElement>();",
         "const inputRef = createRef<HTMLInputElement>();",
         "const contentRef = createRef<HTMLDivElement>();",
@@ -210,7 +254,19 @@ test("the packed package exposes loadable ESM, declarations, and theme CSS", () 
         "const inputProps = { defaultValue: 'Ada', label: 'Name', ref: inputRef } satisfies InputProps;",
         "const dialogProps = { defaultOpen: false, modal: true } satisfies DialogProps;",
         "const contentProps = { closeLabel: 'Close', ref: contentRef } satisfies DialogContentProps;",
-        "const tree = <><Button {...buttonProps} /><Input {...inputProps} /><Dialog {...dialogProps}><DialogTrigger>Open</DialogTrigger><DialogContent {...contentProps}><DialogTitle>Title</DialogTitle></DialogContent></Dialog></>;",
+        "const alertProps = { children: 'Current', variant: 'success' } satisfies AlertProps;",
+        "const avatarProps = { alt: 'Ada', fallback: 'AL' } satisfies AvatarProps;",
+        "const badgeProps = { children: 'Ready', variant: 'success' } satisfies BadgeProps;",
+        "const groupProps = { 'aria-label': 'Actions' } satisfies ButtonGroupProps;",
+        "const copyProps = { code: 'safe text' } satisfies CopyCodeProps;",
+        "const labelProps = { htmlFor: 'name' } satisfies LabelProps;",
+        "const scrollProps = { 'aria-label': 'Readings' } satisfies ScrollAreaProps;",
+        "const separatorProps = { decorative: false } satisfies SeparatorProps;",
+        "const spinnerProps = { label: 'Loading' } satisfies SpinnerProps;",
+        "const toastProps = { children: null, limit: 3 } satisfies ToastProviderProps;",
+        "const portalProps = { forceMount: true } satisfies DialogPortalProps;",
+        "const tree = <ToastProvider {...toastProps}><Alert {...alertProps} /><Avatar {...avatarProps} /><Badge {...badgeProps} /><ButtonGroup {...groupProps}><Button {...buttonProps} /></ButtonGroup><Card><CardContent><Label {...labelProps}>Name</Label><Input {...inputProps} /></CardContent></Card><CopyCode {...copyProps} /><ScrollArea {...scrollProps}>Reading</ScrollArea><Separator {...separatorProps} /><Spinner {...spinnerProps} /><Dialog {...dialogProps}><DialogTrigger>Open</DialogTrigger><DialogContent {...contentProps}><DialogTitle>Title</DialogTitle></DialogContent></Dialog></ToastProvider>;",
+        "void portalProps;",
         "void tree;",
       ].join("\n"),
     );

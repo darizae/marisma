@@ -109,3 +109,24 @@ export const KeyboardAndFocus: Story = {
 export const TidalBlueDark: Story = {
   globals: { marismaAccent: "tidal-blue", marismaMode: "dark" },
 };
+
+export const SubtreeThemePortal: Story = {
+  globals: { marismaAccent: "reedwater", marismaMode: "light" },
+  render: (args) => (
+    <div
+      className="rounded-xl bg-mar-surface p-6 text-mar-text"
+      data-marisma-accent="tidal-blue"
+      data-marisma-mode="dark"
+    >
+      <ProfileDialog {...args} />
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "The trigger is inside a Tidal Blue dark subtree while the document root remains Reedwater light. Portalled content automatically carries the nearest theme attributes.",
+      },
+    },
+  },
+};

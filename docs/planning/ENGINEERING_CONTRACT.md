@@ -50,7 +50,12 @@ relevant. No blanket accessibility certification is promised.
 
 The approved repository `darizae/marisma` now exists. This planning PR is based on `main` at `e09681ba6e9d05577c6d6d1735fb02f9e4d7fed2`; each implementer must recheck the actual base SHA before work. Source, consumers and release preparation remain in this one repository. Do not create other repositories or depend on unapproved unpublished packages.
 
-Current manifests and `pnpm-lock.yaml` exist. Full local clean-install and release qualification is **not independently verified** by this planning update. A previous remote run stopped on pnpm's unapproved `esbuild` build script. T-007 must review source/version/script and, if justified, narrowly approve the required dependency build locally; there is **no remote CI gate**. Never assert tests passed without recorded local evidence.
+Current manifests and `pnpm-lock.yaml` exist. T-007 reviewed esbuild 0.28.2's
+package source, `node install.js` postinstall, platform-binary hash verification,
+and version check, then added the narrow `allowBuilds.esbuild: true` permission.
+A clean frozen-lockfile install now runs that single script with no ignored
+builds. Full release qualification remains a later T-011 gate; there is **no
+remote CI gate**. Never assert tests passed without recorded local evidence.
 
 `packages/ui` is deliberately `private: true`, version `0.0.0`. Removing the private
 flag, selecting a public version/tag, and npm publishing are **distinct later approval
@@ -83,7 +88,11 @@ variant class is emitted into production CSS. No second Tailwind preflight impor
 
 ## Task context and routing
 
-The six S1 files `docs/tasks/01_*.md` through `06_*.md` are historical. The remaining non-chart release is mapped to **five proposed cluster files T-007 through T-011**, each with internal checkpoints; they require owner review before execution. Numbered order is dependency order, not blanket authorization.
+The six S1 files `docs/tasks/01_*.md` through `06_*.md` are historical. T-007
+has locally verified implementation awaiting owner review. The remaining
+non-chart release is mapped to **four proposed cluster files T-008 through
+T-011**, each with internal checkpoints and requiring owner review before
+execution. Numbered order is dependency order, not blanket authorization.
 Read root `AGENTS.md`, this shared contract, **one assigned numbered task file**,
 the corresponding row in `docs/agent/ROUTING.md`,
 `.agents/skills/engineering-quality/SKILL.md`, and only the task's initial source/test paths.
@@ -105,7 +114,16 @@ No unreviewed external skill installation is authorized.
 
 ## Current project phase (2026-11-10)
 
-S1 commits now contain the workspace/lockfile, Tailwind themes, package contract, Button/Input/Dialog, Storybook and Vite/Next.js consumer harnesses. This is **three implemented component families**, not the complete library or a verified public release. All 48 non-chart source candidates remain in approved scope and are allocated to T-007–T-010 with T-011 for full documentation and local release qualification; see the catalog coverage matrix. Plotting remains deferred. The package is private at 0.0.0. Github Actions is optional, intentionally not a gate; all actual test evidence comes from local runs. Publication still needs separate authorization.
+S1 commits contain the workspace/lockfile, Tailwind themes, package contract,
+Button/Input/Dialog, Storybook and Vite/Next.js consumer harnesses. T-007 adds
+locally verified source for 11 foundation/feedback candidates, for **14
+implemented component families** total—not the complete library or a verified
+public release. All 48 non-chart source candidates remain in approved scope;
+T-008–T-010 cover the remaining implementation and T-011 covers full
+documentation and local release qualification. Plotting remains deferred. The
+package is private at 0.0.0. GitHub Actions is optional, intentionally not a
+gate; all actual test evidence comes from local runs. Publication still needs
+separate authorization.
 
 ## Planning continuity and documentation hygiene
 

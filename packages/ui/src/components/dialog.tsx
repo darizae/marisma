@@ -1,6 +1,13 @@
 "use client";
 
-import type { ComponentPropsWithRef } from "react";
+import {
+  useLayoutEffect,
+  useRef,
+  useState,
+  type ComponentPropsWithoutRef,
+  type ComponentPropsWithRef,
+  type RefObject,
+} from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import type { VariantProps } from "class-variance-authority";
 import { buttonVariants } from "./button";
@@ -31,7 +38,67 @@ export function DialogTrigger({
   );
 }
 
-export const DialogPortal = DialogPrimitive.Portal;
+type PortalTheme = {
+  accent?: string;
+  mode?: string;
+};
+
+function themeAt(anchor: HTMLElement | null): PortalTheme {
+  let current = anchor?.parentElement ?? null;
+  let accent: string | undefined;
+  let mode: string | undefined;
+
+  while (current && (!accent || !mode)) {
+    accent ??= current.getAttribute("data-marisma-accent") ?? undefined;
+    mode ??= current.getAttribute("data-marisma-mode") ?? undefined;
+    current = current.parentElement;
+  }
+
+  return { accent, mode };
+}
+
+function usePortalTheme(anchor: RefObject<HTMLSpanElement | null>) {
+  const [theme, setTheme] = useState<PortalTheme>({});
+
+  useLayoutEffect(() => {
+    const update = () => setTheme(themeAt(anchor.current));
+    update();
+    const observer = new MutationObserver(update);
+    observer.observe(document.documentElement, {
+      attributeFilter: ["data-marisma-accent", "data-marisma-mode"],
+      attributes: true,
+      subtree: true,
+    });
+    return () => observer.disconnect();
+  }, [anchor]);
+
+  return theme;
+}
+
+export type DialogPortalProps = ComponentPropsWithoutRef<
+  typeof DialogPrimitive.Portal
+>;
+
+export function DialogPortal({ children, ...props }: DialogPortalProps) {
+  const anchor = useRef<HTMLSpanElement>(null);
+  const theme = usePortalTheme(anchor);
+
+  return (
+    <>
+      <span aria-hidden="true" className="hidden" ref={anchor} />
+      <DialogPrimitive.Portal {...props}>
+        <div
+          className="contents"
+          data-marisma-accent={theme.accent}
+          data-marisma-mode={theme.mode}
+          data-marisma-portal="dialog"
+        >
+          {children}
+        </div>
+      </DialogPrimitive.Portal>
+    </>
+  );
+}
 
 export function DialogOverlay({
   className,

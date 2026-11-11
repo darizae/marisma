@@ -97,3 +97,98 @@ test("story globals theme portalled Dialog content", async ({ page }) => {
     page.getByRole("dialog", { name: "Edit profile" }),
   ).toBeVisible();
 });
+
+test("Dialog bridges a subtree theme into its portal", async ({ page }) => {
+  await page.goto(
+    "/iframe.html?id=components-dialog--subtree-theme-portal&viewMode=story",
+  );
+  await expect(page.locator("html")).toHaveAttribute(
+    "data-marisma-accent",
+    "reedwater",
+  );
+  await page.getByRole("button", { name: "Open profile" }).click();
+  const portal = page.locator('[data-marisma-portal="dialog"]');
+  await expect(portal).toHaveAttribute("data-marisma-accent", "tidal-blue");
+  await expect(portal).toHaveAttribute("data-marisma-mode", "dark");
+  await expect(page.getByRole("dialog", { name: "Edit profile" })).toHaveCSS(
+    "color-scheme",
+    "dark",
+  );
+});
+
+test("Copy Code announces a real clipboard rejection", async ({ page }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, "clipboard", {
+      configurable: true,
+      value: { writeText: () => Promise.reject(new Error("denied")) },
+    });
+  });
+  await page.goto(
+    "/iframe.html?id=components-copy-code--clipboard-feedback&viewMode=story",
+  );
+  await page.getByRole("button", { name: "Copy code" }).click();
+  await expect(page.getByRole("alert")).toContainText(
+    "Select the code and copy it manually",
+  );
+  await expect(page.locator('pre[tabindex="0"]')).toHaveCount(1);
+});
+
+test("Scroll Area supports keyboard-native overflow", async ({ page }) => {
+  await page.goto(
+    "/iframe.html?id=components-scroll-area--native-overflow&viewMode=story",
+  );
+  const region = page.getByRole("region", { name: "Recent tide readings" });
+  await region.focus();
+  await expect(region).toBeFocused();
+  await page.keyboard.press("PageDown");
+  await expect
+    .poll(() => region.evaluate((node) => node.scrollTop))
+    .toBeGreaterThan(0);
+});
+
+test("Toast announces, limits its stack, and dismisses", async ({ page }) => {
+  await page.goto(
+    "/iframe.html?id=components-toast--announcement-and-dismissal&viewMode=story",
+  );
+  const trigger = page.getByRole("button", { name: "Show notification" });
+  for (let index = 0; index < 4; index += 1) await trigger.click();
+  await expect(page.getByRole("status")).toHaveCount(3);
+  await expect(
+    page.getByRole("region", { name: "Notifications" }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", { name: "Dismiss notification" })
+    .first()
+    .click();
+  await expect(page.getByRole("status")).toHaveCount(2);
+});
+
+test("foundation feedback tokens render in all four themes", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 360, height: 800 });
+  await page.goto(
+    "/iframe.html?id=foundations-four-themes--status-tokens&viewMode=story",
+  );
+  const samples = page.locator(".theme-sample");
+  await expect(samples).toHaveCount(4);
+  const colors = await samples.evaluateAll((nodes) =>
+    nodes.map((node) => {
+      const style = getComputedStyle(node);
+      return `${style.backgroundColor}|${style.color}|${style.colorScheme}`;
+    }),
+  );
+  expect(new Set(colors).size).toBe(4);
+  expect(
+    await page.evaluate(() => document.documentElement.scrollWidth),
+  ).toBeLessThanOrEqual(360);
+});
+
+test("Spinner disables rotation for reduced motion", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/iframe.html?id=components-spinner--sizes&viewMode=story");
+  await expect(page.getByRole("status").first()).toHaveCSS(
+    "animation-name",
+    "none",
+  );
+});

@@ -48,7 +48,12 @@
 
 ## Current facts versus decisions
 
-As of the recorded plan, the repo contains implementation source for Button, Input and Dialog and the first workspace/documentation/integration harnesses; this is **not** the completed catalog or a published npm package. Tests must be described by actual local execution evidence, not assumed from files or commits. The owner-approved release scope and architecture remain unchanged.
+As of T-007, the repo contains locally verified implementation source for
+Button, Input, Dialog, and 11 foundation/feedback candidates, plus the first
+workspace/documentation/integration harnesses. This is **not** the completed
+catalog or a published npm package. Tests must be described by actual local
+execution evidence, not assumed from files or commits. The owner-approved
+release scope and architecture remain unchanged.
 
 ## Required handoff reconciliation
 

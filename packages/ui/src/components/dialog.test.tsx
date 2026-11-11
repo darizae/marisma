@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 import {
@@ -37,5 +37,28 @@ describe("Dialog", () => {
     await user.keyboard("{Escape}");
     expect(screen.queryByRole("dialog")).toBeNull();
     expect(document.activeElement).toBe(trigger);
+  });
+
+  it("bridges a themed subtree to portalled content", async () => {
+    const user = userEvent.setup();
+    render(
+      <div data-marisma-accent="tidal-blue" data-marisma-mode="dark">
+        <Dialog>
+          <DialogTrigger>Open themed dialog</DialogTrigger>
+          <DialogContent>
+            <DialogTitle>Themed dialog</DialogTitle>
+          </DialogContent>
+        </Dialog>
+      </div>,
+    );
+
+    await user.click(
+      screen.getByRole("button", { name: "Open themed dialog" }),
+    );
+    await waitFor(() => {
+      const portal = document.querySelector('[data-marisma-portal="dialog"]');
+      expect(portal?.getAttribute("data-marisma-accent")).toBe("tidal-blue");
+      expect(portal?.getAttribute("data-marisma-mode")).toBe("dark");
+    });
   });
 });

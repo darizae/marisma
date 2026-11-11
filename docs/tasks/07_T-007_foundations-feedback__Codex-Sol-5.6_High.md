@@ -1,6 +1,6 @@
 # 07 — T-007: Foundation closure and basic visual/feedback components
 
-**Status:** PROPOSED FOR OWNER REVIEW · **Phase:** S2, cluster 1/5 · **Repository:** darizae/marisma
+**Status:** IMPLEMENTED — LOCAL ACCEPTANCE PASS; OWNER REVIEW PENDING · **Phase:** S2, cluster 1/5 · **Repository:** darizae/marisma
 **Dependency:** S1 source on main; resolve local install and local baseline checks before accepting new work. No remote CI requirement.
 
 ## Outcome and exact catalog coverage
@@ -35,5 +35,38 @@ Finish the reusable design foundation and these **11 general UI candidates**: Al
 - Verify four themes, disabled/loading/error, empty/failure and responsive states applicable to each item; no unsafe global styling effects.
 - At cluster gate: local package build/typecheck, owning unit suite, targeted Storybook/browser cases, and a locally installed tarball smoke if exports/dependencies changed. Attach exact commands, exit codes and evidence; use PASS/FAIL/NOT RUN/BLOCKED.
 - Update catalog status per candidate and useful public README/Storybook only for actually verified capabilities. Do not call any unpublished component shipped.
+
+## Implementation evidence — 2026-11-11
+
+Environment: macOS 26.6.2 arm64, Node.js 26.13.0, pnpm 11.9.0. All evidence
+below is local; no GitHub Actions run was required or used.
+
+- **PASS** — clean source snapshot `pnpm install --frozen-lockfile`; esbuild
+  0.28.2 was the only allowed postinstall, completed successfully, and
+  `pnpm ignored-builds` reported `None`.
+- **PASS** — `pnpm --filter @darizae/marisma test` and
+  `pnpm --filter @darizae/marisma typecheck`; focused S1 and T-007 component
+  behavior passed.
+- **PASS** — `node --test packages/ui/src/styles/theme.test.mjs`; all four
+  palettes met the measured text, status, focus, and non-text contrast targets.
+- **PASS** — `pnpm build`, `pnpm typecheck`, and
+  `pnpm --filter @marisma/storybook build`; package declarations, workspace
+  consumers, and all component stories compiled.
+- **PASS** — `pnpm test:package-contract`; the exact tarball was installed into
+  an isolated consumer, all T-007 runtime exports loaded, public types compiled,
+  and React/Tailwind remained external peers.
+- **PASS** — `pnpm --filter @marisma/storybook test:browser`; real Chromium
+  covered S1 focus behavior plus T-007 subtree portal theming, clipboard
+  rejection, native keyboard overflow, Toast announcement/stack/dismissal,
+  reduced motion, responsive layout, and all four themes.
+- **PASS** — `pnpm --filter @marisma/storybook test:consumers`, `test:next`,
+  `test:visual`, and `test:docs`; the tarball-installed Vite and Next.js
+  consumers, SSR/hydration, existing visual baselines, and public examples
+  remained valid.
+
+All 11 candidates are **ADAPT** with their destinations and evidence recorded in
+`docs/planning/COMPONENT_CATALOG.md`. Scroll Area deliberately uses native
+overflow; Toast uses a small package-owned provider. Neither choice adds a
+runtime dependency. The package remains private and unpublished.
 
 **Stop:** submit focused commits/PR for owner review; do not merge, publish, deploy or begin T-008 without acceptance. Unknown architecture choices become blockers for the planner, not worker decisions.

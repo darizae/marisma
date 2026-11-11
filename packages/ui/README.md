@@ -1,8 +1,9 @@
 # Marisma UI package
 
-`@darizae/marisma` is a private prerelease package for React 19 and Tailwind CSS 4. It currently exports Button, Input, and Dialog components plus the
-`@darizae/marisma/theme.css` theme entry. It is not published to npm, and the
-broader non-chart catalog is not yet implemented.
+`@darizae/marisma` is a private prerelease package for React 19 and Tailwind CSS
+4. It currently exports Button, Input, Dialog, 11 foundation/feedback component
+families, and the `@darizae/marisma/theme.css` theme entry. It is not published
+to npm, and the broader non-chart catalog is still in development.
 
 ## Local package evaluation
 
@@ -95,7 +96,21 @@ export function MarismaExample() {
 
 Button is a native button. Input supports controlled and uncontrolled values.
 Dialog follows the Radix modal interaction model: Escape dismisses it, focus is
-contained while open, and focus returns to the trigger after dismissal.
+contained while open, focus returns to the trigger after dismissal, and the
+nearest Marisma subtree theme is bridged into its portal.
+
+## Foundation and feedback exports
+
+- `Alert`, `Avatar`, `Badge`, `ButtonGroup`, `Card` and its slots, `Label`,
+  `Separator`, and `Spinner` provide the presentation foundation.
+- `CopyCode` reports clipboard success or failure while keeping its text
+  selectable.
+- `ScrollArea` deliberately uses focusable native overflow for browser, touch,
+  wheel, and keyboard behavior instead of adding a runtime scroll dependency.
+- `ToastProvider`, `ToastAction`, and `useToast` provide bounded, dismissible,
+  timed notifications. This small provider was chosen over Radix Toast or
+  Sonner to avoid a new runtime dependency; place it inside the active Marisma
+  theme scope.
 
 ## Release status
 

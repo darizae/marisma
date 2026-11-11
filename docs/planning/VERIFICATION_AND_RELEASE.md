@@ -1,6 +1,6 @@
 # Marisma — local verification and release policy
 
-**Status:** CURRENT planning policy; proposed clusters require owner review · **Revision:** 3 · **Date:** 2026-11-10
+**Status:** CURRENT planning policy; T-007 is locally verified and later clusters require owner review · **Revision:** 4 · **Date:** 2026-11-11
 
 ## Owner-selected verification policy
 
@@ -10,7 +10,14 @@ Local checks remain required at their appropriate gates. Use focused unit and ty
 
 ## Current implementation status
 
-S1 has source commits for a lockfile, Tailwind themes, ESM package build, Button/Input/Dialog, Storybook and Vite/Next.js package consumers. No complete local release-qualification record is verified here. The last GitHub Actions run failed at pnpm's unapproved esbuild build script; **this is a local dependency-permissions review item, not a mandate to maintain CI**. In T-007 review version/source/script before narrowly approving an `allowBuilds` entry. Never disable dependency-build safeguards globally.
+S1 has source commits for a lockfile, Tailwind themes, ESM package build,
+Button/Input/Dialog, Storybook and Vite/Next.js package consumers. T-007 adds
+locally verified source for 11 foundation/feedback candidates. Its dependency
+review approved only esbuild 0.28.2 after inspecting the package source,
+postinstall behavior, binary hash verification, and version check; a clean
+frozen install now reports no ignored builds. This does not replace the complete
+T-011 release-qualification sweep or create a remote CI requirement. Never
+disable dependency-build safeguards globally.
 
 The npm package remains `private: true` at version `0.0.0`, unpublished. All 48 non-chart candidates must be accounted for before release; charts remain deferred.
 

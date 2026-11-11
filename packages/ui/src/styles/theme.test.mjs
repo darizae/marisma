@@ -81,6 +81,14 @@ test("exports semantic Tailwind utilities backed by theme variables", () => {
     "primary-hover",
     "on-primary",
     "focus",
+    "info",
+    "info-surface",
+    "success",
+    "success-surface",
+    "warning",
+    "warning-surface",
+    "danger",
+    "danger-surface",
   ]) {
     assert.match(
       css,
@@ -130,6 +138,10 @@ test("meets measured text, focus, and non-text contrast targets in every theme",
     ["primary", "card", 3],
     ["focus", "surface", 3],
     ["focus", "card", 3],
+    ["info", "info-surface", 4.5],
+    ["success", "success-surface", 4.5],
+    ["warning", "warning-surface", 4.5],
+    ["danger", "danger-surface", 4.5],
   ];
 
   for (const [name, selector] of Object.entries(themeSelectors)) {

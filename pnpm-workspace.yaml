@@ -2,3 +2,9 @@ packages:
   - 'packages/*'
   - 'apps/*'
   - 'apps/consumers/*'
+
+# esbuild 0.28.2 is the single reviewed install script required by Vite and
+# Storybook. Its postinstall selects the platform package, verifies its hash,
+# and checks that the binary version matches the package version.
+allowBuilds:
+  esbuild: true

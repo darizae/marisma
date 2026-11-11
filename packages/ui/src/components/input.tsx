@@ -52,7 +52,7 @@ export function Input({
         aria-invalid={ariaInvalid ?? (hasError || undefined)}
         className={cn(
           "min-h-11 w-full rounded-lg border border-mar-border bg-mar-card px-3 py-2 text-base text-mar-text placeholder:text-mar-muted disabled:cursor-not-allowed disabled:opacity-60",
-          "aria-invalid:border-mar-primary",
+          "aria-invalid:border-mar-danger",
           className,
         )}
         id={inputId}
@@ -66,7 +66,7 @@ export function Input({
       ) : null}
       {hasError ? (
         <p
-          className="text-sm font-medium text-mar-primary"
+          className="text-sm font-medium text-mar-danger"
           id={errorId}
           role="alert"
         >

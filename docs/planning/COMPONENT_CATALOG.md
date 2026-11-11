@@ -1,6 +1,9 @@
 # Marisma component scope — first non-chart release
 
-Status: APPROVED first-release scope. Button, Input and Dialog have implementation source, not a public release; the remaining candidates are scheduled into T-007–T-010 and qualified in T-011.
+Status: APPROVED first-release scope. Button, Input, Dialog, and the 11 T-007
+foundation/feedback candidates have locally verified implementation source, not
+a public release; the remaining candidates are scheduled into T-008–T-010 and
+qualified in T-011.
 
 This inventory identifies **48 source-level candidates**, not 48 guaranteed distinct
 npm exports. Adaptation may combine related components or make certain high-level
@@ -85,11 +88,32 @@ packaged consumer usage, and relevant responsive/theme checks. No candidate is m
 | Stage | General UI candidates | Composed-field candidates | Application-composition candidates |
 | --- | --- | --- | --- |
 | S1 source exists; unpublished | Button, Input, Dialog (3) | — | — |
-| T-007 foundation/feedback | Alert, Avatar, Badge, Button Group, Card, Copy Code, Label, Scroll Area, Separator, Spinner, Toast (11) | — | — |
+| T-007 foundation/feedback; locally verified source | Alert, Avatar, Badge, Button Group, Card, Copy Code, Label, Scroll Area, Separator, Spinner, Toast (11) | — | — |
 | T-008 accessible interactions/dates | Calendar, Checkbox, Collapsible, Dropdown Menu, Popover, Radio Group, Select, Switch, Tabs, Textarea, Toggle Group, Tooltip (12) | Date selection field / DateField (1) | — |
 | T-009 native forms/composed fields | Dropzone, Form (2) | Field Callout, Confirmation field dialog, Field Group, Inline change control, Search field, Vertical field separator (6) | — |
 | T-010 data and application composition | Sidebar, Table (2) | Page title field, User menu (2) | Error page view, Application navbar, Record list view, Application shell, Card grid, Footer, Navigation progress, Raw-data view, Page section (9) |
 | T-011 release gate | No new planned family | Documentation and verification | Documentation and verification |
 | **Accounted for** | **30/30** | **9/9** | **9/9** |
+
+## T-007 candidate dispositions
+
+All T-007 candidates are **ADAPT**: each catalog direction is represented by a
+typed public export, a Storybook example, focused unit coverage, and the shared
+real-browser T-007 acceptance suite. They remain unpublished prerelease source,
+not SHIPPED components.
+
+| Candidate | Destination and adaptation | Primary evidence |
+| --- | --- | --- |
+| Alert | `Alert`; semantic live roles and four status variants | `alert.tsx`, `Alert.stories.tsx`, `foundation.test.tsx` |
+| Avatar | `Avatar`; native image failure falls back to accessible text | `avatar.tsx`, `Avatar.stories.tsx`, `foundation.test.tsx` |
+| Badge | `Badge`; status text is retained alongside semantic color | `badge.tsx`, `Badge.stories.tsx`, `foundation.test.tsx` |
+| Button Group | `ButtonGroup`; labeled native-button composition and ordinary Tab order | `button-group.tsx`, `ButtonGroup.stories.tsx`, `foundation.test.tsx` |
+| Card | `Card` plus header/title/description/content/footer slots | `card.tsx`, `Card.stories.tsx`, `foundation.test.tsx` |
+| Copy Code | `CopyCode`; safe text, clipboard success/failure announcements, manual fallback | `copy-code.tsx`, `CopyCode.stories.tsx`, `feedback.test.tsx` |
+| Label | `Label`; styled native programmatic association | `label.tsx`, `Label.stories.tsx`, `foundation.test.tsx` |
+| Scroll Area | `ScrollArea`; focusable native overflow instead of a new Radix runtime dependency | `scroll-area.tsx`, `ScrollArea.stories.tsx`, browser suite |
+| Separator | `Separator`; decorative by default, semantic orientation on request | `separator.tsx`, `Separator.stories.tsx`, `foundation.test.tsx` |
+| Spinner | `Spinner`; optional status name and reduced-motion fallback | `spinner.tsx`, `Spinner.stories.tsx`, unit/browser suites |
+| Toast | `ToastProvider`, `ToastAction`, `useToast`; bounded dependency-free stack with timed/manual dismissal | `toast.tsx`, `Toast.stories.tsx`, `feedback.test.tsx`, browser suite |
 
 For every row, maintain PRESERVE/ADAPT/MERGE/EXCLUDE status, export or documented composition destination, related Storybook/test file, and actual PASS/FAIL/NOT RUN evidence. EXCLUDE requires explicit owner approval. A code file or story does not alone mean SHIPPED.

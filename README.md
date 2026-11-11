@@ -5,7 +5,7 @@
 A Tailwind-first React component library for professional web applications.
 
 Marisma is a prerelease library for React 19 and Tailwind CSS 4. The current
-package implements Button, Input, and Dialog with typed public APIs, accessible
+package implements 14 component families with typed public APIs, accessible
 native or Radix-based interactions, and Reedwater and Tidal Blue themes in light
 and dark modes.
 
@@ -21,7 +21,13 @@ and dark modes.
 - `Input` — native controlled or uncontrolled input with a visible label,
   supporting description, validation message, and forwarded native props.
 - `Dialog` — composable Radix dialog primitives with modal focus containment,
-  Escape dismissal, accessible title/description, and focus restoration.
+  Escape dismissal, focus restoration, and automatic subtree-theme bridging
+  for its portal.
+- Presentation — `Alert`, `Avatar`, `Badge`, `ButtonGroup`, `Card` slots,
+  `Label`, `Separator`, and `Spinner`.
+- Feedback and utilities — `CopyCode` with clipboard failure feedback,
+  focusable native `ScrollArea`, and dependency-free `ToastProvider`,
+  `ToastAction`, and `useToast` exports.
 
 Storybook includes controls, keyboard notes, interaction coverage, and theme
 switching for these components. No charting, routing, data fetching,
@@ -137,9 +143,15 @@ Marisma's supplied leaf mark is stored once at [`assets/brand/marisma-leaf.svg`]
 
 ## Roadmap and local verification
 
-Marisma's first sprint built the package foundation and Button, Input and Dialog; the complete non-chart library remains in development. Five [grouped implementation specifications](docs/agent/ROUTING.md) (T-007 through T-011) cover the remaining components, forms, application patterns, documentation and release qualification. The [catalog](docs/planning/COMPONENT_CATALOG.md) accounts for all 48 original non-chart source candidates. Plotting remains deferred.
+Marisma's foundation/feedback cluster now has locally verified source for 11
+additional candidates alongside Button, Input, and Dialog. Four remaining
+[grouped implementation specifications](docs/agent/ROUTING.md) (T-008 through
+T-011) cover interactions, forms, application patterns, documentation, and
+release qualification. The [catalog](docs/planning/COMPONENT_CATALOG.md)
+accounts for all 48 original non-chart source candidates. Plotting remains
+deferred.
 
-**Tests run locally.** GitHub Actions is not a required validation gate. Before accepting an implementation checkpoint, run the relevant tests and record actual results under the [local verification policy](docs/planning/VERIFICATION_AND_RELEASE.md). A pnpm dependency-build permission may require narrow review before a clean install. The public npm release is separately approval-gated.
+**Tests run locally.** GitHub Actions is not a required validation gate. Before accepting an implementation checkpoint, run the relevant tests and record actual results under the [local verification policy](docs/planning/VERIFICATION_AND_RELEASE.md). The reviewed pnpm build permission is limited to esbuild, which is required by the local Vite/Storybook toolchain. The public npm release is separately approval-gated.
 
 ## License
 
