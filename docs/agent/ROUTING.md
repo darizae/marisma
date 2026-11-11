@@ -1,6 +1,6 @@
 # Marisma — current maintainer routing
 
-**Status:** The initial non-chart catalog is implemented as a **private local release candidate**. No active numbered task Markdown remains. Historical T-001–T-012 work is preserved in Git commit history; the enduring release evidence is `docs/release/T-011_RELEASE_CANDIDATE.md`.
+**Status:** The initial component catalog is implemented as a **private local release candidate**. One proposed release/security task exists, but no new implementation is authorized. Historical T-001–T-012 work is preserved in Git commit history; the enduring release evidence is `docs/release/T-011_RELEASE_CANDIDATE.md`.
 
 Start at `AGENTS.md`, consult `docs/planning/APPROVED_DECISIONS.md` and the relevant contract section, then follow **only the row for the assigned concern**. This document routes to current code, not obsolete work tickets.
 
@@ -15,3 +15,7 @@ Start at `AGENTS.md`, consult `docs/planning/APPROVED_DECISIONS.md` and the rele
 | Local testing, release readiness and actual historical evidence | `docs/planning/VERIFICATION_AND_RELEASE.md` | `docs/release/T-011_RELEASE_CANDIDATE.md` and applicable package/Storybook scripts |
 
 The five grouped release clusters T-007–T-011 and subsequent hardening have been implemented, but **owner publication review remains separate**. Do not infer local test results beyond those actually recorded. Avoid adding remote CI requirements: local checks are the owner-approved evidence channel. Future task specs, if needed, use the model/effort filename suffix described in `AGENTS.md`; the task body stays model-neutral.
+
+## Proposed next task — owner review required
+
+`docs/tasks/13_T-013_npm-release-security__Codex-Sol-5.6_Extra-High.md` defines the local security assessment, exact-artifact preflight and manual npm publication decision gates. Its filename is an owner-requested routing hint, not execution permission. No publication, version change, workflow creation or npm credential action is approved by this plan.

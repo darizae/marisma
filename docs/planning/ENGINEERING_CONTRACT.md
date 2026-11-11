@@ -2,16 +2,15 @@
 
 **Decisions authority:** `docs/planning/APPROVED_DECISIONS.md` is the canonical approved product/brand/execution register. This contract defines their technical implementation. Do not reverse settled owner decisions or dilute the Tailwind-only and local-first policies.
 
-**Status:** APPROVED technical contract; current non-chart implementation complete, release approval pending · **Revision:** 4 · **Date:** 2026-11-11
+**Status:** APPROVED technical contract; approved component implementation complete, release approval pending · **Revision:** 4 · **Date:** 2026-11-11
 
 ## Product contract
 
 Marisma is an open-source, styled, themeable React 19 + TypeScript component library
 for developers of professional web applications. It uses **Tailwind CSS 4 exclusively**.
-Its first release covers the generalized non-chart catalog in
+Its first release covers the approved component catalog in
 `docs/planning/COMPONENT_CATALOG.md`: foundational controls, complex accessible
-interactions, composed fields and reusable application layouts. Scientific plots and
-chart controls are excluded from the first release. No backend, authentication service,
+interactions, composed fields and reusable application layouts. No backend, authentication service,
 application data store, router dependency or consumer-side state service is included.
 
 The canonical Marisma leaf logo is `assets/brand/marisma-leaf.svg` (owner-supplied SVG). Landing and Storybook must both display it and link it as their favicon from the single canonical asset file; no redraws or app-specific copies. Brand direction is relaxed coastal estuary, not mountains or woodland.
@@ -89,7 +88,7 @@ variant class is emitted into production CSS. No second Tailwind preflight impor
 
 ## Active engineering context
 
-The approved non-chart catalog has implementation, and the local release-candidate evidence is recorded in `docs/release/T-011_RELEASE_CANDIDATE.md`. There are **no active numbered task specifications**: the eleven completed cluster/source specs and the hardening note were retired from the working tree after completion; their content remains in Git history. Read `AGENTS.md`, the approved-decision register, and the relevant row of `docs/agent/ROUTING.md` for a newly authorized change. Consult only the owning source/tests and the relevant `docs/planning/VERIFICATION_AND_RELEASE.md` gate. Do not recreate historical specs or treat an old plan as active work.
+The approved component catalog has implementation, and the local release-candidate evidence is recorded in `docs/release/T-011_RELEASE_CANDIDATE.md`. There is **one proposed release/security specification requiring approval**; all prior implementation task specifications are completed: the eleven completed cluster/source specs and the hardening note were retired from the working tree after completion; their content remains in Git history. Read `AGENTS.md`, the approved-decision register, and the relevant row of `docs/agent/ROUTING.md` for a newly authorized change. Consult only the owning source/tests and the relevant `docs/planning/VERIFICATION_AND_RELEASE.md` gate. Do not recreate historical specs or treat an old plan as active work. The next proposed scope is `docs/tasks/13_T-013_npm-release-security__Codex-Sol-5.6_Extra-High.md`; no publishing action is approved.
 
 **Local tests are the acceptance channel; GitHub Actions is not a gate.** Package publication remains a distinct owner decision.
 
@@ -107,7 +106,7 @@ No unreviewed external skill installation is authorized.
 
 ## Current project phase (2026-11-11)
 
-The workspace, four Tailwind theme variants, published-package boundary, Storybook, landing, independent Vite/Next.js consumers and all 48 non-chart source candidates have been implemented. The post-implementation hardening commit corrected release-evidence package names and addressed InlineEdit rejected saves, DateField required validation and bounded DataPreview behavior. The [release report](../release/T-011_RELEASE_CANDIDATE.md) records local tests and disclosed browser omissions; it is not a claim of independent review or of npm publication. The actual GitHub repository is **private**, and the package remains `private: true` at `0.0.0`. Plotting remains deferred. Only release-specific owner decisions and any justified corrective issues remain.
+The workspace, four Tailwind theme variants, published-package boundary, Storybook, landing, independent Vite/Next.js consumers and all 48 approved component candidates have been implemented. The post-implementation hardening commit corrected release-evidence package names and addressed InlineEdit rejected saves, DateField required validation and bounded DataPreview behavior. The [release report](../release/T-011_RELEASE_CANDIDATE.md) records local tests and disclosed browser omissions; it is not a claim of independent review or of npm publication. The actual GitHub repository is **public**, and the package remains `private: true` at `0.0.0`. Only release-specific owner decisions and any justified corrective issues remain.
 
 ## Planning continuity and documentation hygiene
 

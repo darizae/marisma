@@ -1,6 +1,6 @@
 # Marisma — maintainer and agent entry point
 
-**Current state:** The complete approved **48-candidate non-chart source catalog** has implementation, Storybook coverage and recorded local release-candidate evidence. The npm package is still **private, version 0.0.0 and unpublished**. The source repository itself is private. **No active implementation task specification exists.** Historical task Markdown files were retired from the working tree after completion and remain recoverable through Git history. The current release evidence is `docs/release/T-011_RELEASE_CANDIDATE.md`.
+**Current state:** The complete approved approved **48-candidate component catalog** has implementation, Storybook coverage and recorded local release-candidate evidence. The npm package is still **private, version 0.0.0 and unpublished**. The source repository is public. **One proposed release/security specification exists; it is not approved for worker execution.** Historical task Markdown files were retired from the working tree after completion and remain recoverable through Git history. The current release evidence is `docs/release/T-011_RELEASE_CANDIDATE.md`.
 
 ## Read only the context relevant to the assigned work
 
@@ -10,11 +10,11 @@
 4. `.agents/skills/engineering-quality/SKILL.md` — shared implementation safeguards.
 5. `docs/planning/VERIFICATION_AND_RELEASE.md` and the release evidence report **only** for the applicable verification/release gate.
 
-Do not recursively read all documentation. An owner-approved new work unit must specify its exact initial read set, allowed files, acceptance checks and stop conditions. A model label in a future spec filename is an owner-requested nonbinding recommendation; keep the technical task body model-neutral and do not commit model comparisons or private interview transcripts.
+Do not recursively read all documentation. The proposed release/security plan is `docs/tasks/13_T-013_npm-release-security__Codex-Sol-5.6_Extra-High.md`. It is planning material until the owner approves implementation; no publication is authorized. Each new approved work unit must specify its exact initial read set, allowed files, acceptance checks and stop conditions. A model label in a future spec filename is an owner-requested nonbinding recommendation; keep the technical task body model-neutral and do not commit model comparisons or private interview transcripts.
 
 ## Non-negotiable architecture
 
-React 19 and TypeScript; **Tailwind CSS 4 exclusively** (native `@theme` and semantic tokens); Radix where appropriate for accessible complex interactions. Styled, reusable components without mandatory consumer router, auth backend, data service or form framework. Four theme combinations: Reedwater and Tidal Blue, each light/dark. Canonical brand asset: `assets/brand/marisma-leaf.svg`. Charts and scientific plotting are deferred to a later release. Every feature change must preserve keyboard/focus behavior, accessibility, responsive behavior and actual Vite/Next.js packaged-consumer compatibility.
+React 19 and TypeScript; **Tailwind CSS 4 exclusively** (native `@theme` and semantic tokens); Radix where appropriate for accessible complex interactions. Styled, reusable components without mandatory consumer router, auth backend, data service or form framework. Four theme combinations: Reedwater and Tidal Blue, each light/dark. Canonical brand asset: `assets/brand/marisma-leaf.svg`. Every feature change must preserve keyboard/focus behavior, accessibility, responsive behavior and actual Vite/Next.js packaged-consumer compatibility.
 
 ## Git, verification, documentation and publication
 
