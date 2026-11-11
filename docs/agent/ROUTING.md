@@ -6,6 +6,15 @@ Read `AGENTS.md`, `docs/planning/APPROVED_DECISIONS.md`, the relevant engineerin
 
 Files `docs/tasks/01_*.md` through `06_*.md` describe the earlier S1 work: workspace, lockfile, Tailwind theme, package build, Button/Input/Dialog, Storybook and consumer harnesses. Source commits are present, but complete local acceptance evidence is not established by this planning change. Those files are historical.
 
+Historical exact paths (reference only, not runnable assignments):
+
+- `docs/tasks/01_T-001_identity-and-lockfile__Codex-Luna-5.6_High.md`
+- `docs/tasks/02_T-002_tailwind-theme-tokens__Codex-Sol-5.6_High.md`
+- `docs/tasks/03_T-003_package-api-build__Codex-Sol-5.6_Extra-High.md`
+- `docs/tasks/04_T-004_button-input-dialog__Codex-Sol-5.6_High.md`
+- `docs/tasks/05_T-005_tailwind-consumer-integration__Codex-Sol-5.6_Extra-High.md`
+- `docs/tasks/06_T-006_storybook-and-release-readiness__Codex-Luna-5.6_High.md`
+
 ## Remaining first-release clusters — proposed for owner review
 
 | Order | Exact technical task | Source / verification focus |
