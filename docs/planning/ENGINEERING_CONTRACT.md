@@ -57,9 +57,11 @@ builds. T-011 release qualification is recorded in
 `docs/release/T-011_RELEASE_CANDIDATE.md`; there is **no remote CI gate**.
 Never assert tests passed without recorded local evidence.
 
-`packages/ui` is deliberately `private: true`, version `0.0.0`. Removing the private
-flag, selecting a public version/tag, and npm publishing are **distinct later approval
-gates**. Never use source workspace symlinks as sole proof of published compatibility.
+`packages/ui` deliberately retains `private: true`; `0.1.0` is the proposed
+first public version. The private field is removed only in ignored local
+staging. Selecting an exact artifact, npm publishing, and tagging are
+**distinct later approval gates**. Never use source workspace symlinks as sole
+proof of published compatibility.
 
 ## Public writing and documentation
 
@@ -88,7 +90,7 @@ variant class is emitted into production CSS. No second Tailwind preflight impor
 
 ## Active engineering context
 
-The approved component catalog has implementation, and the local release-candidate evidence is recorded in `docs/release/T-011_RELEASE_CANDIDATE.md`. There is **one proposed release/security specification requiring approval**; all prior implementation task specifications are completed: the eleven completed cluster/source specs and the hardening note were retired from the working tree after completion; their content remains in Git history. Read `AGENTS.md`, the approved-decision register, and the relevant row of `docs/agent/ROUTING.md` for a newly authorized change. Consult only the owning source/tests and the relevant `docs/planning/VERIFICATION_AND_RELEASE.md` gate. Do not recreate historical specs or treat an old plan as active work. The next proposed scope is `docs/tasks/13_T-013_npm-release-security__Codex-Sol-5.6_Extra-High.md`; no publishing action is approved.
+The approved component catalog has implementation, and the local release-candidate evidence is recorded in `docs/release/T-011_RELEASE_CANDIDATE.md`. There is **one approved release/security preparation specification in execution**; all prior implementation task specifications are completed: the eleven completed cluster/source specs and the hardening note were retired from the working tree after completion; their content remains in Git history. Read `AGENTS.md`, the approved-decision register, and the relevant row of `docs/agent/ROUTING.md` for a newly authorized change. Consult only the owning source/tests and the relevant `docs/planning/VERIFICATION_AND_RELEASE.md` gate. Do not recreate historical specs or treat an old plan as active work. The active scope is `docs/tasks/13_T-013_npm-release-security__Codex-Sol-5.6_High.md`; no publishing action is approved.
 
 **Local tests are the acceptance channel; GitHub Actions is not a gate.** Package publication remains a distinct owner decision.
 
@@ -106,7 +108,17 @@ No unreviewed external skill installation is authorized.
 
 ## Current project phase (2026-11-11)
 
-The workspace, four Tailwind theme variants, published-package boundary, Storybook, landing, independent Vite/Next.js consumers and all 48 approved component candidates have been implemented. The post-implementation hardening commit corrected release-evidence package names and addressed InlineEdit rejected saves, DateField required validation and bounded DataPreview behavior. The [release report](../release/T-011_RELEASE_CANDIDATE.md) records local tests and disclosed browser omissions; it is not a claim of independent review or of npm publication. The actual GitHub repository is **public**, and the package remains `private: true` at `0.0.0`. Only release-specific owner decisions and any justified corrective issues remain.
+The workspace, four Tailwind theme variants, published-package boundary,
+Storybook, landing, independent Vite/Next.js consumers and all 48 approved
+component candidates have been implemented. The post-implementation hardening
+commit corrected release-evidence package names and addressed InlineEdit
+rejected saves, DateField required validation and bounded DataPreview behavior.
+The [release report](../release/T-011_RELEASE_CANDIDATE.md) records historical
+local tests and disclosed browser omissions; it is not a claim of independent
+review or npm publication. The actual GitHub repository is **public**, and the
+tracked package remains `private: true`; `0.1.0` is proposed for the first
+release. Only release-specific owner decisions and justified corrections
+remain.
 
 ## Planning continuity and documentation hygiene
 

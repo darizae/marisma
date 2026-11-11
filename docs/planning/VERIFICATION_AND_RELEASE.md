@@ -24,9 +24,11 @@ frozen install now reports no ignored builds. T-011 records the complete
 release-qualification sweep without creating a remote CI requirement. Never
 disable dependency-build safeguards globally.
 
-The release report `docs/release/T-011_RELEASE_CANDIDATE.md` records the full local sweep and the later hardening checks. The npm package remains
-`private: true` at version `0.0.0`, unpublished; owner publication approval is
-still required.
+The release report `docs/release/T-011_RELEASE_CANDIDATE.md` records the full
+historical `0.0.0` local sweep and later hardening checks. The tracked npm
+package remains `private: true` and unpublished; `0.1.0` is the proposed first
+public version under T-013 preparation. Owner publication approval is still
+required.
 
 ## Existing acceptance cases retained
 
@@ -77,4 +79,4 @@ Before each new work-unit handoff and before release qualification, reconcile th
 
 ## Proposed npm release/security qualification (not yet executed)
 
-Before the owner approves first npm publication, review and execute the bounded **local** release gates in `docs/tasks/13_T-013_npm-release-security__Codex-Sol-5.6_Extra-High.md`: dependency advisory and install-script inspection, code trust-boundary review, secret and package-file checks, reproducible tarball installation, browser/SSR checks, publish identity and access verification, and incident response preparation. The agent must create and **test reusable private `priv/release/` scripts** covering npm identity/registry preflight, audits, artifact build/inspection/hash, independent consumers, safe owner-approved interactive publish and later SemVer patch preparation. These files are Git-ignored and must be backed up privately, never put in the npm package or public repository. The owner has already set up npm login and 2FA; the local agent may run `npm whoami` and other safe read-only authenticated checks, but never inspect auth material. Existing local release-candidate results are historical evidence, not automatic approval of a new artifact. Any unavailable or unrun security check is BLOCKED/NOT RUN. Do not introduce remote CI or publish without separate authorization.
+Before the owner approves first npm publication, review and execute the bounded **local** release gates in `docs/tasks/13_T-013_npm-release-security__Codex-Sol-5.6_High.md`: dependency advisory and install-script inspection, code trust-boundary review, secret and package-file checks, reproducible tarball installation, browser/SSR checks, publish identity and access verification, and incident response preparation. The agent must create and **test reusable private `priv/release/` scripts** covering npm identity/registry preflight, audits, artifact build/inspection/hash, independent consumers, safe owner-approved interactive publish and later SemVer patch preparation. These files are Git-ignored and must be backed up privately, never put in the npm package or public repository. The owner has already set up npm login and 2FA; the local agent may run `npm whoami` and other safe read-only authenticated checks, but never inspect auth material. Existing local release-candidate results are historical evidence, not automatic approval of a new artifact. Any unavailable or unrun security check is BLOCKED/NOT RUN. Do not introduce remote CI or publish without separate authorization.

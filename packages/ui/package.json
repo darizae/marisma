@@ -1,6 +1,6 @@
 {
   "name": "@darizae/marisma",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Tailwind-first React UI components inspired by coastal modernism",
   "private": true,
   "type": "module",

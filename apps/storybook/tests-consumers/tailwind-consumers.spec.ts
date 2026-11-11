@@ -22,6 +22,8 @@ const repositoryRoot = resolve(
 const packageDirectory = join(repositoryRoot, "packages/ui");
 const expectedSource = "@source '../node_modules/@darizae/marisma/dist';";
 const uniqueCompiledUtility = "min-h-12";
+const suppliedTarball = process.env.MARISMA_TEST_TARBALL;
+const expectedPackageVersion = process.env.MARISMA_TEST_VERSION ?? "0.1.0";
 
 let temporaryDirectory: string;
 let viteDirectory: string;
@@ -88,7 +90,7 @@ function installTarball(fixtureDirectory: string, tarballPath: string) {
     readFileSync(join(installedPackage, "package.json"), "utf8"),
   );
   expect(installedManifest.name).toBe("@darizae/marisma");
-  expect(installedManifest.version).toBe("0.0.0");
+  expect(installedManifest.version).toBe(expectedPackageVersion);
 }
 
 function filesWithExtension(directory: string, extension: string): string[] {
@@ -247,17 +249,22 @@ test.beforeAll(async () => {
   );
   expect(themeCss).not.toMatch(/@import\s+['"]tailwindcss['"]/);
 
-  run("pnpm", ["run", "build"], packageDirectory);
   temporaryDirectory = mkdtempSync(join(tmpdir(), "marisma-t006-"));
-  const packDirectory = join(temporaryDirectory, "pack");
-  const packOutput = JSON.parse(
-    run(
-      "pnpm",
-      ["pack", "--pack-destination", packDirectory, "--json"],
-      packageDirectory,
-    ),
-  );
-  const tarballPath = resolve(packDirectory, packOutput.filename);
+  let tarballPath: string;
+  if (suppliedTarball) {
+    tarballPath = resolve(suppliedTarball);
+  } else {
+    run("pnpm", ["run", "build"], packageDirectory);
+    const packDirectory = join(temporaryDirectory, "pack");
+    const packOutput = JSON.parse(
+      run(
+        "pnpm",
+        ["pack", "--pack-destination", packDirectory, "--json"],
+        packageDirectory,
+      ),
+    );
+    tarballPath = resolve(packDirectory, packOutput.filename);
+  }
   expect(existsSync(tarballPath)).toBe(true);
 
   viteDirectory = join(temporaryDirectory, "vite-react");

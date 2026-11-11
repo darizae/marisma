@@ -8,3 +8,9 @@ packages:
 # and checks that the binary version matches the package version.
 allowBuilds:
   esbuild: true
+
+# Storybook's docgen plugin currently requests glob 13, whose entire range is
+# advisory-affected. The patched glob 14 API is compatible with the plugin's
+# narrow file-discovery use and is covered by the local Storybook gates.
+overrides:
+  glob: 14.0.2
