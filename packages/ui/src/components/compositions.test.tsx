@@ -227,6 +227,23 @@ describe("navigation and shell compositions", () => {
     );
   });
 
+  it("removes executable schemes from native navigation links", () => {
+    render(
+      <AppNavbar>
+        <AppNavbarLink href={" \nJaVa\nScRiPt:alert(1)"}>Unsafe</AppNavbarLink>
+        <AppNavbarLink href="data:text/html,unsafe">Data URL</AppNavbarLink>
+        <AppNavbarLink href="/safe">Safe</AppNavbarLink>
+      </AppNavbar>,
+    );
+
+    expect(screen.getByText("Unsafe")).not.toHaveAttribute("href");
+    expect(screen.getByText("Data URL")).not.toHaveAttribute("href");
+    expect(screen.getByRole("link", { name: "Safe" })).toHaveAttribute(
+      "href",
+      "/safe",
+    );
+  });
+
   it("opens and dismisses the mobile sidebar with focus restoration", async () => {
     const user = userEvent.setup();
     render(

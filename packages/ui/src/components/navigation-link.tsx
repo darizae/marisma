@@ -11,11 +11,19 @@ export type NavigationLinkBaseProps = Omit<
   currentValue?: "page" | "step" | "location";
 };
 
+function safeNavigationHref(href: string | undefined) {
+  if (!href) return href;
+  const normalized = href.replace(/[\u0000-\u0020]/g, "").toLowerCase();
+  if (/^(?:javascript|data|vbscript):/.test(normalized)) return undefined;
+  return href;
+}
+
 export function NavigationLinkBase({
   asChild = false,
   className,
   current = false,
   currentValue = "page",
+  href,
   ...props
 }: NavigationLinkBaseProps) {
   const Component = asChild ? Slot : "a";
@@ -24,6 +32,7 @@ export function NavigationLinkBase({
     <Component
       aria-current={current ? currentValue : undefined}
       className={cn(className)}
+      href={safeNavigationHref(href)}
       {...props}
     />
   );

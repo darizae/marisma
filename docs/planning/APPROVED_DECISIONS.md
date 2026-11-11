@@ -71,7 +71,15 @@ The implementation assignments T-001–T-011 and the one-off hardening review ha
 
 ## Current release planning boundary (2026-11-11)
 
-The existing UI component catalog is implemented and locally tested according to the release report. Public npm distribution is still pending: the package is `private: true`, version `0.0.0`. Release-security preparation, including a reusable ignored `priv/release/` toolkit, is approved now on a reviewed PR #3-based task branch (or merged `main`) in `../tasks/13_T-013_npm-release-security__Codex-Sol-5.6_High.md`. This does not approve publishing, enabling a new remote workflow, changing package credentials or tagging a release. The official owner-private decision history is not exported into this public document.
+The existing UI component catalog is implemented and locally tested according
+to the release report. Public npm distribution is still pending. The tracked
+package remains `private: true`; `0.1.0` is the proposed first public version on
+the T-013 task branch. Release-security preparation, including a reusable
+ignored `priv/release/` toolkit, is approved now from merged PR #3 in
+`docs/tasks/13_T-013_npm-release-security__Codex-Sol-5.6_High.md`. This does
+not approve publishing, enabling a new remote workflow, changing package
+credentials or tagging a release. The official owner-private decision history
+is not exported into this public document.
 
 ## Owner release-delegation update (2026-11-11)
 

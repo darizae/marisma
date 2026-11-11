@@ -1,6 +1,6 @@
 # Marisma UI package
 
-`@darizae/marisma` is a private prerelease package for React 19 and Tailwind CSS 4. It currently exports Button, Input, Dialog, 11 foundation/feedback families,
+`@darizae/marisma` is a private release-candidate package for React 19 and Tailwind CSS 4. It currently exports Button, Input, Dialog, 11 foundation/feedback families,
 13 interaction/date families, eight form/composed-field families, 13
 data/navigation/application-composition families, and the
 `@darizae/marisma/theme.css` theme entry.
@@ -172,16 +172,19 @@ nearest Marisma subtree theme is bridged into its portal.
   `AppNavbar`, `AppShell`, `PageFooter`, and `StepProgress` provide landmarks,
   skip navigation, responsive layout, and current-step/page semantics.
   Navigation links are native by default and accept consumer link components
-  through `asChild`; no router is required.
+  through `asChild`; no router is required. Native links drop executable
+  `javascript:`, `data:`, and `vbscript:` destinations. A consumer link passed
+  through `asChild` owns its own URL validation and navigation behavior.
 - `PageHeading`, `UserMenu`, and `ErrorView` keep page context, identity/actions,
   retry controls, and destinations caller-owned. No auth, session, fetch, or
   persistence behavior is included.
 
 ## Release status
 
-The package remains `private: true` at version `0.0.0`. A successful local
-tarball check is evidence for owner review, not permission to publish or a
-stable compatibility guarantee.
+The tracked manifest remains `private: true` at the proposed first-release
+version `0.1.0`. The ignored release toolkit removes the private field only in
+an exact staged candidate. A successful local tarball check is evidence for
+owner review, not permission to publish or a stable compatibility guarantee.
 
 The complete catalog disposition and local qualification evidence are recorded
 in the repository's [T-011 release-candidate report](https://github.com/darizae/marisma/blob/main/docs/release/T-011_RELEASE_CANDIDATE.md).
