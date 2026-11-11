@@ -16,7 +16,7 @@
 
 1. `AGENTS.md`.
 2. `docs/planning/ENGINEERING_CONTRACT.md` (approved product, architecture and shared constraints).
-3. This **single task file** (`docs/tasks/01_T-001_identity-and-lockfile.md`).
+3. This **single task file** (`docs/tasks/01_T-001_identity-and-lockfile__Codex-Luna-5.6_High.md`).
 4. Matching `T-001` row in `docs/agent/ROUTING.md`.
 5. `.agents/skills/engineering-quality/SKILL.md`.
 6. This task's owning source files: `package.json`; `pnpm-workspace.yaml`; `packages/ui/package.json`; `docs/planning/COMPONENT_CATALOG.md`; `.gitignore`; `README.md`.

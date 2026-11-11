@@ -16,7 +16,7 @@
 
 1. `AGENTS.md`.
 2. `docs/planning/ENGINEERING_CONTRACT.md` (approved product, architecture and shared constraints).
-3. This **single task file** (`docs/tasks/05_T-005_tailwind-consumer-integration.md`).
+3. This **single task file** (`docs/tasks/05_T-005_tailwind-consumer-integration__Codex-Sol-5.6_Extra-High.md`).
 4. Matching `T-005` row in `docs/agent/ROUTING.md`.
 5. `.agents/skills/engineering-quality/SKILL.md`.
 6. This task's owning source files: `packages/ui/package.json`; `packages/ui/src/styles/theme.css`; `apps/consumers/vite-react/src/styles.css`; `apps/consumers/vite-react/vite.config.ts`; `apps/consumers/nextjs/app/globals.css`; `apps/consumers/nextjs/postcss.config.mjs`; `apps/storybook/.storybook/preview.css`.

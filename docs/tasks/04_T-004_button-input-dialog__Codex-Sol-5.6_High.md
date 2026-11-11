@@ -16,7 +16,7 @@
 
 1. `AGENTS.md`.
 2. `docs/planning/ENGINEERING_CONTRACT.md` (approved product, architecture and shared constraints).
-3. This **single task file** (`docs/tasks/04_T-004_button-input-dialog.md`).
+3. This **single task file** (`docs/tasks/04_T-004_button-input-dialog__Codex-Sol-5.6_High.md`).
 4. Matching `T-004` row in `docs/agent/ROUTING.md`.
 5. `.agents/skills/engineering-quality/SKILL.md`.
 6. This task's owning source files: `docs/planning/COMPONENT_CATALOG.md`; `packages/ui/src/index.ts`; `packages/ui/src/styles/theme.css`; `apps/storybook/.storybook/main.ts`; `apps/storybook/src/Status.stories.tsx`.

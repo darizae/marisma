@@ -2,7 +2,7 @@
 
 **Authority:** owner-approved product and execution decisions, maintained for continuity across planning sessions.
 **Recorded:** 2026-11-10 · **Status:** ACTIVE. Changes require an explicit owner decision.
-**Scope:** this is a product/engineering decision record, **not** an interview transcript or a private planning archive. It contains no job research, model allocation, personal notes or agent reasoning-effort assignments.
+**Scope:** this is a product/engineering decision record, **not** an interview transcript or a private planning archive. It contains no job research, comparative model allocation, personal notes or private interview transcripts. The limited filename-suffix exception is documented below.
 
 ## Identity and visual character
 
@@ -44,7 +44,7 @@
 | D-19 | **Local-first testing, minimal remote GitHub automation.** Remote CI is optional, not a gating requirement. | Fast local unit/type checks during development; targeted browser/consumer checks at checkpoints; full local release sweep. Do not add or expand GitHub Actions without approval. |
 | D-20 | **Documentation hygiene is a mandatory closeout responsibility.** | After a milestone or meaningful contract change, reconcile README, AGENTS.md, routing, catalog, active/historical spec status and links. Replace stale claims, not only add new prose. |
 | D-21 | Long interviews must not lose consequential product decisions as context grows. | Maintain this approved-decision record; reconcile it before plans, new task handoffs and release review. Private interview notes remain outside the public repository. |
-| D-22 | Coding workers receive **model-neutral** technical specs; any model and reasoning-effort choices remain owner-private. | Never add model names, career motivations, qualification research, interview transcripts or allocation reasoning to public repository files. |
+| D-22 | Each sequenced task Markdown filename must include the **recommended coding model and reasoning effort** as a suffix, as explicitly requested by the owner. | The filename carries a recommendation only; worker-facing task bodies remain technically model-neutral. Keep model comparisons, costs, alternatives/fallbacks, career motives and private interview records outside the repository. |
 
 ## Current facts versus decisions
 

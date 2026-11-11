@@ -16,7 +16,7 @@
 
 1. `AGENTS.md`.
 2. `docs/planning/ENGINEERING_CONTRACT.md` (approved product, architecture and shared constraints).
-3. This **single task file** (`docs/tasks/02_T-002_tailwind-theme-tokens.md`).
+3. This **single task file** (`docs/tasks/02_T-002_tailwind-theme-tokens__Codex-Sol-5.6_High.md`).
 4. Matching `T-002` row in `docs/agent/ROUTING.md`.
 5. `.agents/skills/engineering-quality/SKILL.md`.
 6. This task's owning source files: `packages/ui/src/styles/theme.css`; `apps/landing/src/styles.css`; `apps/consumers/vite-react/src/styles.css`.

@@ -16,7 +16,7 @@
 
 1. `AGENTS.md`.
 2. `docs/planning/ENGINEERING_CONTRACT.md` (approved product, architecture and shared constraints).
-3. This **single task file** (`docs/tasks/03_T-003_package-api-build.md`).
+3. This **single task file** (`docs/tasks/03_T-003_package-api-build__Codex-Sol-5.6_Extra-High.md`).
 4. Matching `T-003` row in `docs/agent/ROUTING.md`.
 5. `.agents/skills/engineering-quality/SKILL.md`.
 6. This task's owning source files: `packages/ui/package.json`; `packages/ui/src/index.ts`; `packages/ui/tsdown.config.ts`; `packages/ui/tsconfig.json`; `tsconfig.base.json`; `apps/consumers/nextjs/next.config.mjs`.

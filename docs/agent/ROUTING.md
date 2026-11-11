@@ -10,12 +10,12 @@ Files `docs/tasks/01_*.md` through `06_*.md` describe the earlier S1 work: works
 
 | Order | Exact technical task | Source / verification focus |
 | --- | --- | --- |
-| 07 | `docs/tasks/07_T-007_foundations-feedback.md` | Basic presentation/feedback primitives, local foundation fixes, tokens and theme scope |
-| 08 | `docs/tasks/08_T-008_interaction-widgets.md` | Accessible selection, overlay, date controls and keyboard behavior |
-| 09 | `docs/tasks/09_T-009_forms-composed-fields.md` | Native forms, composed fields, Dropzone, error/cancel behavior |
-| 10 | `docs/tasks/10_T-010_application-compositions.md` | Table, Sidebar, data display, router-agnostic page layouts |
-| 11 | `docs/tasks/11_T-011_documentation-release.md` | Complete Storybook, landing, local browser/tarball qualification and release candidate |
+| 07 | `docs/tasks/07_T-007_foundations-feedback__Codex-Sol-5.6_High.md` | Basic presentation/feedback primitives, local foundation fixes, tokens and theme scope |
+| 08 | `docs/tasks/08_T-008_interaction-widgets__Codex-Sol-5.6_Extra-High.md` | Accessible selection, overlay, date controls and keyboard behavior |
+| 09 | `docs/tasks/09_T-009_forms-composed-fields__Codex-Sol-5.6_High.md` | Native forms, composed fields, Dropzone, error/cancel behavior |
+| 10 | `docs/tasks/10_T-010_application-compositions__Codex-Sol-5.6_Extra-High.md` | Table, Sidebar, data display, router-agnostic page layouts |
+| 11 | `docs/tasks/11_T-011_documentation-release__Codex-Luna-5.6_High.md` | Complete Storybook, landing, local browser/tarball qualification and release candidate |
 
 Each cluster includes bounded **internal checkpoints** and must be reviewed before advancing. Don't create a new spec for every simple component. The authoritative 48-candidate mapping is `docs/planning/COMPONENT_CATALOG.md`.
 
-Shared local verification policy: `docs/planning/VERIFICATION_AND_RELEASE.md`. Shared skill: `.agents/skills/engineering-quality/SKILL.md`. All technical assignments are model-neutral. GitHub Actions is optional and not a gate. npm publication requires separate owner approval.
+Shared local verification policy: `docs/planning/VERIFICATION_AND_RELEASE.md`. Shared skill: `.agents/skills/engineering-quality/SKILL.md`. The model and reasoning effort shown by each task filename are owner-requested **recommendations only**; verify availability before assigning. Technical task bodies remain model-neutral. GitHub Actions is optional and not a gate. npm publication requires separate owner approval.
