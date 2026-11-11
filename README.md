@@ -160,19 +160,13 @@ export function MarismaExample() {
 
 Marisma's supplied leaf mark is stored once at [`assets/brand/marisma-leaf.svg`](assets/brand/marisma-leaf.svg). The landing page and Storybook serve this canonical file as their logo and SVG favicon. The visual direction is calm, coastal-estuary modernism, expressed through Reedwater and Tidal Blue themes; the brand mark does not impose a consumer font or application theme. Approved product decisions and asset usage are documented in [`docs/planning/APPROVED_DECISIONS.md`](docs/planning/APPROVED_DECISIONS.md).
 
-## Roadmap and local verification
+## Implementation status and local verification
 
-Marisma's foundation/feedback, interaction/date, form/composed-field, and
-application-composition clusters now have locally verified source for the full
-48-candidate non-chart catalog. T-011 completes the documentation and local
-release-candidate qualification; see the [release-candidate report](docs/release/T-011_RELEASE_CANDIDATE.md)
-for feature dispositions, exact commands, browser coverage, packed-artifact
-evidence, and publication gating.
-The [catalog](docs/planning/COMPONENT_CATALOG.md)
-accounts for all 48 original non-chart source candidates. Plotting remains
-deferred.
+The approved **48 non-chart source candidates** have been implemented and documented. The [component catalog](docs/planning/COMPONENT_CATALOG.md) maps them to their public APIs, stories and tests. The [local release-candidate report](docs/release/T-011_RELEASE_CANDIDATE.md) includes the post-implementation hardening checks, tested platform, browser omissions and unpublished package status. Charting and plotting remain deferred.
 
-**Tests run locally.** GitHub Actions is not a required validation gate. Before accepting an implementation checkpoint, run the relevant tests and record actual results under the [local verification policy](docs/planning/VERIFICATION_AND_RELEASE.md). The reviewed pnpm build permission is limited to esbuild, which is required by the local Vite/Storybook toolchain. The public npm release is separately approval-gated.
+The completed implementation-task Markdown files were retired from the working tree; **Git history** retains their full content. Maintainers should use [approved decisions](docs/planning/APPROVED_DECISIONS.md), the [engineering contract](docs/planning/ENGINEERING_CONTRACT.md), and [current source/test routing](docs/agent/ROUTING.md) instead of executing obsolete task files.
+
+**Tests run locally.** GitHub Actions is not a required validation gate. Use targeted tests and [local release qualification](docs/planning/VERIFICATION_AND_RELEASE.md) with actual recorded results. Only the reviewed esbuild install script is explicitly allowed. The package is still private and unpublished; npm publication requires an independent owner decision.
 
 ## License
 

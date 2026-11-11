@@ -1,31 +1,17 @@
-# Marisma — active task routing
+# Marisma — current maintainer routing
 
-Read `AGENTS.md`, `docs/planning/APPROVED_DECISIONS.md`, the relevant engineering contract, **one assigned task**, this task's matching row, and the installed quality skill. Numbered ordering does not authorize running ahead.
+**Status:** The initial non-chart catalog is implemented as a **private local release candidate**. No active numbered task Markdown remains. Historical T-001–T-012 work is preserved in Git commit history; the enduring release evidence is `docs/release/T-011_RELEASE_CANDIDATE.md`.
 
-## Historical foundation sprint
+Start at `AGENTS.md`, consult `docs/planning/APPROVED_DECISIONS.md` and the relevant contract section, then follow **only the row for the assigned concern**. This document routes to current code, not obsolete work tickets.
 
-Files `docs/tasks/01_*.md` through `06_*.md` describe the earlier S1 work: workspace, lockfile, Tailwind theme, package build, Button/Input/Dialog, Storybook and consumer harnesses. Source commits are present, but complete local acceptance evidence is not established by this planning change. Those files are historical.
+| Concern | Source of truth | Initial implementation/tests |
+| --- | --- | --- |
+| Design tokens, theme-scoped portals, leaf brand | `docs/planning/ENGINEERING_CONTRACT.md` | `packages/ui/src/styles/theme.css`, `packages/ui/src/lib/portal-theme.ts`, `assets/brand/marisma-leaf.svg`, `packages/ui/src/styles/theme.test.mjs` |
+| Foundation, feedback, interaction, calendar | `docs/planning/COMPONENT_CATALOG.md` | `packages/ui/src/components/` and only owning `foundation.test.tsx`, `feedback.test.tsx`, `selection.test.tsx`, `overlays.test.tsx` or `date.test.tsx` |
+| Native forms, file controls and compositions | `docs/planning/COMPONENT_CATALOG.md` | `packages/ui/src/components/form.tsx`, `inline-edit.tsx`, `date-field.tsx`, `dropzone.tsx` with relevant `forms.test.tsx` or `dropzone.test.tsx` |
+| Navigation, layout, data display | `docs/planning/COMPONENT_CATALOG.md` | `packages/ui/src/components/` owning layout component and `compositions.test.tsx` |
+| Public package API and installed consumer behavior | `packages/ui/README.md` | `packages/ui/src/index.ts`, `packages/ui/package.json`, `packages/ui/package-contract.test.mjs`, `apps/consumers/` |
+| Storybook, landing, accessibility and branding | `README.md` | `apps/storybook/src/`, `apps/storybook/tests/`, `apps/landing/` |
+| Local testing, release readiness and actual historical evidence | `docs/planning/VERIFICATION_AND_RELEASE.md` | `docs/release/T-011_RELEASE_CANDIDATE.md` and applicable package/Storybook scripts |
 
-Historical exact paths (reference only, not runnable assignments):
-
-- `docs/tasks/01_T-001_identity-and-lockfile__Codex-Luna-5.6_High.md`
-- `docs/tasks/02_T-002_tailwind-theme-tokens__Codex-Sol-5.6_High.md`
-- `docs/tasks/03_T-003_package-api-build__Codex-Sol-5.6_Extra-High.md`
-- `docs/tasks/04_T-004_button-input-dialog__Codex-Sol-5.6_High.md`
-- `docs/tasks/05_T-005_tailwind-consumer-integration__Codex-Sol-5.6_Extra-High.md`
-- `docs/tasks/06_T-006_storybook-and-release-readiness__Codex-Luna-5.6_High.md`
-
-## First-release clusters
-
-| Order | Status                                    | Exact technical task                                                        | Source / verification focus                                                                                   |
-| ----- | ----------------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| 07    | Locally verified; owner review pending    | `docs/tasks/07_T-007_foundations-feedback__Codex-Sol-5.6_High.md`           | Basic presentation/feedback primitives, local foundation fixes, tokens and theme scope                        |
-| 08    | Locally verified; owner review required   | `docs/tasks/08_T-008_interaction-widgets__Codex-Sol-5.6_Extra-High.md`      | Accessible selection, overlay, date controls and keyboard behavior                                            |
-| 09    | Locally verified; owner review required   | `docs/tasks/09_T-009_forms-composed-fields__Codex-Sol-5.6_High.md`          | Native forms, composed fields, Dropzone, error/cancel behavior                                                |
-| 10    | Locally verified; owner review required   | `docs/tasks/10_T-010_application-compositions__Codex-Sol-5.6_Extra-High.md` | Table, Sidebar, data display, router-agnostic page layouts                                                    |
-| 11    | Locally verified; owner review pending    | `docs/tasks/11_T-011_documentation-release__Codex-Luna-5.6_High.md`         | Complete Storybook, landing, local browser/tarball qualification and release candidate                        |
-| 12    | Implemented locally; owner review pending | `docs/tasks/hardening-spec.md`                                              | Correct release evidence, rejected-save handling, native required dates, bounded data preview, status hygiene |
-
-Each cluster includes bounded **internal checkpoints** and must be reviewed before advancing. Don't create a new spec for every simple component. The authoritative 48-candidate mapping is `docs/planning/COMPONENT_CATALOG.md`.
-
-Shared local verification policy: `docs/planning/VERIFICATION_AND_RELEASE.md`. Shared skill: `.agents/skills/engineering-quality/SKILL.md`. The model and reasoning effort shown by each task filename are owner-requested **recommendations only**; verify availability before assigning. Technical task bodies remain model-neutral. GitHub Actions is optional and not a gate. npm publication requires separate owner approval.
+The five grouped release clusters T-007–T-011 and subsequent hardening have been implemented, but **owner publication review remains separate**. Do not infer local test results beyond those actually recorded. Avoid adding remote CI requirements: local checks are the owner-approved evidence channel. Future task specs, if needed, use the model/effort filename suffix described in `AGENTS.md`; the task body stays model-neutral.

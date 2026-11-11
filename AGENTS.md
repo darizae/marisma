@@ -1,24 +1,28 @@
-# Marisma — repository agent instructions
+# Marisma — maintainer and agent entry point
 
-The owner's durable approved-decision ledger is `docs/planning/APPROVED_DECISIONS.md`; the implementation contract is `docs/planning/ENGINEERING_CONTRACT.md` and scope is `docs/planning/COMPONENT_CATALOG.md`. Reconcile them before exporting/implementing new clusters; do not repeat settled interview questions or infer unapproved changes. T-007 through T-011 have locally verified implementation and release-candidate evidence awaiting owner review; publication remains separately gated. Earlier tasks 01–06 are historical S1 records, not active assignments. **Execute only the explicitly assigned approved checkpoint of one cluster.**
+**Current state:** The complete approved **48-candidate non-chart source catalog** has implementation, Storybook coverage and recorded local release-candidate evidence. The npm package is still **private, version 0.0.0 and unpublished**. The source repository itself is private. **No active implementation task specification exists.** Historical task Markdown files were retired from the working tree after completion and remain recoverable through Git history. The current release evidence is `docs/release/T-011_RELEASE_CANDIDATE.md`.
 
-## Read sequence
+## Read only the context relevant to the assigned work
 
-1. This AGENTS.md.
-2. The approved-decision register and relevant sections of the shared engineering contract.
-3. Exactly the assigned task file.
-4. The matching row of `docs/agent/ROUTING.md`.
-5. `.agents/skills/engineering-quality/SKILL.md`.
-6. Only the assigned initial read set and relevant cases in `docs/planning/VERIFICATION_AND_RELEASE.md`.
+1. `docs/planning/APPROVED_DECISIONS.md` — the owner's binding product, brand, scope and workflow decisions.
+2. `docs/planning/ENGINEERING_CONTRACT.md` — implementation and package interfaces.
+3. `docs/agent/ROUTING.md` — map the current issue to a limited set of source and test files.
+4. `.agents/skills/engineering-quality/SKILL.md` — shared implementation safeguards.
+5. `docs/planning/VERIFICATION_AND_RELEASE.md` and the release evidence report **only** for the applicable verification/release gate.
 
-Do not sweep future tasks, archived tasks or all Markdown. If paths are missing or requirements conflict, report the narrow blocker rather than invent a solution.
+Do not recursively read all documentation. An owner-approved new work unit must specify its exact initial read set, allowed files, acceptance checks and stop conditions. A model label in a future spec filename is an owner-requested nonbinding recommendation; keep the technical task body model-neutral and do not commit model comparisons or private interview transcripts.
 
-## Binding technical decisions
+## Non-negotiable architecture
 
-React 19, TypeScript, **Tailwind CSS 4 exclusively**, semantic Tailwind tokens and CVA where useful; Radix for appropriate complex interaction primitives. Reedwater and Tidal Blue, each in light and dark modes, with calm estuary-inspired application usability, readable typography, keyboard and focus support. The complete generalized non-chart catalog is the first-release goal; plotting remains deferred. No alternative CSS system, app backend, required router, auth service or application data logic inside the library.
+React 19 and TypeScript; **Tailwind CSS 4 exclusively** (native `@theme` and semantic tokens); Radix where appropriate for accessible complex interactions. Styled, reusable components without mandatory consumer router, auth backend, data service or form framework. Four theme combinations: Reedwater and Tidal Blue, each light/dark. Canonical brand asset: `assets/brand/marisma-leaf.svg`. Charts and scientific plotting are deferred to a later release. Every feature change must preserve keyboard/focus behavior, accessibility, responsive behavior and actual Vite/Next.js packaged-consumer compatibility.
 
-## Tests, Git and reporting
+## Git, verification, documentation and publication
 
-Work within the assigned paths and internal checkpoints; prefer targeted unit/type checks during editing and real browser/package checks **locally** at named gates. **GitHub Actions is not required and must not be reintroduced without owner approval.** Never call unrun checks PASS: report actual commands/platform/results and PASS, FAIL, NOT RUN or BLOCKED. Do not substitute mocks or regex assertions for a required real integration.
+- Test **locally**: focused unit/type checks during development; real browser and package-consumer checks at the appropriate change/release gate. Do not impose remote CI or add GitHub Actions workflows without express owner approval. Report PASS/FAIL/NOT RUN/BLOCKED from real commands, never from test-file existence.
+- Use scoped changes, reviewable PRs, and approval before merge or publication. Do not force-push, publish to npm, deploy, tag, access secrets or incur paid costs without authorization. Keep `priv/` untracked.
+- Keep only current working documentation. At any milestone or path change reconcile the README, AGENTS, routing, catalog, decision register, release notes and links. Retire completed task specs when their requirements have been resolved and their evidence preserved. The repository's Git history retains past specs.
+- No public npm release has been approved. Do not toggle `private: true` or claim this package is installed from the npm registry.
 
-Use short-lived task branches and reviewable PRs when authorized. Never merge, force-push, publish to npm, deploy, tag, access secrets or incur costs without explicit approval. Keep `priv/` untracked. After each milestone or meaningful contract/file move, reconcile stale Markdown: update AGENTS, active/historical task status, README, routing, catalog and links; do not leave scaffold-era claims. Public docs should describe real capabilities, not promised features. Task **bodies** remain model-neutral; each numbered Markdown filename carries the owner's requested _recommended_ coding model and reasoning-effort suffix (`__Codex-Model_Verbosity.md`). The suffix is a routing hint, not a guarantee of model availability. Keep comparative model assessments, costs, fallbacks and private reasoning outside this repository.
+## Future task-file naming
+
+For a **newly approved** numbered implementation task, use `docs/tasks/NN_T-XXX_topic__Codex-<recommended-model>_<reasoning-effort>.md` if a task file is needed. The filename is an owner-facing routing hint; it never authorizes extra scope or publication. Do not recreate historical specs merely for reference.

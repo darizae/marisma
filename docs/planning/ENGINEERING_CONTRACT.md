@@ -2,7 +2,7 @@
 
 **Decisions authority:** `docs/planning/APPROVED_DECISIONS.md` is the canonical approved product/brand/execution register. This contract defines their technical implementation. Do not reverse settled owner decisions or dilute the Tailwind-only and local-first policies.
 
-**Status:** APPROVED technical contract; execution follows numbered task files · **Revision:** 3 · **Date:** 2026-11-10
+**Status:** APPROVED technical contract; current non-chart implementation complete, release approval pending · **Revision:** 4 · **Date:** 2026-11-11
 
 ## Product contract
 
@@ -69,7 +69,7 @@ gates**. Never use source workspace symlinks as sole proof of published compatib
 - Storybook audience: implementing developers. Each public component gets representative states, accessible use, typed props, keyboard notes when relevant, and verified code snippets. Don't represent an unfinished control as production-ready.
 - Maintainer/task writing remains in this specification and is not duplicated in public copy.
 
-### Tailwind consumer installation contract (to validate in S1)
+### Tailwind consumer installation contract
 
 A prospective Vite app must use `@tailwindcss/vite`; a Next.js app must use
 `@tailwindcss/postcss`. Their global CSS entry imports Tailwind once, then Marisma's
@@ -82,22 +82,16 @@ CSS file located in `src/app.css` under its project root:
 @source "../node_modules/@darizae/marisma/dist";
 ```
 
-This snippet describes the intended contract, **not verified installation guidance**.
+This is the documented Tailwind 4 consumer contract. The release-candidate report records a successful local tarball-installed Vite/Next.js test; verify paths for each consumer's CSS layout.
 The `@source` path is relative to the stylesheet; account for actual consumer layout
 and pnpm symlinks. Consumer build checks must prove a library component's unique
 variant class is emitted into production CSS. No second Tailwind preflight import.
 
-## Task context and routing
+## Active engineering context
 
-The six S1 files `docs/tasks/01_*.md` through `06_*.md` are historical. T-007
-through T-011 have locally verified implementation/evidence awaiting owner
-review. Numbered order is dependency order, not blanket authorization.
-Read root `AGENTS.md`, this shared contract, **one assigned numbered task file**,
-the corresponding row in `docs/agent/ROUTING.md`,
-`.agents/skills/engineering-quality/SKILL.md`, and only the task's initial source/test paths.
-Consult `docs/planning/VERIFICATION_AND_RELEASE.md` only for the case IDs and gates
-listed in the assigned task. Do not read subsequent tasks as a general context dump.
-Tests marked "create" are not presumed to exist. **GitHub Actions is not a required gate**; local testing remains mandatory at the relevant checkpoint.
+The approved non-chart catalog has implementation, and the local release-candidate evidence is recorded in `docs/release/T-011_RELEASE_CANDIDATE.md`. There are **no active numbered task specifications**: the eleven completed cluster/source specs and the hardening note were retired from the working tree after completion; their content remains in Git history. Read `AGENTS.md`, the approved-decision register, and the relevant row of `docs/agent/ROUTING.md` for a newly authorized change. Consult only the owning source/tests and the relevant `docs/planning/VERIFICATION_AND_RELEASE.md` gate. Do not recreate historical specs or treat an old plan as active work.
+
+**Local tests are the acceptance channel; GitHub Actions is not a gate.** Package publication remains a distinct owner decision.
 
 ## Required implementation skills
 
@@ -113,23 +107,14 @@ No unreviewed external skill installation is authorized.
 
 ## Current project phase (2026-11-11)
 
-S1 commits contain the workspace/lockfile, Tailwind themes, package contract,
-Button/Input/Dialog, Storybook and Vite/Next.js consumer harnesses. T-007
-through T-010 add locally verified source for the remaining foundation,
-interaction/date, form, data, navigation, and application-composition
-candidates, for **48 implemented component families** total. This completes the
-approved non-chart source catalog. T-011 adds the complete documentation and
-local release-candidate qualification evidence; it is not a public release.
-Plotting remains deferred. The package is private at 0.0.0.
-GitHub Actions is optional, intentionally not a gate; all actual test evidence
-comes from local runs. Publication still needs separate authorization.
+The workspace, four Tailwind theme variants, published-package boundary, Storybook, landing, independent Vite/Next.js consumers and all 48 non-chart source candidates have been implemented. The post-implementation hardening commit corrected release-evidence package names and addressed InlineEdit rejected saves, DateField required validation and bounded DataPreview behavior. The [release report](../release/T-011_RELEASE_CANDIDATE.md) records local tests and disclosed browser omissions; it is not a claim of independent review or of npm publication. The actual GitHub repository is **private**, and the package remains `private: true` at `0.0.0`. Plotting remains deferred. Only release-specific owner decisions and any justified corrective issues remain.
 
 ## Planning continuity and documentation hygiene
 
 Keep approved product, branding, release, scope and verification choices in `docs/planning/APPROVED_DECISIONS.md`, not only in conversation context. Before generating specs or changing product direction, reconcile that record with the actual component catalog and branch state. Numbered task filenames include the owner's explicit recommended coding model and reasoning-effort suffix; those values are nonbinding routing hints. Do not put model comparisons, pricing, fallback policy, career notes or private interview transcripts into the repository or technical task bodies.
 
-At each cluster completion or significant contract/file move, check README, `AGENTS.md`, routing, task status, brand links and active contract for stale scaffold language, contradictory verification claims and broken paths. Make a bounded hygiene correction in the associated reviewed change. Local tests are authoritative; do not burden GitHub with remote CI unless the owner explicitly changes D-19.
+At each milestone, publication or significant contract/file move, check README, `AGENTS.md`, routing, catalog, brand links and active contract for stale statements, contradictory verification claims and broken paths. Make a bounded hygiene correction in the associated reviewed change. Local tests are authoritative; do not burden GitHub with remote CI unless the owner explicitly changes D-19.
 
 ## Sequenced spec filename convention
 
-All numbered `docs/tasks/` Markdown files (historical and future) use `NN_T-XXX_topic__Codex-<recommended-model>_<reasoning-effort>.md`. The suffix is owner-requested and may be updated after private availability assessment; the technical instructions inside remain agent-neutral. Maintain exact filename links in routing, self-references and related documentation when renaming. Do not add model rankings, cost estimates or decision matrices to repository files.
+Any future numbered `docs/tasks/` Markdown files use `NN_T-XXX_topic__Codex-<recommended-model>_<reasoning-effort>.md`. The suffix is owner-requested and may be updated after private availability assessment; the technical instructions inside remain agent-neutral. Do not keep completed task files in the active document tree solely to preserve execution history; Git retains their history. Maintain exact filename links in routing and related documentation for any active task. Do not add model rankings, cost estimates or decision matrices to repository files.

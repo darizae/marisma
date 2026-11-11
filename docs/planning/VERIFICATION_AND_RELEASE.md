@@ -1,10 +1,10 @@
 # Marisma — local verification and release policy
 
-**Status:** CURRENT planning policy; T-007 through T-011 are locally verified and awaiting owner review · **Revision:** 7 · **Date:** 2026-11-11
+**Status:** CURRENT local verification and publication policy; implementation/hardening recorded, owner release approval pending · **Revision:** 8 · **Date:** 2026-11-11
 
 ## Owner-selected verification policy
 
-**Tests run locally by default.** No GitHub Actions success is required for task acceptance, review, merge or release preparation. The automatic remote CI workflow is removed in this planning PR. Do not restore it or introduce another remote workflow without explicit owner approval.
+**Tests run locally by default.** No GitHub Actions success is required for task acceptance, review, merge or release preparation. The automatic remote CI workflow is absent by owner decision. Do not restore it or introduce another remote workflow without explicit owner approval.
 
 Local checks remain required at their appropriate gates. Use focused unit and type checks during editing; perform relevant integration/browser checks before cluster acceptance; execute a deliberate release qualification sweep locally. Report exact command, directory, platform/runtime, result and omissions. An existing test file is not evidence that it passed.
 
@@ -24,8 +24,7 @@ frozen install now reports no ignored builds. T-011 records the complete
 release-qualification sweep without creating a remote CI requirement. Never
 disable dependency-build safeguards globally.
 
-T-011 records the complete local release-candidate sweep in
-`docs/release/T-011_RELEASE_CANDIDATE.md`. The npm package remains
+The release report `docs/release/T-011_RELEASE_CANDIDATE.md` records the full local sweep and the later hardening checks. The npm package remains
 `private: true` at version `0.0.0`, unpublished; owner publication approval is
 still required. Charts remain deferred.
 
@@ -74,4 +73,4 @@ Do **not** change `private: true`, create a public tag, publish, deploy or use c
 
 ## Brand and decision-record hygiene checks
 
-At each cluster checkpoint and before release candidate qualification, reconcile the owner-approved decisions in `docs/planning/APPROVED_DECISIONS.md` with the implementation contract, catalog, `AGENTS.md`, task statuses and public docs. Verify that internal/interview-private content is not committed. Check logo and favicon reachability from the canonical `assets/brand/marisma-leaf.svg` in both landing and Storybook local builds, including a non-root base path if hosted there. Mark an unrun check NOT RUN; remote CI is never a substitute or requirement.
+Before each new work-unit handoff and before release qualification, reconcile the owner-approved decisions in `docs/planning/APPROVED_DECISIONS.md` with the implementation contract, catalog, `AGENTS.md`, active work status and public docs. Verify that internal/interview-private content is not committed. Check logo and favicon reachability from the canonical `assets/brand/marisma-leaf.svg` in both landing and Storybook local builds, including a non-root base path if hosted there. Mark an unrun check NOT RUN; remote CI is never a substitute or requirement.
