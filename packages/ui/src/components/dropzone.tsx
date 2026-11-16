@@ -173,7 +173,7 @@ export function Dropzone({
     >
       <div
         className={cn(
-          "grid min-h-40 place-items-center rounded-xl border-2 border-dashed border-mar-border bg-mar-card p-6 text-center transition-colors duration-[var(--marisma-duration-fast)]",
+          "grid min-h-40 place-items-center rounded-mar-card border-2 border-dashed border-mar-input-border bg-mar-card p-6 text-center transition-colors duration-[var(--marisma-duration-fast)]",
           dragActive && "border-mar-primary bg-mar-surface",
           disabled && "cursor-not-allowed opacity-60",
         )}
@@ -214,7 +214,7 @@ export function Dropzone({
             ]
               .filter(Boolean)
               .join(" ")}
-            className="block max-w-full text-sm text-mar-muted file:mr-3 file:min-h-10 file:rounded-lg file:border file:border-mar-border file:bg-mar-surface file:px-3 file:py-1.5 file:font-semibold file:text-mar-text"
+            className="block max-w-full text-sm text-mar-muted file:mr-3 file:min-h-10 file:rounded-mar-control file:border file:border-mar-input-border file:bg-mar-surface file:px-3 file:py-1.5 file:font-semibold file:text-mar-text"
             disabled={disabled}
             id={inputId}
             multiple={multiple}
@@ -268,7 +268,7 @@ export function Dropzone({
 
       {rejections.length > 0 ? (
         <div
-          className="rounded-lg border border-mar-danger bg-mar-danger-surface p-3 text-sm text-mar-danger"
+          className="rounded-mar-control border border-mar-danger bg-mar-danger-surface p-3 text-sm text-mar-danger"
           role="alert"
         >
           <p className="font-semibold">

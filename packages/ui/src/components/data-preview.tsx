@@ -170,12 +170,12 @@ export function DataPreview({
     <section
       aria-label={label}
       className={cn(
-        "overflow-hidden rounded-xl border border-mar-border bg-mar-card font-mar-sans text-mar-text",
+        "overflow-hidden rounded-mar-card border border-mar-surface-border bg-mar-card shadow-mar-card font-mar-sans text-mar-text",
         className,
       )}
       {...props}
     >
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-mar-border px-4 py-3">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-mar-separator px-4 py-3">
         <p className="font-semibold">{label}</p>
         {collapsible ? (
           <Button
@@ -199,7 +199,7 @@ export function DataPreview({
         </code>
       </pre>
       {limited ? (
-        <p className="border-t border-mar-border px-4 py-3 text-sm text-mar-muted">
+        <p className="border-t border-mar-separator px-4 py-3 text-sm text-mar-muted">
           Previewing {capped.length.toLocaleString()} of{" "}
           {capped.length.toLocaleString()}+ characters.
         </p>
