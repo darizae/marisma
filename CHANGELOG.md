@@ -4,7 +4,7 @@ All notable changes to Marisma are documented here.
 
 ## [Unreleased]
 
-## [0.2.0] — Prepared, not published
+## [0.2.0] — 2026-11-16
 
 - Adopted owner-approved **Soft Elevation (Concept 03)** as the default appearance across Marisma's semantic Tailwind 4 component styling, without a separate style switch.
 - Added separate card, control and navbar radius tokens; surface-border, separator, input-border, hover and selection tokens; and card, popup and navbar elevation tokens. Retained the stronger original border token for accessibility and consumer compatibility.
@@ -12,7 +12,7 @@ All notable changes to Marisma are documented here.
 - Tuned Reedwater/Tidal Blue light and dark appearances independently. Kept semantic feedback colors, keyboard focus, forced-colors and reduced-motion behavior.
 - Updated Storybook application stories, developer example, landing page and Vite/Next.js consumer fixtures to reflect the design direction.
 - No intended public React component API changes. Visual migration: custom consumer layouts using `border-mar-border` may opt for `border-mar-separator`, `border-mar-input-border` or `shadow-mar-card` as appropriate; the stronger `border-mar-border` remains available.
-- **Release gate:** visual baselines, screenshots, browser/accessibility, local packed consumers, dependency audit and SHA-256 archive inspection must be regenerated or verified for this exact commit. Nothing in the 0.1.0 release evidence qualifies this candidate.
+- **Release:** qualified on source `fc3dc39d66bdd2d11027b87927d5b2bade148611` and published from the reviewed staged artifact (SHA-256 `8f4b9318f77c7e998cecdf266e87799b1e7cd50be1c0420a3d9edd0abce80852`); registry and tarball-installed consumer verification in `priv/release/postpublish.sh` evidence.
 
 ## [0.1.0] — 2026-11-11
 
