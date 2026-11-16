@@ -18,7 +18,7 @@ export function CollapsibleTrigger({
   return (
     <CollapsiblePrimitive.Trigger
       className={cn(
-        "group inline-flex min-h-11 items-center justify-between gap-3 rounded-lg border border-mar-border bg-mar-card px-4 py-2 text-left font-mar-sans text-sm font-semibold text-mar-text transition-colors duration-[var(--marisma-duration-fast)] hover:bg-mar-surface disabled:cursor-not-allowed disabled:opacity-60",
+        "group inline-flex min-h-11 items-center justify-between gap-3 rounded-mar-control border border-mar-input-border bg-mar-card px-4 py-2 text-left font-mar-sans text-sm font-semibold text-mar-text transition-colors duration-[var(--marisma-duration-fast)] hover:bg-mar-hover disabled:cursor-not-allowed disabled:opacity-60",
         className,
       )}
       ref={ref}

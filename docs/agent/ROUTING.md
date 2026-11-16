@@ -19,8 +19,7 @@ Start at `AGENTS.md`, consult `docs/planning/APPROVED_DECISIONS.md` and the rele
 
 The five grouped release clusters T-007–T-011 and subsequent hardening have been implemented, but **owner publication review remains separate**. Do not infer local test results beyond those actually recorded. Avoid adding remote CI requirements: local checks are the owner-approved evidence channel. Future task specs, if needed, use the model/effort filename suffix described in `AGENTS.md`; the task body stays model-neutral.
 
-## Next task
+## Active 0.2.0 branch gate
 
-No implementation or release task is active. Future package versions use the
-ignored, owner-private `priv/release/` toolkit and require a fresh reviewed
-version, commit, artifact digest and explicit publication authorization.
+The owner-approved Soft Elevation changes are under draft PR #6 on `feat/soft-elevation-v0.2.0`. The relevant routes above continue to apply. Use `docs/design/UI_UX_PARITY_MATRIX.md` for the approved view/state comparisons and the bounded task files in `docs/tasks/` for authentic screenshots, local qualification and final documentation hygiene. T-014 visuals and T-015 qualification were executed locally on 2026-11-16 (PR head `1004c6e76e…`, tarball `darizae-marisma-0.2.0.tgz`, SHA-256 `d2e96394…`); the evidence ledger is on PR #6. Version `0.2.0` remains source-only and **not** a published registry release: publication/tagging still require separate owner approval. Do not infer a passed check from test files alone or from the 0.1.0 historical evidence. There is no new remote CI requirement.
+

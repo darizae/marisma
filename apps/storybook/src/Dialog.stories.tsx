@@ -114,7 +114,7 @@ export const SubtreeThemePortal: Story = {
   globals: { marismaAccent: "reedwater", marismaMode: "light" },
   render: (args) => (
     <div
-      className="rounded-xl bg-mar-surface p-6 text-mar-text"
+      className="rounded-mar-card bg-mar-surface p-6 text-mar-text"
       data-marisma-accent="tidal-blue"
       data-marisma-mode="dark"
     >

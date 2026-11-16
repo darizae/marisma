@@ -12,7 +12,7 @@ const meta = {
       </Button>
     ),
     children: (
-      <div className="rounded-xl border border-dashed border-mar-border bg-mar-card p-8 text-center text-mar-muted">
+      <div className="rounded-mar-card border border-dashed border-mar-input-border bg-mar-card p-8 text-center text-mar-muted">
         Section content stays caller-owned.
       </div>
     ),

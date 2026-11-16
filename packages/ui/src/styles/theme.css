@@ -10,6 +10,18 @@
   --color-mar-text: var(--marisma-text);
   --color-mar-muted: var(--marisma-muted);
   --color-mar-border: var(--marisma-border);
+  --color-mar-surface-border: var(--marisma-surface-border);
+  --color-mar-separator: var(--marisma-separator);
+  --color-mar-input-border: var(--marisma-input-border);
+  --color-mar-hover: var(--marisma-hover);
+  --color-mar-selection: var(--marisma-selection);
+  --color-mar-selection-text: var(--marisma-selection-text);
+  --radius-mar-card: var(--marisma-radius-card);
+  --radius-mar-control: var(--marisma-radius-control);
+  --radius-mar-navbar: var(--marisma-radius-navbar);
+  --shadow-mar-card: var(--marisma-shadow-card);
+  --shadow-mar-overlay: var(--marisma-shadow-overlay);
+  --shadow-mar-navbar: var(--marisma-shadow-navbar);
   --color-mar-primary: var(--marisma-primary);
   --color-mar-primary-hover: var(--marisma-primary-hover);
   --color-mar-on-primary: var(--marisma-on-primary);
@@ -149,6 +161,39 @@
   --marisma-danger-surface: #49272c;
 }
 
+/* Soft Elevation is the default surface treatment in every theme scope.
+   Keep --marisma-border strong for legacy uses and semantic/high-contrast states.
+   Cards, hairline separators, and interactive boundaries are distinct tokens. */
+:root,
+[data-marisma-accent],
+[data-marisma-mode] {
+  --marisma-surface-border: transparent;
+  --marisma-separator: color-mix(in srgb, var(--marisma-border) 22%, var(--marisma-card));
+  /* A 30% outline from the prototype would be below the WCAG non-text
+     contrast target. Keep controls recognisable at rest; only decorative
+     surface separators use the quieter mix. */
+  --marisma-input-border: color-mix(in srgb, var(--marisma-border) 90%, var(--marisma-card));
+  --marisma-hover: color-mix(in srgb, var(--marisma-primary) 5%, var(--marisma-card));
+  --marisma-selection: color-mix(in srgb, var(--marisma-primary) 12%, var(--marisma-card));
+  --marisma-selection-text: var(--marisma-primary);
+  --marisma-radius-card: 18px;
+  --marisma-radius-control: 11px;
+  --marisma-radius-navbar: 13px;
+  --marisma-shadow-card: 0 16px 34px -21px rgba(33, 66, 51, .22), 0 4px 12px -8px rgba(33, 66, 51, .12);
+  --marisma-shadow-overlay: 0 24px 60px -20px rgba(20, 45, 34, .28), 0 10px 24px -12px rgba(20, 45, 34, .16);
+  --marisma-shadow-navbar: 0 4px 24px rgba(35, 61, 47, .05);
+}
+
+[data-marisma-mode="dark"] {
+  --marisma-separator: rgba(218, 240, 226, .11);
+  --marisma-input-border: var(--marisma-border);
+  --marisma-hover: color-mix(in srgb, var(--marisma-primary) 7%, var(--marisma-card));
+  --marisma-selection: color-mix(in srgb, var(--marisma-primary) 16%, var(--marisma-card));
+  --marisma-shadow-card: 0 18px 40px -18px rgba(0, 0, 0, .30), 0 4px 14px -8px rgba(0, 0, 0, .24);
+  --marisma-shadow-overlay: 0 26px 70px -16px rgba(0, 0, 0, .5), 0 10px 24px -10px rgba(0, 0, 0, .34);
+  --marisma-shadow-navbar: 0 4px 24px rgba(0, 0, 0, .14);
+}
+
 :where(:root, [data-marisma-accent], [data-marisma-mode]) :focus-visible,
 :where([data-marisma-accent], [data-marisma-mode]):focus-visible {
   outline: var(--marisma-focus-width) solid var(--marisma-focus);
@@ -174,6 +219,15 @@
     --marisma-text: CanvasText;
     --marisma-muted: GrayText;
     --marisma-border: CanvasText;
+    --marisma-surface-border: CanvasText;
+    --marisma-separator: CanvasText;
+    --marisma-input-border: CanvasText;
+    --marisma-hover: Canvas;
+    --marisma-selection: Highlight;
+    --marisma-selection-text: HighlightText;
+    --marisma-shadow-card: none;
+    --marisma-shadow-overlay: none;
+    --marisma-shadow-navbar: none;
     --marisma-primary: ButtonFace;
     --marisma-primary-hover: ButtonFace;
     --marisma-on-primary: ButtonText;

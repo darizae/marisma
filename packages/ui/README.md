@@ -6,6 +6,12 @@ data/navigation/application-composition families, and the
 `@darizae/marisma/theme.css` theme entry.
 Install it with `pnpm add @darizae/marisma react react-dom tailwindcss`.
 
+## Soft Elevation in the 0.2.0 source candidate
+
+The source on the pending 0.2.0 branch uses Soft Elevation by default: `rounded-mar-card`, `shadow-mar-card`, and semantic `mar-surface-border`, `mar-separator`, and `mar-input-border` Tailwind utilities are exported from `theme.css`. Cards float above the canvas; inputs retain fine visible outlines. Both accent families have independent dark-mode shadows and accessible focus/forced-colors treatment. Existing `mar-border` remains the stronger legacy boundary token; consumers needing stronger interactive borders may continue to use it. No component prop or theme-attribute migration is required.
+
+The published npm package is still documented as `0.1.0`; 0.2.0 is not yet published or independently qualified.
+
 ## Local package evaluation
 
 From a checkout of this repository, build and pack the exact artifact:
@@ -63,7 +69,7 @@ export function MarismaExample() {
   const [status, setStatus] = useState("No changes saved");
 
   return (
-    <section className="grid w-full max-w-lg gap-5 rounded-xl border border-mar-border bg-mar-card p-6">
+    <section className="grid w-full max-w-lg gap-5 rounded-mar-card border border-mar-surface-border bg-mar-card shadow-mar-card p-6">
       <Input
         description="This value is controlled by your application."
         label="Project name"
@@ -180,7 +186,7 @@ nearest Marisma subtree theme is bridged into its portal.
 
 ## Release status
 
-Version `0.1.0` is published publicly on npm. The tracked manifest remains
+Version `0.1.0` is published publicly on npm. The proposed `0.2.0` is a branch-only release candidate pending local qualification, registry recheck and owner authorization. The tracked manifest remains
 `private: true` as a release safety control; the ignored release toolkit removes
 the private field only from an exact reviewed staged candidate. Future versions
 require their own artifact qualification and publication approval.

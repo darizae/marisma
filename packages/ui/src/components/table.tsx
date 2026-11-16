@@ -18,7 +18,7 @@ export function Table({
     <div
       aria-label={scrollLabel}
       className={cn(
-        "w-full overflow-x-auto rounded-xl border border-mar-border bg-mar-card font-mar-sans text-mar-text",
+        "w-full overflow-x-auto rounded-mar-card border border-mar-surface-border bg-mar-card shadow-mar-card font-mar-sans text-mar-text",
         containerClassName,
       )}
       role="region"
@@ -45,7 +45,7 @@ export function TableBody({
   ...props
 }: ComponentPropsWithRef<"tbody">) {
   return (
-    <tbody className={cn("divide-y divide-mar-border", className)} {...props} />
+    <tbody className={cn("divide-y divide-mar-separator", className)} {...props} />
   );
 }
 
@@ -56,7 +56,7 @@ export function TableFooter({
   return (
     <tfoot
       className={cn(
-        "border-t border-mar-border bg-mar-surface font-medium",
+        "border-t border-mar-separator bg-mar-surface font-medium",
         className,
       )}
       {...props}
@@ -68,7 +68,7 @@ export function TableRow({ className, ...props }: ComponentPropsWithRef<"tr">) {
   return (
     <tr
       className={cn(
-        "transition-colors duration-[var(--marisma-duration-fast)] hover:bg-mar-surface",
+        "transition-colors duration-[var(--marisma-duration-fast)] hover:bg-mar-hover",
         className,
       )}
       {...props}

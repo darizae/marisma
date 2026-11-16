@@ -24,7 +24,7 @@ export function PageHeading({
   return (
     <header
       className={cn(
-        "grid gap-4 border-b border-mar-border pb-6 font-mar-sans text-mar-text",
+        "grid gap-4 border-b border-mar-separator pb-6 font-mar-sans text-mar-text",
         className,
       )}
       {...props}

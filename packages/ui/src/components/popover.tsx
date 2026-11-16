@@ -80,7 +80,7 @@ export function PopoverContent({
       <PopoverPrimitive.Content
         align={align}
         className={cn(
-          "z-50 max-h-[var(--radix-popover-content-available-height)] w-[min(22rem,var(--radix-popover-content-available-width))] overflow-y-auto rounded-xl border border-mar-border bg-mar-card p-4 font-mar-sans text-mar-text shadow-xl",
+          "z-50 max-h-[var(--radix-popover-content-available-height)] w-[min(22rem,var(--radix-popover-content-available-width))] overflow-y-auto rounded-mar-card border border-mar-surface-border bg-mar-card p-4 font-mar-sans text-mar-text shadow-mar-overlay",
           "transition duration-[var(--marisma-duration-fast)] data-[state=closed]:scale-95 data-[state=closed]:opacity-0 data-[state=open]:scale-100 data-[state=open]:opacity-100",
           className,
         )}
@@ -114,7 +114,7 @@ export function PopoverArrow({
 }: ComponentPropsWithRef<typeof PopoverPrimitive.Arrow>) {
   return (
     <PopoverPrimitive.Arrow
-      className={cn("fill-mar-card stroke-mar-border", className)}
+      className={cn("fill-mar-card stroke-mar-separator", className)}
       ref={ref}
       {...props}
     />

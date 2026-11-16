@@ -26,7 +26,7 @@ export function ErrorView({
     <section
       aria-label={ariaLabel ?? (typeof title === "string" ? title : undefined)}
       className={cn(
-        "mx-auto grid w-full max-w-2xl justify-items-center gap-5 rounded-2xl border border-mar-border bg-mar-card p-6 text-center font-mar-sans text-mar-text sm:p-10",
+        "mx-auto grid w-full max-w-2xl justify-items-center gap-5 rounded-mar-card border border-mar-surface-border bg-mar-card shadow-mar-card p-6 text-center font-mar-sans text-mar-text sm:p-10",
         className,
       )}
       {...props}
@@ -52,7 +52,7 @@ export function ErrorView({
         <div className="flex flex-wrap justify-center gap-3">{actions}</div>
       ) : null}
       {details !== undefined && details !== null ? (
-        <div className="w-full border-t border-mar-border pt-4 text-left text-sm text-mar-muted">
+        <div className="w-full border-t border-mar-separator pt-4 text-left text-sm text-mar-muted">
           {details}
         </div>
       ) : null}

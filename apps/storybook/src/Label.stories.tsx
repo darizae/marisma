@@ -24,7 +24,7 @@ export const Association: Story = {
     <div className="grid w-full max-w-sm gap-2">
       <Label {...args} />
       <input
-        className="min-h-11 rounded-lg border border-mar-border bg-mar-card px-3"
+        className="min-h-11 rounded-mar-control border border-mar-input-border bg-mar-card px-3"
         id="station-name"
       />
     </div>

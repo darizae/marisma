@@ -8,7 +8,7 @@ export function Card({
   return (
     <section
       className={cn(
-        "rounded-xl border border-mar-border bg-mar-card font-mar-sans text-mar-text shadow-sm",
+        "rounded-mar-card border border-mar-surface-border bg-mar-card font-mar-sans text-mar-text shadow-mar-card",
         className,
       )}
       {...props}
@@ -51,7 +51,7 @@ export function CardFooter({
   return (
     <footer
       className={cn(
-        "flex flex-wrap items-center gap-3 border-t border-mar-border p-5",
+        "flex flex-wrap items-center gap-3 border-t border-mar-separator p-5",
         className,
       )}
       {...props}

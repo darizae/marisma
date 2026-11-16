@@ -16,7 +16,7 @@ export function PageFooter({
   return (
     <footer
       className={cn(
-        "border-t border-mar-border bg-mar-card px-4 py-6 font-mar-sans text-sm text-mar-muted sm:px-6",
+        "border-t border-mar-separator bg-mar-card px-4 py-6 font-mar-sans text-sm text-mar-muted sm:px-6",
         className,
       )}
       {...props}

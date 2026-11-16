@@ -47,7 +47,7 @@ export function Textarea({
         aria-describedby={describedBy || undefined}
         aria-invalid={ariaInvalid ?? (hasError || undefined)}
         className={cn(
-          "min-h-28 w-full resize-y rounded-lg border border-mar-border bg-mar-card px-3 py-2 text-base text-mar-text placeholder:text-mar-muted read-only:cursor-default read-only:bg-mar-surface disabled:cursor-not-allowed disabled:opacity-60",
+          "min-h-28 w-full resize-y rounded-mar-control border border-mar-input-border bg-mar-card px-3 py-2 text-base text-mar-text placeholder:text-mar-muted read-only:cursor-default read-only:bg-mar-surface disabled:cursor-not-allowed disabled:opacity-60",
           "aria-invalid:border-mar-danger",
           className,
         )}

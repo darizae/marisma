@@ -17,7 +17,7 @@ export function Separator({
       aria-hidden={decorative || undefined}
       aria-orientation={decorative ? undefined : orientation}
       className={cn(
-        "shrink-0 bg-mar-border",
+        "shrink-0 bg-mar-separator",
         orientation === "horizontal" ? "h-px w-full" : "h-full min-h-6 w-px",
         className,
       )}

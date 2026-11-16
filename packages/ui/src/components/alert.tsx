@@ -3,14 +3,14 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/cn";
 
 export const alertVariants = cva(
-  "grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 rounded-xl border p-4 font-mar-sans text-sm",
+  "grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 rounded-mar-card border border-transparent p-4 forced-colors:border-current font-mar-sans text-sm",
   {
     variants: {
       variant: {
-        info: "border-mar-info bg-mar-info-surface text-mar-info",
-        success: "border-mar-success bg-mar-success-surface text-mar-success",
-        warning: "border-mar-warning bg-mar-warning-surface text-mar-warning",
-        danger: "border-mar-danger bg-mar-danger-surface text-mar-danger",
+        info: "bg-mar-info-surface text-mar-info",
+        success: "bg-mar-success-surface text-mar-success",
+        warning: "bg-mar-warning-surface text-mar-warning",
+        danger: "bg-mar-danger-surface text-mar-danger",
       },
     },
     defaultVariants: { variant: "info" },

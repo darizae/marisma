@@ -67,12 +67,12 @@ export function CopyCode({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-xl border border-mar-border bg-mar-card font-mar-sans text-mar-text",
+        "relative overflow-hidden rounded-mar-card border border-mar-surface-border bg-mar-card shadow-mar-card font-mar-sans text-mar-text",
         className,
       )}
       {...props}
     >
-      <div className="flex items-center justify-between gap-3 border-b border-mar-border px-3 py-2">
+      <div className="flex items-center justify-between gap-3 border-b border-mar-separator px-3 py-2">
         <span className="text-xs font-semibold text-mar-muted">
           {language ?? "Code"}
         </span>

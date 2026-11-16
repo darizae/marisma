@@ -115,7 +115,7 @@ function InteractionThemes() {
       {themes.map(([accent, mode, label]) => (
         <section
           aria-label={label}
-          className="interaction-theme-sample rounded-2xl border border-mar-border bg-mar-surface p-4 text-mar-text"
+          className="interaction-theme-sample rounded-mar-card border border-mar-separator bg-mar-surface p-4 text-mar-text"
           data-marisma-accent={accent}
           data-marisma-mode={mode}
           key={label}

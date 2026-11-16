@@ -17,6 +17,19 @@ Tidal Blue themes in light and dark modes.
 pnpm add @darizae/marisma react react-dom tailwindcss
 ```
 
+## Soft Elevation (0.2.0 candidate)
+
+Soft Elevation is the new default visual direction on the `feat/soft-elevation-v0.2.0` branch. Cards and data surfaces use 18px radii and restrained theme-specific shadows; controls retain distinct boundaries and visible keyboard focus. Reedwater and Tidal Blue each support light and dark mode. No `data-marisma-style` opt-in is required.
+
+`0.1.0` remains the last documented published version. The `0.2.0` source candidate is **not published or release-qualified** until local browser, accessibility, packed-consumer and artifact checks pass and the owner approves the exact release. See [local verification and release](docs/planning/VERIFICATION_AND_RELEASE.md).
+
+Captured from actual React rendering (see the [parity matrix](docs/design/UI_UX_PARITY_MATRIX.md) for the full evidence ledger):
+
+![Application overview, Reedwater light](docs/visuals/soft-elevation/application-reedwater-light.jpg)
+![Application overview, Tidal Blue dark](docs/visuals/soft-elevation/application-tidal-blue-dark.jpg)
+![Mobile application, 390px](docs/visuals/soft-elevation/application-mobile.jpg)
+![Historical 0.1.0 versus Soft Elevation candidate](docs/visuals/soft-elevation/before-after.jpg)
+
 ## Available components
 
 - `Button` — primary, secondary, and ghost variants; three sizes; disabled and
@@ -120,7 +133,7 @@ export function MarismaExample() {
   const [status, setStatus] = useState("No changes saved");
 
   return (
-    <section className="grid w-full max-w-lg gap-5 rounded-xl border border-mar-border bg-mar-card p-6">
+    <section className="grid w-full max-w-lg gap-5 rounded-mar-card border border-mar-surface-border bg-mar-card shadow-mar-card p-6">
       <Input
         description="This value is controlled by your application."
         label="Project name"

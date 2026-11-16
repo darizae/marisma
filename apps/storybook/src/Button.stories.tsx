@@ -70,7 +70,7 @@ export const VariantsAndSizes: Story = {
     },
   },
   render: () => (
-    <div className="grid gap-4 rounded-xl border border-mar-border bg-mar-card p-6">
+    <div className="grid gap-4 rounded-mar-card border border-mar-surface-border bg-mar-card shadow-mar-card p-6">
       {(["primary", "secondary", "ghost"] as const).map((variant) => (
         <div className="flex flex-wrap items-center gap-3" key={variant}>
           {(["small", "default", "large"] as const).map((size) => (

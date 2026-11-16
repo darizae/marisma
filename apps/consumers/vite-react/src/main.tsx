@@ -67,7 +67,7 @@ function ConsumerScaffold() {
             return (
               <button
                 aria-pressed={selected}
-                className="min-h-10 rounded-lg border border-mar-border bg-mar-card px-4 py-2 text-mar-text hover:bg-mar-surface"
+                className="min-h-10 rounded-mar-control border border-mar-input-border bg-mar-card px-4 py-2 text-mar-text hover:bg-mar-hover aria-pressed:border-mar-primary aria-pressed:bg-mar-selection aria-pressed:text-mar-selection-text"
                 key={option.label}
                 onClick={() => setTheme(option)}
                 type="button"
@@ -79,7 +79,7 @@ function ConsumerScaffold() {
         </div>
 
         <section
-          className="mt-8 rounded-2xl border border-mar-border bg-mar-surface p-6 text-mar-text transition-colors duration-[var(--marisma-duration-slow)] sm:p-8"
+          className="mt-8 rounded-mar-card border border-mar-separator bg-mar-surface p-6 text-mar-text transition-colors duration-[var(--marisma-duration-slow)] sm:p-8"
           data-marisma-accent={theme.accent}
           data-marisma-mode={theme.mode}
         >
@@ -179,7 +179,7 @@ function ConsumerScaffold() {
           </PageSection>
 
           <aside
-            className="mt-8 rounded-xl border border-mar-border bg-mar-card p-5 text-mar-text"
+            className="mt-8 rounded-mar-card border border-mar-surface-border bg-mar-card shadow-mar-card p-5 text-mar-text"
             data-marisma-accent={nestedAccent}
             data-marisma-mode={nestedMode}
           >

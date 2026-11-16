@@ -216,6 +216,14 @@ export const ReedwaterLight: Story = {
   globals: { marismaAccent: "reedwater", marismaMode: "light" },
 };
 
+export const ReedwaterDark: Story = {
+  globals: { marismaAccent: "reedwater", marismaMode: "dark" },
+};
+
+export const TidalBlueLight: Story = {
+  globals: { marismaAccent: "tidal-blue", marismaMode: "light" },
+};
+
 export const TidalBlueDark: Story = {
   globals: { marismaAccent: "tidal-blue", marismaMode: "dark" },
 };

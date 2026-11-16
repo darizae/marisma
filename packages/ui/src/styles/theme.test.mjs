@@ -189,3 +189,45 @@ test("defines visible focus, reduced-motion, and forced-colors behavior", () => 
   );
   assert.match(css, /--marisma-focus: Highlight;/);
 });
+
+test("Soft Elevation separates surface, input, and interactive state tokens", () => {
+  for (const name of ["surface-border", "separator", "input-border", "hover", "selection", "selection-text"]) {
+    assert.ok(css.includes(`--color-mar-${name}: var(--marisma-${name});`));
+  }
+  for (const name of ["card", "control", "navbar"]) {
+    assert.ok(css.includes(`--radius-mar-${name}: var(--marisma-radius-${name});`));
+  }
+  for (const name of ["card", "overlay", "navbar"]) {
+    assert.ok(css.includes(`--shadow-mar-${name}: var(--marisma-shadow-${name});`));
+  }
+  assert.ok(css.includes("--marisma-radius-card: 18px;"));
+  assert.ok(css.includes("--marisma-radius-control: 11px;"));
+  assert.ok(css.includes("--marisma-input-border: color-mix(in srgb, var(--marisma-border) 90%"));
+  assert.ok(css.includes('[data-marisma-mode="dark"] {'));
+  assert.ok(css.includes("--marisma-shadow-card: 0 18px 40px"));
+  assert.ok(css.includes("--marisma-surface-border: CanvasText;"));
+  assert.ok(css.includes("--marisma-input-border: CanvasText;"));
+});
+
+test("Soft Elevation input boundaries meet 3:1 contrast on their card backgrounds", () => {
+  const mixSrgb = (foreground, background, proportion) => {
+    const channels = [1, 3, 5].map((offset) => {
+      const front = Number.parseInt(foreground.slice(offset, offset + 2), 16);
+      const back = Number.parseInt(background.slice(offset, offset + 2), 16);
+      return Math.round(front * proportion + back * (1 - proportion))
+        .toString(16)
+        .padStart(2, "0");
+    });
+    return `#${channels.join("")}`;
+  };
+  for (const [name, selector] of Object.entries(themeSelectors)) {
+    const palette = declarationsFor(selector);
+    const originalBorder = palette["--marisma-border"];
+    const card = palette["--marisma-card"];
+    const boundary = name.endsWith("dark")
+      ? originalBorder
+      : mixSrgb(originalBorder, card, 0.9);
+    assert.ok(contrast(boundary, card) >= 3,
+      `${name}: input boundary ${boundary} lacks 3:1 card contrast`);
+  }
+});

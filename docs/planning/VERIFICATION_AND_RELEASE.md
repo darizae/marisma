@@ -86,3 +86,9 @@ These files remain Git-ignored and privately backed up. Reuse the full bounded
 qualification for every new artifact; historical `0.1.0` evidence never
 approves another version. Do not inspect auth material, introduce remote
 publishing CI, or publish without separate exact-artifact authorization.
+
+## Soft Elevation 0.2.0 candidate gate (2026-11-16)
+
+Draft PR #6 is an implementation proposal, not a release-ready artifact. Run and record fresh local evidence on the exact reviewed PR head: `pnpm install --frozen-lockfile`, `pnpm build`, `pnpm typecheck`, `pnpm test:package-contract`, `node --test packages/ui/src/styles/theme.test.mjs`, `pnpm --filter @darizae/marisma test`, `pnpm --filter @marisma/storybook test:docs`, and the appropriate Storybook browser, brand, visual, Next.js and packed Vite/Next.js consumer suites. The visual capture script is `apps/storybook/scripts/capture-soft-elevation.mjs`; screenshots and snapshots must come from actual compiled React applications and be reviewed before committing. Check all four accent/mode combinations, keyboard, forced colors, motion, 390px mobile overflow, focus, readable contrast and portalled scopes.
+
+Run a fresh `pnpm audit` and classify any findings. Check `npm view @darizae/marisma version` read-only before finalizing the version. Inspect the generated 0.2.0 tarball file list, manifest, peer dependencies, LICENSE, package size and SHA-256, then test its **installed**, non-workspace consumers. Preserve `private: true` in tracked source; do not publish or tag without new exact version/archive/digest approval. The local-agent tasks in `docs/tasks/` carry reproducible commands and a mandatory Markdown/routing gate. Every unrun command and generated visual remains NOT RUN/BLOCKED; the 0.1.0 report does not supersede this gate.

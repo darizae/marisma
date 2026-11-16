@@ -17,7 +17,7 @@ export function MarismaExample() {
   const [status, setStatus] = useState("No changes saved");
 
   return (
-    <section className="grid w-full max-w-lg gap-5 rounded-xl border border-mar-border bg-mar-card p-6">
+    <section className="grid w-full max-w-lg gap-5 rounded-mar-card border border-mar-surface-border bg-mar-card shadow-mar-card p-6">
       <Input
         description="This value is controlled by your application."
         label="Project name"

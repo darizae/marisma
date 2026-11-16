@@ -34,7 +34,7 @@ export function ComponentFixture() {
   const [status, setStatus] = useState("Waiting for interaction");
 
   return (
-    <section className="grid gap-5 rounded-xl border border-mar-border bg-mar-card p-6">
+    <section className="grid gap-5 rounded-mar-card border border-mar-surface-border bg-mar-card shadow-mar-card p-6">
       <AppNavbar
         actions={
           <UserMenu description="next@example.test" name="Next user">

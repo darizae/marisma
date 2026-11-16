@@ -67,7 +67,7 @@ export function Switch({
           aria-readonly={readOnly || undefined}
           checked={resolvedChecked}
           className={cn(
-            "relative inline-flex h-7 w-12 shrink-0 items-center rounded-full border border-mar-border bg-mar-border p-0.5 transition-colors duration-[var(--marisma-duration-fast)] data-[state=checked]:border-mar-primary data-[state=checked]:bg-mar-primary disabled:cursor-not-allowed disabled:opacity-60",
+            "relative inline-flex h-7 w-12 shrink-0 items-center rounded-full border border-mar-input-border bg-mar-border p-0.5 transition-colors duration-[var(--marisma-duration-fast)] data-[state=checked]:border-mar-primary data-[state=checked]:bg-mar-primary disabled:cursor-not-allowed disabled:opacity-60",
             "aria-invalid:border-mar-danger data-[readonly]:cursor-default",
             className,
           )}
