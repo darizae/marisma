@@ -180,7 +180,7 @@ export function Select({
           aria-readonly={readOnly || undefined}
           aria-required={required || undefined}
           className={cn(
-            "inline-flex min-h-11 w-full items-center justify-between gap-3 rounded-lg border border-mar-border bg-mar-card px-3 py-2 text-left text-base text-mar-text data-[placeholder]:text-mar-muted disabled:cursor-not-allowed disabled:opacity-60",
+            "inline-flex min-h-11 w-full items-center justify-between gap-3 rounded-mar-control border border-mar-input-border bg-mar-card px-3 py-2 text-left text-base text-mar-text data-[placeholder]:text-mar-muted disabled:cursor-not-allowed disabled:opacity-60",
             "aria-invalid:border-mar-danger data-[readonly]:cursor-default",
             triggerClassName,
           )}
@@ -198,7 +198,7 @@ export function Select({
         <SelectPortal>
           <SelectPrimitive.Content
             className={cn(
-              "z-50 max-h-[var(--radix-select-content-available-height)] min-w-[var(--radix-select-trigger-width)] overflow-hidden rounded-xl border border-mar-border bg-mar-card font-mar-sans text-mar-text shadow-xl",
+              "z-50 max-h-[var(--radix-select-content-available-height)] min-w-[var(--radix-select-trigger-width)] overflow-hidden rounded-mar-card border border-mar-surface-border bg-mar-card font-mar-sans text-mar-text shadow-mar-overlay",
               "transition duration-[var(--marisma-duration-fast)] data-[state=closed]:scale-95 data-[state=closed]:opacity-0 data-[state=open]:scale-100 data-[state=open]:opacity-100",
               contentClassName,
             )}
@@ -224,7 +224,7 @@ export function Select({
                     ) : null}
                     {group.options.map((option) => (
                       <SelectPrimitive.Item
-                        className="relative flex min-h-10 cursor-default select-none items-center rounded-lg py-2 pl-8 pr-3 text-sm outline-none transition-colors duration-[var(--marisma-duration-fast)] focus:bg-mar-surface data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+                        className="relative flex min-h-10 cursor-default select-none items-center rounded-mar-control py-2 pl-8 pr-3 text-sm outline-none transition-colors duration-[var(--marisma-duration-fast)] focus:bg-mar-hover data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
                         disabled={option.disabled}
                         key={option.value}
                         value={option.value}

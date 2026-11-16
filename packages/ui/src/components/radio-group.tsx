@@ -162,7 +162,7 @@ export function RadioGroupItem({
       <RadioGroupPrimitive.Item
         aria-describedby={description ? descriptionId : undefined}
         className={cn(
-          "mt-2 inline-flex size-6 shrink-0 items-center justify-center rounded-full border border-mar-border bg-mar-card data-[state=checked]:border-mar-primary disabled:cursor-not-allowed disabled:opacity-60",
+          "mt-2 inline-flex size-6 shrink-0 items-center justify-center rounded-full border border-mar-input-border bg-mar-card data-[state=checked]:border-mar-primary disabled:cursor-not-allowed disabled:opacity-60",
           className,
         )}
         disabled={disabled}

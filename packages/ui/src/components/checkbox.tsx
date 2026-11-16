@@ -72,7 +72,7 @@ export function Checkbox({
           aria-readonly={readOnly || undefined}
           checked={resolvedChecked}
           className={cn(
-            "inline-flex size-6 shrink-0 items-center justify-center rounded-md border border-mar-border bg-mar-card text-mar-on-primary transition-colors duration-[var(--marisma-duration-fast)] data-[state=checked]:border-mar-primary data-[state=checked]:bg-mar-primary data-[state=indeterminate]:border-mar-primary data-[state=indeterminate]:bg-mar-primary disabled:cursor-not-allowed disabled:opacity-60",
+            "inline-flex size-6 shrink-0 items-center justify-center rounded-md border border-mar-input-border bg-mar-card text-mar-on-primary transition-colors duration-[var(--marisma-duration-fast)] data-[state=checked]:border-mar-primary data-[state=checked]:bg-mar-primary data-[state=indeterminate]:border-mar-primary data-[state=indeterminate]:bg-mar-primary disabled:cursor-not-allowed disabled:opacity-60",
             "aria-invalid:border-mar-danger data-[readonly]:cursor-default",
             className,
           )}

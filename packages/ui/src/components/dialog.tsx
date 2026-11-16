@@ -98,7 +98,7 @@ export function DialogContent({
       <DialogOverlay className={overlayClassName} />
       <DialogPrimitive.Content
         className={cn(
-          "fixed left-1/2 top-1/2 z-50 grid max-h-[calc(100vh-2rem)] w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 overflow-y-auto rounded-xl border border-mar-border bg-mar-card p-6 font-mar-sans text-mar-text shadow-2xl",
+          "fixed left-1/2 top-1/2 z-50 grid max-h-[calc(100vh-2rem)] w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 overflow-y-auto rounded-mar-card border border-mar-surface-border bg-mar-card p-6 font-mar-sans text-mar-text shadow-mar-overlay",
           "transition duration-[var(--marisma-duration-fast)] data-[state=closed]:scale-95 data-[state=closed]:opacity-0 data-[state=open]:scale-100 data-[state=open]:opacity-100",
           className,
         )}
@@ -109,7 +109,7 @@ export function DialogContent({
         {showCloseButton ? (
           <DialogPrimitive.Close
             aria-label={closeLabel}
-            className="absolute right-3 top-3 inline-flex size-10 items-center justify-center rounded-lg text-xl leading-none text-mar-muted transition-colors duration-[var(--marisma-duration-fast)] hover:bg-mar-surface hover:text-mar-text"
+            className="absolute right-3 top-3 inline-flex size-10 items-center justify-center rounded-mar-control text-xl leading-none text-mar-muted transition-colors duration-[var(--marisma-duration-fast)] hover:bg-mar-surface hover:text-mar-text"
           >
             <span aria-hidden="true">×</span>
           </DialogPrimitive.Close>

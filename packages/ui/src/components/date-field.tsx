@@ -109,7 +109,7 @@ export function DateField({
             aria-invalid={hasError || undefined}
             aria-required={required || undefined}
             className={cn(
-              "min-h-11 min-w-0 flex-1 rounded-lg border border-mar-border bg-mar-card px-3 py-2 text-base text-mar-text placeholder:text-mar-muted read-only:cursor-default disabled:cursor-not-allowed disabled:opacity-60",
+              "min-h-11 min-w-0 flex-1 rounded-mar-control border border-mar-input-border bg-mar-card px-3 py-2 text-base text-mar-text placeholder:text-mar-muted read-only:cursor-default disabled:cursor-not-allowed disabled:opacity-60",
               "aria-invalid:border-mar-danger",
               inputClassName,
             )}
