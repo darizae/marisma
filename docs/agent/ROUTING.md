@@ -1,7 +1,7 @@
 # Marisma — current maintainer routing
 
-**Status:** The initial component catalog is published as
-`@darizae/marisma@0.1.0`. The T-013 release/security work is complete. Historical T-001–T-013 work is
+**Status:** The component catalog and Soft Elevation design are published as
+`@darizae/marisma@0.2.0`. Earlier T-013 release/security work is complete. Historical T-001–T-013 work is
 preserved in Git commit history; the enduring component evidence is
 `docs/release/T-011_RELEASE_CANDIDATE.md`.
 
@@ -17,7 +17,7 @@ Start at `AGENTS.md`, consult `docs/planning/APPROVED_DECISIONS.md` and the rele
 | Storybook, landing, accessibility and branding | `README.md` | `apps/storybook/src/`, `apps/storybook/tests/`, `apps/landing/` |
 | Local testing, release readiness and actual historical evidence | `docs/planning/VERIFICATION_AND_RELEASE.md` | `docs/release/T-011_RELEASE_CANDIDATE.md` and applicable package/Storybook scripts |
 
-The five grouped release clusters T-007–T-011 and subsequent hardening have been implemented, but **owner publication review remains separate**. Do not infer local test results beyond those actually recorded. Avoid adding remote CI requirements: local checks are the owner-approved evidence channel. Future task specs, if needed, use the model/effort filename suffix described in `AGENTS.md`; the task body stays model-neutral.
+The five grouped release clusters T-007–T-011, subsequent hardening and the 0.2.0 release are complete; **future publication approvals remain separate**. Do not infer local test results beyond those actually recorded. Avoid adding remote CI requirements: local checks are the owner-approved evidence channel. Future task specs, if needed, use the model/effort filename suffix described in `AGENTS.md`; the task body stays model-neutral.
 
 ## Published 0.2.0 gate
 
