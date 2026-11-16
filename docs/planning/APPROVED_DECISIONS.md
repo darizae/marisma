@@ -13,6 +13,7 @@
 | D-03 | Two color families: **Reedwater** (salt-marsh green/teal) and **Tidal Blue** (coastal blue/slate), each in light/dark mode.                                                                              | One semantic token contract, four initial combinations and contrast verification.                                                                                                    |
 | D-04 | Typography should be readable and contemporary, not tiny or heavily monospace. Inter is an initial system preference; consumer typography remains configurable.                                          | 16px baseline body, readable labels and comfortable ~40–44px default controls; no mandatory font download.                                                                           |
 | D-05 | The approved leaf mark is the owner-supplied SVG at **`assets/brand/marisma-leaf.svg`**.                                                                                                                 | This single file is the identity source for the repo README, landing logo/favicon and Storybook logo/favicon. Do not redraw it or create inconsistent copies without owner approval. |
+| D-23 | **Soft Elevation (Concept 03, `data-style="lifted"` in the approved prototype) is the new default appearance, approved 2026-11-16 for the 0.2.0 candidate.** | Use elevated 18px cards, restrained theme-specific shadows, 11px controls, distinct input borders and gentle desktop navbar lift without changing the leaf mark, palette families, APIs or keyboard/accessibility requirements. Quiet Lines and Tonal Layers are rejected alternatives, not product style switches. |
 
 ## Package and platform contract
 
@@ -80,3 +81,7 @@ explicit authorization.
 ## Owner release-delegation update (2026-11-11)
 
 The owner has registered the npm account, enabled 2FA and authenticated the **local CLI**. `0.1.0` was published interactively after exact-artifact authorization, and package publishing now requires MFA. Coding agents may prepare future reviewed artifacts and private release scripts, but no later registry write or account-setting change is authorized without a fresh owner instruction.
+
+## 0.2.0 design approval and release boundary (2026-11-16)
+
+The owner approved Soft Elevation from `marisma-visual-prototypes.html` as the source of truth for visual direction. This is a new, post-0.1.0 decision, not a reinterpretation of historical release evidence. The design is implemented through existing CSS token architecture, not by shipping the standalone prototype. Release preparation may proceed on a PR; publication, tagging, merge and deployment still require distinct explicit owner approvals. Browser screenshots and 0.2.0 packed-consumer qualification have not been established by the original 0.1.0 report.

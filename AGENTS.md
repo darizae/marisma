@@ -23,6 +23,10 @@ React 19 and TypeScript; **Tailwind CSS 4 exclusively** (native `@theme` and sem
 - Keep only current working documentation. At any milestone or path change reconcile the README, AGENTS, routing, catalog, decision register, release notes and links. Retire completed task specs when their requirements have been resolved and their evidence preserved. The repository's Git history retains past specs.
 - `0.1.0` is public on npm. Keep the tracked manifest `private: true`; future registry writes, tags, deployments and security-setting changes still require explicit owner authorization.
 
+## Active 0.2.0 redesign
+
+The owner-approved Soft Elevation redesign is being prepared on `feat/soft-elevation-v0.2.0`. Source and changelog changes are not evidence of 0.2.0 validation, a shipped npm version or an authorized publication. The design prototype is a visual reference only; use compiled React components for proof. The 0.1.0 release report remains historical. Any uncompleted local verification work must be explicitly marked blocked/not run and carried forward on the same draft PR.
+
 ## Future task-file naming
 
 For a **newly approved** numbered implementation task, use `docs/tasks/NN_T-XXX_topic__Codex-<recommended-model>_<reasoning-effort>.md` if a task file is needed. The filename is an owner-facing routing hint; it never authorizes extra scope or publication. Do not recreate historical specs merely for reference.
