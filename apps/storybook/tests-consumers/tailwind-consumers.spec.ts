@@ -23,7 +23,7 @@ const packageDirectory = join(repositoryRoot, "packages/ui");
 const expectedSource = "@source '../node_modules/@darizae/marisma/dist';";
 const uniqueCompiledUtility = "min-h-12";
 const suppliedTarball = process.env.MARISMA_TEST_TARBALL;
-const expectedPackageVersion = process.env.MARISMA_TEST_VERSION ?? "0.1.0";
+const expectedPackageVersion = process.env.MARISMA_TEST_VERSION ?? "0.2.0";
 
 let temporaryDirectory: string;
 let viteDirectory: string;
