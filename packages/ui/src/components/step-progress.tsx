@@ -58,7 +58,7 @@ export function StepProgressItem({
     <StepStatusContext value={status}>
       <li
         className={cn(
-          "flex min-w-0 items-start gap-3 border-t-2 border-mar-border pt-3",
+          "flex min-w-0 items-start gap-3 border-t-[3px] border-mar-separator pt-3",
           status === "current" && "border-mar-primary",
           status === "complete" && "border-mar-success",
           className,
@@ -69,7 +69,7 @@ export function StepProgressItem({
         <span
           aria-hidden="true"
           className={cn(
-            "inline-flex size-7 shrink-0 items-center justify-center rounded-full border border-mar-border bg-mar-card text-xs font-semibold",
+            "inline-flex size-7 shrink-0 items-center justify-center rounded-full border border-mar-input-border bg-mar-card text-xs font-semibold",
             status === "current" &&
               "border-mar-primary bg-mar-primary text-mar-on-primary",
             status === "complete" &&
@@ -103,7 +103,7 @@ export function StepProgressLink({
   return (
     <NavigationLinkBase
       className={cn(
-        "inline-flex min-h-10 items-center rounded-lg px-2 py-1 font-medium text-mar-text underline-offset-4 hover:underline",
+        "inline-flex min-h-10 items-center rounded-mar-control px-2 py-1 font-medium text-mar-text underline-offset-4 hover:underline",
         className,
       )}
       current={status === "current"}

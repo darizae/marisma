@@ -25,7 +25,7 @@ function Landing() {
         <header className="flex flex-wrap items-center justify-between gap-5">
           <a
             aria-label="Marisma home"
-            className="flex items-center gap-3 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-mar-focus"
+            className="flex items-center gap-3 rounded-mar-control focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-mar-focus"
             href="https://github.com/darizae/marisma"
           >
             <img
@@ -71,7 +71,7 @@ function Landing() {
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-mar-muted">
               A styled, themeable React component library for professional web
-              applications. Version 0.1.0 covers all 48 approved,
+              applications. The published 0.1.0 includes all 48 approved,
               non-chart component families with native and Radix-backed
               interactions.
             </p>
@@ -83,13 +83,13 @@ function Landing() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
-                className="inline-flex min-h-11 items-center justify-center rounded-lg bg-mar-primary px-5 py-2 font-medium text-mar-on-primary shadow-sm transition-colors hover:bg-mar-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mar-focus"
+                className="inline-flex min-h-11 items-center justify-center rounded-mar-control bg-mar-primary px-5 py-2 font-medium text-mar-on-primary shadow-sm transition-colors hover:bg-mar-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mar-focus"
                 href="https://github.com/darizae/marisma#development-checkout"
               >
                 Read installation docs
               </a>
               <a
-                className="inline-flex min-h-11 items-center justify-center rounded-lg border border-mar-border bg-mar-card px-5 py-2 font-medium text-mar-text transition-colors hover:bg-mar-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mar-focus"
+                className="inline-flex min-h-11 items-center justify-center rounded-mar-control border border-mar-input-border bg-mar-card px-5 py-2 font-medium text-mar-text transition-colors hover:bg-mar-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mar-focus"
                 href="https://github.com/darizae/marisma/tree/main/apps/storybook"
               >
                 Explore Storybook source
@@ -97,7 +97,7 @@ function Landing() {
             </div>
           </section>
 
-          <section className="grid gap-5 rounded-2xl border border-mar-border bg-mar-card p-6 shadow-2xl sm:p-8">
+          <section className="grid gap-5 rounded-mar-card border border-mar-surface-border bg-mar-card p-6 shadow-mar-card sm:p-8">
             <Input
               description="A controlled input from the package public API."
               label="Library name"
@@ -113,7 +113,7 @@ function Landing() {
                   <DialogDescription>
                     Foundation, interaction, form, data, navigation, and
                     application-composition families are implemented and
-                    published in version 0.1.0.
+                    published in version 0.1.0; Soft Elevation is prepared for 0.2.0.
                   </DialogDescription>
                   <DialogClose>Done</DialogClose>
                 </DialogContent>
@@ -141,7 +141,7 @@ function Landing() {
             ],
           ].map(([title, description]) => (
             <article
-              className="rounded-xl border border-mar-border bg-mar-card/70 p-5"
+              className="rounded-mar-card border border-mar-surface-border bg-mar-card p-5 shadow-mar-card"
               key={title}
             >
               <h2 className="font-semibold">{title}</h2>

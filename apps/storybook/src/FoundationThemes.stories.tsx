@@ -22,7 +22,7 @@ function ThemeFoundation() {
       ).map(([accent, mode, label]) => (
         <Card
           aria-label={label}
-          className="theme-sample bg-mar-surface"
+          className="theme-sample"
           data-marisma-accent={accent}
           data-marisma-mode={mode}
           key={label}
@@ -54,7 +54,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "The T-007 foundation and semantic feedback colors shown in all four supported Marisma theme combinations.",
+          "Soft Elevation surfaces and semantic feedback shown in all four supported Marisma theme combinations.",
       },
     },
   },
