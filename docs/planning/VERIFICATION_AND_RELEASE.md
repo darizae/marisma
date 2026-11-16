@@ -1,6 +1,6 @@
 # Marisma — local verification and release policy
 
-**Status:** CURRENT local verification and publication policy; `0.1.0` published · **Revision:** 9 · **Date:** 2026-11-11
+**Status:** CURRENT local verification and publication policy; `0.2.0` published · **Revision:** 10 · **Date:** 2026-11-16
 
 ## Owner-selected verification policy
 
@@ -27,7 +27,7 @@ disable dependency-build safeguards globally.
 The release report `docs/release/T-011_RELEASE_CANDIDATE.md` records the full
 historical `0.0.0` local sweep and later hardening checks. The tracked npm
 package remains `private: true` as a safety control;
-`@darizae/marisma@0.1.0` is published publicly. Every future version still
+`@darizae/marisma@0.1.0` and `0.2.0` are published publicly. Every future version still
 requires exact-artifact owner approval.
 
 ## Existing acceptance cases retained
@@ -87,8 +87,8 @@ qualification for every new artifact; historical `0.1.0` evidence never
 approves another version. Do not inspect auth material, introduce remote
 publishing CI, or publish without separate exact-artifact authorization.
 
-## Soft Elevation 0.2.0 candidate gate (2026-11-16)
+## Soft Elevation 0.2.0 completed release gate (2026-11-16)
 
-Draft PR #6 is an implementation proposal, not a release-ready artifact. Run and record fresh local evidence on the exact reviewed PR head: `pnpm install --frozen-lockfile`, `pnpm build`, `pnpm typecheck`, `pnpm test:package-contract`, `node --test packages/ui/src/styles/theme.test.mjs`, `pnpm --filter @darizae/marisma test`, `pnpm --filter @marisma/storybook test:docs`, and the appropriate Storybook browser, brand, visual, Next.js and packed Vite/Next.js consumer suites. The visual capture script is `apps/storybook/scripts/capture-soft-elevation.mjs`; screenshots and snapshots must come from actual compiled React applications and be reviewed before committing. Check all four accent/mode combinations, keyboard, forced colors, motion, 390px mobile overflow, focus, readable contrast and portalled scopes.
+The former draft PR #6 has been merged into `main` as `fc3dc39d66bdd2d11027b87927d5b2bade148611`. Before publication, the local agent recorded fresh evidence on the exact reviewed feature head (`1004c6e76e2159debf644ac906b612bcc8fd0682`) using: `pnpm install --frozen-lockfile`, `pnpm build`, `pnpm typecheck`, `pnpm test:package-contract`, `node --test packages/ui/src/styles/theme.test.mjs`, `pnpm --filter @darizae/marisma test`, `pnpm --filter @marisma/storybook test:docs`, and the appropriate Storybook browser, brand, visual, Next.js and packed Vite/Next.js consumer suites. The visual capture script is `apps/storybook/scripts/capture-soft-elevation.mjs`; screenshots and snapshots must come from actual compiled React applications and be reviewed before committing. Check all four accent/mode combinations, keyboard, forced colors, motion, 390px mobile overflow, focus, readable contrast and portalled scopes.
 
-Run a fresh `pnpm audit` and classify any findings. Check `npm view @darizae/marisma version` read-only before finalizing the version. Inspect the generated 0.2.0 tarball file list, manifest, peer dependencies, LICENSE, package size and SHA-256, then test its **installed**, non-workspace consumers. Preserve `private: true` in tracked source. **Outcome 2026-11-16:** the gate passed on source `fc3dc39d66bdd2d11027b87927d5b2bade148611`; the owner-authorized `priv/release/publish.sh` run published `@darizae/marisma@0.2.0` from the staged artifact (SHA-256 `8f4b9318f77c7e998cecdf266e87799b1e7cd50be1c0420a3d9edd0abce80852`), and `priv/release/postpublish.sh` independently verified registry metadata, the exact archive and fresh Vite/Next.js consumers. The local-agent tasks in `docs/tasks/` carry reproducible commands and a mandatory Markdown/routing gate. Every future version repeats this gate; the 0.1.0 and 0.2.0 evidence never approves another version.
+The completed gate also included `pnpm audit`, read-only `npm view @darizae/marisma version`, inspection of the generated 0.2.0 tarball (files, manifest, peers, LICENSE, size and SHA-256) and actual **tarball-installed**, non-workspace Vite/Next.js consumers. The tracked source retained `private: true`. **Outcome 2026-11-16:** the gate passed on source `fc3dc39d66bdd2d11027b87927d5b2bade148611`; the owner-authorized `priv/release/publish.sh` run published `@darizae/marisma@0.2.0` from the staged artifact (SHA-256 `8f4b9318f77c7e998cecdf266e87799b1e7cd50be1c0420a3d9edd0abce80852`), and `priv/release/postpublish.sh` independently verified registry metadata, the exact archive and fresh Vite/Next.js consumers. The local-agent tasks in `docs/tasks/` carry reproducible commands and a mandatory Markdown/routing gate. Every future version repeats this gate; the 0.1.0 and 0.2.0 evidence never approves another version.
