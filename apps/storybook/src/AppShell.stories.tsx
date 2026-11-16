@@ -32,7 +32,7 @@ function ShellFixture() {
           title="Workspace overview"
         />
         <PageSection title="Current work">
-          <div className="min-h-64 rounded-xl border border-dashed border-mar-border bg-mar-card p-6 text-mar-muted">
+          <div className="min-h-64 rounded-mar-card border border-dashed border-mar-input-border bg-mar-card p-6 text-mar-muted">
             Main content
           </div>
         </PageSection>

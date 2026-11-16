@@ -23,7 +23,7 @@ export const NativeOverflow: Story = {
   render: (args) => (
     <ScrollArea
       {...args}
-      className="max-h-48 w-full max-w-lg border border-mar-border bg-mar-card p-3"
+      className="max-h-48 w-full max-w-lg border border-mar-input-border bg-mar-card p-3"
     >
       <ul className="grid gap-2">
         {Array.from({ length: 18 }, (_, index) => (

@@ -11,7 +11,7 @@ function RouterLink({
 
 function NavbarFixture() {
   return (
-    <div className="w-full min-w-0 overflow-hidden rounded-xl border border-mar-border">
+    <div className="w-full min-w-0 overflow-hidden rounded-mar-card border border-mar-surface-border">
       <AppNavbar
         actions={
           <Button size="small" type="button" variant="secondary">

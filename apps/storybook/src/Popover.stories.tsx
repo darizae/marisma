@@ -61,13 +61,13 @@ export const SubtreeThemePortal: Story = {
   render: () => (
     <div className="grid gap-6">
       <button
-        className="min-h-11 rounded-lg border border-mar-border px-4"
+        className="min-h-11 rounded-mar-control border border-mar-input-border px-4"
         type="button"
       >
         Outside target
       </button>
       <div
-        className="rounded-xl bg-mar-surface p-6 text-mar-text"
+        className="rounded-mar-card bg-mar-surface p-6 text-mar-text"
         data-marisma-accent="tidal-blue"
         data-marisma-mode="dark"
       >
