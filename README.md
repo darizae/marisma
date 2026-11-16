@@ -9,7 +9,7 @@ package implements 48 different component families with typed
 public APIs, accessible native or Radix-based interactions, and Reedwater and
 Tidal Blue themes in light and dark modes.
 
-> **Project status:** `@darizae/marisma@0.1.0` is published publicly on npm.
+> **Project status:** `@darizae/marisma@0.2.0` is published publicly on npm. `0.1.0` remains available as the original release.
 
 ## Install
 
@@ -179,7 +179,7 @@ Marisma's supplied leaf mark is stored once at [`assets/brand/marisma-leaf.svg`]
 
 ## Implementation status and local verification
 
-The approved **48 component candidates** have been implemented, documented and published in `0.1.0`. The [component catalog](docs/planning/COMPONENT_CATALOG.md) maps them to their public APIs, stories and tests. The [local release-candidate report](docs/release/T-011_RELEASE_CANDIDATE.md) preserves the historical qualification evidence.
+The original **48 component families** were implemented and published in `0.1.0`; `0.2.0` retains their public APIs and adds the Soft Elevation visual design. The [component catalog](docs/planning/COMPONENT_CATALOG.md) maps them to their public APIs, stories and tests. The [local release-candidate report](docs/release/T-011_RELEASE_CANDIDATE.md) preserves the historical qualification evidence.
 
 The completed implementation and release-task Markdown files were retired from
 the working tree; **Git history** retains their full content.
