@@ -15,7 +15,7 @@ export function TabsList({
   return (
     <TabsPrimitive.List
       className={cn(
-        "inline-flex min-h-11 max-w-full gap-1 overflow-x-auto rounded-xl border border-mar-border bg-mar-card p-1 font-mar-sans text-mar-text",
+        "inline-flex min-h-11 max-w-full gap-1 overflow-x-auto rounded-mar-control border border-mar-input-border bg-mar-card p-1 font-mar-sans text-mar-text",
         className,
       )}
       ref={ref}
@@ -32,7 +32,7 @@ export function TabsTrigger({
   return (
     <TabsPrimitive.Trigger
       className={cn(
-        "inline-flex min-h-9 shrink-0 items-center justify-center rounded-lg px-3 py-1.5 text-sm font-semibold text-mar-muted transition-colors duration-[var(--marisma-duration-fast)] hover:text-mar-text data-[state=active]:bg-mar-primary data-[state=active]:text-mar-on-primary disabled:cursor-not-allowed disabled:opacity-60",
+        "inline-flex min-h-9 shrink-0 items-center justify-center rounded-mar-control px-3 py-1.5 text-sm font-semibold text-mar-muted transition-colors duration-[var(--marisma-duration-fast)] hover:text-mar-text data-[state=active]:bg-mar-primary data-[state=active]:text-mar-on-primary disabled:cursor-not-allowed disabled:opacity-60",
         className,
       )}
       ref={ref}
@@ -49,7 +49,7 @@ export function TabsContent({
   return (
     <TabsPrimitive.Content
       className={cn(
-        "mt-3 rounded-xl border border-mar-border bg-mar-card p-4 font-mar-sans text-mar-text",
+        "mt-3 rounded-mar-card border border-mar-surface-border bg-mar-card shadow-mar-card p-4 font-mar-sans text-mar-text",
         className,
       )}
       ref={ref}

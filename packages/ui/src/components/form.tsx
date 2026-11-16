@@ -37,7 +37,7 @@ export function Form({
       {errors.length > 0 ? (
         <div
           aria-labelledby={summaryTitleId}
-          className="rounded-xl border border-mar-danger bg-mar-danger-surface p-4 text-mar-danger"
+          className="rounded-mar-card border border-mar-danger bg-mar-danger-surface p-4 text-mar-danger"
           role="alert"
           tabIndex={-1}
         >
@@ -97,7 +97,7 @@ export function FieldGroup({
           .join(" ") || undefined
       }
       className={cn(
-        "grid min-w-0 gap-4 rounded-xl border border-mar-border p-4 disabled:opacity-60",
+        "grid min-w-0 gap-4 rounded-mar-card border border-mar-separator bg-mar-card p-4 disabled:opacity-60",
         className,
       )}
       ref={ref}

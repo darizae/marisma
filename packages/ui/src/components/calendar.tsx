@@ -318,7 +318,7 @@ export function Calendar({
       aria-label={label}
       aria-readonly={readOnly || undefined}
       className={cn(
-        "w-fit max-w-full rounded-xl border border-mar-border bg-mar-card p-3 font-mar-sans text-mar-text",
+        "w-fit max-w-full rounded-mar-card border border-mar-surface-border bg-mar-card shadow-mar-card p-3 font-mar-sans text-mar-text",
         disabled && "opacity-60",
         className,
       )}
@@ -329,7 +329,7 @@ export function Calendar({
       <div className="mb-3 grid grid-cols-[2.75rem_1fr_2.75rem] items-center gap-2">
         <button
           aria-label="Previous month"
-          className="inline-flex size-11 items-center justify-center rounded-lg border border-mar-border bg-mar-card text-lg hover:bg-mar-surface disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex size-11 items-center justify-center rounded-mar-control border border-mar-input-border bg-mar-card text-lg hover:bg-mar-hover disabled:cursor-not-allowed disabled:opacity-50"
           disabled={previousDisabled}
           onClick={() => changeMonth(previousMonth)}
           type="button"
@@ -346,7 +346,7 @@ export function Calendar({
         </h2>
         <button
           aria-label="Next month"
-          className="inline-flex size-11 items-center justify-center rounded-lg border border-mar-border bg-mar-card text-lg hover:bg-mar-surface disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex size-11 items-center justify-center rounded-mar-control border border-mar-input-border bg-mar-card text-lg hover:bg-mar-hover disabled:cursor-not-allowed disabled:opacity-50"
           disabled={nextDisabled}
           onClick={() => changeMonth(nextMonth)}
           type="button"
@@ -397,7 +397,7 @@ export function Calendar({
                       aria-disabled={unavailable || readOnly || undefined}
                       aria-label={`${formatCalendarDate(date, locale, { dateStyle: "full" })}${selected ? ", selected" : ""}`}
                       className={cn(
-                        "inline-flex size-10 items-center justify-center rounded-lg text-sm transition-colors duration-[var(--marisma-duration-fast)] hover:bg-mar-surface",
+                        "inline-flex size-10 items-center justify-center rounded-mar-control text-sm transition-colors duration-[var(--marisma-duration-fast)] hover:bg-mar-hover",
                         outside && "text-mar-muted opacity-70",
                         selected &&
                           "bg-mar-primary font-semibold text-mar-on-primary hover:bg-mar-primary-hover",

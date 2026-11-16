@@ -37,7 +37,7 @@ function SingleToggleGroup({
       <ToggleGroupPrimitive.Root
         aria-readonly={readOnly || undefined}
         className={cn(
-          "inline-flex flex-wrap gap-1 rounded-xl border border-mar-border bg-mar-card p-1 font-mar-sans text-mar-text",
+          "inline-flex flex-wrap gap-1 rounded-mar-control border border-mar-input-border bg-mar-card p-1 font-mar-sans text-mar-text",
           className,
         )}
         onValueChange={(nextValue) => {
@@ -70,7 +70,7 @@ function MultipleToggleGroup({
       <ToggleGroupPrimitive.Root
         aria-readonly={readOnly || undefined}
         className={cn(
-          "inline-flex flex-wrap gap-1 rounded-xl border border-mar-border bg-mar-card p-1 font-mar-sans text-mar-text",
+          "inline-flex flex-wrap gap-1 rounded-mar-control border border-mar-input-border bg-mar-card p-1 font-mar-sans text-mar-text",
           className,
         )}
         onValueChange={(nextValue) => {
@@ -110,7 +110,7 @@ export function ToggleGroupItem({
   return (
     <ToggleGroupPrimitive.Item
       className={cn(
-        "inline-flex min-h-10 min-w-10 items-center justify-center rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors duration-[var(--marisma-duration-fast)] hover:bg-mar-surface data-[state=on]:bg-mar-primary data-[state=on]:text-mar-on-primary disabled:cursor-not-allowed disabled:opacity-60",
+        "inline-flex min-h-10 min-w-10 items-center justify-center rounded-mar-control px-3 py-1.5 text-sm font-semibold transition-colors duration-[var(--marisma-duration-fast)] hover:bg-mar-hover data-[state=on]:bg-mar-primary data-[state=on]:text-mar-on-primary disabled:cursor-not-allowed disabled:opacity-60",
         className,
       )}
       data-readonly={readOnly || undefined}
