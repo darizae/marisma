@@ -91,7 +91,7 @@ export function TooltipContent({
     <TooltipPortal {...portalProps}>
       <TooltipPrimitive.Content
         className={cn(
-          "z-50 max-w-64 rounded-lg bg-mar-text px-3 py-2 font-mar-sans text-sm text-mar-surface shadow-lg",
+          "z-50 max-w-64 rounded-mar-control bg-mar-text px-3 py-2 font-mar-sans text-sm text-mar-surface shadow-mar-overlay",
           "transition-opacity duration-[var(--marisma-duration-fast)] data-[state=closed]:opacity-0 data-[state=instant-open]:opacity-100 data-[state=delayed-open]:opacity-100",
           className,
         )}

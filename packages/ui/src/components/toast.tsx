@@ -35,14 +35,14 @@ type ToastContextValue = {
 const ToastContext = createContext<ToastContextValue | null>(null);
 
 const toastVariants = cva(
-  "pointer-events-auto grid w-full grid-cols-[1fr_auto] gap-x-3 gap-y-1 rounded-xl border p-4 font-mar-sans shadow-lg",
+  "pointer-events-auto grid w-full grid-cols-[1fr_auto] gap-x-3 gap-y-1 rounded-mar-card border border-transparent p-4 font-mar-sans shadow-mar-overlay forced-colors:border-current",
   {
     variants: {
       variant: {
-        info: "border-mar-info bg-mar-info-surface text-mar-info",
-        success: "border-mar-success bg-mar-success-surface text-mar-success",
-        warning: "border-mar-warning bg-mar-warning-surface text-mar-warning",
-        danger: "border-mar-danger bg-mar-danger-surface text-mar-danger",
+        info: "bg-mar-info-surface text-mar-info",
+        success: "bg-mar-success-surface text-mar-success",
+        warning: "bg-mar-warning-surface text-mar-warning",
+        danger: "bg-mar-danger-surface text-mar-danger",
       },
     },
     defaultVariants: { variant: "info" },
@@ -145,7 +145,7 @@ function ToastItem({ defaultDuration, item, onDismiss }: ToastItemProps) {
       </div>
       <button
         aria-label="Dismiss notification"
-        className="inline-flex size-10 items-center justify-center rounded-lg text-xl leading-none transition-colors duration-[var(--marisma-duration-fast)] hover:bg-black/10"
+        className="inline-flex size-10 items-center justify-center rounded-mar-control text-xl leading-none transition-colors duration-[var(--marisma-duration-fast)] hover:bg-black/10"
         onClick={() => onDismiss(item.id)}
         type="button"
       >
@@ -173,7 +173,7 @@ export function ToastAction({
   return (
     <button
       className={cn(
-        "inline-flex min-h-10 items-center justify-center rounded-lg border border-current px-3 py-1.5 text-sm font-semibold transition-colors duration-[var(--marisma-duration-fast)] hover:bg-black/10",
+        "inline-flex min-h-10 items-center justify-center rounded-mar-control border border-current px-3 py-1.5 text-sm font-semibold transition-colors duration-[var(--marisma-duration-fast)] hover:bg-black/10",
         className,
       )}
       type={type}

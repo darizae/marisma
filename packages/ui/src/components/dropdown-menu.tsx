@@ -111,7 +111,7 @@ export function DropdownMenuPortal({
 }
 
 const menuContentClasses =
-  "z-50 min-w-52 max-h-[var(--radix-dropdown-menu-content-available-height)] overflow-y-auto rounded-xl border border-mar-border bg-mar-card p-1.5 font-mar-sans text-mar-text shadow-xl transition duration-[var(--marisma-duration-fast)] data-[state=closed]:scale-95 data-[state=closed]:opacity-0 data-[state=open]:scale-100 data-[state=open]:opacity-100";
+  "z-50 min-w-52 max-h-[var(--radix-dropdown-menu-content-available-height)] overflow-y-auto rounded-mar-card border border-mar-surface-border bg-mar-card p-1.5 font-mar-sans text-mar-text shadow-mar-overlay transition duration-[var(--marisma-duration-fast)] data-[state=closed]:scale-95 data-[state=closed]:opacity-0 data-[state=open]:scale-100 data-[state=open]:opacity-100";
 
 export type DropdownMenuContentProps = ComponentPropsWithRef<
   typeof DropdownMenuPrimitive.Content
@@ -143,7 +143,7 @@ export function DropdownMenuContent({
 }
 
 export const dropdownMenuItemVariants = cva(
-  "relative flex min-h-10 cursor-default select-none items-center rounded-lg px-3 py-2 text-sm outline-none transition-colors duration-[var(--marisma-duration-fast)] focus:bg-mar-surface data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+  "relative flex min-h-10 cursor-default select-none items-center rounded-lg px-3 py-2 text-sm outline-none transition-colors duration-[var(--marisma-duration-fast)] focus:bg-mar-hover data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
   {
     variants: {
       variant: {
@@ -178,7 +178,7 @@ export function DropdownMenuItem({
 }
 
 const checkItemClasses =
-  "relative flex min-h-10 cursor-default select-none items-center rounded-lg py-2 pl-9 pr-3 text-sm text-mar-text outline-none transition-colors duration-[var(--marisma-duration-fast)] focus:bg-mar-surface data-[disabled]:pointer-events-none data-[disabled]:opacity-50";
+  "relative flex min-h-10 cursor-default select-none items-center rounded-lg py-2 pl-9 pr-3 text-sm text-mar-text outline-none transition-colors duration-[var(--marisma-duration-fast)] focus:bg-mar-hover data-[disabled]:pointer-events-none data-[disabled]:opacity-50";
 
 export function DropdownMenuCheckboxItem({
   children,
@@ -252,7 +252,7 @@ export function DropdownMenuSeparator({
 }: ComponentPropsWithRef<typeof DropdownMenuPrimitive.Separator>) {
   return (
     <DropdownMenuPrimitive.Separator
-      className={cn("my-1 h-px bg-mar-border", className)}
+      className={cn("my-1 h-px bg-mar-separator", className)}
       ref={ref}
       {...props}
     />
