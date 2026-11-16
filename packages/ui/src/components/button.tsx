@@ -3,15 +3,15 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/cn";
 
 export const buttonVariants = cva(
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors duration-[var(--marisma-duration-fast)] disabled:cursor-not-allowed disabled:opacity-60",
+  "inline-flex min-h-11 items-center justify-center gap-2 rounded-mar-control px-4 py-2 text-sm font-semibold transition-colors duration-[var(--marisma-duration-fast)] disabled:cursor-not-allowed disabled:opacity-60",
   {
     variants: {
       variant: {
         primary:
           "bg-mar-primary text-mar-on-primary hover:bg-mar-primary-hover",
         secondary:
-          "border border-mar-border bg-mar-card text-mar-text hover:bg-mar-surface",
-        ghost: "text-mar-text hover:bg-mar-card",
+          "border border-mar-input-border bg-mar-card text-mar-text hover:bg-mar-hover",
+        ghost: "text-mar-text hover:bg-mar-hover",
       },
       size: {
         small: "min-h-10 px-3 py-1.5",

@@ -51,7 +51,7 @@ export function Input({
         aria-describedby={describedBy || undefined}
         aria-invalid={ariaInvalid ?? (hasError || undefined)}
         className={cn(
-          "min-h-11 w-full rounded-lg border border-mar-border bg-mar-card px-3 py-2 text-base text-mar-text placeholder:text-mar-muted disabled:cursor-not-allowed disabled:opacity-60",
+          "min-h-11 w-full rounded-mar-control border border-mar-input-border bg-mar-card px-3 py-2 text-base text-mar-text placeholder:text-mar-muted disabled:cursor-not-allowed disabled:opacity-60",
           "aria-invalid:border-mar-danger",
           className,
         )}

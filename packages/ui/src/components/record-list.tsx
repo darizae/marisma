@@ -35,7 +35,7 @@ export function RecordList<RecordType>({
   if (loading) {
     content = (
       <div
-        className="rounded-xl border border-mar-border bg-mar-card p-6 text-mar-muted"
+        className="rounded-mar-card border border-mar-surface-border bg-mar-card p-6 shadow-mar-card text-mar-muted"
         role="status"
       >
         {loadingState}
@@ -44,7 +44,7 @@ export function RecordList<RecordType>({
   } else if (error !== undefined && error !== null) {
     content = (
       <div
-        className="rounded-xl border border-mar-danger bg-mar-danger-surface p-6 text-mar-danger"
+        className="rounded-mar-card border border-mar-danger bg-mar-danger-surface p-6 text-mar-danger"
         role="alert"
       >
         {error}
@@ -53,7 +53,7 @@ export function RecordList<RecordType>({
   } else if (records.length === 0) {
     content = (
       <div
-        className="rounded-xl border border-dashed border-mar-border bg-mar-card p-8 text-center text-mar-muted"
+        className="rounded-mar-card border border-dashed border-mar-input-border bg-mar-card p-8 text-center text-mar-muted"
         role="status"
       >
         {emptyState}
@@ -105,7 +105,7 @@ export function RecordListItem({
   return (
     <article
       className={cn(
-        "grid gap-3 rounded-xl border border-mar-border bg-mar-card p-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center",
+        "grid gap-3 rounded-mar-card border border-mar-surface-border bg-mar-card p-4 shadow-mar-card sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center",
         className,
       )}
       {...props}

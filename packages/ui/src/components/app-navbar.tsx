@@ -26,8 +26,8 @@ export function AppNavbar({
   return (
     <header
       className={cn(
-        "z-30 border-b border-mar-border bg-mar-card font-mar-sans text-mar-text",
-        sticky && "sticky top-0",
+        "z-30 mx-2 mt-2 rounded-mar-navbar border border-mar-surface-border bg-mar-card shadow-mar-navbar sm:mx-4 sm:mt-3 font-mar-sans text-mar-text",
+        sticky && "sticky top-2",
         className,
       )}
       {...props}
@@ -63,7 +63,7 @@ export function AppNavbarLink({ className, ...props }: AppNavbarLinkProps) {
   return (
     <NavigationLinkBase
       className={cn(
-        "inline-flex min-h-10 items-center rounded-lg px-3 py-2 text-sm font-medium text-mar-muted transition-colors duration-[var(--marisma-duration-fast)] hover:bg-mar-surface hover:text-mar-text aria-[current=page]:bg-mar-surface aria-[current=page]:text-mar-text",
+        "inline-flex min-h-10 items-center rounded-mar-control px-3 py-2 text-sm font-medium text-mar-muted transition-colors duration-[var(--marisma-duration-fast)] hover:bg-mar-hover hover:text-mar-text aria-[current=page]:bg-mar-selection aria-[current=page]:text-mar-selection-text",
         className,
       )}
       currentValue="page"
