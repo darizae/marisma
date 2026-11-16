@@ -169,7 +169,10 @@
 [data-marisma-mode] {
   --marisma-surface-border: transparent;
   --marisma-separator: color-mix(in srgb, var(--marisma-border) 22%, var(--marisma-card));
-  --marisma-input-border: color-mix(in srgb, var(--marisma-border) 30%, var(--marisma-card));
+  /* A 30% outline from the prototype would be below the WCAG non-text
+     contrast target. Keep controls recognisable at rest; only decorative
+     surface separators use the quieter mix. */
+  --marisma-input-border: color-mix(in srgb, var(--marisma-border) 90%, var(--marisma-card));
   --marisma-hover: color-mix(in srgb, var(--marisma-primary) 5%, var(--marisma-card));
   --marisma-selection: color-mix(in srgb, var(--marisma-primary) 12%, var(--marisma-card));
   --marisma-selection-text: var(--marisma-primary);
@@ -183,7 +186,7 @@
 
 [data-marisma-mode="dark"] {
   --marisma-separator: rgba(218, 240, 226, .11);
-  --marisma-input-border: rgba(218, 240, 226, .18);
+  --marisma-input-border: var(--marisma-border);
   --marisma-hover: color-mix(in srgb, var(--marisma-primary) 7%, var(--marisma-card));
   --marisma-selection: color-mix(in srgb, var(--marisma-primary) 16%, var(--marisma-card));
   --marisma-shadow-card: 0 18px 40px -18px rgba(0, 0, 0, .30), 0 4px 14px -8px rgba(0, 0, 0, .24);
