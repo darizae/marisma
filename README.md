@@ -23,6 +23,13 @@ Soft Elevation is the new default visual direction on the `feat/soft-elevation-v
 
 `0.1.0` remains the last documented published version. The `0.2.0` source candidate is **not published or release-qualified** until local browser, accessibility, packed-consumer and artifact checks pass and the owner approves the exact release. See [local verification and release](docs/planning/VERIFICATION_AND_RELEASE.md).
 
+Captured from actual React rendering (see the [parity matrix](docs/design/UI_UX_PARITY_MATRIX.md) for the full evidence ledger):
+
+![Application overview, Reedwater light](docs/visuals/soft-elevation/application-reedwater-light.jpg)
+![Application overview, Tidal Blue dark](docs/visuals/soft-elevation/application-tidal-blue-dark.jpg)
+![Mobile application, 390px](docs/visuals/soft-elevation/application-mobile.jpg)
+![Historical 0.1.0 versus Soft Elevation candidate](docs/visuals/soft-elevation/before-after.jpg)
+
 ## Available components
 
 - `Button` — primary, secondary, and ghost variants; three sizes; disabled and
