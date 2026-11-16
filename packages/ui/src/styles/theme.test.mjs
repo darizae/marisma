@@ -189,3 +189,21 @@ test("defines visible focus, reduced-motion, and forced-colors behavior", () => 
   );
   assert.match(css, /--marisma-focus: Highlight;/);
 });
+
+test("Soft Elevation separates surface, input, and interactive state tokens", () => {
+  for (const name of ["surface-border", "separator", "input-border", "hover", "selection", "selection-text"]) {
+    assert.match(css, new RegExp(`--color-mar-${name}: var\\\\(--marisma-${name}\\\\);`));
+  }
+  for (const name of ["card", "control", "navbar"]) {
+    assert.match(css, new RegExp(`--radius-mar-${name}: var\\\\(--marisma-radius-${name}\\\\);`));
+  }
+  for (const name of ["card", "overlay", "navbar"]) {
+    assert.match(css, new RegExp(`--shadow-mar-${name}: var\\\\(--marisma-shadow-${name}\\\\);`));
+  }
+  assert.match(css, /--marisma-radius-card: 18px;/);
+  assert.match(css, /--marisma-radius-control: 11px;/);
+  assert.match(css, /--marisma-input-border: color-mix\\(in srgb, var\\(--marisma-border\\) 90%/);
+  assert.match(css, /\\[data-marisma-mode="dark"\\]\\s*\\{[\\s\\S]*--marisma-shadow-card:/);
+  assert.match(css, /@media \\(forced-colors: active\\)[\\s\\S]*--marisma-surface-border: CanvasText;/);
+  assert.match(css, /@media \\(forced-colors: active\\)[\\s\\S]*--marisma-input-border: CanvasText;/);
+});
