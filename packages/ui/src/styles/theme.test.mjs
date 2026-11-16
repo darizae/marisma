@@ -208,3 +208,26 @@ test("Soft Elevation separates surface, input, and interactive state tokens", ()
   assert.ok(css.includes("--marisma-surface-border: CanvasText;"));
   assert.ok(css.includes("--marisma-input-border: CanvasText;"));
 });
+
+test("Soft Elevation input boundaries meet 3:1 contrast on their card backgrounds", () => {
+  const mixSrgb = (foreground, background, proportion) => {
+    const channels = [1, 3, 5].map((offset) => {
+      const front = Number.parseInt(foreground.slice(offset, offset + 2), 16);
+      const back = Number.parseInt(background.slice(offset, offset + 2), 16);
+      return Math.round(front * proportion + back * (1 - proportion))
+        .toString(16)
+        .padStart(2, "0");
+    });
+    return `#${channels.join("")}`;
+  };
+  for (const [name, selector] of Object.entries(themeSelectors)) {
+    const palette = declarationsFor(selector);
+    const originalBorder = palette["--marisma-border"];
+    const card = palette["--marisma-card"];
+    const boundary = name.endsWith("dark")
+      ? originalBorder
+      : mixSrgb(originalBorder, card, 0.9);
+    assert.ok(contrast(boundary, card) >= 3,
+      `${name}: input boundary ${boundary} lacks 3:1 card contrast`);
+  }
+});

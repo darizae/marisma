@@ -89,7 +89,7 @@ variant class is emitted into production CSS. No second Tailwind preflight impor
 
 ## Active engineering context
 
-The approved component catalog is published in `0.1.0`, and the historical local release-candidate evidence is recorded in `docs/release/T-011_RELEASE_CANDIDATE.md`. No numbered implementation or release specification is active; completed specs remain in Git history. Read `AGENTS.md`, the approved-decision register, and the relevant row of `docs/agent/ROUTING.md` for a newly authorized change. Do not recreate historical specs or treat an old plan as active work.
+The approved component catalog is published in `0.1.0`, and the historical local release-candidate evidence is recorded in `docs/release/T-011_RELEASE_CANDIDATE.md`. The initial 0.1.0 tasks have been retired into Git history; the currently approved 0.2.0 follow-up verification tasks are indexed in `docs/planning/HANDOFF_SEQUENCE.md` and remain blocked until genuine local evidence exists. Read `AGENTS.md`, the approved-decision register, and the relevant row of `docs/agent/ROUTING.md` for a newly authorized change. Do not recreate historical specs or treat an old plan as active work.
 
 **Local tests are the acceptance channel; GitHub Actions is not a gate.** Every future package publication remains a distinct owner decision.
 
