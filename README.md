@@ -28,7 +28,6 @@ Captured from actual React rendering (see the [parity matrix](docs/design/UI_UX_
 ![Application overview, Reedwater light](docs/visuals/soft-elevation/application-reedwater-light.jpg)
 ![Application overview, Tidal Blue dark](docs/visuals/soft-elevation/application-tidal-blue-dark.jpg)
 ![Mobile application, 390px](docs/visuals/soft-elevation/application-mobile.jpg)
-![Historical 0.1.0 versus Soft Elevation candidate](docs/visuals/soft-elevation/before-after.jpg)
 
 ## Available components
 
@@ -179,7 +178,7 @@ Marisma's supplied leaf mark is stored once at [`assets/brand/marisma-leaf.svg`]
 
 ## Implementation status and local verification
 
-The original **48 component families** were implemented and published in `0.1.0`; `0.2.0` retains their public APIs and adds the Soft Elevation visual design. The [component catalog](docs/planning/COMPONENT_CATALOG.md) maps them to their public APIs, stories and tests. The [local release-candidate report](docs/release/T-011_RELEASE_CANDIDATE.md) preserves the historical qualification evidence.
+The [local release-candidate report](docs/release/T-011_RELEASE_CANDIDATE.md) preserves the historical qualification evidence.
 
 The completed implementation and release-task Markdown files were retired from
 the working tree; **Git history** retains their full content.
