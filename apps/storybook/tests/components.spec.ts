@@ -164,15 +164,18 @@ test("Toast announces, limits its stack, and dismisses", async ({ page }) => {
   );
   const trigger = page.getByRole("button", { name: "Show notification" });
   for (let index = 0; index < 4; index += 1) await trigger.click();
-  await expect(page.getByRole("status")).toHaveCount(3);
-  await expect(
-    page.getByRole("region", { name: "Notifications" }),
-  ).toBeVisible();
-  await page
+  const stack = page.getByRole("region", { name: "Notifications" });
+  await expect(stack).toBeVisible();
+  await expect(stack.locator("li")).toHaveCount(3);
+  await expect(stack.getByRole("status")).toHaveCount(1); // only the front toast is exposed while collapsed
+  await stack.locator("li").first().hover();
+  await expect(stack).toHaveAttribute("data-expanded", "true");
+  await expect(stack.getByRole("status")).toHaveCount(3);
+  await stack
     .getByRole("button", { name: "Dismiss notification" })
     .first()
     .click();
-  await expect(page.getByRole("status")).toHaveCount(2);
+  await expect(stack.locator("li")).toHaveCount(2);
 });
 
 test("foundation feedback tokens render in all four themes", async ({

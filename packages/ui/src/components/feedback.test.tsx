@@ -1,4 +1,10 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import {
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+  within,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { CopyCode } from "./copy-code";
@@ -111,7 +117,47 @@ describe("Toast", () => {
     await user.click(
       screen.getByRole("button", { name: "Dismiss notification" }),
     );
-    expect(screen.queryByText("Second")).toBeNull();
+    await waitFor(() => expect(screen.queryByText("Second")).toBeNull());
+  });
+
+  it("stacks newest-first, expands for hover and keyboard focus, and preserves actions", async () => {
+    const user = userEvent.setup();
+    render(
+      <ToastProvider duration={0} limit={3}>
+        <ToastControls />
+      </ToastProvider>,
+    );
+    await user.click(screen.getByRole("button", { name: "Notify" }));
+    await user.click(screen.getByRole("button", { name: "Notify again" }));
+    const region = screen.getByRole("region", { name: "Notifications" });
+    expect(region).toHaveAttribute("data-expanded", "false");
+    expect(
+      within(region).getAllByRole("status", { hidden: true }),
+    ).toHaveLength(2);
+    const newest = within(region).getByText("Second");
+    expect(newest.closest("li")).not.toHaveAttribute("aria-hidden", "true");
+    fireEvent.mouseEnter(region);
+    expect(region).toHaveAttribute("data-expanded", "true");
+    expect(within(region).getAllByRole("status")).toHaveLength(2);
+    await user.click(within(region).getByRole("button", { name: "Undo" }));
+    await waitFor(() => expect(within(region).queryByText("Saved")).toBeNull());
+    expect(within(region).getByText("Second")).toBeInTheDocument();
+  });
+
+  it("pauses its finite timeout while the stack is hovered", async () => {
+    const user = userEvent.setup();
+    render(
+      <ToastProvider duration={160}>
+        <ToastControls />
+      </ToastProvider>,
+    );
+    await user.click(screen.getByRole("button", { name: "Notify again" }));
+    const region = screen.getByRole("region", { name: "Notifications" });
+    fireEvent.mouseEnter(region);
+    await new Promise((resolve) => setTimeout(resolve, 230));
+    expect(screen.getByText("Second")).toBeInTheDocument();
+    fireEvent.mouseLeave(region);
+    await waitFor(() => expect(screen.queryByText("Second")).toBeNull());
   });
 
   it("uses an urgent role for danger and removes timed notifications", async () => {

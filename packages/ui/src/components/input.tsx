@@ -42,7 +42,10 @@ export function Input({
 
   return (
     <div
-      className={cn("grid gap-2 font-mar-sans text-mar-text", fieldClassName)}
+      className={cn(
+        "marisma-field-group grid gap-2 font-mar-sans text-mar-text",
+        fieldClassName,
+      )}
     >
       <label className="text-sm font-semibold" htmlFor={inputId}>
         {label}
@@ -52,7 +55,7 @@ export function Input({
         aria-invalid={ariaInvalid ?? (hasError || undefined)}
         className={cn(
           "min-h-11 w-full rounded-mar-control border border-mar-input-border bg-mar-card px-3 py-2 text-base text-mar-text placeholder:text-mar-muted disabled:cursor-not-allowed disabled:opacity-60",
-          "aria-invalid:border-mar-danger",
+          "marisma-motion-field aria-invalid:border-mar-danger",
           className,
         )}
         id={inputId}

@@ -463,3 +463,118 @@
     transition: none;
   }
 }
+
+/* Focus affordance is an additive soft halo, never a replacement for the
+   high-contrast :focus-visible outline above. Invalid controls keep danger. */
+.marisma-motion-field {
+  transition:
+    border-color var(--marisma-motion-control) var(--marisma-ease-control),
+    background-color var(--marisma-motion-hover) ease,
+    box-shadow var(--marisma-motion-control) var(--marisma-ease-control);
+}
+.marisma-motion-field:not(:disabled):not(:read-only):not(
+    [data-readonly="true"]
+  ):not([aria-invalid="true"]):hover {
+  border-color: color-mix(
+    in srgb,
+    var(--marisma-primary) 55%,
+    var(--marisma-input-border)
+  );
+}
+.marisma-motion-field:not(:disabled):not(:read-only):not(
+    [data-readonly="true"]
+  ):not([aria-invalid="true"]):focus-visible {
+  border-color: var(--marisma-primary);
+  box-shadow: 0 0 0 4px
+    color-mix(in srgb, var(--marisma-primary) 13%, transparent);
+}
+.marisma-field-group > label {
+  transition: color var(--marisma-motion-control) var(--marisma-ease-control);
+}
+.marisma-field-group:focus-within > label {
+  color: var(--marisma-primary);
+}
+.marisma-field-group:has([aria-invalid="true"]):focus-within > label {
+  color: var(--marisma-danger);
+}
+@media (prefers-reduced-motion: reduce) {
+  .marisma-motion-field,
+  .marisma-field-group > label {
+    transition: none;
+  }
+}
+@media (forced-colors: active) {
+  .marisma-motion-field:focus-visible {
+    box-shadow: none;
+  }
+  .marisma-motion-field:hover {
+    border-color: Highlight;
+  }
+}
+
+/* Calm, Sonner-inspired toast stack: app-owned Marisma tokens and API.
+   Newest toast sits at the bottom/front; hover or keyboard focus spreads cards. */
+.marisma-toast-stack {
+  transition: height var(--marisma-motion-spring) var(--marisma-ease-spring);
+}
+.marisma-toast-item {
+  z-index: calc(10 - var(--marisma-toast-index));
+  transform: translate3d(0, calc(-1 * var(--marisma-toast-offset)), 0);
+  transform-origin: center bottom;
+  transition:
+    transform var(--marisma-motion-spring) var(--marisma-ease-spring),
+    opacity var(--marisma-motion-menu) ease;
+  touch-action: pan-y;
+}
+.marisma-toast-viewport[data-expanded="false"] .marisma-toast-item {
+  transform: translate3d(0, calc(-12px * var(--marisma-toast-index)), 0)
+    scale(calc(1 - 0.045 * var(--marisma-toast-index)));
+  opacity: calc(1 - 0.14 * var(--marisma-toast-index));
+}
+.marisma-toast-viewport[data-expanded="false"]
+  .marisma-toast-item:not(:first-child) {
+  pointer-events: none;
+}
+.marisma-toast-swipe {
+  transition:
+    transform var(--marisma-motion-control) var(--marisma-ease-exit),
+    opacity var(--marisma-motion-control) ease;
+}
+.marisma-toast-surface {
+  animation: marisma-toast-in var(--marisma-motion-spring)
+    var(--marisma-ease-spring) both;
+}
+.marisma-toast-item[data-leaving="true"] .marisma-toast-surface {
+  animation: marisma-toast-out 180ms var(--marisma-ease-exit) both;
+}
+@keyframes marisma-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes marisma-toast-out {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marisma-toast-stack,
+  .marisma-toast-item,
+  .marisma-toast-swipe {
+    transition: none;
+  }
+  .marisma-toast-surface,
+  .marisma-toast-item[data-leaving="true"] .marisma-toast-surface {
+    animation: none;
+  }
+}
