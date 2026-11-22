@@ -12,4 +12,4 @@ The original completed task files, including their owner-facing routing suffixes
 
 ## Current work, separate from the completed 0.2.0 release
 
-The motion/interactivity and navigable showcase candidate is in [PR #8](https://github.com/darizae/marisma/pull/8). Its authoritative review artifacts are `docs/motion/MOTION_SYSTEM.md`, `docs/motion/VERIFICATION.md` and `apps/showcase/README.md`. Owner review is still required; **no merge, npm publication, tag, production deployment or Flowstead integration is authorized**. Local checks are the acceptance channel; historical 0.2.0 evidence does not qualify any future release.
+The motion/interactivity and navigable showcase source merged through [PR #8](https://github.com/darizae/marisma/pull/8) as `f6f315a`. Its authoritative artifacts are `docs/motion/MOTION_SYSTEM.md`, `docs/motion/VERIFICATION.md` and `apps/showcase/README.md`. Owner approval is still required for **a new npm version/publication, release tag, production deployment or Flowstead UI integration**. Local checks are the acceptance channel; historical 0.2.0 evidence does not qualify any future release.

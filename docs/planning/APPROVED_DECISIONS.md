@@ -50,7 +50,7 @@
 
 ## Current facts versus decisions (updated 2026-11-22)
 
-The **48 source-level component families** shipped in 0.1.0 and remain available in the published `@darizae/marisma@0.2.0`. The 0.1.0 qualification evidence is historical (`docs/release/T-011_RELEASE_CANDIDATE.md`); the 0.2.0 qualification and publication are recorded separately in `docs/planning/VERIFICATION_AND_RELEASE.md`. The current feature branch adds a standalone `apps/showcase/`, new motion utilities and an isolated read-only Flowstead adoption review through [PR #8](https://github.com/darizae/marisma/pull/8). None of those changes are published or owner-approved for merge. Historic tests cannot be presented as fresh release qualification; the approved architecture, package boundaries and themes remain unchanged.
+The **48 source-level component families** shipped in 0.1.0 and remain available in the published `@darizae/marisma@0.2.0`. The 0.1.0 qualification evidence is historical (`docs/release/T-011_RELEASE_CANDIDATE.md`); the 0.2.0 qualification and publication are recorded separately in `docs/planning/VERIFICATION_AND_RELEASE.md`. [PR #8](https://github.com/darizae/marisma/pull/8) merged into `main` as `f6f315a` and adds `apps/showcase/`, new motion utilities and a read-only Flowstead adoption review. These changes are **not** included in the published 0.2.0 package. Only a detailed Flowstead brand-animation plan has been committed locally there; no Flowstead app integration was performed. Historic tests cannot be presented as fresh release qualification; the approved architecture, package boundaries and themes remain unchanged.
 
 ## Required handoff reconciliation
 
@@ -62,7 +62,7 @@ The implementation assignments T-001–T-011, the one-off hardening review and T
 
 ## Current release planning boundary (updated 2026-11-22)
 
-The catalog and Soft Elevation are published as `@darizae/marisma@0.2.0` (the prior `0.1.0` release remains available). The tracked package stays `private: true`; publication used an exact approved staged artifact and the credential-free local toolkit remains ignored under `priv/release/`. The motion/showcase changes are only a reviewable feature branch; no new npm release/version/tag, merge, production deployment, Flowstead changes or remote automation is authorized. Any later release requires its own owner-approved commit, version and archive SHA-256.
+The catalog and Soft Elevation are published as `@darizae/marisma@0.2.0` (the prior `0.1.0` release remains available). The tracked package stays `private: true`; publication used an exact approved staged artifact and the credential-free local toolkit remains ignored under `priv/release/`. The motion/showcase changes are merged into `main`, but no new npm release/version/tag, production deployment, Flowstead UI integration or remote automation is authorized. Any later release requires its own owner-approved commit, version and archive SHA-256.
 
 ## Owner release-delegation update (2026-11-11)
 

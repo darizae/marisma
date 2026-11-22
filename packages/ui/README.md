@@ -12,7 +12,7 @@ The [interactive showcase](../../apps/showcase/README.md) demonstrates the curre
 
 Published 0.2.0 uses Soft Elevation by default: `rounded-mar-card`, `shadow-mar-card`, and semantic `mar-surface-border`, `mar-separator`, and `mar-input-border` Tailwind utilities are exported from `theme.css`. Cards float above the canvas; inputs retain fine visible outlines. Both accent families have independent dark-mode shadows and accessible focus/forced-colors treatment. Existing `mar-border` remains the stronger legacy boundary token; consumers needing stronger interactive borders may continue to use it. No component prop or theme-attribute migration is required.
 
-The 0.2.0 package was published after the owner's separate approval and exact-artifact Vite/Next.js verification. The current feature branch adds motion and an interactive showcase; those changes are **not** part of published 0.2.0.
+The 0.2.0 package was published after the owner's separate approval and exact-artifact Vite/Next.js verification. The merged `main` source adds motion and an interactive showcase through PR #8; those changes are **not** part of published 0.2.0.
 
 ## Local package evaluation
 
