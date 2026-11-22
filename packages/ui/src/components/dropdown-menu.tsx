@@ -76,7 +76,7 @@ export function DropdownMenuTrigger({
 }: DropdownMenuTriggerProps) {
   return (
     <DropdownMenuPrimitive.Trigger
-      className={cn(buttonVariants({ fullWidth, size, variant }), className)}
+      className={cn(buttonVariants({ fullWidth, size, variant }), "marisma-motion-control", className)}
       ref={ref}
       {...props}
     />
@@ -111,7 +111,7 @@ export function DropdownMenuPortal({
 }
 
 const menuContentClasses =
-  "z-50 min-w-52 max-h-[var(--radix-dropdown-menu-content-available-height)] overflow-y-auto rounded-mar-card border border-mar-surface-border bg-mar-card p-1.5 font-mar-sans text-mar-text shadow-mar-overlay transition duration-[var(--marisma-duration-fast)] data-[state=closed]:scale-95 data-[state=closed]:opacity-0 data-[state=open]:scale-100 data-[state=open]:opacity-100";
+  "z-50 min-w-52 max-h-[var(--radix-dropdown-menu-content-available-height)] overflow-y-auto rounded-mar-card border border-mar-surface-border bg-mar-card p-1.5 font-mar-sans text-mar-text shadow-mar-overlay marisma-motion-overlay";
 
 export type DropdownMenuContentProps = ComponentPropsWithRef<
   typeof DropdownMenuPrimitive.Content
@@ -294,7 +294,7 @@ export function DropdownMenuSubTrigger({
       {...props}
     >
       {children}
-      <span aria-hidden="true">›</span>
+      <span aria-hidden="true" className="marisma-motion-arrow">›</span>
     </DropdownMenuPrimitive.SubTrigger>
   );
 }

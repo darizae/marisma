@@ -168,30 +168,60 @@
 [data-marisma-accent],
 [data-marisma-mode] {
   --marisma-surface-border: transparent;
-  --marisma-separator: color-mix(in srgb, var(--marisma-border) 22%, var(--marisma-card));
+  --marisma-separator: color-mix(
+    in srgb,
+    var(--marisma-border) 22%,
+    var(--marisma-card)
+  );
   /* A 30% outline from the prototype would be below the WCAG non-text
      contrast target. Keep controls recognisable at rest; only decorative
      surface separators use the quieter mix. */
-  --marisma-input-border: color-mix(in srgb, var(--marisma-border) 90%, var(--marisma-card));
-  --marisma-hover: color-mix(in srgb, var(--marisma-primary) 5%, var(--marisma-card));
-  --marisma-selection: color-mix(in srgb, var(--marisma-primary) 12%, var(--marisma-card));
+  --marisma-input-border: color-mix(
+    in srgb,
+    var(--marisma-border) 90%,
+    var(--marisma-card)
+  );
+  --marisma-hover: color-mix(
+    in srgb,
+    var(--marisma-primary) 5%,
+    var(--marisma-card)
+  );
+  --marisma-selection: color-mix(
+    in srgb,
+    var(--marisma-primary) 12%,
+    var(--marisma-card)
+  );
   --marisma-selection-text: var(--marisma-primary);
   --marisma-radius-card: 18px;
   --marisma-radius-control: 11px;
   --marisma-radius-navbar: 13px;
-  --marisma-shadow-card: 0 16px 34px -21px rgba(33, 66, 51, .22), 0 4px 12px -8px rgba(33, 66, 51, .12);
-  --marisma-shadow-overlay: 0 24px 60px -20px rgba(20, 45, 34, .28), 0 10px 24px -12px rgba(20, 45, 34, .16);
-  --marisma-shadow-navbar: 0 4px 24px rgba(35, 61, 47, .05);
+  --marisma-shadow-card:
+    0 16px 34px -21px rgba(33, 66, 51, 0.22),
+    0 4px 12px -8px rgba(33, 66, 51, 0.12);
+  --marisma-shadow-overlay:
+    0 24px 60px -20px rgba(20, 45, 34, 0.28),
+    0 10px 24px -12px rgba(20, 45, 34, 0.16);
+  --marisma-shadow-navbar: 0 4px 24px rgba(35, 61, 47, 0.05);
 }
 
 [data-marisma-mode="dark"] {
-  --marisma-separator: rgba(218, 240, 226, .11);
+  --marisma-separator: rgba(218, 240, 226, 0.11);
   --marisma-input-border: var(--marisma-border);
-  --marisma-hover: color-mix(in srgb, var(--marisma-primary) 7%, var(--marisma-card));
-  --marisma-selection: color-mix(in srgb, var(--marisma-primary) 16%, var(--marisma-card));
-  --marisma-shadow-card: 0 18px 40px -18px rgba(0, 0, 0, .30), 0 4px 14px -8px rgba(0, 0, 0, .24);
-  --marisma-shadow-overlay: 0 26px 70px -16px rgba(0, 0, 0, .5), 0 10px 24px -10px rgba(0, 0, 0, .34);
-  --marisma-shadow-navbar: 0 4px 24px rgba(0, 0, 0, .14);
+  --marisma-hover: color-mix(
+    in srgb,
+    var(--marisma-primary) 7%,
+    var(--marisma-card)
+  );
+  --marisma-selection: color-mix(
+    in srgb,
+    var(--marisma-primary) 16%,
+    var(--marisma-card)
+  );
+  --marisma-shadow-card:
+    0 18px 40px -18px rgba(0, 0, 0, 0.3), 0 4px 14px -8px rgba(0, 0, 0, 0.24);
+  --marisma-shadow-overlay:
+    0 26px 70px -16px rgba(0, 0, 0, 0.5), 0 10px 24px -10px rgba(0, 0, 0, 0.34);
+  --marisma-shadow-navbar: 0 4px 24px rgba(0, 0, 0, 0.14);
 }
 
 :where(:root, [data-marisma-accent], [data-marisma-mode]) :focus-visible,
@@ -240,5 +270,196 @@
     --marisma-warning-surface: Canvas;
     --marisma-danger: CanvasText;
     --marisma-danger-surface: Canvas;
+  }
+}
+
+/* Motion grammar: scoped to Marisma's public components and opt-in utilities.
+   Deliberately avoid global element selectors and preserve Radix dismissal. */
+:root,
+[data-marisma-accent],
+[data-marisma-mode] {
+  --marisma-motion-press: 120ms;
+  --marisma-motion-hover: 150ms;
+  --marisma-motion-control: 180ms;
+  --marisma-motion-menu: 200ms;
+  --marisma-motion-chevron: 250ms;
+  --marisma-motion-spring: 320ms;
+  --marisma-motion-enter: 500ms;
+  --marisma-motion-bounce: 620ms;
+  --marisma-ease-control: cubic-bezier(0.34, 0.8, 0.34, 1);
+  --marisma-ease-exit: cubic-bezier(0.2, 0, 0, 1);
+  --marisma-ease-direction: cubic-bezier(0.32, 0.72, 0, 1);
+  --marisma-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --marisma-ease-rise: cubic-bezier(0.38, 1.21, 0.22, 1);
+}
+.marisma-motion-control {
+  transition:
+    background-color var(--marisma-motion-control) var(--marisma-ease-control),
+    color var(--marisma-motion-hover) ease,
+    transform var(--marisma-motion-press) var(--marisma-ease-control);
+}
+.marisma-motion-control:not(:disabled):not([aria-disabled="true"]):active {
+  transform: translateY(0) scale(0.985);
+}
+.marisma-motion-chevron {
+  display: inline-block;
+  transition:
+    transform var(--marisma-motion-chevron) var(--marisma-ease-direction),
+    color var(--marisma-motion-hover);
+}
+[aria-expanded="true"] > .marisma-motion-chevron,
+[data-state="open"] > .marisma-motion-chevron {
+  transform: rotate(180deg);
+}
+.marisma-motion-arrow {
+  display: inline-block;
+  transition: transform var(--marisma-motion-chevron)
+    var(--marisma-ease-direction);
+}
+:is(a, button):hover .marisma-motion-arrow {
+  transform: translate(3px, -3px);
+}
+.marisma-motion-overlay {
+  transform-origin: var(--radix-popper-transform-origin, center top);
+  animation: marisma-overlay-in var(--marisma-motion-menu)
+    var(--marisma-ease-exit) both;
+}
+.marisma-motion-overlay[data-state="closed"] {
+  animation: marisma-overlay-out 150ms var(--marisma-ease-exit) both;
+}
+.marisma-motion-overlay[data-motion="spring"] {
+  animation-duration: var(--marisma-motion-spring);
+  animation-timing-function: var(--marisma-ease-spring);
+}
+.marisma-motion-rise {
+  animation: marisma-rise-in var(--marisma-motion-enter)
+    var(--marisma-ease-rise) both;
+}
+.marisma-motion-bounce {
+  transform-origin: 50% 100%;
+  animation: marisma-bounce var(--marisma-motion-bounce)
+    var(--marisma-ease-spring);
+}
+.marisma-motion-busy {
+  animation: marisma-busy-spin 1000ms cubic-bezier(0.45, 0.1, 0.55, 0.9)
+    infinite;
+}
+.marisma-motion-pulse {
+  animation: marisma-subtle-pulse 1800ms ease-in-out infinite;
+}
+[data-marisma-motion="paused"]
+  :is(
+    .marisma-motion-rise,
+    .marisma-motion-bounce,
+    .marisma-motion-busy,
+    .marisma-motion-pulse
+  ) {
+  animation-play-state: paused;
+}
+@keyframes marisma-overlay-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes marisma-overlay-out {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+}
+@keyframes marisma-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes marisma-bounce {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.08, 0.88);
+  }
+  55% {
+    transform: scale(0.94, 1.12) translateY(-8px);
+  }
+  80% {
+    transform: scale(1.03, 0.97);
+  }
+}
+@keyframes marisma-busy-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes marisma-subtle-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.68;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root,
+  [data-marisma-accent],
+  [data-marisma-mode] {
+    --marisma-motion-press: 0.01ms;
+    --marisma-motion-hover: 0.01ms;
+    --marisma-motion-control: 0.01ms;
+    --marisma-motion-menu: 0.01ms;
+    --marisma-motion-chevron: 0.01ms;
+    --marisma-motion-spring: 0.01ms;
+    --marisma-motion-enter: 0.01ms;
+    --marisma-motion-bounce: 0.01ms;
+  }
+  :is(
+    .marisma-motion-overlay,
+    .marisma-motion-rise,
+    .marisma-motion-bounce,
+    .marisma-motion-busy,
+    .marisma-motion-pulse
+  ) {
+    animation: none !important;
+  }
+  :is(.marisma-motion-control, .marisma-motion-chevron, .marisma-motion-arrow) {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+@media (forced-colors: active) {
+  .marisma-motion-pulse {
+    animation: none;
+  }
+}
+
+/* Sidebar icon tint works with consumer-supplied SVGs, without changing their markup. */
+.marisma-motion-control :is(svg, [data-marisma-nav-icon]) {
+  transition:
+    color var(--marisma-motion-control) var(--marisma-ease-control),
+    opacity var(--marisma-motion-control);
+}
+.marisma-motion-control:is(:hover, :focus-visible, [aria-current="page"])
+  :is(svg, [data-marisma-nav-icon]) {
+  color: var(--marisma-primary);
+}
+@media (prefers-reduced-motion: reduce) {
+  .marisma-motion-control :is(svg, [data-marisma-nav-icon]) {
+    transition: none;
   }
 }

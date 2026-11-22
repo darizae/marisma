@@ -204,7 +204,7 @@ export function SidebarLink({ className, ...props }: SidebarLinkProps) {
   return (
     <NavigationLinkBase
       className={cn(
-        "flex min-h-11 min-w-0 items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-mar-muted transition-colors duration-[var(--marisma-duration-fast)] hover:bg-mar-hover hover:text-mar-text aria-[current=page]:bg-mar-selection aria-[current=page]:text-mar-selection-text",
+        "flex min-h-11 min-w-0 items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-mar-muted marisma-motion-control hover:bg-mar-hover hover:text-mar-text aria-[current=page]:bg-mar-selection aria-[current=page]:text-mar-selection-text",
         className,
       )}
       currentValue="page"
