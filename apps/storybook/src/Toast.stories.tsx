@@ -57,3 +57,75 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const AnnouncementAndDismissal: Story = { args: { variant: "success" } };
+
+function ToastStackControls() {
+  const { toast, dismiss } = useToast();
+  return (
+    <div className="flex flex-wrap gap-2">
+      <Button
+        onClick={() => {
+          toast({
+            id: "story-toast-1",
+            title: "Water quality checked",
+            description: "Three stations updated.",
+            variant: "info",
+            duration: 12000,
+          });
+          toast({
+            id: "story-toast-2",
+            title: "Record saved",
+            description: "Your changes are available locally.",
+            variant: "success",
+            duration: 12000,
+          });
+          toast({
+            id: "story-toast-3",
+            title: "Observation archived",
+            description: "You may undo this change.",
+            variant: "warning",
+            duration: 12000,
+            action: (
+              <ToastAction onClick={() => dismiss("story-toast-3")}>
+                Undo
+              </ToastAction>
+            ),
+          });
+        }}
+      >
+        Stack three toasts
+      </Button>
+      <Button
+        variant="secondary"
+        onClick={() =>
+          toast({
+            title: "Unable to save",
+            description: "Try again later.",
+            variant: "danger",
+          })
+        }
+      >
+        Error toast
+      </Button>
+    </div>
+  );
+}
+
+function ToastStackStory() {
+  return (
+    <ToastProvider duration={5000} limit={3}>
+      <ToastStackControls />
+    </ToastProvider>
+  );
+}
+
+export const StackedAndExpandable: Story = {
+  render: () => <ToastStackStory />,
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Marisma's compact, neutral Sonner-inspired toast stack spreads on hover or focus; durations pause while interacting. Swipe horizontally or use the close button to dismiss. The existing provider/action API remains compatible, and reduced motion disables decorative transforms.",
+      },
+    },
+  },
+};

@@ -191,20 +191,34 @@ test("defines visible focus, reduced-motion, and forced-colors behavior", () => 
 });
 
 test("Soft Elevation separates surface, input, and interactive state tokens", () => {
-  for (const name of ["surface-border", "separator", "input-border", "hover", "selection", "selection-text"]) {
+  for (const name of [
+    "surface-border",
+    "separator",
+    "input-border",
+    "hover",
+    "selection",
+    "selection-text",
+  ]) {
     assert.ok(css.includes(`--color-mar-${name}: var(--marisma-${name});`));
   }
   for (const name of ["card", "control", "navbar"]) {
-    assert.ok(css.includes(`--radius-mar-${name}: var(--marisma-radius-${name});`));
+    assert.ok(
+      css.includes(`--radius-mar-${name}: var(--marisma-radius-${name});`),
+    );
   }
   for (const name of ["card", "overlay", "navbar"]) {
-    assert.ok(css.includes(`--shadow-mar-${name}: var(--marisma-shadow-${name});`));
+    assert.ok(
+      css.includes(`--shadow-mar-${name}: var(--marisma-shadow-${name});`),
+    );
   }
   assert.ok(css.includes("--marisma-radius-card: 18px;"));
   assert.ok(css.includes("--marisma-radius-control: 11px;"));
-  assert.ok(css.includes("--marisma-input-border: color-mix(in srgb, var(--marisma-border) 90%"));
+  assert.match(
+    css,
+    /--marisma-input-border:\s*color-mix\(\s*in srgb,\s*var\(--marisma-border\) 90%/,
+  );
   assert.ok(css.includes('[data-marisma-mode="dark"] {'));
-  assert.ok(css.includes("--marisma-shadow-card: 0 18px 40px"));
+  assert.match(css, /--marisma-shadow-card:\s*0 18px 40px/);
   assert.ok(css.includes("--marisma-surface-border: CanvasText;"));
   assert.ok(css.includes("--marisma-input-border: CanvasText;"));
 });
@@ -227,7 +241,9 @@ test("Soft Elevation input boundaries meet 3:1 contrast on their card background
     const boundary = name.endsWith("dark")
       ? originalBorder
       : mixSrgb(originalBorder, card, 0.9);
-    assert.ok(contrast(boundary, card) >= 3,
-      `${name}: input boundary ${boundary} lacks 3:1 card contrast`);
+    assert.ok(
+      contrast(boundary, card) >= 3,
+      `${name}: input boundary ${boundary} lacks 3:1 card contrast`,
+    );
   }
 });

@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/cn";
 
 export const spinnerVariants = cva(
-  "inline-block animate-spin rounded-full border-2 border-current border-t-transparent text-mar-primary motion-reduce:animate-none",
+  "inline-block marisma-motion-busy rounded-full border-2 border-current border-t-transparent text-mar-primary motion-reduce:animate-none",
   {
     variants: {
       size: { small: "size-4", default: "size-6", large: "size-8" },

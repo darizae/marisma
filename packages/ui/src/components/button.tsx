@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/cn";
 
 export const buttonVariants = cva(
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded-mar-control px-4 py-2 text-sm font-semibold transition-colors duration-[var(--marisma-duration-fast)] disabled:cursor-not-allowed disabled:opacity-60",
+  "inline-flex min-h-11 items-center justify-center gap-2 rounded-mar-control px-4 py-2 text-sm font-semibold marisma-motion-control disabled:cursor-not-allowed disabled:opacity-60",
   {
     variants: {
       variant: {
@@ -61,7 +61,7 @@ export function Button({
       {loading ? (
         <span
           aria-hidden="true"
-          className="size-4 shrink-0 animate-spin rounded-full border-2 border-current border-t-transparent motion-reduce:animate-none"
+          className="size-4 shrink-0 marisma-motion-busy rounded-full border-2 border-current border-t-transparent motion-reduce:animate-none"
         />
       ) : null}
       {children}

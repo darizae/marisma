@@ -181,7 +181,7 @@ export function Select({
           aria-required={required || undefined}
           className={cn(
             "inline-flex min-h-11 w-full items-center justify-between gap-3 rounded-mar-control border border-mar-input-border bg-mar-card px-3 py-2 text-left text-base text-mar-text data-[placeholder]:text-mar-muted disabled:cursor-not-allowed disabled:opacity-60",
-            "aria-invalid:border-mar-danger data-[readonly]:cursor-default",
+            "marisma-motion-control marisma-motion-field aria-invalid:border-mar-danger data-[readonly]:cursor-default",
             triggerClassName,
           )}
           data-readonly={readOnly || undefined}
@@ -191,7 +191,10 @@ export function Select({
           ref={ref}
         >
           <SelectPrimitive.Value placeholder={placeholder} />
-          <SelectPrimitive.Icon aria-hidden="true" className="text-mar-muted">
+          <SelectPrimitive.Icon
+            aria-hidden="true"
+            className="marisma-motion-chevron text-mar-muted"
+          >
             ⌄
           </SelectPrimitive.Icon>
         </SelectPrimitive.Trigger>
@@ -199,7 +202,7 @@ export function Select({
           <SelectPrimitive.Content
             className={cn(
               "z-50 max-h-[var(--radix-select-content-available-height)] min-w-[var(--radix-select-trigger-width)] overflow-hidden rounded-mar-card border border-mar-surface-border bg-mar-card font-mar-sans text-mar-text shadow-mar-overlay",
-              "transition duration-[var(--marisma-duration-fast)] data-[state=closed]:scale-95 data-[state=closed]:opacity-0 data-[state=open]:scale-100 data-[state=open]:opacity-100",
+              "marisma-motion-overlay",
               contentClassName,
             )}
             collisionPadding={8}

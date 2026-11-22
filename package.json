@@ -13,6 +13,7 @@
     "typecheck": "pnpm -r --if-present typecheck",
     "test:package-contract": "pnpm --filter @darizae/marisma test:package-contract",
     "dev:storybook": "pnpm --filter @marisma/storybook dev",
+    "dev:showcase": "pnpm --filter @marisma/showcase dev",
     "dev:landing": "pnpm --filter @marisma/landing dev",
     "dev:vite-consumer": "pnpm --filter @marisma/consumer-vite dev",
     "dev:next-consumer": "pnpm --filter @marisma/consumer-next dev"
