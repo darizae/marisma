@@ -1,6 +1,6 @@
 # Marisma — maintainer and agent entry point
 
-**Current state:** The complete approved **48-candidate component catalog** has implementation, Storybook coverage and recorded local release evidence. `@darizae/marisma@0.2.0` is published on npm; `0.1.0` and its `v0.1.0` tag are historical releases. The tracked source manifest intentionally remains `private: true`; publishing uses an exact reviewed staged artifact. Historical task Markdown files remain recoverable through Git history.
+**Current state:** The complete approved **48-candidate component catalog** has implementation, Storybook coverage and recorded local release evidence. `@darizae/marisma@0.3.0` is publicly published on npm and tagged `v0.3.0`; `0.1.0` and `0.2.0` are historical releases. The tracked source manifest intentionally remains `private: true`; publishing uses an exact reviewed staged artifact. Historical task Markdown files remain recoverable through Git history.
 
 ## Read only the context relevant to the assigned work
 
@@ -27,9 +27,9 @@ React 19 and TypeScript; **Tailwind CSS 4 exclusively** (native `@theme` and sem
 
 The owner-approved Soft Elevation redesign was merged in [PR #6](https://github.com/darizae/marisma/pull/6) (`fc3dc39d66bdd2d11027b87927d5b2bade148611`). T-014–T-016 recorded real Chromium screenshots, local build/browser/consumer/security qualification and documentation closeout. The separately owner-authorized `0.2.0` publication was subsequently verified using the staged artifact SHA-256 `8f4b9318f77c7e998cecdf266e87799b1e7cd50be1c0420a3d9edd0abce80852`; see `docs/planning/VERIFICATION_AND_RELEASE.md`. The 0.1.0 evidence remains historical, and future changes need new checks and approval.
 
-## 0.3.0 release qualification (owner-authorized 2026-11-22)
+## 0.3.0 official release (completed 2026-11-22)
 
-[PR #8](https://github.com/darizae/marisma/pull/8) merged into `main` as `f6f315a` on 2026-11-22 with owner authorization. It adds measured, reduced-motion-aware motion to the public components and a standalone `apps/showcase/` application. The owner has now authorized the `0.3.0` npm release, Git tag and GitHub release on 2026-11-22. Verify the exact candidate archive and owner npm identity/2FA before any registry write; do not modify or publish Flowstead, add CI, bypass MFA or deploy production services. The 48-family explorer links to Storybook; see `apps/showcase/README.md`, `docs/motion/MOTION_SYSTEM.md` and `docs/motion/VERIFICATION.md` for verified behavior and omissions. The showcase runs only while `pnpm dev:showcase` is active on the Mac; a URL alone does not start the process.
+[PR #8](https://github.com/darizae/marisma/pull/8) merged into `main` as `f6f315a` on 2026-11-22 with owner authorization. It adds measured, reduced-motion-aware motion to the public components and a standalone `apps/showcase/` application. The owner authorized and completed the `0.3.0` npm release, Git tag and GitHub release on 2026-11-22 from exact source `c329b6fdc3f8981b3a03f38fea84c24d723f71d1` and archive SHA-256 `a0b590f606c36e9d289371597ce3e163244c2060defbeef5be634d2dbfe95942`. The private toolkit verified npm registry bytes and new Vite/Next.js consumers. The next release still requires its own approval; do not change Flowstead UI, add CI, bypass MFA or deploy unrelated services. The 48-family explorer links to Storybook; see `apps/showcase/README.md`, `docs/motion/MOTION_SYSTEM.md` and `docs/motion/VERIFICATION.md` for verified behavior and omissions. The showcase runs only while `pnpm dev:showcase` is active on the Mac; a URL alone does not start the process.
 
 ## Future task-file naming
 

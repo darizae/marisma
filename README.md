@@ -9,7 +9,7 @@ package implements 48 different component families with typed
 public APIs, accessible native or Radix-based interactions, and Reedwater and
 Tidal Blue themes in light and dark modes.
 
-> **Release preparation:** `@darizae/marisma@0.3.0` is being qualified on a dedicated release branch. `0.2.0` remains the current publicly published version until exact-artifact npm verification completes.
+> **Latest release:** [`@darizae/marisma@0.3.0`](https://www.npmjs.com/package/@darizae/marisma/v/0.3.0) is publicly published and independently verified against the owner-approved SHA-256 package archive. Versions 0.1.0 and 0.2.0 remain available.
 
 ## Install
 
@@ -66,11 +66,11 @@ Storybook includes controls, keyboard notes, interaction coverage, and theme
 switching for these components. No routing, data fetching,
 authentication, or persisted theme settings are included.
 
-## Interactive showcase (0.3.0 release candidate)
+## Interactive showcase (0.3.0)
 
 The new standalone React application at [`apps/showcase/`](apps/showcase/) demonstrates navigation, forms, filters, calendar selection, data views, motion studies, and theme switching. Start locally using `pnpm dev:showcase` and open **http://127.0.0.1:4178/** on the same Mac while the server is running. The URL is not a public deployment; it stops responding when the dev process exits. The searchable explorer accounts for all 48 catalog families and links to their Storybook references when `pnpm dev:storybook` is running separately on port 6006. See [showcase usage and coverage](apps/showcase/README.md) and the [motion vocabulary](docs/motion/MOTION_SYSTEM.md).
 
-The 0.3.0 candidate introduces measured motion, animated fields, compact accessible toast stacks, and the canonical leaf favicon; `0.2.0` is unaffected. The owner authorized the 0.3.0 release procedure, subject to exact-archive verification and npm authentication/2FA safeguards.
+Version 0.3.0 introduces measured motion, animated fields, compact accessible toast stacks, and the canonical leaf favicon; previous published versions remain unchanged. The release was qualified from the exact source commit and npm archive, with interactive owner 2FA.
 
 ## Development checkout
 

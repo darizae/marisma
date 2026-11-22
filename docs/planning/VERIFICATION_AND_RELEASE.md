@@ -1,6 +1,6 @@
 # Marisma — local verification and release policy
 
-**Status:** CURRENT local verification and publication policy; `0.2.0` published · **Revision:** 10 · **Date:** 2026-11-16
+**Status:** CURRENT local verification and publication policy; `0.3.0` published · **Revision:** 11 · **Date:** 2026-11-22
 
 ## Owner-selected verification policy
 
@@ -27,7 +27,7 @@ disable dependency-build safeguards globally.
 The release report `docs/release/T-011_RELEASE_CANDIDATE.md` records the full
 historical `0.0.0` local sweep and later hardening checks. The tracked npm
 package remains `private: true` as a safety control;
-`@darizae/marisma@0.1.0` and `0.2.0` are published publicly. Every future version still
+`@darizae/marisma@0.1.0`, `0.2.0`, and `0.3.0` are published publicly. Every future version still
 requires exact-artifact owner approval.
 
 ## Existing acceptance cases retained
@@ -102,3 +102,5 @@ The completed gate also included `pnpm audit`, read-only `npm view @darizae/mari
 The owner explicitly authorized release of `@darizae/marisma@0.3.0` including npm publication, Git tag, GitHub release and all supporting qualification steps. This is a **new** gate; historical 0.2.0 evidence does not qualify the candidate. The exact tracked source manifest must retain `private:true`; the private toolkit stages an allowlisted copy without that field, binds the SHA-256 archive and full Git commit, scans contents and tests independent packed Vite/Next consumers. The official npm registry must report the new exact archive and independently passing consumers before the release may be marked complete. npm login and MFA must remain interactive owner controls; never access or persist credentials. No Flowstead application code changes, deployment, npm package 2FA-setting changes or remote CI changes are part of this release.
 
 Record the evidence in `docs/release/V0_3_0_RELEASE.md` with actual command outcomes, commit, archive digest, npm registry and GitHub release metadata. If npm authentication fails, label the release **BLOCKED** rather than implying that publication occurred; retry only after verified identity is restored. A GitHub tag/release must identify a source SHA that matches the package release version.
+
+**0.3.0 completion:** Published on npm after owner-controlled CLI 2FA. Exact source `c329b6fdc3f8981b3a03f38fea84c24d723f71d1` and archive SHA-256 `a0b590f606c36e9d289371597ce3e163244c2060defbeef5be634d2dbfe95942` passed the official `priv/release/prepare.sh`, `verify.sh` and `postpublish.sh` gates, including fresh Vite/Next.js tarball consumers, with evidence at [`docs/release/V0_3_0_RELEASE.md`](../release/V0_3_0_RELEASE.md). The source tag is `v0.3.0`.

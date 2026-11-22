@@ -1,6 +1,6 @@
 # Marisma UI package
 
-`@darizae/marisma@0.3.0` is the owner-approved release candidate for React 19 and Tailwind CSS 4. The latest verified public registry version before publication is 0.2.0. It exports Button, Input, Dialog, 11 foundation/feedback families,
+`@darizae/marisma@0.3.0` is the latest publicly published package for React 19 and Tailwind CSS 4. It exports Button, Input, Dialog, 11 foundation/feedback families,
 13 interaction/date families, eight form/composed-field families, 13
 data/navigation/application-composition families, and the
 `@darizae/marisma/theme.css` theme entry.
@@ -123,7 +123,7 @@ nearest Marisma subtree theme is bridged into its portal.
   pointer-swipe dismissal. The existing `ToastOptions` API (title, description,
   action, variant, duration, id) remains compatible. This provider is still
   dependency-free: Marisma does **not** bundle Sonner or copy its CSS. Place
-  the provider inside the active Marisma theme scope; new behavior is introduced with the `0.3.0` release candidate, not the published `0.2.0` artifact.
+  the provider inside the active Marisma theme scope; new behavior is available in published `0.3.0`, not the historical `0.2.0` artifact.
 
 ## Interaction and date exports
 
@@ -192,7 +192,7 @@ nearest Marisma subtree theme is bridged into its portal.
 
 ## Release status
 
-Versions `0.1.0` and `0.2.0` are published publicly on npm. The motion/showcase changes on [PR #8](https://github.com/darizae/marisma/pull/8) are unpublished and need separate review, qualification, versioning and owner authorization. The tracked manifest remains
+Versions `0.1.0`, `0.2.0` and `0.3.0` are published publicly on npm. The motion and showcase upgrades from [PR #8](https://github.com/darizae/marisma/pull/8) are included in 0.3.0 after owner-authorized qualification and publication; see [release evidence](../../docs/release/V0_3_0_RELEASE.md). The tracked manifest remains
 `private: true` as a release safety control; the ignored release toolkit removes
 the private field only from an exact reviewed staged candidate. Future versions
 require their own artifact qualification and publication approval.

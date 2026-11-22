@@ -1,6 +1,6 @@
 # Flowstead → Marisma adoption review (read-only)
 
-Reviewed 2026-11-22 against the local Flowstead main. Flowstead uses `@darizae/marisma@0.2.0` in `frontend/package.json`. No Flowstead modification or dependency change is authorized.
+Reviewed 2026-11-22 against the local Flowstead main. At that snapshot, Flowstead uses `@darizae/marisma@0.2.0` in `frontend/package.json`. Marisma 0.3.0 is now published and independently verified, but no Flowstead UI integration or dependency change has been authorized. This is a historical read-only review, not a claim about any later Flowstead refactor changes.
 
 **Preservation guard:** At preflight Flowstead main was 15 commits ahead of origin/main, later 16 ahead while other work continued; it contains many changed/untracked evidence files. Five pre-existing worktrees are active (main, refactor/backend-architecture, refactor/contracts-and-types, refactor/frontend-architecture, refactor/quality-architecture). None were switched, reset, cleaned, removed, rebased or edited.
 
@@ -18,6 +18,6 @@ Reviewed 2026-11-22 against the local Flowstead main. Flowstead uses `@darizae/m
 
 ## Adoption boundary
 
-Only after owner acceptance and an explicitly approved Marisma release: create a new isolated Flowstead change branch, check worktree ownership and current refactor state, update dependency, and migrate one interaction at a time. Test existing security, API authorization, indexedDB isolation, signed-out routes, privacy, forecast data integrity and exports. Preserve MapLibre map logic, charts, data transformation, session/auth, downloads, and offline safety as domain-specific code. Never make a UI animation delay private-data clearing or obscure real API error states.
+Now that 0.3.0 is officially released, Flowstead integration **still requires its own explicit owner authorization**: create a new isolated Flowstead change branch, check worktree ownership and current refactor state, update dependency, and migrate one interaction at a time. Test existing security, API authorization, indexedDB isolation, signed-out routes, privacy, forecast data integrity and exports. Preserve MapLibre map logic, charts, data transformation, session/auth, downloads, and offline safety as domain-specific code. Never make a UI animation delay private-data clearing or obscure real API error states.
 
-**Outcome:** Recommendations only. No Flowstead edits, dependency upgrades, commits, installs, rebases, cleanups or pushes.
+**Outcome:** Recommendations only. No Flowstead application edits, dependency upgrades, installs, rebases, cleanups or pushes. A separate exact brand-mark jump implementation plan was committed locally to Flowstead documentation as `6ccb8cc`; no application behavior was changed.

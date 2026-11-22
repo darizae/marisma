@@ -12,6 +12,8 @@ All notable changes to Marisma are documented here.
 - Refined the existing dependency-free ToastProvider into compact, neutral, status-icon-bearing notification cards with newest-first stacking, hover/keyboard-focus expansion, auto-dismiss pausing, horizontal swipe/dismiss, preserved action buttons and reduced-motion/forced-colors support (Sonner-inspired interaction behavior, not Sonner source code).
 - Added five more compiled React screenshots (13 total) and a read-only Flowstead adoption review. Flowstead application code remains unchanged; its proposed brand click animation has a separate documentation-only plan.
 
+- **Release:** published to npm and independently verified with SHA-256 `a0b590f606c36e9d289371597ce3e163244c2060defbeef5be634d2dbfe95942` from source `c329b6fdc3f8981b3a03f38fea84c24d723f71d1`; tagged [v0.3.0](https://github.com/darizae/marisma/releases/tag/v0.3.0).
+
 ## [0.2.0] — 2026-11-16
 
 - Adopted owner-approved **Soft Elevation (Concept 03)** as the default appearance across Marisma's semantic Tailwind 4 component styling, without a separate style switch.

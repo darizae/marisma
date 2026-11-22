@@ -1,6 +1,6 @@
 # Marisma component scope — first release
 
-Status: The original 48-family catalog shipped in `@darizae/marisma@0.1.0` and remains in published `0.2.0`. All 48 source-level candidates have implementation source, stories and historical local verification evidence. The unreleased motion/showcase work in PR #8 does not change this family count; it adds a standalone example app and motion styling. The separate release report preserves first-release hardening checks.
+Status: The original 48-family catalog shipped in `@darizae/marisma@0.1.0` and remains in published `0.2.0` and `0.3.0`. All 48 source-level candidates have implementation source, stories and historical local verification evidence. The 0.3.0 motion/showcase release from PR #8 does not change this family count; it adds a standalone example app and motion styling. The separate release report preserves first-release hardening checks.
 
 This inventory identifies **48 source-level candidates**, not 48 guaranteed distinct
 npm exports. Adaptation may combine related components or make certain high-level

@@ -2,7 +2,7 @@
 
 **Decisions authority:** `docs/planning/APPROVED_DECISIONS.md` is the canonical approved product/brand/execution register. This contract defines their technical implementation. Do not reverse settled owner decisions or dilute the Tailwind-only and local-first policies.
 
-**Status:** APPROVED technical contract; `0.2.0` published · **Revision:** 6 · **Updated:** 2026-11-22
+**Status:** APPROVED technical contract; `0.3.0` published · **Revision:** 7 · **Updated:** 2026-11-22
 
 ## Product contract
 
@@ -57,7 +57,7 @@ builds. T-011 release qualification is recorded in
 `docs/release/T-011_RELEASE_CANDIDATE.md`; there is **no remote CI gate**.
 Never assert tests passed without recorded local evidence.
 
-`packages/ui` deliberately retains `private: true`; `0.1.0` and `0.2.0` were published from
+`packages/ui` deliberately retains `private: true`; `0.1.0`, `0.2.0` and `0.3.0` were published from
 the exact approved ignored local staging artifact. Selecting a future artifact,
 npm publishing, and tagging remain **distinct approval gates**. Never use source workspace symlinks as sole
 proof of published compatibility.
@@ -89,7 +89,7 @@ variant class is emitted into production CSS. No second Tailwind preflight impor
 
 ## Active engineering context
 
-The approved 48-family catalog is published in 0.1.0 and 0.2.0. The initial release evidence is preserved in `docs/release/T-011_RELEASE_CANDIDATE.md`; 0.2.0 qualification and publication are recorded in `docs/planning/VERIFICATION_AND_RELEASE.md` and the completed `docs/planning/HANDOFF_SEQUENCE.md` summary. Their task specs are historical (Git history), not active assignments. The unreleased motion/showcase PR #8 has its own `docs/motion/VERIFICATION.md` ledger and read-only Flowstead review. Use `AGENTS.md` and `docs/agent/ROUTING.md` for current file ownership. No historical test result qualifies a new package version.
+The approved 48-family catalog is published in 0.1.0 and 0.2.0. The initial release evidence is preserved in `docs/release/T-011_RELEASE_CANDIDATE.md`; 0.2.0 qualification and publication are recorded in `docs/planning/VERIFICATION_AND_RELEASE.md` and the completed `docs/planning/HANDOFF_SEQUENCE.md` summary. Their task specs are historical (Git history), not active assignments. The motion/showcase release 0.3.0 (originally PR #8) has its own `docs/motion/VERIFICATION.md` ledger and read-only Flowstead review. Use `AGENTS.md` and `docs/agent/ROUTING.md` for current file ownership. No historical test result qualifies a new package version.
 
 **Local tests are the acceptance channel; GitHub Actions is not a gate.** Every future package publication remains a distinct owner decision.
 
