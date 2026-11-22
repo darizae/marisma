@@ -62,7 +62,7 @@ The implementation assignments T-001–T-011, the one-off hardening review and T
 
 ## Current release planning boundary (updated 2026-11-22)
 
-The catalog and Soft Elevation are published as `@darizae/marisma@0.2.0` (the prior `0.1.0` release remains available). The tracked package stays `private: true`; publication used an exact approved staged artifact and the credential-free local toolkit remains ignored under `priv/release/`. The motion/showcase changes are merged into `main`, but no new npm release/version/tag, production deployment, Flowstead UI integration or remote automation is authorized. Any later release requires its own owner-approved commit, version and archive SHA-256.
+The catalog, Soft Elevation, and new motion/showcase improvements are publicly published as `@darizae/marisma@0.3.0` (prior `0.1.0` and `0.2.0` releases remain available). The tracked package stays `private: true`; publication used an exact approved staged artifact and the credential-free local toolkit remains ignored under `priv/release/`. The 0.3.0 release was owner-authorized and completed, including npm publication and a Git tag/GitHub release. No further npm release, production deployment, Flowstead UI integration or remote automation is authorized. Any later release requires its own owner-approved commit, version and archive SHA-256.
 
 ## Owner release-delegation update (2026-11-11)
 
