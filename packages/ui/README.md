@@ -117,9 +117,14 @@ nearest Marisma subtree theme is bridged into its portal.
 - `ScrollArea` deliberately uses focusable native overflow for browser, touch,
   wheel, and keyboard behavior instead of adding a runtime scroll dependency.
 - `ToastProvider`, `ToastAction`, and `useToast` provide bounded, dismissible,
-  timed notifications. This small provider was chosen over Radix Toast or
-  Sonner to avoid a new runtime dependency; place it inside the active Marisma
-  theme scope.
+  timed notifications. The source-level motion upgrade adds a compact,
+  Sonner-inspired **visual treatment**, newest-first stacking, expansion on
+  hover or keyboard focus, timeout pausing while interacting, and horizontal
+  pointer-swipe dismissal. The existing `ToastOptions` API (title, description,
+  action, variant, duration, id) remains compatible. This provider is still
+  dependency-free: Marisma does **not** bundle Sonner or copy its CSS. Place
+  the provider inside the active Marisma theme scope; new behavior is not
+  available in the already-published `0.2.0` artifact.
 
 ## Interaction and date exports
 

@@ -66,11 +66,11 @@ Storybook includes controls, keyboard notes, interaction coverage, and theme
 switching for these components. No routing, data fetching,
 authentication, or persisted theme settings are included.
 
-## Interactive showcase (feature branch; not published)
+## Interactive showcase (unreleased source)
 
 The new standalone React application at [`apps/showcase/`](apps/showcase/) demonstrates navigation, forms, filters, calendar selection, data views, motion studies, and theme switching. Start locally using `pnpm dev:showcase` and open **http://127.0.0.1:4178/** on the same Mac while the server is running. The URL is not a public deployment; it stops responding when the dev process exits. The searchable explorer accounts for all 48 catalog families and links to their Storybook references when `pnpm dev:storybook` is running separately on port 6006. See [showcase usage and coverage](apps/showcase/README.md) and the [motion vocabulary](docs/motion/MOTION_SYSTEM.md).
 
-These feature-branch motion changes are **unreleased** and do not alter the published `0.2.0` package. Owner review is required before merge, versioning, publication or deployment.
+These source-level motion and interaction changes are **unreleased** and do not alter the published `0.2.0` package. They include animated text fields, theme-aware compact toast stacks, and the canonical Marisma leaf favicon. Owner approval is still required for a new npm version, tag, publication or deployment.
 
 ## Development checkout
 

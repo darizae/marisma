@@ -6,7 +6,9 @@ All notable changes to Marisma are documented here.
 
 - **Review candidate (PR #8, not published):** Added measured theme-scoped motion tokens, motion-aware Button/Spinner/Select/Radix overlay/Sidebar interactions, opt-in motion utilities, and reduced-motion/forced-colors handling. Existing React exports and four themes remain unchanged.
 - Added the six-page `apps/showcase/` React app, a searchable 48-family explorer linked to Storybook, sample forms and data/calendar filters, a motion lab, four-theme switching, and responsive browser-test coverage.
-- Documented eight compiled React browser screenshots and the read-only Flowstead adoption review. The changes remain behind a separate owner review/merge/release boundary.
+- Added theme-aware input/textarea/select hover-and-focus transitions; aligned the showcase toolbar across viewports, with a canonical Marisma SVG favicon in both development and production.
+- Refined the existing dependency-free ToastProvider into compact, neutral, status-icon-bearing notification cards with newest-first stacking, hover/keyboard-focus expansion, auto-dismiss pausing, horizontal swipe/dismiss, preserved action buttons and reduced-motion/forced-colors support (Sonner-inspired interaction behavior, not Sonner source code).
+- Added five more compiled React screenshots (13 total) and a read-only Flowstead adoption review. Flowstead logo-jump behavior has a separate documentation-only plan, not an integration. All source changes remain subject to a separate owner-approved npm release/version gate.
 
 ## [0.2.0] — 2026-11-16
 

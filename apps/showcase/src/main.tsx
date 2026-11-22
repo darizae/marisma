@@ -63,7 +63,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
   ToastProvider,
+  ToastAction,
   useToast,
+  type ToastVariant,
   StepProgress,
   StepProgressItem,
   PageFooter,
@@ -76,6 +78,10 @@ import {
 import { families, storyHref } from "./catalog";
 import leafMark from "../../../assets/brand/marisma-leaf.svg";
 import "./styles.css";
+
+// Resolve the same canonical Marisma SVG in both Vite dev and packed builds.
+const favicon = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
+if (favicon) favicon.href = leafMark;
 
 type Page = "overview" | "explorer" | "forms" | "data" | "motion" | "settings";
 type Accent = "reedwater" | "tidal-blue";
@@ -178,7 +184,7 @@ function AppBody() {
   const [springOpen, setSpringOpen] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
   const [search, setSearch] = useState("");
-  const { toast } = useToast();
+  const { toast, dismiss } = useToast();
   useEffect(() => {
     const onHash = () => {
       const next = location.hash.replace("#/", "");
@@ -201,11 +207,40 @@ function AppBody() {
       (region === "all" || x.region === region) &&
       x.name.toLowerCase().includes(search.toLowerCase()),
   );
-  const announce = (message: string) =>
+  const announce = (message: string, variant: ToastVariant = "info") =>
     toast({
       title: message,
       description: "Local showcase only · no external changes",
+      variant,
     });
+  const previewToastStack = () => {
+    toast({
+      id: "showcase-toast-1",
+      title: "Water quality checked",
+      variant: "info",
+      description: "Three stations checked this morning.",
+      duration: 15000,
+    });
+    toast({
+      id: "showcase-toast-2",
+      title: "Sample saved",
+      variant: "success",
+      description: "Local records are up to date.",
+      duration: 15000,
+    });
+    toast({
+      id: "showcase-toast-3",
+      title: "Observation archived",
+      variant: "warning",
+      description: "Undo is available in this preview.",
+      duration: 15000,
+      action: (
+        <ToastAction onClick={() => dismiss("showcase-toast-3")}>
+          Undo
+        </ToastAction>
+      ),
+    });
+  };
   const submit = (e: FormEvent) => {
     e.preventDefault();
     announce("Sample form submitted");
@@ -278,22 +313,22 @@ function AppBody() {
         </SidebarContent>
         <div className="min-w-0 lg:pl-72">
           <header className="sticky top-0 z-30 flex min-h-18 items-center justify-between gap-3 border-b border-mar-separator bg-mar-card/95 px-4 backdrop-blur sm:px-8">
-            <div className="flex items-center gap-3">
+            <div className="flex min-w-0 items-center gap-3">
               <SidebarTrigger size="small" aria-label="Open navigation">
                 ☰
               </SidebarTrigger>
-              <span className="text-sm text-mar-muted">
+              <span className="min-w-0 truncate text-sm text-mar-muted">
                 Workspace <span aria-hidden="true">/</span>{" "}
                 <strong className="font-semibold text-mar-text">
                   {current.title}
                 </strong>
               </span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex shrink-0 items-center gap-2">
               <Select
                 label="Theme accent"
-                fieldClassName="hidden sm:grid"
-                triggerClassName="!min-h-9 !w-38 !text-sm"
+                fieldClassName="showcase-toolbar-theme hidden sm:flex sm:items-center sm:gap-2"
+                triggerClassName="!min-h-10 !h-10 !w-36 !text-sm"
                 value={accent}
                 onValueChange={(v) => setAccent(v as Accent)}
                 options={[
@@ -303,6 +338,7 @@ function AppBody() {
               />
               <Button
                 size="small"
+                className="shrink-0 whitespace-nowrap"
                 variant="secondary"
                 onClick={() => setMode(mode === "light" ? "dark" : "light")}
                 aria-label={`Switch to ${mode === "light" ? "dark" : "light"} mode`}
@@ -552,9 +588,20 @@ function AppBody() {
                       <div className="flex flex-wrap gap-2">
                         <Button
                           size="small"
-                          onClick={() => announce("Success feedback")}
+                          onClick={() =>
+                            announce("Success feedback", "success")
+                          }
                         >
                           Success toast
+                        </Button>
+                        <Button
+                          size="small"
+                          variant="secondary"
+                          onClick={() =>
+                            announce("Example error feedback", "danger")
+                          }
+                        >
+                          Error toast
                         </Button>
                         <Dialog>
                           <DialogTrigger variant="secondary">
@@ -880,6 +927,34 @@ function AppBody() {
                       onClick={() => setReplay((n) => n + 1)}
                     >
                       Replay bounce
+                    </Button>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Notification stack</CardTitle>
+                    <CardDescription>
+                      Compact, theme-aware cards; hover or focus to expand,
+                      swipe or dismiss to close.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex flex-wrap gap-3">
+                    <Button onClick={previewToastStack}>
+                      Stack three toasts
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      onClick={() => announce("Message delivered", "success")}
+                    >
+                      Success toast
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      onClick={() =>
+                        announce("Something needs attention", "danger")
+                      }
+                    >
+                      Error toast
                     </Button>
                   </CardContent>
                 </Card>

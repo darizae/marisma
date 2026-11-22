@@ -23,3 +23,19 @@ Import Tailwind CSS 4 and `@darizae/marisma/theme.css` as usual, and scan the bu
 Reduced-motion media queries suppress decorative/keyframe animation and all transform transitions on motion utilities. The spinner remains a visible static loading indicator; status and accessible names remain. Forced-color environments disable decorative pulses. The showcase supports a local pause switch via `data-marisma-motion="paused"` for repeating studies; it is not a substitute for OS-level reduced motion.
 
 Public API: unchanged. New opt-in CSS utility classes and semantic motion tokens are additive; no new mandatory dependencies, providers, router, backend, persistence, or server state.
+
+## Text entry and focus feedback
+
+Native `Input`, `Textarea` and Radix `Select` opt into `marisma-motion-field` while preserving native labels, semantics, validation and their existing focus-visible outline. Hover gently tints a valid, enabled border; keyboard focus adds a restrained semantic-primary halo. Input/textarea labels follow focus via `marisma-field-group`. Invalid controls retain danger indicators, read-only and disabled controls avoid interactive hover treatments, forced colors remove the decorative shadow, and reduced motion disables transitions entirely.
+
+## Toast notifications — compact stack (Sonner-inspired, independently implemented)
+
+The public API remains `<ToastProvider duration={5000} limit={3}>…</ToastProvider>` and `useToast().toast({title, description?, variant?, action?, duration?, id?})`. A notification `id` may be supplied to replace/refresh one entry. Dismiss with `useToast().dismiss(id)`, the visible close control, an action callback, or a horizontal pointer swipe. The existing `info`/`success`/`warning`/`danger` variants retain their spoken status semantics.
+
+The most recent card is frontmost in the bottom-right; older cards peek out behind it. Hovering the stack or focusing a toast control expands the cards to their individually measured heights and pauses their auto-dismiss timers; leaving resumes the remaining duration. The visible status/alert roles persist without making behind-stack controls keyboard-focusable while collapsed. All cards use Marisma's own surface, separator, shadow, icon/status, radius and brand tokens; no hard-coded Sonner colors, runtime dependency, visual assets or source code are imported. Swipe uses pointer events and respects native links/buttons.
+
+The normal entrance and dismissal transitions are 320ms spring-in and 180ms exit; layout shifting is confined to the fixed viewport. `prefers-reduced-motion:reduce` disables decorative animation and transform transitions while preserving stacking layout and timed accessibility semantics. Forced-colors mode keeps visible borders. This is a deliberate Sonner-_style interaction treatment_, **not** a claim of complete API compatibility with the external Sonner library (e.g. promise helpers, arbitrary toaster positions or custom loading states).
+
+### Gallery and favicon
+
+The showcase toolbar's theme label and select are laid out horizontally at the same 40px height/vertical center as the adjacent mode and action buttons; narrow viewports hide the theme selector and preserve an aligned no-wrap mode button. The canonical `assets/brand/marisma-leaf.svg` is imported once by Vite and assigned to the gallery favicon link at runtime, so Vite dev and production asset URLs resolve consistently.

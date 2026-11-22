@@ -20,7 +20,7 @@ In a Mac terminal, run `curl -I http://127.0.0.1:4178/`: a successful local serv
 
 ## Navigation
 
-**Overview** demonstrates metric cards, a record list and quick navigation; **Component explorer** searches all 48 families; **Forms & feedback** supports validated sample submission, toast, dialog, selection and tabs; **Data & calendar** supports region and station filtering, table, calendar, JSON preview, empty/error states; **Motion lab** replays rise, spring, chevron, arrow, spinner, optional bounce, status pulse; **Settings** switches Reedwater/Tidal Blue and light/dark modes with a live nested component display. The mobile sidebar uses the library's own responsive Radix-backed Sidebar.
+**Overview** demonstrates metric cards, a record list and quick navigation; **Component explorer** searches all 48 families; **Forms & feedback** supports validated sample submission, toast, dialog, selection and tabs; **Data & calendar** supports region and station filtering, table, calendar, JSON preview, empty/error states; **Motion lab** replays rise, spring, chevron, arrow, spinner, optional bounce and status pulse, and demonstrates a compact, expanding toast stack with keyboard focus and swipe dismissal; **Settings** switches Reedwater/Tidal Blue and light/dark modes with a live nested component display. The navbar theme controls align on one row and the application favicon uses the same canonical SVG leaf as the Marisma identity. The mobile sidebar uses the library's own responsive Radix-backed Sidebar.
 
 ## Coverage ledger — all 48 source-level candidates
 
