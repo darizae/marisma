@@ -10,7 +10,7 @@ pnpm build
 pnpm dev:showcase
 ```
 
-Open **http://127.0.0.1:4178/** in a browser **on the same Mac**. A local URL is not a hosted deployment: it works only while `pnpm dev:showcase` is running. Stop the development server with Ctrl+C when finished.
+**Public demo:** https://marisma.darizae.dev · **Local development:** http://127.0.0.1:4178/ (while `pnpm dev:showcase` runs). Stop the local development server with Ctrl+C when finished.
 
 For the explorer's Storybook links, separately run `pnpm dev:storybook` (port 6006). Browser tests: `pnpm --filter @marisma/showcase test:browser`. Production build: `pnpm --filter @marisma/showcase build`. Playwright starts and stops its own test server, so a prior PASS does not mean the gallery is still online.
 

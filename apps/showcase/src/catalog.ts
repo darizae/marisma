@@ -112,5 +112,9 @@ export function storyHref(name: string): string {
   };
   const id =
     special[name] ?? "components-" + name.toLowerCase().replace(/\s+/g, "-");
+  // Storybook runs locally; public visitors should never be sent to their own localhost.
+  if (typeof window !== "undefined" && !["localhost", "127.0.0.1"].includes(window.location.hostname)) {
+    return "https://github.com/darizae/marisma/tree/main/apps/storybook";
+  }
   return "http://127.0.0.1:6006/?path=/docs/" + id + "--docs";
 }

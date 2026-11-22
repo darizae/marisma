@@ -498,7 +498,9 @@ function AppBody() {
                             rel="noreferrer"
                             href={storyHref(name)}
                           >
-                            Storybook reference{" "}
+                            {["localhost", "127.0.0.1"].includes(location.hostname)
+                              ? "Storybook reference"
+                              : "Storybook source"}{" "}
                             <span aria-hidden="true">↗</span>
                           </a>
                         </div>
