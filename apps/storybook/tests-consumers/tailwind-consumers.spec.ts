@@ -23,7 +23,12 @@ const packageDirectory = join(repositoryRoot, "packages/ui");
 const expectedSource = "@source '../node_modules/@darizae/marisma/dist';";
 const uniqueCompiledUtility = "min-h-12";
 const suppliedTarball = process.env.MARISMA_TEST_TARBALL;
-const expectedPackageVersion = process.env.MARISMA_TEST_VERSION ?? "0.2.0";
+// Default to the tracked package manifest so the same harness qualifies every
+// minor/patch release. Exact tarball verification can override this explicitly.
+const expectedPackageVersion =
+  process.env.MARISMA_TEST_VERSION ??
+  (JSON.parse(readFileSync(join(packageDirectory, "package.json"), "utf8"))
+    .version as string);
 
 let temporaryDirectory: string;
 let viteDirectory: string;
