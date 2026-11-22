@@ -27,6 +27,10 @@ React 19 and TypeScript; **Tailwind CSS 4 exclusively** (native `@theme` and sem
 
 The owner-approved Soft Elevation redesign was merged in [PR #6](https://github.com/darizae/marisma/pull/6) (`fc3dc39d66bdd2d11027b87927d5b2bade148611`). T-014–T-016 recorded real Chromium screenshots, local build/browser/consumer/security qualification and documentation closeout. The separately owner-authorized `0.2.0` publication was subsequently verified using the staged artifact SHA-256 `8f4b9318f77c7e998cecdf266e87799b1e7cd50be1c0420a3d9edd0abce80852`; see `docs/planning/VERIFICATION_AND_RELEASE.md`. The 0.1.0 evidence remains historical, and future changes need new checks and approval.
 
+## Active review branch: motion and interactive showcase
+
+[PR #8](https://github.com/darizae/marisma/pull/8) proposes measured, reduced-motion-aware motion enhancements on the actual public components and a standalone `apps/showcase/` application. This work is **not published** and does not authorize a merge, npm release or Flowstead edits. The 48-family explorer links to Storybook; see `apps/showcase/README.md`, `docs/motion/MOTION_SYSTEM.md` and `docs/motion/VERIFICATION.md` for verified behavior and omissions. The showcase runs only while `pnpm dev:showcase` is active on the Mac; a URL alone does not start the process.
+
 ## Future task-file naming
 
 For a **newly approved** numbered implementation task, use `docs/tasks/NN_T-XXX_topic__Codex-<recommended-model>_<reasoning-effort>.md` if a task file is needed. The filename is an owner-facing routing hint; it never authorizes extra scope or publication. Do not recreate historical specs merely for reference.

@@ -7,10 +7,16 @@ A standalone, navigable React 19/Vite application, distinct from Storybook. Uses
 ```bash
 pnpm install --frozen-lockfile
 pnpm build
-pnpm --filter @marisma/showcase dev
+pnpm dev:showcase
 ```
 
-Open **http://127.0.0.1:4178/**. For the explorer's documentation links, separately run `pnpm dev:storybook` (port 6006). Playwright coverage: `pnpm --filter @marisma/showcase test:browser`. Production build: `pnpm --filter @marisma/showcase build`. Stop each dev server with Ctrl+C.
+Open **http://127.0.0.1:4178/** in a browser **on the same Mac**. A local URL is not a hosted deployment: it works only while `pnpm dev:showcase` is running. Stop the development server with Ctrl+C when finished.
+
+For the explorer's Storybook links, separately run `pnpm dev:storybook` (port 6006). Browser tests: `pnpm --filter @marisma/showcase test:browser`. Production build: `pnpm --filter @marisma/showcase build`. Playwright starts and stops its own test server, so a prior PASS does not mean the gallery is still online.
+
+### If the page does not load
+
+In a Mac terminal, run `curl -I http://127.0.0.1:4178/`: a successful local server replies `HTTP/1.1 200 OK`. If the connection fails, start `pnpm dev:showcase` from the repository root and keep that terminal open. If the server returns 200 but the app is blank, check the browser console and re-run `pnpm build` followed by `pnpm dev:showcase`. `127.0.0.1` on a different device refers to **that device**, not this Mac. The optional `?utm_source=chatgpt.com` query string does not affect showcase navigation.
 
 ## Navigation
 

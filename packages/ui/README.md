@@ -1,16 +1,18 @@
 # Marisma UI package
 
-`@darizae/marisma@0.1.0` is a public package for React 19 and Tailwind CSS 4. It exports Button, Input, Dialog, 11 foundation/feedback families,
+`@darizae/marisma@0.2.0` is the current published package for React 19 and Tailwind CSS 4. It exports Button, Input, Dialog, 11 foundation/feedback families,
 13 interaction/date families, eight form/composed-field families, 13
 data/navigation/application-composition families, and the
 `@darizae/marisma/theme.css` theme entry.
 Install it with `pnpm add @darizae/marisma react react-dom tailwindcss`.
 
-## Soft Elevation in the 0.2.0 source candidate
+The [interactive showcase](../../apps/showcase/README.md) demonstrates the current working-tree components, while Storybook remains the API reference. Run `pnpm dev:showcase` at the repo root and open `http://127.0.0.1:4178/` **on the same Mac while the server is running**.
 
-The source on the pending 0.2.0 branch uses Soft Elevation by default: `rounded-mar-card`, `shadow-mar-card`, and semantic `mar-surface-border`, `mar-separator`, and `mar-input-border` Tailwind utilities are exported from `theme.css`. Cards float above the canvas; inputs retain fine visible outlines. Both accent families have independent dark-mode shadows and accessible focus/forced-colors treatment. Existing `mar-border` remains the stronger legacy boundary token; consumers needing stronger interactive borders may continue to use it. No component prop or theme-attribute migration is required.
+## Soft Elevation (published in 0.2.0)
 
-The published npm package is still documented as `0.1.0`; 0.2.0 is not yet published or independently qualified.
+Published 0.2.0 uses Soft Elevation by default: `rounded-mar-card`, `shadow-mar-card`, and semantic `mar-surface-border`, `mar-separator`, and `mar-input-border` Tailwind utilities are exported from `theme.css`. Cards float above the canvas; inputs retain fine visible outlines. Both accent families have independent dark-mode shadows and accessible focus/forced-colors treatment. Existing `mar-border` remains the stronger legacy boundary token; consumers needing stronger interactive borders may continue to use it. No component prop or theme-attribute migration is required.
+
+The 0.2.0 package was published after the owner's separate approval and exact-artifact Vite/Next.js verification. The current feature branch adds motion and an interactive showcase; those changes are **not** part of published 0.2.0.
 
 ## Local package evaluation
 
@@ -186,7 +188,7 @@ nearest Marisma subtree theme is bridged into its portal.
 
 ## Release status
 
-Version `0.1.0` is published publicly on npm. The proposed `0.2.0` is a branch-only release candidate pending local qualification, registry recheck and owner authorization. The tracked manifest remains
+Versions `0.1.0` and `0.2.0` are published publicly on npm. The motion/showcase changes on [PR #8](https://github.com/darizae/marisma/pull/8) are unpublished and need separate review, qualification, versioning and owner authorization. The tracked manifest remains
 `private: true` as a release safety control; the ignored release toolkit removes
 the private field only from an exact reviewed staged candidate. Future versions
 require their own artifact qualification and publication approval.
