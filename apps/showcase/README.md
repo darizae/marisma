@@ -12,7 +12,7 @@ pnpm dev:showcase
 
 **Public demo:** https://marisma.darizae.dev · **Local development:** http://127.0.0.1:4178/ (while `pnpm dev:showcase` runs). Stop the local development server with Ctrl+C when finished.
 
-For the explorer's Storybook links, separately run `pnpm dev:storybook` (port 6006). Browser tests: `pnpm --filter @marisma/showcase test:browser`. Production build: `pnpm --filter @marisma/showcase build`. Playwright starts and stops its own test server, so a prior PASS does not mean the gallery is still online.
+For exact Storybook documentation links when developing locally, separately run `pnpm dev:storybook` (port 6006). The hosted explorer links to Storybook source on GitHub instead of a visitor's localhost. Browser tests: `pnpm --filter @marisma/showcase test:browser`. Production build: `pnpm --filter @marisma/showcase build`. Playwright starts and stops its own test server, so a prior PASS does not mean the gallery is still online.
 
 ### If the page does not load
 
