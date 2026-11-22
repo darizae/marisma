@@ -66,6 +66,12 @@ Storybook includes controls, keyboard notes, interaction coverage, and theme
 switching for these components. No routing, data fetching,
 authentication, or persisted theme settings are included.
 
+## Interactive showcase (feature branch; not published)
+
+The new standalone React application at [`apps/showcase/`](apps/showcase/) demonstrates navigation, forms, filters, calendar selection, data views, motion studies, and theme switching. Start locally using `pnpm --filter @marisma/showcase dev` and open **http://127.0.0.1:4178/**. The searchable explorer accounts for all 48 catalog families and links to their Storybook references when `pnpm dev:storybook` is running separately on port 6006. See [showcase usage and coverage](apps/showcase/README.md) and the [motion vocabulary](docs/motion/MOTION_SYSTEM.md).
+
+These feature-branch motion changes are **unreleased** and do not alter the published `0.2.0` package. Owner review is required before merge, versioning, publication or deployment.
+
 ## Development checkout
 
 The monorepo requires Node.js 22.18.0 or newer and pnpm 11.9.0. The 22.18
