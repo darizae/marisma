@@ -1,6 +1,6 @@
 # Marisma UI package
 
-`@darizae/marisma@0.2.0` is the current published package for React 19 and Tailwind CSS 4. It exports Button, Input, Dialog, 11 foundation/feedback families,
+`@darizae/marisma@0.3.0` is the owner-approved release candidate for React 19 and Tailwind CSS 4. The latest verified public registry version before publication is 0.2.0. It exports Button, Input, Dialog, 11 foundation/feedback families,
 13 interaction/date families, eight form/composed-field families, 13
 data/navigation/application-composition families, and the
 `@darizae/marisma/theme.css` theme entry.
@@ -12,7 +12,7 @@ The [interactive showcase](../../apps/showcase/README.md) demonstrates the curre
 
 Published 0.2.0 uses Soft Elevation by default: `rounded-mar-card`, `shadow-mar-card`, and semantic `mar-surface-border`, `mar-separator`, and `mar-input-border` Tailwind utilities are exported from `theme.css`. Cards float above the canvas; inputs retain fine visible outlines. Both accent families have independent dark-mode shadows and accessible focus/forced-colors treatment. Existing `mar-border` remains the stronger legacy boundary token; consumers needing stronger interactive borders may continue to use it. No component prop or theme-attribute migration is required.
 
-The 0.2.0 package was published after the owner's separate approval and exact-artifact Vite/Next.js verification. The merged `main` source adds motion and an interactive showcase through PR #8; those changes are **not** part of published 0.2.0.
+The 0.2.0 package was published after separate owner approval and exact-artifact Vite/Next.js verification. Version 0.3.0 adds the motion upgrades through PR #8, including animated fields and a compact stack of accessible toasts; no new Sonner dependency is required. These are additive changes and do not change the published 0.2.0 artifact.
 
 ## Local package evaluation
 
@@ -123,8 +123,7 @@ nearest Marisma subtree theme is bridged into its portal.
   pointer-swipe dismissal. The existing `ToastOptions` API (title, description,
   action, variant, duration, id) remains compatible. This provider is still
   dependency-free: Marisma does **not** bundle Sonner or copy its CSS. Place
-  the provider inside the active Marisma theme scope; new behavior is not
-  available in the already-published `0.2.0` artifact.
+  the provider inside the active Marisma theme scope; new behavior is introduced with the `0.3.0` release candidate, not the published `0.2.0` artifact.
 
 ## Interaction and date exports
 

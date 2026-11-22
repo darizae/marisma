@@ -374,7 +374,7 @@ function AppBody() {
               title={current.title}
               description={current.summary}
               actions={
-                <Badge variant="info">v0.2.0 source · unreleased motion</Badge>
+                <Badge variant="info">Marisma 0.3.0 · Motion showcase</Badge>
               }
             />
             {page === "overview" && (
