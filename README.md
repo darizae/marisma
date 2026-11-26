@@ -90,3 +90,7 @@ The published package lives in `packages/ui/`; `apps/showcase/` is the interacti
 ## License
 
 [MIT](LICENSE) · Latest published package: **0.3.0**.
+
+## Agent-assisted setup
+
+[Open the agent setup page](https://darizae.github.io/marisma/) or [copy the plain-text prompt](docs/agent-setup.txt) into your coding agent. Review its proposed changes and verification results.
